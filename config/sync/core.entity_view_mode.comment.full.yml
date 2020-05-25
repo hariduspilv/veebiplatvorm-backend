@@ -1,0 +1,12 @@
+uuid: 7e8ab8b6-6ff5-4a28-ac6e-a731759f6149
+langcode: et
+status: false
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: K7eNlfU7NEUajz01wItywZklr2oaPgL6s1_97fmDXLA
+id: comment.full
+label: Kommentaar
+targetEntityType: comment
+cache: true
