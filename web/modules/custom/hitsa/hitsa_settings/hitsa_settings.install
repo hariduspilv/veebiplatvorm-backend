@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall functions for the HITSA settings Module.
+ */
+function hitsa_settings_uninstall() {
+  // Deleting the configuration while uninstalling.
+  \Drupal::configFactory()->getEditable('hitsa_settings.settings')->delete();
+}

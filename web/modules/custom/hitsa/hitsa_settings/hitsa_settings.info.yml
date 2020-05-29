@@ -1,0 +1,6 @@
+name: 'HITSA seadistused'
+type: module
+description: 'HITSA veebiplatvormide seadistused'
+core: 8.x
+package: 'HITSA'
+config: hitsa_settings.settings

@@ -1,0 +1,8 @@
+general:
+  address: 'Rakvere, Karja 24b'
+  phone: '55645090'
+  email: egon.tinno@twn.ee
+  favicon: 11
+langcode: et
+_core:
+  default_config_hash: JUj77e6N3QUpwLhTzL1wa9FhUhr0aDQnMMkBAqsph68

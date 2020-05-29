@@ -8,6 +8,7 @@ module:
   color: 0
   comment: 0
   config: 0
+  config_translation: 0
   contact: 0
   contextual: 0
   datetime: 0
@@ -20,6 +21,7 @@ module:
   filter: 0
   help: 0
   history: 0
+  hitsa_settings: 0
   image: 0
   language: 0
   link: 0

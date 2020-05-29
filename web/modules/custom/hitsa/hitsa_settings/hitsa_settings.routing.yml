@@ -1,0 +1,9 @@
+hitsa_settings.hitsa_settings_form:
+  path: 'admin/config/hitsa/hitsa-settings'
+  defaults:
+    _form: '\Drupal\hitsa_settings\Form\HitsaSettingsForm'
+    _title: 'Üldised seaded'
+  requirements:
+    _permission: 'administer hitsa settings'
+  options:
+    _admin_route: TRUE
