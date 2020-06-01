@@ -17,6 +17,7 @@
     "require": {
         "composer/installers": "^1.2",
         "drupal/core-recommended": "^8.8",
+        "drupal/linkit": "^5.0",
         "drupal/svg_image": "^1.13",
         "drupal/token": "^1.7",
         "drush/drush": "^10.2"
