@@ -8,6 +8,12 @@ hitsa_settings.settings:
       type: mapping
       label: 'Haridusasutuse üldinfo'
       mapping:
+        frontpage_background:
+          type: integer
+          label: 'Esilehe taustapilt'
+        logo:
+          type: integer
+          label: 'Haridusasutuse logo'
         favicon:
           type: integer
           label: 'Haridusasutuse veebilehe tunnusikoon'
