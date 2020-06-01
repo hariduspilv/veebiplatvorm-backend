@@ -1,0 +1,22 @@
+uuid: 90f33a26-4f37-413b-9f8c-b744cfeeab45
+langcode: et
+status: true
+dependencies:
+  theme:
+    - hitsa_theme
+_core:
+  default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
+id: hitsa_theme_local_tasks
+theme: hitsa_theme
+region: content
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Sakid
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }
