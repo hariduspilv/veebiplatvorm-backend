@@ -1,0 +1,22 @@
+uuid: 9ef783d7-8a72-420f-966d-2b7394619672
+langcode: et
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - hitsa_theme
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: hitsa_theme_help
+theme: hitsa_theme
+region: content
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

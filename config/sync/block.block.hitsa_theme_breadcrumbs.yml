@@ -1,0 +1,22 @@
+uuid: 59845bdf-3469-4b10-95a5-195861128b85
+langcode: et
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - hitsa_theme
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: hitsa_theme_breadcrumbs
+theme: hitsa_theme
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }
