@@ -16,6 +16,9 @@
     ],
     "require": {
         "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6",
+        "drupal/config_ignore": "^2.2",
+        "drupal/config_split": "^1.4",
         "drupal/core-recommended": "^8.8",
         "drupal/token": "^1.7",
         "drush/drush": "^10.2"
@@ -29,6 +32,11 @@
         "sort-packages": true
     },
     "extra": {
+        "patches" :{
+            "drupal/config_ignore" : {
+                "Add collection to config ignore":"https://www.drupal.org/files/issues/2018-09-27/2973431.8.patch"
+            }
+        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
