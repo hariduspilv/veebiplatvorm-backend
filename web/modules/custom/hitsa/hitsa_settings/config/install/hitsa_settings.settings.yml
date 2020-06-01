@@ -1,4 +1,6 @@
 general:
+  frontpage_background: 0
+  logo: 0
   favicon: 0
   address: ''
   phone: ''
