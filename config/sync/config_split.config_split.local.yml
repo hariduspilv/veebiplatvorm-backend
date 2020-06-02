@@ -6,7 +6,7 @@ id: local
 label: Local
 description: ''
 folder: ../config/local
-module:
+module: {  }
 theme: {  }
 blacklist: {  }
 graylist:
