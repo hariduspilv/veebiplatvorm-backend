@@ -26,3 +26,6 @@ hitsa_settings.settings:
         email:
           type: text
           label: 'Haridusasutuse üldkontakti e-posti aadress'
+        langcode:
+          type: string
+          label: 'Language code'
