@@ -32,3 +32,5 @@ function hitsa_theme_form_system_theme_settings_alter(&$form, FormStateInterface
     'bg-transparent' => t('Transparent'),
   ];
 }
+function hitsa_theme_preprocess_block(&$variables) {
+}

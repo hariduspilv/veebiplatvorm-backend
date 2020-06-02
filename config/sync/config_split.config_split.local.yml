@@ -6,12 +6,13 @@ id: local
 label: Local
 description: ''
 folder: ../config/local
-module: {  }
+module:
+  devel: 0
 theme: {  }
 blacklist: {  }
 graylist:
-  - 'language.entity.*'
   - language.negotiation
+  - 'language.entity.*'
 graylist_dependents: true
 graylist_skip_equal: true
 weight: 0

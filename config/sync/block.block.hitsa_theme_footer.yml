@@ -1,6 +1,6 @@
 uuid: 166c923a-a7cc-4ea5-9e44-4061fe35227e
 langcode: et
-status: true
+status: false
 dependencies:
   config:
     - system.menu.footer
@@ -12,7 +12,7 @@ _core:
   default_config_hash: 8zRjTNbfNAJ94lQpZDu6MkyD87GYJ2zpH9VQPVmRbcM
 id: hitsa_theme_footer
 theme: hitsa_theme
-region: footer_fifth
+region: top_header
 weight: 0
 provider: null
 plugin: 'system_menu_block:footer'
