@@ -24,6 +24,7 @@
         "drupal/linkit": "^5.0",
         "drupal/svg_image": "^1.13",
         "drupal/token": "^1.7",
+        "drupal/twig_tweak": "^2.6",
         "drush/drush": "^10.2"
     },
     "conflict": {
@@ -87,5 +88,7 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
+    },
+    "require-dev": {
     }
 }
