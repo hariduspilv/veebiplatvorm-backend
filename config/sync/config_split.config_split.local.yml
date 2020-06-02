@@ -7,7 +7,6 @@ label: Local
 description: ''
 folder: ../config/local
 module:
-  devel: 0
 theme: {  }
 blacklist: {  }
 graylist:
