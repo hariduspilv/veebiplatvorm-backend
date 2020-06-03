@@ -1,5 +1,5 @@
 hitsa_settings_translation.config:
-  title: 'HITSA settings'
+  title: 'Üldised seaded'
   base_route_name: hitsa_settings.hitsa_settings_form
   names:
     - hitsa_settings.settings

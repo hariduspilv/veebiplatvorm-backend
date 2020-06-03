@@ -3,11 +3,9 @@
 namespace Drupal\hitsa_settings\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Datetime\DateFormatter;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\file\Entity\File;
 
 /**
@@ -16,36 +14,14 @@ use Drupal\file\Entity\File;
 class HitsaSettingsForm extends ConfigFormBase {
 
   /**
-   * {@inheritdoc}
-   */
-  private $configuration;
-
-  /**
-   * @var \Drupal\Core\Datetime\DateFormatter
-   */
-  protected $date_formatter;
-  /**
-   * The entity type manager.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityTypeManager;
-
-  /**
    * HitsaSettingsForm constructor.
    *
    * @param ConfigFactoryInterface     $config_factory
-   * @param EntityTypeManagerInterface $entityTypeManager
-   * @param  DateFormatter             $date_formatter
    */
   public function __construct (
-    ConfigFactoryInterface $config_factory,
-    EntityTypeManagerInterface $entityTypeManager,
-    DateFormatter $date_formatter
+    ConfigFactoryInterface $config_factory
   ) {
     parent::__construct($config_factory);
-    $this->entityTypeManager = $entityTypeManager;
-    $this->date_formatter = $date_formatter;
   }
   /**
    * @param ContainerInterface $container
@@ -54,9 +30,7 @@ class HitsaSettingsForm extends ConfigFormBase {
    */
   public static function create (ContainerInterface $container) {
     return new static(
-      $container->get('config.factory'),
-      $container->get('entity_type.manager'),
-      $container->get('date.formatter')
+      $container->get('config.factory')
     );
   }
   /**
@@ -127,11 +101,11 @@ class HitsaSettingsForm extends ConfigFormBase {
     $form['general']['logo_upload'] = [
       '#type' => 'managed_file',
       '#title' => 'Haridusasutuse logo',
-      '#description' => 'Kuvatakse päises. Lubatud vormingud on .jpg, .jpeg, .png või .svg. Maksimaalne lubatud laius on 208px ja maksimaalne kõrgus on 112px.',
+      '#description' => 'Kuvatakse päises. Lubatud vormingud on .jpg, .jpeg, .png või .svg. Maksimaalne lubatud laius on 416px ja maksimaalne kõrgus on 224px.',
       '#default_value' =>  [$config->get('general.logo')],
       '#upload_location' => 'public://logo',
       '#upload_validators' => [
-        'file_validate_image_resolution' => ['208x112', '0'],
+        'file_validate_image_resolution' => ['416x224', '0'],
         'file_validate_extensions' => [
           'jpg jpeg png svg'
         ],
@@ -171,6 +145,37 @@ class HitsaSettingsForm extends ConfigFormBase {
       '#description' => 'Kuvatakse jaluses',
       '#default_value' =>  $config->get('general.email'),
     ];
+    ##################################################### Olulisemad kontaktid #################################################
+    $form['important_contacts'] = [
+      '#type' => 'details',
+      '#title' => 'Olulisemad kontaktid',
+      '#description' => 'Olulisemate kontaktide andmeplokk, kuhu saab lisada kuni 4 olulisemat kontakti, mida kuvatakse jaluses. Kontaktile määratakse nimi ja sisu, kuid kummagi sisestamine ei ole kohustuslik.',
+      '#group' => 'tabs',
+    ];
+    $detail_names = ['Esimene kontakt', 'Teine kontakt', 'Kolmas kontakt', 'Neljas kontakt'];
+
+    for ($i = 0; $i < 4; $i++) {
+      $j = $i + 1;
+      $form['important_contacts']['group_' . $j] = [
+        '#type' => 'details',
+        '#title' => $detail_names[$i],
+      ];
+      if (!empty($config->get('important_contacts.name_' .$j)) OR
+        !empty($config->get('important_contacts.body_' .$j))) {
+        $form['important_contacts']['group_' . $j]['#open'] = TRUE;
+      }
+      $form['important_contacts']['group_'. $j]['name_' . $j] = [
+        '#type' => 'textfield',
+        '#title' => 'Kontakti nimi',
+        '#default_value' => $config->get('important_contacts.name_' . $j),
+      ];
+      $form['important_contacts']['group_' . $j]['body_' . $j] = [
+        '#type' => 'textfield',
+        '#title' => 'Kontakti sisu',
+        '#default_value' => $config->get('important_contacts.body_' . $j),
+      ];
+    }
+
     return $form;
   }
 
@@ -218,11 +223,19 @@ class HitsaSettingsForm extends ConfigFormBase {
       ->set('general.phone', $form_state->getValue('phone'))
       ->set('general.email', $form_state->getValue('email'))
       ->save();
+    for ($i = 0; $i < 4; $i++) {
+      $j = $i + 1;
+      $this->config('hitsa_settings.settings')
+        ->set('important_contacts.name_'. $j, $form_state->getValue('name_'. $j))
+        ->set('important_contacts.body_'. $j, $form_state->getValue('body_'. $j))
+        ->save();
+    }
     $this->config('system.site')
       ->set('name', $form_state->getValue('site_name'))
       ->set('slogan', $form_state->getValue('slogan'))
       ->save();
   }
+
   /**
    * fileUploadHandle.
    *

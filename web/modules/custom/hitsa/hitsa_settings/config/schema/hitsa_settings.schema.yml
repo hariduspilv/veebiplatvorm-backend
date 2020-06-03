@@ -26,6 +26,34 @@ hitsa_settings.settings:
         email:
           type: text
           label: 'Haridusasutuse üldkontakti e-posti aadress'
-        langcode:
-          type: string
-          label: 'Language code'
+    important_contacts:
+      type: mapping
+      label: 'Olulisemad kontaktid'
+      mapping:
+        name_1:
+          type: text
+          label: 'Kontakti nimi'
+        body_1:
+          type: text
+          label: 'Kontakti sisu'
+        name_2:
+          type: text
+          label: 'Kontakti nimi'
+        body_2:
+          type: text
+          label: 'Kontakti sisu'
+        name_3:
+          type: text
+          label: 'Kontakti nimi'
+        body_3:
+          type: text
+          label: 'Kontakti sisu'
+        name_4:
+          type: text
+          label: 'Kontakti nimi'
+        body_4:
+          type: text
+          label: 'Kontakti sisu'
+  langcode:
+    type: string
+    label: 'Keeletähis'

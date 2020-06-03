@@ -1,8 +1,21 @@
 general:
-  address: 'Rakvere, Karja 24bs'
-  phone: '55645090'
-  email: egon.tinno@twn.ee
-  favicon: 1
+  address: 'Rakvere, Talinna tn 5'
+  phone: '55645123'
+  email: demo@kool.ee
+  favicon: 22
+  frontpage_background: 20
+  logo: 28
 langcode: et
 _core:
   default_config_hash: JUj77e6N3QUpwLhTzL1wa9FhUhr0aDQnMMkBAqsph68
+frontpage_background: 0
+favicon: 0
+important_contacts:
+  name_1: Direktor
+  body_1: '32355459'
+  name_2: 'Ainult nimi, ilma sisuta'
+  body_2: ''
+  name_3: 'Reg. kood'
+  body_3: '10105020'
+  name_4: ''
+  body_4: 'Ainult sisu, ilma nimeta'

@@ -5,4 +5,13 @@ general:
   address: ''
   phone: ''
   email: ''
+important_contacts:
+  name_1: ''
+  body_1: ''
+  name_2: ''
+  body_2: ''
+  name_3: ''
+  body_3: ''
+  name_4: ''
+  body_4: ''
 langcode: et
