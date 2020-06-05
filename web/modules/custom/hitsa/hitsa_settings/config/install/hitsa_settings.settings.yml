@@ -46,4 +46,6 @@ footer_quick_links:
 footer_free_text_area:
   name: ''
   body: ''
+footer_copyright:
+  name: ''
 langcode: et

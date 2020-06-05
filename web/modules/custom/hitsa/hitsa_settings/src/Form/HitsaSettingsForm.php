@@ -270,8 +270,8 @@ class HitsaSettingsForm extends ConfigFormBase {
         '#attributes' => ['class' => ['table-sort-weight']],
       ];
     }
-    ##################################################### Jaluse vabatekstiala #################################################
 
+    ##################################################### Jaluse vabatekstiala #################################################
     $form['footer_free_text_area'] = [
       '#type' => 'details',
       '#title' => 'Jaluse vabatekstiala',
@@ -289,7 +289,18 @@ class HitsaSettingsForm extends ConfigFormBase {
       '#title' => 'Vabatekstiala sisu',
       '#default_value' =>  $config->get('footer_free_text_area.body'),
     ];
-
+    ##################################################### Jaluse vabatekstiala #################################################
+    $form['footer_copyright'] = [
+      '#type' => 'details',
+      '#title' => 'Jaluse kasutusõiguste märkus',
+      '#description' => 'Jaluse kasutusõiguste märkuse sisestamise ja muutmise andmeplokk, kuhu on võimalik lisada lehe kasutusõiguste tekst.',
+      '#group' => 'tabs',
+    ];
+    $form['footer_copyright']['footer_copyright_name'] = [
+      '#type' => 'textfield',
+      '#title' => 'Kasutusõiguste märkus',
+      '#default_value' =>  $config->get('footer_copyright.name'),
+    ];
     return $form;
   }
 
@@ -356,6 +367,7 @@ class HitsaSettingsForm extends ConfigFormBase {
       ->set('general.email', $form_state->getValue('email'))
       ->set('footer_free_text_area.name', $form_state->getValue('free_text_name'))
       ->set('footer_free_text_area.body', $form_state->getValue('free_text_body'))
+      ->set('footer_copyright.name', $form_state->getValue('footer_copyright_name'))
       ->save();
     ################################################### System site settings save ######################################
 

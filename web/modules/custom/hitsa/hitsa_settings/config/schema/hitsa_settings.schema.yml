@@ -152,6 +152,13 @@ hitsa_settings.settings:
         body:
           type: text
           label: 'Sisu'
+    footer_copyright:
+      type: mapping
+      label: 'Kasutusõiguste märkus'
+      mapping:
+        name:
+          type: text
+          label: 'Pealkiri'
   langcode:
     type: string
     label: 'Keeletähis'
