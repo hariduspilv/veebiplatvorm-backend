@@ -58,6 +58,8 @@ class HitsaSettingsForm extends ConfigFormBase {
     $form['tabs'] = [
       '#type' => 'vertical_tabs',
     ];
+
+    ##################################################### Haridusasutuse üldinfo #################################################
     $form['general'] = [
       '#type' => 'details',
       '#title' => 'Haridusasutuse üldinfo',
@@ -268,6 +270,26 @@ class HitsaSettingsForm extends ConfigFormBase {
         '#attributes' => ['class' => ['table-sort-weight']],
       ];
     }
+    ##################################################### Jaluse vabatekstiala #################################################
+
+    $form['footer_free_text_area'] = [
+      '#type' => 'details',
+      '#title' => 'Jaluse vabatekstiala',
+      '#description' => 'Jaluse vabateksti sisestamise ja muutmise andmeplokk, kuhu on võimalik lisada pealkiri ja sisu.
+      Pealkiri on kohustuslik, kui vabateksti sisu on sisestatud. Sisu on kohustuslik, kui vabateksti pealkiri on sisestatud.',
+      '#group' => 'tabs',
+    ];
+    $form['footer_free_text_area']['free_text_name'] = [
+      '#type' => 'textfield',
+      '#title' => 'Vabatekstiala pealkiri',
+      '#default_value' =>  $config->get('footer_free_text_area.name'),
+    ];
+    $form['footer_free_text_area']['free_text_body'] = [
+      '#type' => 'textarea',
+      '#title' => 'Vabatekstiala sisu',
+      '#default_value' =>  $config->get('footer_free_text_area.body'),
+    ];
+
     return $form;
   }
 
@@ -276,10 +298,8 @@ class HitsaSettingsForm extends ConfigFormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     parent::validateForm($form, $form_state);
-    ################################################### Footer quick links settings save ######################################
 
     $footer_quick_links = $form_state->getValue('table');
-
     foreach ($footer_quick_links as $id => $item) {
       if (!empty($item['link_name']) AND empty($item['link_url'])) {
         $j = $id + 1;
@@ -289,6 +309,12 @@ class HitsaSettingsForm extends ConfigFormBase {
         $j = $id + 1;
         $form_state->setErrorByName('table]['.$id.'][link_name', $this->t('@name field is required.', ['@name' => '"veebilingi väljakuvatav nimi number ' . $j.'"']));
       }
+    }
+    if (!empty($form_state->getValue('free_text_name')) AND empty($form_state->getValue('free_text_body'))) {
+      $form_state->setErrorByName('free_text_body', $this->t('@name field is required.', ['@name' => '"vabatekstiala sisu"']));
+    }
+    if (!empty($form_state->getValue('free_text_body')) AND empty($form_state->getValue('free_text_name'))) {
+      $form_state->setErrorByName('free_text_name', $this->t('@name field is required.', ['@name' => '"vabatekstiala sisu"']));
     }
   }
 
@@ -328,6 +354,8 @@ class HitsaSettingsForm extends ConfigFormBase {
       ->set('general.address', $form_state->getValue('address'))
       ->set('general.phone', $form_state->getValue('phone'))
       ->set('general.email', $form_state->getValue('email'))
+      ->set('footer_free_text_area.name', $form_state->getValue('free_text_name'))
+      ->set('footer_free_text_area.body', $form_state->getValue('free_text_body'))
       ->save();
     ################################################### System site settings save ######################################
 

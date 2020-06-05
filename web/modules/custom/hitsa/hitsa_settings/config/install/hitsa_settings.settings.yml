@@ -43,4 +43,7 @@ footer_quick_links:
   link_name_8: ''
   link_url_8: ''
   link_weight_8: -3
+footer_free_text_area:
+  name: ''
+  body: ''
 langcode: et

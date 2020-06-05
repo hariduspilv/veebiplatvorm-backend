@@ -142,6 +142,16 @@ hitsa_settings.settings:
         link_weight_8:
           type: integer
           label: 'Kaal'
+    footer_free_text_area:
+      type: mapping
+      label: 'Jaluse vabatekstiala'
+      mapping:
+        name:
+          type: text
+          label: 'Pealkiri'
+        body:
+          type: text
+          label: 'Sisu'
   langcode:
     type: string
     label: 'Keeletähis'
