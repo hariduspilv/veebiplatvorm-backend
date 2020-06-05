@@ -28,7 +28,7 @@ hitsa_settings.settings:
           label: 'Haridusasutuse üldkontakti e-posti aadress'
     important_contacts:
       type: mapping
-      label: 'Olulisemad kontaktid'
+      label: 'Jaluse olulisemad kontaktid'
       mapping:
         name_1:
           type: text
@@ -36,24 +36,112 @@ hitsa_settings.settings:
         body_1:
           type: text
           label: 'Kontakti sisu'
+        weight_1:
+          type: integer
+          label: 'Kaal'
         name_2:
           type: text
           label: 'Kontakti nimi'
         body_2:
           type: text
           label: 'Kontakti sisu'
+        weight_2:
+          type: integer
+          label: 'Kaal'
         name_3:
           type: text
           label: 'Kontakti nimi'
         body_3:
           type: text
           label: 'Kontakti sisu'
+        weight_3:
+          type: integer
+          label: 'Kaal'
         name_4:
           type: text
           label: 'Kontakti nimi'
         body_4:
           type: text
           label: 'Kontakti sisu'
+        weight_4:
+          type: integer
+          label: 'Kaal'
+    footer_quick_links:
+      type: mapping
+      label: 'Jaluse kiirlingid'
+      mapping:
+        link_name_1:
+          type: text
+          label: 'Veebilingi väljakuvatav nimi'
+        link_url_1:
+          type: text
+          label: 'Veebilink'
+        link_weight_1:
+          type: integer
+          label: 'Kaal'
+        link_name_2:
+          type: text
+          label: 'Veebilingi väljakuvatav nimi'
+        link_url_2:
+          type: text
+          label: 'Veebilink'
+        link_weight_2:
+          type: integer
+          label: 'Kaal'
+        link_name_3:
+          type: text
+          label: 'Veebilingi väljakuvatav nimi'
+        link_url_3:
+          type: text
+          label: 'Veebilink'
+        link_weight_3:
+          type: integer
+          label: 'Kaal'
+        link_name_4:
+          type: text
+          label: 'Veebilingi väljakuvatav nimi'
+        link_url_4:
+          type: text
+          label: 'Veebilink'
+        link_weight_4:
+          type: integer
+          label: 'Kaal'
+        link_name_5:
+          type: text
+          label: 'Veebilingi väljakuvatav nimi'
+        link_url_5:
+          type: text
+          label: 'Veebilink'
+        link_weight_5:
+          type: integer
+          label: 'Kaal'
+        link_name_6:
+          type: text
+          label: 'Veebilingi väljakuvatav nimi'
+        link_url_6:
+          type: text
+          label: 'Veebilink'
+        link_weight_6:
+          type: integer
+          label: 'Kaal'
+        link_name_7:
+          type: text
+          label: 'Veebilingi väljakuvatav nimi'
+        link_url_7:
+          type: text
+          label: 'Veebilink'
+        link_weight_7:
+          type: integer
+          label: 'Kaal'
+        link_name_8:
+          type: text
+          label: 'Veebilingi väljakuvatav nimi'
+        link_url_8:
+          type: text
+          label: 'Veebilink'
+        link_weight_8:
+          type: integer
+          label: 'Kaal'
   langcode:
     type: string
     label: 'Keeletähis'

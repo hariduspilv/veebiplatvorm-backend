@@ -148,34 +148,126 @@ class HitsaSettingsForm extends ConfigFormBase {
     ##################################################### Olulisemad kontaktid #################################################
     $form['important_contacts'] = [
       '#type' => 'details',
-      '#title' => 'Olulisemad kontaktid',
-      '#description' => 'Olulisemate kontaktide andmeplokk, kuhu saab lisada kuni 4 olulisemat kontakti, mida kuvatakse jaluses. Kontaktile määratakse nimi ja sisu, kuid kummagi sisestamine ei ole kohustuslik.',
+      '#title' => 'Jaluse olulisemad kontaktid',
+      '#description' => 'Jaluse olulisemate kontaktide sisestamise ja muutmise andmeplokk,
+      kuhu saab lisada kuni 4 kontakti. Kontaktile määratakse nimi ja sisu, kuid kummagi
+      sisestamine ei ole kohustuslik. Linkide järjekorra muutmiseks mine rea alguses
+      olevale ikoonile ja lohista rida soovitud kohta. Muudatuste salvestamiseks tuleb
+      vajutada "Salvesta seadistus" nuppu.',
       '#group' => 'tabs',
     ];
-    $detail_names = ['Esimene kontakt', 'Teine kontakt', 'Kolmas kontakt', 'Neljas kontakt'];
 
+    $form['important_contacts']['contacts_table'] = [
+      '#type' => 'table',
+      '#header' => [
+        'Kontakti nimi',
+        'Kontakti sisu',
+        'Kaal'
+      ],
+      '#tabledrag' => [
+        [
+          'action' => 'order',
+          'relationship' => 'sibling',
+          'group' => 'table-sort-weight',
+        ],
+      ],
+    ];
     for ($i = 0; $i < 4; $i++) {
       $j = $i + 1;
-      $form['important_contacts']['group_' . $j] = [
-        '#type' => 'details',
-        '#title' => $detail_names[$i],
-      ];
-      if (!empty($config->get('important_contacts.name_' .$j)) OR
-        !empty($config->get('important_contacts.body_' .$j))) {
-        $form['important_contacts']['group_' . $j]['#open'] = TRUE;
-      }
-      $form['important_contacts']['group_'. $j]['name_' . $j] = [
+
+      $form['important_contacts']['contacts_table'][$i]['#attributes']['class'][] = 'draggable';
+      $form['important_contacts']['contacts_table'][$i]['#weight'] = $config->get('important_contacts.weight_' . $j);
+
+      $form['important_contacts']['contacts_table'][$i]['name'] = [
         '#type' => 'textfield',
-        '#title' => 'Kontakti nimi',
+        '#title' => 'Kontakti nimi '. $j,
+        '#title_display' => 'invisible',
+        '#size' => 35,
         '#default_value' => $config->get('important_contacts.name_' . $j),
       ];
-      $form['important_contacts']['group_' . $j]['body_' . $j] = [
+      $form['important_contacts']['contacts_table'][$i]['body'] = [
         '#type' => 'textfield',
-        '#title' => 'Kontakti sisu',
+        '#title' => 'Kontakti sisu '. $j,
+        '#title_display' => 'invisible',
+        '#size' => 35,
         '#default_value' => $config->get('important_contacts.body_' . $j),
       ];
+      // TableDrag: Weight column element.
+      $form['important_contacts']['contacts_table'][$i]['weight'] = [
+        '#type' => 'weight',
+        '#title' => $this->t('Weight for @title', ['@title' => 'Link ' . $j]),
+        '#title_display' => 'invisible',
+        '#default_value' => $config->get('important_contacts.weight_' . $j),
+        // Classify the weight element for #tabledrag.
+        '#attributes' => ['class' => ['table-sort-weight']],
+      ];
     }
+    ##################################################### Jaluse kiirlingid #################################################
+    $form['footer_quick_links'] = [
+      '#type' => 'details',
+      '#title' => 'Jaluse kiirlingid',
+      '#description' => 'Jaluse kiirlinkide sisestamise ja muutmise andmeplokk, kuhu saab lisada kuni 8 veebilehe sisemist või
+       veebilehelt välja suunavat linki, märgistatakse vastava ikooniga. Lingi lisamiseks tuleb sisestada nii selle väljakuvatav nimi kui ka veebilink.
+       Kui on soov lisada veebilehe sisemist link, siis alustage soovitud lehekülje pealkirja trükkimist
+       "Veebilink" väljale ning süsteem pakub sobivaid linke. Lingi valimiseks klikkige sellel. Välise lingi puhul kopeerige
+       kogu veebilehe aadress algusega https:// või http://. Linkide järjekorra muutmiseks mine rea alguses olevale ikoonile ja
+       lohista rida soovitud kohta. Muudatuste salvestamiseks tuleb vajutada "Salvesta seadistus" nuppu.',
+      '#group' => 'tabs',
+    ];
+    $form['footer_quick_links']['table'] = [
+      '#type' => 'table',
+      '#header' => [
+        'Veebilingi väljakuvatav nimi',
+        'Veebilink',
+        'Kaal'
+      ],
+      // TableDrag: Each array value is a list of callback arguments for
+      // drupal_add_tabledrag(). The #id of the table is automatically
+      // prepended; if there is none, an HTML ID is auto-generated.
+      '#tabledrag' => [
+        [
+          'action' => 'order',
+          'relationship' => 'sibling',
+          'group' => 'table-sort-weight',
+        ],
+      ],
+    ];
+    for ($i = 0; $i < 8; $i++) {
+      $j = $i + 1;
+      // TableDrag: Mark the table row as draggable.
+      $form['footer_quick_links']['table'][$i]['#attributes']['class'][] = 'draggable';
+      // TableDrag: Sort the table row according to its existing/configured
+      // weight.
+      $form['footer_quick_links']['table'][$i]['#weight'] = $config->get('footer_quick_links.link_weight_' . $j);
 
+      $form['footer_quick_links']['table'][$i]['link_name'] = [
+        '#type' => 'textfield',
+        '#title' => 'Veebilingi väljakuvatav nimi ' . $j,
+        '#title_display' => 'invisible',
+        '#size' => 35,
+        '#default_value' => $config->get('footer_quick_links.link_name_' . $j),
+      ];
+      $form['footer_quick_links']['table'][$i]['link_url'] = [
+        '#type' => 'linkit',
+        '#title' => 'Veebilink ' . $j,
+        '#title_display' => 'invisible',
+        '#size' => 35,
+        '#autocomplete_route_name' => 'linkit.autocomplete',
+        '#autocomplete_route_parameters' => [
+          'linkit_profile_id' => 'default',
+        ],
+        '#default_value' => $config->get('footer_quick_links.link_url_' . $j),
+      ];
+      // TableDrag: Weight column element.
+      $form['footer_quick_links']['table'][$i]['link_weight'] = [
+        '#type' => 'weight',
+        '#title' => $this->t('Weight for @title', ['@title' => 'link ' . $j]),
+        '#title_display' => 'invisible',
+        '#default_value' => $config->get('footer_quick_links.link_weight_' . $j),
+        // Classify the weight element for #tabledrag.
+        '#attributes' => ['class' => ['table-sort-weight']],
+      ];
+    }
     return $form;
   }
 
@@ -184,6 +276,20 @@ class HitsaSettingsForm extends ConfigFormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     parent::validateForm($form, $form_state);
+    ################################################### Footer quick links settings save ######################################
+
+    $footer_quick_links = $form_state->getValue('table');
+
+    foreach ($footer_quick_links as $id => $item) {
+      if (!empty($item['link_name']) AND empty($item['link_url'])) {
+        $j = $id + 1;
+        $form_state->setErrorByName('table]['.$id.'][link_url', $this->t('@name field is required.', ['@name' => '"veebilink number ' . $j.'"']));
+      }
+      if (!empty($item['link_url']) AND empty($item['link_name'])) {
+        $j = $id + 1;
+        $form_state->setErrorByName('table]['.$id.'][link_name', $this->t('@name field is required.', ['@name' => '"veebilingi väljakuvatav nimi number ' . $j.'"']));
+      }
+    }
   }
 
   /**
@@ -217,23 +323,48 @@ class HitsaSettingsForm extends ConfigFormBase {
     }
     $this->fileUploadHandle($favicon_upload, $form_state->getValue('favicon_default'), 'general.favicon');
 
-    ################################################### Other settings save ######################################
+    ################################################### Other general settings save ######################################
     $this->config('hitsa_settings.settings')
       ->set('general.address', $form_state->getValue('address'))
       ->set('general.phone', $form_state->getValue('phone'))
       ->set('general.email', $form_state->getValue('email'))
       ->save();
-    for ($i = 0; $i < 4; $i++) {
-      $j = $i + 1;
-      $this->config('hitsa_settings.settings')
-        ->set('important_contacts.name_'. $j, $form_state->getValue('name_'. $j))
-        ->set('important_contacts.body_'. $j, $form_state->getValue('body_'. $j))
-        ->save();
-    }
+    ################################################### System site settings save ######################################
+
     $this->config('system.site')
       ->set('name', $form_state->getValue('site_name'))
       ->set('slogan', $form_state->getValue('slogan'))
       ->save();
+
+    ################################################### Important contacts settings save ######################################
+    $footer_important_contacts = $form_state->getValue('contacts_table');
+
+    $keys = array_column($footer_important_contacts, 'weight');
+    array_multisort($keys, SORT_ASC, $footer_important_contacts);
+
+    foreach ($footer_important_contacts as $id => $item) {
+      $j = $id + 1;
+      $this->config('hitsa_settings.settings')
+        ->set('important_contacts.name_'. $j, $item['name'])
+        ->set('important_contacts.body_'. $j, $item['body'])
+        ->set('important_contacts.weight_'. $j, $item['weight'])
+        ->save();
+    }
+    ################################################### Footer quick links settings save ######################################
+
+    $footer_quick_links = $form_state->getValue('table');
+
+    $keys = array_column($footer_quick_links, 'link_weight');
+    array_multisort($keys, SORT_ASC, $footer_quick_links);
+
+    foreach ($footer_quick_links as $id => $item) {
+      $j = $id + 1;
+      $this->config('hitsa_settings.settings')
+        ->set('footer_quick_links.link_name_'. $j, $item['link_name'])
+        ->set('footer_quick_links.link_url_'. $j, $item['link_url'])
+        ->set('footer_quick_links.link_weight_'. $j, $item['link_weight'])
+        ->save();
+    }
   }
 
   /**

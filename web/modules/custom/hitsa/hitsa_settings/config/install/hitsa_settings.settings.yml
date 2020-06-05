@@ -8,10 +8,39 @@ general:
 important_contacts:
   name_1: ''
   body_1: ''
+  weight_1: -10
   name_2: ''
   body_2: ''
+  weight_2: -9
   name_3: ''
   body_3: ''
+  weight_3: -8
   name_4: ''
   body_4: ''
+  weight_4: -7
+footer_quick_links:
+  link_name_1: ''
+  link_url_1: ''
+  link_weight_1: -10
+  link_name_2: ''
+  link_url_2: ''
+  link_weight_2: -9
+  link_name_3: ''
+  link_url_3: ''
+  link_weight_3: -8
+  link_name_4: ''
+  link_url_4: ''
+  link_weight_4: -7
+  link_name_5: ''
+  link_url_5: ''
+  link_weight_5: -6
+  link_name_6: ''
+  link_url_6: ''
+  link_weight_6: -5
+  link_name_7: ''
+  link_url_7: ''
+  link_weight_7: -4
+  link_name_8: ''
+  link_url_8: ''
+  link_weight_8: -3
 langcode: et
