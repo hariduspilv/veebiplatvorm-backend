@@ -66,6 +66,118 @@ hitsa_settings.settings:
         weight_4:
           type: integer
           label: 'Kaal'
+    footer_socialmedia_links:
+      type: mapping
+      label: 'Jaluse sotsiaalmeedia lingid'
+      mapping:
+        link_icon_1:
+          type: text
+          label: 'Sotsiaalmeedia lingi ikoon'
+        link_name_1:
+          type: text
+          label: 'Sotsiaalmeedia lingi nimetus'
+        link_url_1:
+          type: text
+          label: 'Sotsiaalmeedia konto veebilink'
+        link_weight_1:
+          type: integer
+          label: 'Kaal'
+        link_icon_2:
+          type: text
+          label: 'Sotsiaalmeedia lingi ikoon'
+        link_name_2:
+          type: text
+          label: 'Sotsiaalmeedia lingi nimetus'
+        link_url_2:
+          type: text
+          label: 'Sotsiaalmeedia konto veebilink'
+        link_weight_2:
+          type: integer
+          label: 'Kaal'
+        link_icon_3:
+          type: text
+          label: 'Sotsiaalmeedia lingi ikoon'
+        link_name_3:
+          type: text
+          label: 'Sotsiaalmeedia lingi nimetus'
+        link_url_3:
+          type: text
+          label: 'Sotsiaalmeedia konto veebilink'
+        link_weight_3:
+          type: integer
+          label: 'Kaal'
+        link_icon_4:
+          type: text
+          label: 'Sotsiaalmeedia lingi ikoon'
+        link_name_4:
+          type: text
+          label: 'Sotsiaalmeedia lingi nimetus'
+        link_url_4:
+          type: text
+          label: 'Sotsiaalmeedia konto veebilink'
+        link_weight_4:
+          type: integer
+          label: 'Kaal'
+        link_icon_5:
+          type: text
+          label: 'Sotsiaalmeedia lingi ikoon'
+        link_name_5:
+          type: text
+          label: 'Sotsiaalmeedia lingi nimetus'
+        link_url_5:
+          type: text
+          label: 'Sotsiaalmeedia konto veebilink'
+        link_weight_5:
+          type: integer
+          label: 'Kaal'
+        link_icon_6:
+          type: text
+          label: 'Sotsiaalmeedia lingi ikoon'
+        link_name_6:
+          type: text
+          label: 'Sotsiaalmeedia lingi nimetus'
+        link_url_6:
+          type: text
+          label: 'Sotsiaalmeedia konto veebilink'
+        link_weight_6:
+          type: integer
+          label: 'Kaal'
+        link_icon_7:
+          type: text
+          label: 'Sotsiaalmeedia lingi ikoon'
+        link_name_7:
+          type: text
+          label: 'Sotsiaalmeedia lingi nimetus'
+        link_url_7:
+          type: text
+          label: 'Sotsiaalmeedia konto veebilink'
+        link_weight_7:
+          type: integer
+          label: 'Kaal'
+        link_icon_8:
+          type: text
+          label: 'Sotsiaalmeedia lingi ikoon'
+        link_name_8:
+          type: text
+          label: 'Sotsiaalmeedia lingi nimetus'
+        link_url_8:
+          type: text
+          label: 'Sotsiaalmeedia konto veebilink'
+        link_weight_8:
+          type: integer
+          label: 'Kaal'
+        link_icon_9:
+          type: text
+          label: 'Sotsiaalmeedia lingi ikoon'
+        link_name_9:
+          type: text
+          label: 'Sotsiaalmeedia lingi nimetus'
+        link_url_9:
+          type: text
+          label: 'Sotsiaalmeedia konto veebilink'
+        link_weight_9:
+          type: integer
+          label: 'Kaal'
     footer_quick_links:
       type: mapping
       label: 'Jaluse kiirlingid'

@@ -153,8 +153,8 @@ class HitsaSettingsForm extends ConfigFormBase {
       '#title' => 'Jaluse olulisemad kontaktid',
       '#description' => 'Jaluse olulisemate kontaktide sisestamise ja muutmise andmeplokk,
       kuhu saab lisada kuni 4 kontakti. Kontaktile määratakse nimi ja sisu, kuid kummagi
-      sisestamine ei ole kohustuslik. Linkide järjekorra muutmiseks mine rea alguses
-      olevale ikoonile ja lohista rida soovitud kohta. Muudatuste salvestamiseks tuleb
+      sisestamine ei ole kohustuslik. Linkide järjekorra muutmiseks minge rea alguses
+      olevale ikoonile ja lohistage rida soovitud kohta. Muudatuste salvestamiseks tuleb
       vajutada "Salvesta seadistus" nuppu.',
       '#group' => 'tabs',
     ];
@@ -204,6 +204,76 @@ class HitsaSettingsForm extends ConfigFormBase {
         '#attributes' => ['class' => ['table-sort-weight']],
       ];
     }
+    ##################################################### Sotsiaalmeedia lingid #################################################
+    $form['footer_socialmedia_links'] = [
+      '#type' => 'details',
+      '#title' => 'Jaluse sotsiaalmeedia lingid',
+      '#description' => 'Jaluse sotsiaalmeedia linkide sisestamise ja muutmise andmeplokk, kuhu saab lisada kuni 9
+       sotsiaalmeedia konto veebilink. Lingi lisamiseks tuleb sisestada selle ikoon, väljakuvatav nimi ja veebilink.
+       Välise lingi puhul kopeerige kogu veebilehe aadress algusega https:// või http://. Linkide järjekorra muutmiseks minge rea alguses olevale ikoonile ja
+       lohistage rida soovitud kohta. Muudatuste salvestamiseks tuleb vajutada "Salvesta seadistus" nuppu.',
+      '#group' => 'tabs',
+    ];
+    $form['footer_socialmedia_links']['socialmedia_table'] = [
+      '#type' => 'table',
+      '#header' => [
+        'Sotsiaalmeedia lingi ikoon',
+        'Sotsiaalmeedia lingi nimetus',
+        'Sotsiaalmeedia konto veebilink',
+        'Kaal'
+      ],
+      '#tabledrag' => [
+        [
+          'action' => 'order',
+          'relationship' => 'sibling',
+          'group' => 'table-sort-weight',
+        ],
+      ],
+    ];
+    for ($i = 0; $i < 9; $i++) {
+      $j = $i + 1;
+      $form['footer_socialmedia_links']['socialmedia_table'][$i]['#attributes']['class'][] = 'draggable';
+      $form['footer_socialmedia_links']['socialmedia_table'][$i]['#weight'] = $config->get('footer_socialmedia_links.link_weight_' . $j);
+
+      $form['footer_socialmedia_links']['socialmedia_table'][$i]['link_icon'] = [
+        '#type' => 'select',
+        '#title' => 'Sotsiaalmeedia lingi ikoon ' . $j,
+        '#title_display' => 'invisible',
+        '#options' => [
+          'mdi-blogger' => 'Blogger',
+          'mdi-facebook' => 'Facebook',
+          'mdi-instagram' => 'Instagram',
+          'mdi-linkedin' => 'LinkedIn',
+          'mdi-twitter' => 'Twitter',
+          'mdi-vimeo' => 'Vimeo',
+          'mdi-vk' => 'VKontakte',
+          'mdi-youtube' => 'Youtube',
+        ],
+        '#empty_option' => $this->t('- Select -'),
+        '#default_value' => $config->get('footer_socialmedia_links.link_icon_' . $j),
+      ];
+      $form['footer_socialmedia_links']['socialmedia_table'][$i]['link_name'] = [
+        '#type' => 'textfield',
+        '#title' => 'Sotsiaalmeedia lingi nimetus ' . $j,
+        '#title_display' => 'invisible',
+        '#size' => 35,
+        '#default_value' => $config->get('footer_socialmedia_links.link_name_' . $j),
+      ];
+      $form['footer_socialmedia_links']['socialmedia_table'][$i]['link_url'] = [
+        '#type' => 'url',
+        '#title' => 'Sotsiaalmeedia konto veebilink ' . $j,
+        '#title_display' => 'invisible',
+        '#size' => 35,
+        '#default_value' => $config->get('footer_socialmedia_links.link_url_' . $j),
+      ];
+      $form['footer_socialmedia_links']['socialmedia_table'][$i]['link_weight'] = [
+        '#type' => 'weight',
+        '#title' => $this->t('Weight for @title', ['@title' => 'link ' . $j]),
+        '#title_display' => 'invisible',
+        '#default_value' => $config->get('footer_socialmedia_links.link_weight_' . $j),
+        '#attributes' => ['class' => ['table-sort-weight']],
+      ];
+    }
     ##################################################### Jaluse kiirlingid #################################################
     $form['footer_quick_links'] = [
       '#type' => 'details',
@@ -212,11 +282,11 @@ class HitsaSettingsForm extends ConfigFormBase {
        veebilehelt välja suunavat linki, märgistatakse vastava ikooniga. Lingi lisamiseks tuleb sisestada nii selle väljakuvatav nimi kui ka veebilink.
        Kui on soov lisada veebilehe sisemist link, siis alustage soovitud lehekülje pealkirja trükkimist
        "Veebilink" väljale ning süsteem pakub sobivaid linke. Lingi valimiseks klikkige sellel. Välise lingi puhul kopeerige
-       kogu veebilehe aadress algusega https:// või http://. Linkide järjekorra muutmiseks mine rea alguses olevale ikoonile ja
-       lohista rida soovitud kohta. Muudatuste salvestamiseks tuleb vajutada "Salvesta seadistus" nuppu.',
+       kogu veebilehe aadress algusega https:// või http://. Linkide järjekorra muutmiseks minge rea alguses olevale ikoonile ja
+       lohistage rida soovitud kohta. Muudatuste salvestamiseks tuleb vajutada "Salvesta seadistus" nuppu.',
       '#group' => 'tabs',
     ];
-    $form['footer_quick_links']['table'] = [
+    $form['footer_quick_links']['quick_links_table'] = [
       '#type' => 'table',
       '#header' => [
         'Veebilingi väljakuvatav nimi',
@@ -237,19 +307,19 @@ class HitsaSettingsForm extends ConfigFormBase {
     for ($i = 0; $i < 8; $i++) {
       $j = $i + 1;
       // TableDrag: Mark the table row as draggable.
-      $form['footer_quick_links']['table'][$i]['#attributes']['class'][] = 'draggable';
+      $form['footer_quick_links']['quick_links_table'][$i]['#attributes']['class'][] = 'draggable';
       // TableDrag: Sort the table row according to its existing/configured
       // weight.
-      $form['footer_quick_links']['table'][$i]['#weight'] = $config->get('footer_quick_links.link_weight_' . $j);
+      $form['footer_quick_links']['quick_links_table'][$i]['#weight'] = $config->get('footer_quick_links.link_weight_' . $j);
 
-      $form['footer_quick_links']['table'][$i]['link_name'] = [
+      $form['footer_quick_links']['quick_links_table'][$i]['link_name'] = [
         '#type' => 'textfield',
         '#title' => 'Veebilingi väljakuvatav nimi ' . $j,
         '#title_display' => 'invisible',
         '#size' => 35,
         '#default_value' => $config->get('footer_quick_links.link_name_' . $j),
       ];
-      $form['footer_quick_links']['table'][$i]['link_url'] = [
+      $form['footer_quick_links']['quick_links_table'][$i]['link_url'] = [
         '#type' => 'linkit',
         '#title' => 'Veebilink ' . $j,
         '#title_display' => 'invisible',
@@ -261,7 +331,7 @@ class HitsaSettingsForm extends ConfigFormBase {
         '#default_value' => $config->get('footer_quick_links.link_url_' . $j),
       ];
       // TableDrag: Weight column element.
-      $form['footer_quick_links']['table'][$i]['link_weight'] = [
+      $form['footer_quick_links']['quick_links_table'][$i]['link_weight'] = [
         '#type' => 'weight',
         '#title' => $this->t('Weight for @title', ['@title' => 'link ' . $j]),
         '#title_display' => 'invisible',
@@ -310,17 +380,47 @@ class HitsaSettingsForm extends ConfigFormBase {
   public function validateForm(array &$form, FormStateInterface $form_state) {
     parent::validateForm($form, $form_state);
 
-    $footer_quick_links = $form_state->getValue('table');
-    foreach ($footer_quick_links as $id => $item) {
-      if (!empty($item['link_name']) AND empty($item['link_url'])) {
-        $j = $id + 1;
-        $form_state->setErrorByName('table]['.$id.'][link_url', $this->t('@name field is required.', ['@name' => '"veebilink number ' . $j.'"']));
+    $socialmedia_links = $form_state->getValue('socialmedia_table');
+    foreach ($socialmedia_links as $id => $item) {
+      $j = $id + 1;
+      if (!empty($item['link_icon'])) {
+        if (empty($item['link_name'])) {
+          $form_state->setErrorByName('socialmedia_table][' . $id . '][link_name', $this->t('@name field is required.', ['@name' => '"sotsiaalmeedia lingi nimetus" real ' . $j]));
+        }
+        if (empty($item['link_url'])) {
+          $form_state->setErrorByName('socialmedia_table][' . $id . '][link_url', $this->t('@name field is required.', ['@name' => '"sotsiaalmeedia konto veebilink" real ' . $j]));
+        }
       }
-      if (!empty($item['link_url']) AND empty($item['link_name'])) {
-        $j = $id + 1;
-        $form_state->setErrorByName('table]['.$id.'][link_name', $this->t('@name field is required.', ['@name' => '"veebilingi väljakuvatav nimi number ' . $j.'"']));
+
+      if (!empty($item['link_name'])) {
+        if (empty($item['link_icon'])) {
+          $form_state->setErrorByName('socialmedia_table][' . $id . '][link_icon', $this->t('@name field is required.', ['@name' => '"sotsiaalmeedia lingi ikoon" real ' . $j]));
+        }
+        if (empty($item['link_url'])) {
+          $form_state->setErrorByName('socialmedia_table][' . $id . '][link_url', $this->t('@name field is required.', ['@name' => '"sotsiaalmeedia konto veebilink" real ' . $j]));
+        }
+      }
+      if (!empty($item['link_url'])) {
+        if (empty($item['link_icon'])) {
+          $form_state->setErrorByName('socialmedia_table][' . $id . '][link_icon', $this->t('@name field is required.', ['@name' => '"sotsiaalmeedia lingi ikoon" real ' . $j]));
+        }
+        if (empty($item['link_name'])) {
+          $form_state->setErrorByName('socialmedia_table][' . $id . '][link_name', $this->t('@name field is required.', ['@name' => '"sotsiaalmeedia lingi nimetus" real ' . $j]));
+        }
       }
     }
+
+    $footer_quick_links = $form_state->getValue('quick_links_table');
+    foreach ($footer_quick_links as $id => $item) {
+      $j = $id + 1;
+      if (!empty($item['link_name']) AND empty($item['link_url'])) {
+        $form_state->setErrorByName('quick_links_table]['.$id.'][link_url', $this->t('@name field is required.', ['@name' => '"veebilink real ' . $j.'"']));
+      }
+      if (!empty($item['link_url']) AND empty($item['link_name'])) {
+        $form_state->setErrorByName('quick_links_table]['.$id.'][link_name', $this->t('@name field is required.', ['@name' => '"veebilingi väljakuvatav nimi real ' . $j.'"']));
+      }
+    }
+
     if (!empty($form_state->getValue('free_text_name')) AND empty($form_state->getValue('free_text_body'))) {
       $form_state->setErrorByName('free_text_body', $this->t('@name field is required.', ['@name' => '"vabatekstiala sisu"']));
     }
@@ -390,9 +490,25 @@ class HitsaSettingsForm extends ConfigFormBase {
         ->set('important_contacts.weight_'. $j, $item['weight'])
         ->save();
     }
+    ################################################### Footer socialmedia settings save ######################################
+
+    $socialmedia_links = $form_state->getValue('socialmedia_table');
+
+    $keys = array_column($socialmedia_links, 'link_weight');
+    array_multisort($keys, SORT_ASC, $socialmedia_links);
+
+    foreach ($socialmedia_links as $id => $item) {
+      $j = $id + 1;
+      $this->config('hitsa_settings.settings')
+        ->set('footer_socialmedia_links.link_icon_'. $j, $item['link_icon'])
+        ->set('footer_socialmedia_links.link_name_'. $j, $item['link_name'])
+        ->set('footer_socialmedia_links.link_url_'. $j, $item['link_url'])
+        ->set('footer_socialmedia_links.link_weight_'. $j, $item['link_weight'])
+        ->save();
+    }
     ################################################### Footer quick links settings save ######################################
 
-    $footer_quick_links = $form_state->getValue('table');
+    $footer_quick_links = $form_state->getValue('quick_links_table');
 
     $keys = array_column($footer_quick_links, 'link_weight');
     array_multisort($keys, SORT_ASC, $footer_quick_links);
@@ -405,6 +521,7 @@ class HitsaSettingsForm extends ConfigFormBase {
         ->set('footer_quick_links.link_weight_'. $j, $item['link_weight'])
         ->save();
     }
+
   }
 
   /**
