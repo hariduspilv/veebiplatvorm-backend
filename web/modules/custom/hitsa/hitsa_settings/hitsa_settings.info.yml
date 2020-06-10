@@ -5,8 +5,3 @@ core: 8.x
 core_version_requirement: ^8 || ^9
 package: 'HITSA'
 configure: hitsa_settings.hitsa_settings_form
-dependencies:
-  - linkit:linkit
-
-version: '8.x-dev'
-project: 'hitsa_settings'

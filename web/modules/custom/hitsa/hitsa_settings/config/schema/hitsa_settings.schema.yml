@@ -185,72 +185,96 @@ hitsa_settings.settings:
         link_name_1:
           type: text
           label: 'Veebilingi väljakuvatav nimi'
+        link_entity_1:
+          type: integer
+          label: 'Sisemine link'
         link_url_1:
           type: text
-          label: 'Veebilink'
+          label: 'Väline veebilink'
         link_weight_1:
           type: integer
           label: 'Kaal'
         link_name_2:
           type: text
           label: 'Veebilingi väljakuvatav nimi'
+        link_entity_2:
+          type: integer
+          label: 'Sisemine link'
         link_url_2:
           type: text
-          label: 'Veebilink'
+          label: 'Väline veebilink'
         link_weight_2:
           type: integer
           label: 'Kaal'
         link_name_3:
           type: text
           label: 'Veebilingi väljakuvatav nimi'
+        link_entity_3:
+          type: integer
+          label: 'Sisemine link'
         link_url_3:
           type: text
-          label: 'Veebilink'
+          label: 'Väline veebilink'
         link_weight_3:
           type: integer
           label: 'Kaal'
         link_name_4:
           type: text
           label: 'Veebilingi väljakuvatav nimi'
+        link_entity_4:
+          type: integer
+          label: 'Sisemine link'
         link_url_4:
           type: text
-          label: 'Veebilink'
+          label: 'Väline veebilink'
         link_weight_4:
           type: integer
           label: 'Kaal'
         link_name_5:
           type: text
           label: 'Veebilingi väljakuvatav nimi'
+        link_entity_5:
+          type: integer
+          label: 'Sisemine link'
         link_url_5:
           type: text
-          label: 'Veebilink'
+          label: 'Väline veebilink'
         link_weight_5:
           type: integer
           label: 'Kaal'
         link_name_6:
           type: text
           label: 'Veebilingi väljakuvatav nimi'
+        link_entity_6:
+          type: integer
+          label: 'Sisemine link'
         link_url_6:
           type: text
-          label: 'Veebilink'
+          label: 'Väline veebilink'
         link_weight_6:
           type: integer
           label: 'Kaal'
         link_name_7:
           type: text
           label: 'Veebilingi väljakuvatav nimi'
+        link_entity_7:
+          type: integer
+          label: 'Sisemine link'
         link_url_7:
           type: text
-          label: 'Veebilink'
+          label: 'Väline veebilink'
         link_weight_7:
           type: integer
           label: 'Kaal'
         link_name_8:
           type: text
           label: 'Veebilingi väljakuvatav nimi'
+        link_entity_8:
+          type: integer
+          label: 'Sisemine link'
         link_url_8:
           type: text
-          label: 'Veebilink'
+          label: 'Väline veebilink'
         link_weight_8:
           type: integer
           label: 'Kaal'

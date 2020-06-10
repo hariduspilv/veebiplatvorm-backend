@@ -66,6 +66,7 @@ class HitsaSettingsForm extends ConfigFormBase {
       '#description' => 'Üldkontaktide sisestamise ja muutmise andmeplokk.',
       '#group' => 'tabs',
     ];
+
     $form['general']['site_name'] = [
       '#type' => 'textfield',
       '#title' => 'Haridusasutuse nimi',
@@ -279,10 +280,10 @@ class HitsaSettingsForm extends ConfigFormBase {
       '#type' => 'details',
       '#title' => 'Jaluse kiirlingid',
       '#description' => 'Jaluse kiirlinkide sisestamise ja muutmise andmeplokk, kuhu saab lisada kuni 8 veebilehe sisemist või
-       veebilehelt välja suunavat linki, märgistatakse vastava ikooniga. Lingi lisamiseks tuleb sisestada nii selle väljakuvatav nimi kui ka veebilink.
+       veebilehelt välja suunavat linki, mis märgistatakse vastava ikooniga. Lingi lisamiseks tuleb sisestada nii selle väljakuvatav nimi kui ka link.
        Kui on soov lisada veebilehe sisemist link, siis alustage soovitud lehekülje pealkirja trükkimist
-       "Veebilink" väljale ning süsteem pakub sobivaid linke. Lingi valimiseks klikkige sellel. Välise lingi puhul kopeerige
-       kogu veebilehe aadress algusega https:// või http://. Linkide järjekorra muutmiseks minge rea alguses olevale ikoonile ja
+       "Sisemine link" väljale ning süsteem pakub sobivaid linke. Lingi valimiseks klikkige sellel. Välise lingi puhul kopeerige
+       kogu veebilehe aadress algusega https:// või http:// ja lisage see "Väline veebilink" välja. Linkide järjekorra muutmiseks minge rea alguses olevale ikoonile ja
        lohistage rida soovitud kohta. Muudatuste salvestamiseks tuleb vajutada "Salvesta seadistus" nuppu.',
       '#group' => 'tabs',
     ];
@@ -290,7 +291,8 @@ class HitsaSettingsForm extends ConfigFormBase {
       '#type' => 'table',
       '#header' => [
         'Veebilingi väljakuvatav nimi',
-        'Veebilink',
+        'Sisemine link',
+        'Väline veebilink',
         'Kaal'
       ],
       // TableDrag: Each array value is a list of callback arguments for
@@ -316,18 +318,33 @@ class HitsaSettingsForm extends ConfigFormBase {
         '#type' => 'textfield',
         '#title' => 'Veebilingi väljakuvatav nimi ' . $j,
         '#title_display' => 'invisible',
-        '#size' => 35,
+        '#size' => 30,
         '#default_value' => $config->get('footer_quick_links.link_name_' . $j),
       ];
-      $form['footer_quick_links']['quick_links_table'][$i]['link_url'] = [
-        '#type' => 'linkit',
-        '#title' => 'Veebilink ' . $j,
+      $form['footer_quick_links']['quick_links_table'][$i]['link_entity'] = [
+        '#type' => 'entity_autocomplete',
+        '#size' => 20,
+        '#title' => 'Sisemine link ' . $j,
         '#title_display' => 'invisible',
-        '#size' => 35,
-        '#autocomplete_route_name' => 'linkit.autocomplete',
-        '#autocomplete_route_parameters' => [
-          'linkit_profile_id' => 'default',
-        ],
+        '#target_type' => 'node',
+        '#selection_handler' => 'default', // Optional. The default selection handler is pre-populated to 'default'.
+        #'#selection_settings' => [
+        #  'target_bundles' => ['article', 'page'],
+        #],
+      ];
+      if (!empty($config->get('footer_quick_links.link_entity_' . $j))) {
+        $node = \Drupal::entityTypeManager()->getStorage('node')->load($config->get('footer_quick_links.link_entity_' . $j));
+        $form['footer_quick_links']['quick_links_table'][$i]['link_entity']['#default_value'] = $node;
+      }
+      $form['footer_quick_links']['quick_links_table'][$i]['link_url'] = [
+        '#type' => 'url',
+        '#title' => 'Väline veebilink ' . $j,
+        '#title_display' => 'invisible',
+        '#size' => 30,
+        #'#autocomplete_route_name' => 'linkit.autocomplete',
+        #'#autocomplete_route_parameters' => [
+        #  'linkit_profile_id' => 'default',
+        #],
         '#default_value' => $config->get('footer_quick_links.link_url_' . $j),
       ];
       // TableDrag: Weight column element.
@@ -413,11 +430,16 @@ class HitsaSettingsForm extends ConfigFormBase {
     $footer_quick_links = $form_state->getValue('quick_links_table');
     foreach ($footer_quick_links as $id => $item) {
       $j = $id + 1;
-      if (!empty($item['link_name']) AND empty($item['link_url'])) {
-        $form_state->setErrorByName('quick_links_table]['.$id.'][link_url', $this->t('@name field is required.', ['@name' => '"veebilink real ' . $j.'"']));
+      if (!empty($item['link_name']) AND empty($item['link_entity']) AND empty($item['link_url'])) {
+        $message = 'Palun täida kas väli "sisemine link" või "väline veebilink" real '.$j.'.';
+        $form_state->setErrorByName('quick_links_table][' . $id . '][link_entity', $message);
+        $form_state->setErrorByName('quick_links_table][' . $id . '][link_url', $message);
+      }
+      if (!empty($item['link_entity']) AND empty($item['link_name'])) {
+        $form_state->setErrorByName('quick_links_table]['.$id.'][link_name', $this->t('@name field is required.', ['@name' => '"veebilingi väljakuvatav nimi" real ' . $j]));
       }
       if (!empty($item['link_url']) AND empty($item['link_name'])) {
-        $form_state->setErrorByName('quick_links_table]['.$id.'][link_name', $this->t('@name field is required.', ['@name' => '"veebilingi väljakuvatav nimi real ' . $j.'"']));
+        $form_state->setErrorByName('quick_links_table]['.$id.'][link_name', $this->t('@name field is required.', ['@name' => '"veebilingi väljakuvatav nimi" real ' . $j]));
       }
     }
 
@@ -515,8 +537,10 @@ class HitsaSettingsForm extends ConfigFormBase {
 
     foreach ($footer_quick_links as $id => $item) {
       $j = $id + 1;
+
       $this->config('hitsa_settings.settings')
         ->set('footer_quick_links.link_name_'. $j, $item['link_name'])
+        ->set('footer_quick_links.link_entity_'. $j, $item['link_entity'])
         ->set('footer_quick_links.link_url_'. $j, $item['link_url'])
         ->set('footer_quick_links.link_weight_'. $j, $item['link_weight'])
         ->save();
