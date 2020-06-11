@@ -252,7 +252,7 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: Name
+            label: Nimetus
             description: ''
             use_operator: false
             operator: name_op
@@ -956,7 +956,7 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: Name
+            label: Nimetus
             description: ''
             use_operator: false
             operator: name_op
@@ -1150,7 +1150,7 @@ display:
             image_link: ''
         name:
           id: name
-          label: Name
+          label: Nimetus
           table: media_field_data
           field: name
           relationship: none
@@ -1244,7 +1244,7 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: Name
+            label: Nimetus
             description: ''
             use_operator: false
             operator: name_op
