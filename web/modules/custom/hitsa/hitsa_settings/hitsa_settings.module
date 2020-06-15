@@ -22,3 +22,25 @@ function hitsa_settings_help($route_name, RouteMatchInterface $route_match) {
     default:
   }
 }
+/**
+ * Implements hook_theme().
+ */
+function hitsa_settings_theme($existing, $type, $theme, $path) {
+  $items = [];
+  global $base_path;
+  $theme_path = $theme = \Drupal::theme()->getActiveTheme()->getPath();
+  $path = $base_path.'/'.$theme_path.'/templates/blocks';
+  $items['hitsa_social_block'] = [
+    'variables' => [
+      'data' => []
+    ],
+    'path' => $path,
+  ];
+  $items['hitsa_important_contacts_block'] = [
+    'variables' => [
+      'data' => []
+    ],
+    $path => $path,
+  ];
+  return $items;
+}

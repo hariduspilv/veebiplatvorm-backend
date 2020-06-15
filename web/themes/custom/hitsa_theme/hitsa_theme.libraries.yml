@@ -6,20 +6,12 @@ global-styling:
     component:
       css/style.css: {}
       css/colors.css: {}
-bootstrap:
-  js:
-    /libraries/popper.js/dist/umd/popper.min.js: {}
-    /libraries/bootstrap/dist/js/bootstrap.min.js: {}
+hitsa_custom:
+  js: 
+    static/assets/js/main.js: {}
   css:
-    component:
-      /libraries/bootstrap/dist/css/bootstrap.min.css: {}
-bootstrap_cdn:
-  js:
-    //cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js: {}
-    //stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js: {}
-  css:
-    component:
-      //stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css: {}
+    theme:
+      static/assets/styles/default.css: {}
 color.preview:
   version: VERSION
   css:
