@@ -27,21 +27,25 @@
  * @ingroup themeable
  */
 #}
-{{kint()}}
-aaa
-{% if links %}
-  {% for social_media in links %}
-  
-  {% endfor %}
-{% endif %}
+<div class="block">
+  <div class="block-title">
+    <h3>Olulisemad kontaktid</h3>
+  </div><!--/block-title-->
+{% if data %}
+  <ul class="contacts">
+    {% for important_contact in data %}
+      <li>
 
-<div{{ attributes }}>
-  {{ title_prefix }}
-  {% if label %}
-    <h2{{ title_attributes }}>{{ label }}</h2>
-  {% endif %}
-  {{ title_suffix }}
-  {% block content %}
-    {{ content }}
-  {% endblock %}
-</div>
+        <span>{{important_contact.name}}</span>
+      {% if important_contact.type=='link' %}
+       <a class="btn btn-link in-new" target="_blank" href="{{important_contact.body}}">{{important_contact.body}}</a>
+      {% elseif important_contact.type == 'email' %}
+      <a class="btn btn-link" href="mailto:{{important_contact.body}}">{{important_contact.body}}</a>
+      {% else %}
+        <span class="bold">{{important_contact.body}}</span>
+      {% endif %}
+      </li>
+    {% endfor %}
+  </ul><!--/contacts-->
+{% endif %}
+</div><!--/block-->
