@@ -36,11 +36,17 @@ function hitsa_settings_theme($existing, $type, $theme, $path) {
     ],
     'path' => $path,
   ];
+  $items['hitsa_footer_free_text_block'] = [
+    'variables' => [
+      'data' => []
+    ],
+    'path' => $path,
+  ];
   $items['hitsa_important_contacts_block'] = [
     'variables' => [
       'data' => []
     ],
-    $path => $path,
+    'path' => $path,
   ];
   return $items;
 }
