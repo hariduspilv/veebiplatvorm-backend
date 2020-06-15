@@ -1,0 +1,49 @@
+uuid: 96c9618e-185a-43e5-a5c9-eb9efa849894
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_blocks_75_1
+    - paragraphs.paragraphs_type.db_25_75
+    - paragraphs.paragraphs_type.intermediate_title_block
+  module:
+    - entity_reference_revisions
+id: paragraph.db_25_75.field_content_blocks_75_1
+field_name: field_content_blocks_75_1
+entity_type: paragraph
+bundle: db_25_75
+label: 'Jaotus 75 esimene veerg'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      intermediate_title_block: intermediate_title_block
+    target_bundles_drag_drop:
+      db_100:
+        weight: 8
+        enabled: false
+      db_25_25_25_25:
+        weight: 9
+        enabled: false
+      db_25_25_50:
+        weight: 10
+        enabled: false
+      db_25_75:
+        weight: 11
+        enabled: false
+      db_50_25_25:
+        weight: 12
+        enabled: false
+      db_50_50:
+        weight: 13
+        enabled: false
+      intermediate_title_block:
+        enabled: true
+        weight: 14
+field_type: entity_reference_revisions

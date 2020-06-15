@@ -484,7 +484,7 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_true: Published
+            format_custom_true: Avaldatud
             format_custom_false: Unpublished
           group_column: value
           group_columns: {  }
@@ -741,7 +741,7 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Published
+                title: Avaldatud
                 operator: '='
                 value: '1'
               2:

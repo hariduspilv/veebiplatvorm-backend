@@ -1,7 +1,14 @@
 uuid: 06a86eee-7092-4ad8-8790-572940e18ab7
 langcode: et
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
 _core:
   default_config_hash: KuyA4NHPXcmKAjRtwa0vQc2ZcyrUJy6IlS2TAyMNRbc
 name: Lihtlehekülg

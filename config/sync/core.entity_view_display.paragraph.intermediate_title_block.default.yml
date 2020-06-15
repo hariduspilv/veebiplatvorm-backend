@@ -1,0 +1,31 @@
+uuid: 49aead01-b56f-4de4-89f9-53762213f664
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.intermediate_title_block.field_title
+    - field.field.paragraph.intermediate_title_block.field_title_level
+    - paragraphs.paragraphs_type.intermediate_title_block
+  module:
+    - options
+id: paragraph.intermediate_title_block.default
+targetEntityType: paragraph
+bundle: intermediate_title_block
+mode: default
+content:
+  field_title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_title_level:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+hidden: {  }

@@ -1,0 +1,11 @@
+uuid: 77c9ab37-dfe9-4043-ac51-2e30ca6137b0
+langcode: et
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.db_100
+id: paragraph.db_100
+target_entity_type_id: paragraph
+target_bundle: db_100
+default_langcode: site_default
+language_alterable: false

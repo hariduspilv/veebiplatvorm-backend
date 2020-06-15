@@ -1,0 +1,79 @@
+uuid: 17cb5f7a-a901-42dc-91d9-0d1a9a8bbd5c
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_distribution_blocks
+    - node.type.page
+    - paragraphs.paragraphs_type.db_100
+    - paragraphs.paragraphs_type.db_25_25_25_25
+    - paragraphs.paragraphs_type.db_25_25_50
+    - paragraphs.paragraphs_type.db_25_75
+    - paragraphs.paragraphs_type.db_33_33_33
+    - paragraphs.paragraphs_type.db_33_66
+    - paragraphs.paragraphs_type.db_50_25_25
+    - paragraphs.paragraphs_type.db_50_50
+    - paragraphs.paragraphs_type.db_66_33
+    - paragraphs.paragraphs_type.db_75_25
+  module:
+    - entity_reference_revisions
+id: node.page.field_distribution_blocks
+field_name: field_distribution_blocks
+entity_type: node
+bundle: page
+label: Jaotusplokid
+description: 'Jaotusplokke kasutatakse, et lehe sisu osa liigendada horisontaalselt sektsioonideks. Neid kasutatakse näiteks selleks, et sisulehe vasakul küljel oleks tekst ja paremal küljel oleks pilt või tabel. Jaotusplokkide sisse ei saa teisi jaotusplokke panna. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      db_100: db_100
+      db_50_50: db_50_50
+      db_25_25_25_25: db_25_25_25_25
+      db_25_25_50: db_25_25_50
+      db_50_25_25: db_50_25_25
+      db_25_75: db_25_75
+      db_75_25: db_75_25
+      db_33_33_33: db_33_33_33
+      db_66_33: db_66_33
+      db_33_66: db_33_66
+    target_bundles_drag_drop:
+      db_100:
+        enabled: true
+        weight: -23
+      db_25_25_25_25:
+        enabled: true
+        weight: -21
+      db_25_25_50:
+        enabled: true
+        weight: -20
+      db_25_75:
+        enabled: true
+        weight: -18
+      db_33_33_33:
+        enabled: true
+        weight: -16
+      db_33_66:
+        enabled: true
+        weight: -14
+      db_50_25_25:
+        enabled: true
+        weight: -19
+      db_50_50:
+        enabled: true
+        weight: -22
+      db_66_33:
+        enabled: true
+        weight: -15
+      db_75_25:
+        enabled: true
+        weight: -17
+      intermediate_title_block:
+        weight: -13
+        enabled: false
+field_type: entity_reference_revisions

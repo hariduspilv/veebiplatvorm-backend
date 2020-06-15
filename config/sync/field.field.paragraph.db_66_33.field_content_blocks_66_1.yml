@@ -1,0 +1,58 @@
+uuid: cea00c21-871e-4d89-b5df-e8c3f3eb3804
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_blocks_66_1
+    - paragraphs.paragraphs_type.db_66_33
+    - paragraphs.paragraphs_type.intermediate_title_block
+  module:
+    - entity_reference_revisions
+id: paragraph.db_66_33.field_content_blocks_66_1
+field_name: field_content_blocks_66_1
+entity_type: paragraph
+bundle: db_66_33
+label: 'Jaotus 66 esimene veerg'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      intermediate_title_block: intermediate_title_block
+    target_bundles_drag_drop:
+      db_100:
+        weight: 11
+        enabled: false
+      db_25_25_25_25:
+        weight: 12
+        enabled: false
+      db_25_25_50:
+        weight: 13
+        enabled: false
+      db_25_75:
+        weight: 14
+        enabled: false
+      db_33_33_33:
+        weight: 15
+        enabled: false
+      db_50_25_25:
+        weight: 16
+        enabled: false
+      db_50_50:
+        weight: 17
+        enabled: false
+      db_66_33:
+        weight: 18
+        enabled: false
+      db_75_25:
+        weight: 19
+        enabled: false
+      intermediate_title_block:
+        enabled: true
+        weight: 20
+field_type: entity_reference_revisions

@@ -1,0 +1,11 @@
+uuid: f9b89b71-14d8-4159-863c-242cad77df4f
+langcode: et
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.intermediate_title_block
+id: paragraph.intermediate_title_block
+target_entity_type_id: paragraph
+target_bundle: intermediate_title_block
+default_langcode: site_default
+language_alterable: true

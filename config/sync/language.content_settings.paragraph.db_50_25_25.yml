@@ -1,0 +1,11 @@
+uuid: 92fe012c-dcf7-424b-82b8-74767853679a
+langcode: et
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.db_50_25_25
+id: paragraph.db_50_25_25
+target_entity_type_id: paragraph
+target_bundle: db_50_25_25
+default_langcode: site_default
+language_alterable: false

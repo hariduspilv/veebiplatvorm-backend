@@ -1,0 +1,53 @@
+uuid: b1eb257c-463f-4727-a932-7206ebdda532
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_blocks_25_4
+    - paragraphs.paragraphs_type.db_25_25_25_25
+  module:
+    - entity_reference_revisions
+id: paragraph.db_25_25_25_25.field_content_blocks_25_4
+field_name: field_content_blocks_25_4
+entity_type: paragraph
+bundle: db_25_25_25_25
+label: 'Jaotus 25 neljas veerg'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles: null
+    target_bundles_drag_drop:
+      db_100:
+        weight: 5
+        enabled: false
+      db_25_25_25_25:
+        weight: 6
+        enabled: false
+      db_25_25_50:
+        weight: 12
+        enabled: false
+      db_25_75:
+        weight: 13
+        enabled: false
+      db_33_33_33:
+        weight: 14
+        enabled: false
+      db_50_25_25:
+        weight: 15
+        enabled: false
+      db_50_50:
+        weight: 7
+        enabled: false
+      db_75_25:
+        weight: 17
+        enabled: false
+      intermediate_title_block:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

@@ -218,7 +218,7 @@ display:
             operator_list: {  }
           is_grouped: true
           group_info:
-            label: Published
+            label: Avaldatud
             description: ''
             identifier: status
             optional: true
@@ -229,7 +229,7 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Published
+                title: Avaldatud
                 operator: '='
                 value: '1'
               2:
@@ -657,7 +657,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: Edit
+          text: Muuda
           output_url_as_text: false
           absolute: false
           entity_type: media

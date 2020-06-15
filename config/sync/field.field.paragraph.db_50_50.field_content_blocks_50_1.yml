@@ -1,0 +1,40 @@
+uuid: 0e003f51-d7c5-4c55-b04a-7d6316a92ce0
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_blocks_50_1
+    - paragraphs.paragraphs_type.db_50_50
+    - paragraphs.paragraphs_type.intermediate_title_block
+  module:
+    - entity_reference_revisions
+id: paragraph.db_50_50.field_content_blocks_50_1
+field_name: field_content_blocks_50_1
+entity_type: paragraph
+bundle: db_50_50
+label: 'Jaotus 50 esimene veerg'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      intermediate_title_block: intermediate_title_block
+    target_bundles_drag_drop:
+      db_100:
+        weight: 5
+        enabled: false
+      db_25_25_25_25:
+        weight: 6
+        enabled: false
+      db_50_50:
+        weight: 7
+        enabled: false
+      intermediate_title_block:
+        enabled: true
+        weight: 8
+field_type: entity_reference_revisions

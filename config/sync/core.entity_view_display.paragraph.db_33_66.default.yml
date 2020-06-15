@@ -1,0 +1,34 @@
+uuid: 365c1440-96e9-4449-9a97-374ffeffbe69
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.db_33_66.field_content_blocks_33_1
+    - field.field.paragraph.db_33_66.field_content_blocks_66_1
+    - paragraphs.paragraphs_type.db_33_66
+  module:
+    - entity_reference_revisions
+id: paragraph.db_33_66.default
+targetEntityType: paragraph
+bundle: db_33_66
+mode: default
+content:
+  field_content_blocks_33_1:
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_content_blocks_66_1:
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden: {  }
