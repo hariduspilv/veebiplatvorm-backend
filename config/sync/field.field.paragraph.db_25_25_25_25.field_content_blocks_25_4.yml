@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_content_blocks_25_4
     - paragraphs.paragraphs_type.db_25_25_25_25
+    - paragraphs.paragraphs_type.text_block
   module:
     - entity_reference_revisions
 id: paragraph.db_25_25_25_25.field_content_blocks_25_4
@@ -21,7 +22,8 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 0
-    target_bundles: null
+    target_bundles:
+      text_block: text_block
     target_bundles_drag_drop:
       db_100:
         weight: 5
@@ -38,11 +40,17 @@ settings:
       db_33_33_33:
         weight: 14
         enabled: false
+      db_33_66:
+        weight: 18
+        enabled: false
       db_50_25_25:
         weight: 15
         enabled: false
       db_50_50:
         weight: 7
+        enabled: false
+      db_66_33:
+        weight: 21
         enabled: false
       db_75_25:
         weight: 17
@@ -50,4 +58,7 @@ settings:
       intermediate_title_block:
         weight: 8
         enabled: false
+      text_block:
+        enabled: true
+        weight: 24
 field_type: entity_reference_revisions

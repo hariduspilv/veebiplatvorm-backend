@@ -22,7 +22,7 @@
         "drupal/config_ignore": "^2.2",
         "drupal/config_split": "^1.4",
         "drupal/core-recommended": "^8.9.0",
-        "drupal/linkit": "^5.0",
+        "drupal/linkit": "^6.0",
         "drupal/paragraphs": "^1.12",
         "drupal/svg_image": "^1.13",
         "drupal/token": "^1.7",

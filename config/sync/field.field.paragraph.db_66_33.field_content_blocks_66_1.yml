@@ -6,6 +6,7 @@ dependencies:
     - field.storage.paragraph.field_content_blocks_66_1
     - paragraphs.paragraphs_type.db_66_33
     - paragraphs.paragraphs_type.intermediate_title_block
+    - paragraphs.paragraphs_type.text_block
   module:
     - entity_reference_revisions
 id: paragraph.db_66_33.field_content_blocks_66_1
@@ -24,6 +25,7 @@ settings:
     negate: 0
     target_bundles:
       intermediate_title_block: intermediate_title_block
+      text_block: text_block
     target_bundles_drag_drop:
       db_100:
         weight: 11
@@ -40,6 +42,9 @@ settings:
       db_33_33_33:
         weight: 15
         enabled: false
+      db_33_66:
+        weight: 18
+        enabled: false
       db_50_25_25:
         weight: 16
         enabled: false
@@ -55,4 +60,7 @@ settings:
       intermediate_title_block:
         enabled: true
         weight: 20
+      text_block:
+        enabled: true
+        weight: 24
 field_type: entity_reference_revisions
