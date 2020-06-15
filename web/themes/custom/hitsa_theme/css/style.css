@@ -2,3 +2,6 @@
  * @file
  * Subtheme specific CSS.
  */
+.kint dt{
+    width: 100%;
+}

@@ -42,6 +42,15 @@ class FooterImportantContacts extends BlockBase{
       $key = str_replace($names,'',$conf_item);
       $conf_name = str_replace('_'.$key,'',$conf_item);
       if(!empty($conf_value) && $conf_name!='weight'){
+        if (filter_var($conf_value, FILTER_VALIDATE_EMAIL)) {
+          $usable_array[$key]['type'] = 'email';
+        }
+        elseif (filter_var($conf_value, FILTER_VALIDATE_URL)) {
+          $usable_array[$key]['type'] = 'link';
+        }
+        else{
+          $usable_array[$key]['type'] = 'text';
+        }
         $usable_array[$key][$conf_name] = $conf_value;
       }
     }

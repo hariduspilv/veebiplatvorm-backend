@@ -29,5 +29,7 @@
 
 # Ignore .htaccess fiels as they may be different per environment.
 /web/.htaccess
+#Our theme files
+/web/themes/custom/hitsa_theme/static
 
 web/sites/sites.php
