@@ -25,6 +25,7 @@
         "drupal/linkit": "^6.0",
         "drupal/paragraphs": "^1.12",
         "drupal/svg_image": "^1.13",
+        "drupal/tablefield": "^2.1",
         "drupal/token": "^1.7",
         "drupal/twig_tweak": "^2.6",
         "drush/drush": "^10.2"
@@ -89,6 +90,11 @@
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
             ]
+        },
+        "patches": {
+            "drupal/tablefield": {
+                "WYSIWYG support on each table cell for better content experience": "https://www.drupal.org/files/issues/2020-02-07/tablefield-wysiwyg_support-3076448-7.patch"
+            }
         }
     },
     "require-dev": {
