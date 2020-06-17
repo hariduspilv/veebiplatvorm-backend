@@ -1,0 +1,3 @@
+[submodule "web/themes/custom/hitsa_theme/static"]
+    path = web/themes/custom/hitsa_theme/static
+    url = https://git.twn.ee/scm/hit/hitsa-veebiplatvormi-fe.git
