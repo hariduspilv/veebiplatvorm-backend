@@ -249,6 +249,7 @@ class HitsaSettingsForm extends ConfigFormBase {
           'mdi-vimeo' => 'Vimeo',
           'mdi-vk' => 'VKontakte',
           'mdi-youtube' => 'Youtube',
+          'mdi-widgets' => $this->t('Other'),
         ],
         '#empty_option' => $this->t('- Select -'),
         '#default_value' => $config->get('footer_socialmedia_links.link_icon_' . $j),
