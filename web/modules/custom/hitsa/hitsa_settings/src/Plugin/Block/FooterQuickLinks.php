@@ -2,10 +2,7 @@
 
 namespace Drupal\hitsa_settings\Plugin\Block;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Block\BlockBase;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 /**
  * Block that creates the social media block to show in the footer area
  * @Block(
@@ -48,10 +45,6 @@ class FooterQuickLinks extends BlockBase{
           $usable_array[$key]['link'] = $link;
           $usable_array[$key]['link_internal'] = $link_internal;
           $usable_array[$key]['type'] = 'internal_link';
-        }
-        if($conf_name=='link_url') {
-          $external_or_not = \Drupal\Component\Utility\UrlHelper::isExternal($conf_value);
-          kint($external_or_not);
         }
         $usable_array[$key][$conf_name] = $conf_value;
       }
