@@ -27,24 +27,25 @@
  * @ingroup themeable
  */
 #}
-<div {{attributes.addClass("block")}} >
-  <div class="block-title">
-    <h3>{{ "Follow us"|t }}</h3>
-  </div><!--/block-title-->
+
   {% if data %}
-  <table class="social-links-table">
-    <tbody>
-    {% for row in data %}
-      <tr>
-      {% for icon in row %}
-        <td>
-          <a class="btn btn-link" href="{{icon.link_url}}">
-            <i class="mdi {{icon.link_icon}}" aria-hidden="true"></i>{{icon.link_name}}</a>
-        </td>
-      {% endfor %}
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table><!--/social-links-table-->
+    <div {{attributes.addClass("block")}} >
+      <div class="block-title">
+        <h3>{{ "Follow us"|t }}</h3>
+      </div><!--/block-title-->
+      <table class="social-links-table">
+        <tbody>
+        {% for row in data %}
+          <tr>
+            {% for icon in row %}
+              <td>
+                <a class="btn btn-link" href="{{icon.link_url}}">
+                  <i class="mdi {{icon.link_icon}}" aria-hidden="true"></i>{{icon.link_name}}</a>
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table><!--/social-links-table-->
+    </div><!--/block-->
   {% endif %}
-</div><!--/block-->
