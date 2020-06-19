@@ -1,0 +1,20 @@
+uuid: 12375987-d4ab-4bd8-b3fb-596593d52537
+langcode: et
+status: true
+dependencies:
+  module:
+    - hitsa_settings
+  theme:
+    - hitsa_theme
+id: footerimportantcontactsblock
+theme: hitsa_theme
+region: footer
+weight: -7
+provider: null
+plugin: footer_important_contacts
+settings:
+  id: footer_important_contacts
+  label: 'Footer Important Contacts Block'
+  provider: hitsa_settings
+  label_display: visible
+visibility: {  }

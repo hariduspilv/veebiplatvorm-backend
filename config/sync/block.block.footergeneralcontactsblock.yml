@@ -1,0 +1,20 @@
+uuid: ab5aa764-5edf-4dc6-8594-caf3b79fda8c
+langcode: et
+status: true
+dependencies:
+  module:
+    - hitsa_settings
+  theme:
+    - hitsa_theme
+id: footergeneralcontactsblock
+theme: hitsa_theme
+region: footer
+weight: -8
+provider: null
+plugin: footer_main_contacts_block
+settings:
+  id: footer_main_contacts_block
+  label: 'Footer General Contacts Block'
+  provider: hitsa_settings
+  label_display: visible
+visibility: {  }

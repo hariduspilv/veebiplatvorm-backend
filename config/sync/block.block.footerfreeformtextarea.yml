@@ -1,0 +1,20 @@
+uuid: a9482016-108c-43a6-a59b-2d2b1da2c321
+langcode: et
+status: true
+dependencies:
+  module:
+    - hitsa_settings
+  theme:
+    - hitsa_theme
+id: footerfreeformtextarea
+theme: hitsa_theme
+region: footer
+weight: -4
+provider: null
+plugin: footer_free_text_area
+settings:
+  id: footer_free_text_area
+  label: 'Footer Free Form Text Area'
+  provider: hitsa_settings
+  label_display: visible
+visibility: {  }

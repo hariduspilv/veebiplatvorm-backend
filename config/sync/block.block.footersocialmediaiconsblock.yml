@@ -1,0 +1,20 @@
+uuid: c6a02c55-a54a-405a-89e5-3029eaf9a15f
+langcode: et
+status: true
+dependencies:
+  module:
+    - hitsa_settings
+  theme:
+    - hitsa_theme
+id: footersocialmediaiconsblock
+theme: hitsa_theme
+region: footer
+weight: -6
+provider: null
+plugin: footer_social
+settings:
+  id: footer_social
+  label: 'Footer Social Media Icons Block'
+  provider: hitsa_settings
+  label_display: visible
+visibility: {  }

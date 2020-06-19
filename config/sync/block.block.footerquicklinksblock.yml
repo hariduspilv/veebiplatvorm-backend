@@ -1,0 +1,20 @@
+uuid: 0e0a58ac-974d-4571-a154-9d6c7083670c
+langcode: et
+status: true
+dependencies:
+  module:
+    - hitsa_settings
+  theme:
+    - hitsa_theme
+id: footerquicklinksblock
+theme: hitsa_theme
+region: footer
+weight: -5
+provider: null
+plugin: footer_quick_links
+settings:
+  id: footer_quick_links
+  label: 'Footer Quick Links Block'
+  provider: hitsa_settings
+  label_display: visible
+visibility: {  }
