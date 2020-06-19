@@ -27,21 +27,22 @@
  * @ingroup themeable
  */
 #}
-<div class="block">
-  <div class="block-title">
-    <h3>{{ "Find quickly" | t }}</h3>
-  </div>
-  {% if data %}
-    <ul class="link-list">
-      {% for link in data %}
-      <li>
-        {% if link.type!=nil %}
-          <a class="btn btn-link" href="{{ link.link_internal }}">{{ link.link_name }}</a>
-        {% else %}
-          <a class="btn btn-link in-new" target="_blank" href="{{ link.link_url }}">{{ link.link_name }}</a>
-        {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-</div><!--/block-->
+
+{% if data %}
+    <div class="block">
+      <div class="block-title">
+        <h3>{{ "Find quickly" | t }}</h3>
+      </div>
+      <ul class="link-list">
+        {% for link in data %}
+          <li>
+            {% if link.type!=nil %}
+              <a class="btn btn-link" href="{{ link.link_internal }}">{{ link.link_name }}</a>
+            {% else %}
+              <a class="btn btn-link in-new" target="_blank" href="{{ link.link_url }}">{{ link.link_name }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div><!--/block-->
+{% endif %}
