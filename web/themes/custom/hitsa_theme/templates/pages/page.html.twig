@@ -172,11 +172,28 @@
             <div class="footer-content">
                 <div class="container">
                     <div class="row">
-                        {{ page.footer}}
+                        {{ page.footer|without('footertermsofserviceblock')}}
                     </div><!--/row-->
                 </div><!--/container-->
             </div><!--/footer-content-->
           {% endif %}
       {% endblock %}
+      <div class="footer-navigation">
+        <div class="container-fluid">
+          <div class="footer-bottom text-center">
+            <nav>
+              <ul class="sitemap-nav">
+                <li>
+                  <a href="{{ front_page }}" >{{ "Home page" | t }}</a>
+                </li>
+                <li>
+                  <a href="#">{{ "Sitemap" | t}}</a>
+                </li>
+              </ul><!--/sitemap-nav-->
+            </nav>
+            {{ page.footer.footertermsofserviceblock }}
+          </div><!--/footer-bottom text-center-->
+        </div><!--/container-fluid-->
+      </div><!--/footer-navigation-->
     </footer>
 </div>

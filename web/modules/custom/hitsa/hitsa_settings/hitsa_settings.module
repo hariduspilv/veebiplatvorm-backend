@@ -60,5 +60,11 @@ function hitsa_settings_theme($existing, $type, $theme, $path) {
     ],
     'path' => $path,
   ];
+  $items['hitsa_tos_block'] = [
+    'variables' => [
+      'data' => []
+    ],
+    'path' => $path,
+  ];
   return $items;
 }
