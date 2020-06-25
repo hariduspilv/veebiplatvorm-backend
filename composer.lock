@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdd0ae13fed02e62539ba8962839c7fa",
+    "content-hash": "d7f56aeee5f1da1ffccbd7b0116e786a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2488,7 +2488,7 @@
                 "shasum": "f31df87ad48c43484948414760da70afa1ced8af"
             },
             "require": {
-                "drupal/core": "*"
+                "drupal/core": "^8"
             },
             "type": "drupal-module",
             "extra": {
@@ -2501,7 +2501,7 @@
                     }
                 },
                 "patches_applied": {
-                    "WYSIWYG support on each table cell for better content experience": "https://www.drupal.org/files/issues/2020-02-07/tablefield-wysiwyg_support-3076448-7.patch"
+                    "WYSIWYG support on each table cell for better content experience": "patches/tablefield-wysiwyg_support-3076448-7.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
