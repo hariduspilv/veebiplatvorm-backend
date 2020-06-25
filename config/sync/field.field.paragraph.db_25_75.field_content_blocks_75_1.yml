@@ -6,6 +6,7 @@ dependencies:
     - field.storage.paragraph.field_content_blocks_75_1
     - paragraphs.paragraphs_type.db_25_75
     - paragraphs.paragraphs_type.intermediate_title_block
+    - paragraphs.paragraphs_type.link_and_file_block
     - paragraphs.paragraphs_type.table_block_header_both
     - paragraphs.paragraphs_type.table_block_header_column
     - paragraphs.paragraphs_type.table_block_header_row
@@ -32,50 +33,60 @@ settings:
       table_block_header_row: table_block_header_row
       table_block_header_column: table_block_header_column
       table_block_header_both: table_block_header_both
+      link_and_file_block: link_and_file_block
     target_bundles_drag_drop:
       db_100:
-        weight: -31
+        weight: -37
         enabled: false
       db_25_25_25_25:
-        weight: -30
+        weight: -36
         enabled: false
       db_25_25_50:
-        weight: -29
+        weight: -35
         enabled: false
       db_25_75:
-        weight: -28
+        weight: -34
         enabled: false
       db_33_33_33:
-        weight: -25
+        weight: -31
         enabled: false
       db_33_66:
-        weight: -24
+        weight: -30
         enabled: false
       db_50_25_25:
-        weight: -27
+        weight: -33
         enabled: false
       db_50_50:
-        weight: -26
+        weight: -32
         enabled: false
       db_66_33:
-        weight: -23
+        weight: -29
         enabled: false
       db_75_25:
-        weight: -22
+        weight: -28
+        enabled: false
+      file:
+        weight: -21
         enabled: false
       intermediate_title_block:
         enabled: true
-        weight: -21
+        weight: -27
+      link:
+        weight: -20
+        enabled: false
+      link_and_file_block:
+        enabled: true
+        weight: -22
       table_block_header_both:
         enabled: true
-        weight: -17
+        weight: -23
       table_block_header_column:
         enabled: true
-        weight: -18
+        weight: -24
       table_block_header_row:
         enabled: true
-        weight: -19
+        weight: -25
       text_block:
         enabled: true
-        weight: -20
+        weight: -26
 field_type: entity_reference_revisions

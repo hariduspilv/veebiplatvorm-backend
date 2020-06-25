@@ -6,6 +6,7 @@ dependencies:
     - field.storage.paragraph.field_content_blocks_100
     - paragraphs.paragraphs_type.db_100
     - paragraphs.paragraphs_type.intermediate_title_block
+    - paragraphs.paragraphs_type.link_and_file_block
     - paragraphs.paragraphs_type.table_block_header_both
     - paragraphs.paragraphs_type.table_block_header_column
     - paragraphs.paragraphs_type.table_block_header_row
@@ -32,6 +33,7 @@ settings:
       table_block_header_row: table_block_header_row
       table_block_header_column: table_block_header_column
       table_block_header_both: table_block_header_both
+      link_and_file_block: link_and_file_block
     target_bundles_drag_drop:
       db_100:
         weight: -31
@@ -66,6 +68,9 @@ settings:
       intermediate_title_block:
         enabled: true
         weight: -21
+      link_and_file_block:
+        enabled: true
+        weight: 28
       table_block_header_both:
         enabled: true
         weight: -17
