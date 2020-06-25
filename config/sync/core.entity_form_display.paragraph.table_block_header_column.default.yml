@@ -1,0 +1,24 @@
+uuid: d7aea116-fc54-4ede-b2a3-bbbc1021b537
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.table_block_header_column.field_table
+    - paragraphs.paragraphs_type.table_block_header_column
+  module:
+    - tablefield
+id: paragraph.table_block_header_column.default
+targetEntityType: paragraph
+bundle: table_block_header_column
+mode: default
+content:
+  field_table:
+    weight: 0
+    settings:
+      input_type: textfield
+    third_party_settings: {  }
+    type: tablefield
+    region: content
+hidden:
+  created: true
+  status: true

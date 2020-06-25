@@ -1,0 +1,66 @@
+uuid: dc91babf-46c7-4400-b7c6-e478499acfee
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_table
+    - paragraphs.paragraphs_type.table_block_header_column
+  module:
+    - tablefield
+id: paragraph.table_block_header_column.field_table
+field_name: field_table
+entity_type: paragraph
+bundle: table_block_header_column
+label: Tabel
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    rebuild:
+      cols: '4'
+      rows: '3'
+    value:
+      0:
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+      1:
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+      2:
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+      3:
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+      4:
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+      caption: ''
+    caption: ''
+default_value_callback: ''
+settings:
+  export: 0
+  restrict_rebuild: 1
+  restrict_import: 1
+  lock_values: 0
+  cell_processing: '1'
+  empty_rules:
+    ignore_table_structure: 0
+    ignore_table_header: 0
+field_type: tablefield

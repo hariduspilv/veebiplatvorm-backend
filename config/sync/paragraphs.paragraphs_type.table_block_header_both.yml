@@ -1,0 +1,10 @@
+uuid: e5688d1b-9217-4823-9cb7-d75e72395f63
+langcode: et
+status: true
+dependencies: {  }
+id: table_block_header_both
+label: 'Tabel päised üleval ja vasakul'
+icon_uuid: null
+icon_default: null
+description: 'Tabeliplokk, mille esimeses reas ja tulbas kuvatav info on kujundatud tabeli päistena.'
+behavior_plugins: {  }

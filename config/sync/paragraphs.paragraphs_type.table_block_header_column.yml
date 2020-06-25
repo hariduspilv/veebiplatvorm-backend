@@ -1,0 +1,10 @@
+uuid: 9221d16d-9c49-4c7c-a260-7604ceebe508
+langcode: et
+status: true
+dependencies: {  }
+id: table_block_header_column
+label: 'Tabel päised vasakul'
+icon_uuid: null
+icon_default: null
+description: 'Tabeliplokk, mille esimeses tulbas kuvatav info on kujundatud tabeli päistena. '
+behavior_plugins: {  }

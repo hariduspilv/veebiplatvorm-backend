@@ -1,0 +1,24 @@
+uuid: b04caede-85f8-4c5c-86f1-fc187f732a04
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.table_block_header_both.field_table
+    - paragraphs.paragraphs_type.table_block_header_both
+  module:
+    - tablefield
+id: paragraph.table_block_header_both.default
+targetEntityType: paragraph
+bundle: table_block_header_both
+mode: default
+content:
+  field_table:
+    weight: 0
+    settings:
+      input_type: textfield
+    third_party_settings: {  }
+    type: tablefield
+    region: content
+hidden:
+  created: true
+  status: true

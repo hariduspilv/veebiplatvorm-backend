@@ -1,6 +1,6 @@
 uuid: cdf8e749-a313-402b-8a78-975315978f3a
 langcode: et
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,7 +10,7 @@ _core:
   default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
 id: hitsa_theme_messages
 theme: hitsa_theme
-region: highlighted
+region: header
 weight: 0
 provider: null
 plugin: system_messages_block
