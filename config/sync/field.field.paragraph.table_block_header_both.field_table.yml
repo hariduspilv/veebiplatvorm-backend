@@ -13,7 +13,7 @@ entity_type: paragraph
 bundle: table_block_header_both
 label: Tabel
 description: ''
-required: false
+required: true
 translatable: true
 default_value:
   -
@@ -22,35 +22,44 @@ default_value:
       rows: '3'
     value:
       0:
-        - ''
-        - ''
-        - ''
-        - ''
-        - ''
+        -
+          value: ''
+          format: full_html
+        -
+          value: ''
+          format: full_html
+        -
+          value: ''
+          format: full_html
+        -
+          value: ''
+          format: full_html
       1:
-        - ''
-        - ''
-        - ''
-        - ''
-        - ''
+        -
+          value: ''
+          format: full_html
+        -
+          value: ''
+          format: full_html
+        -
+          value: ''
+          format: full_html
+        -
+          value: ''
+          format: full_html
       2:
-        - ''
-        - ''
-        - ''
-        - ''
-        - ''
-      3:
-        - ''
-        - ''
-        - ''
-        - ''
-        - ''
-      4:
-        - ''
-        - ''
-        - ''
-        - ''
-        - ''
+        -
+          value: ''
+          format: full_html
+        -
+          value: ''
+          format: full_html
+        -
+          value: ''
+          format: full_html
+        -
+          value: ''
+          format: full_html
       caption: ''
     caption: ''
 default_value_callback: ''

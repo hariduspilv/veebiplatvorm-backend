@@ -15,7 +15,7 @@ entity_type: paragraph
 bundle: link_and_file_block
 label: 'Link või fail'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -68,6 +68,9 @@ settings:
         weight: -26
       link_and_file_block:
         weight: -24
+        enabled: false
+      picture_block:
+        weight: 34
         enabled: false
       table_block_header_both:
         weight: -23
