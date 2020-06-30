@@ -7,6 +7,7 @@ dependencies:
     - paragraphs.paragraphs_type.db_25_25_25_25
     - paragraphs.paragraphs_type.gallery_block
     - paragraphs.paragraphs_type.picture_block
+    - paragraphs.paragraphs_type.video_block
   module:
     - entity_reference_revisions
 id: paragraph.db_25_25_25_25.field_content_blocks_25_1
@@ -26,6 +27,7 @@ settings:
     target_bundles:
       picture_block: picture_block
       gallery_block: gallery_block
+      video_block: video_block
     target_bundles_drag_drop:
       db_100:
         weight: -39
@@ -87,4 +89,7 @@ settings:
       text_block:
         weight: -28
         enabled: false
+      video_block:
+        enabled: true
+        weight: 42
 field_type: entity_reference_revisions

@@ -15,8 +15,8 @@ third_party_settings:
   content_translation:
     translation_sync:
       alt: alt
+      title: title
       file: '0'
-      title: '0'
 _core:
   default_config_hash: pzPA-2JwyxlJ3qMb4L9viAnhNhbEhl2couH8A3FO020
 id: media.image.field_media_image
@@ -37,7 +37,7 @@ settings:
   min_resolution: ''
   alt_field: true
   alt_field_required: true
-  title_field: false
+  title_field: true
   title_field_required: false
   default_image:
     uuid: ''
