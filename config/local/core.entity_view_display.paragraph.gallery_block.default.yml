@@ -1,0 +1,32 @@
+uuid: 3c165758-c2cf-4bff-9dcd-7d39fea90a44
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.gallery_block.field_images
+    - field.field.paragraph.gallery_block.field_orientation
+    - paragraphs.paragraphs_type.gallery_block
+  module:
+    - options
+id: paragraph.gallery_block.default
+targetEntityType: paragraph
+bundle: gallery_block
+mode: default
+content:
+  field_images:
+    type: entity_reference_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_orientation:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+hidden: {  }

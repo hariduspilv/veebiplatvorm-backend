@@ -1,7 +1,7 @@
-name: 'HITSA seadistused'
+name: 'Veebiplatvormi seadistused'
 type: module
-description: 'HITSA veebiplatvormide seadistused'
+description: 'Veebiplatvormide seadistused'
 core: 8.x
 core_version_requirement: ^8 || ^9
-package: 'HITSA'
+package: 'Veebiplatvorm'
 configure: hitsa_settings.hitsa_settings_form

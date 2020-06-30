@@ -1,5 +1,5 @@
 hitsa_settings.admin_index:
-  title: HITSA
+  title: Veebiplatvorm
   route_name: user.admin_index
   parent: system.admin_config
   description: 'Configure HITSA settings.'

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_content_blocks_50_1
     - paragraphs.paragraphs_type.db_50_25_25
+    - paragraphs.paragraphs_type.gallery_block
     - paragraphs.paragraphs_type.intermediate_title_block
     - paragraphs.paragraphs_type.link_and_file_block
     - paragraphs.paragraphs_type.picture_block
@@ -21,7 +22,7 @@ bundle: db_50_25_25
 label: 'Jaotus 50 esimene veerg'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -36,62 +37,66 @@ settings:
       table_block_header_both: table_block_header_both
       link_and_file_block: link_and_file_block
       picture_block: picture_block
+      gallery_block: gallery_block
     target_bundles_drag_drop:
       db_100:
-        weight: -39
+        weight: -41
         enabled: false
       db_25_25_25_25:
-        weight: -38
+        weight: -40
         enabled: false
       db_25_25_50:
-        weight: -37
+        weight: -39
         enabled: false
       db_25_75:
-        weight: -34
-        enabled: false
-      db_33_33_33:
-        weight: -33
-        enabled: false
-      db_33_66:
-        weight: -32
-        enabled: false
-      db_50_25_25:
         weight: -36
         enabled: false
-      db_50_50:
+      db_33_33_33:
         weight: -35
         enabled: false
+      db_33_66:
+        weight: -34
+        enabled: false
+      db_50_25_25:
+        weight: -38
+        enabled: false
+      db_50_50:
+        weight: -37
+        enabled: false
       db_66_33:
-        weight: -31
+        weight: -33
         enabled: false
       db_75_25:
-        weight: -30
+        weight: -32
         enabled: false
       file:
-        weight: -22
+        weight: -23
         enabled: false
+      gallery_block:
+        enabled: true
+        weight: -24
       intermediate_title_block:
         enabled: true
-        weight: -29
+        weight: -31
       link:
-        weight: -21
+        weight: -22
         enabled: false
       link_and_file_block:
         enabled: true
-        weight: -24
+        weight: -26
       picture_block:
         enabled: true
-        weight: -23
+        weight: -25
       table_block_header_both:
         enabled: true
-        weight: -25
+        weight: -27
       table_block_header_column:
         enabled: true
-        weight: -26
+        weight: -28
       table_block_header_row:
         enabled: true
-        weight: -27
+        weight: -29
       text_block:
         enabled: true
-        weight: -28
+        weight: -30
 field_type: entity_reference_revisions

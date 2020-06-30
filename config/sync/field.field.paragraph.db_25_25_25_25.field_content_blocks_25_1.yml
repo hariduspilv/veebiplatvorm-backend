@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_content_blocks_25_1
     - paragraphs.paragraphs_type.db_25_25_25_25
+    - paragraphs.paragraphs_type.gallery_block
     - paragraphs.paragraphs_type.picture_block
   module:
     - entity_reference_revisions
@@ -24,6 +25,7 @@ settings:
     negate: 0
     target_bundles:
       picture_block: picture_block
+      gallery_block: gallery_block
     target_bundles_drag_drop:
       db_100:
         weight: -39
@@ -58,6 +60,9 @@ settings:
       file:
         weight: -27
         enabled: false
+      gallery_block:
+        enabled: true
+        weight: 32
       intermediate_title_block:
         weight: -36
         enabled: false
