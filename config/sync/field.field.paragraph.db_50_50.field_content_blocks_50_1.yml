@@ -10,8 +10,6 @@ dependencies:
     - paragraphs.paragraphs_type.intermediate_title_block
     - paragraphs.paragraphs_type.link_and_file_block
     - paragraphs.paragraphs_type.picture_block
-    - paragraphs.paragraphs_type.table_block_header_both
-    - paragraphs.paragraphs_type.table_block_header_column
     - paragraphs.paragraphs_type.table_block_header_row
     - paragraphs.paragraphs_type.text_block
     - paragraphs.paragraphs_type.video_block
@@ -35,8 +33,6 @@ settings:
       intermediate_title_block: intermediate_title_block
       text_block: text_block
       table_block_header_row: table_block_header_row
-      table_block_header_column: table_block_header_column
-      table_block_header_both: table_block_header_both
       link_and_file_block: link_and_file_block
       picture_block: picture_block
       gallery_block: gallery_block
