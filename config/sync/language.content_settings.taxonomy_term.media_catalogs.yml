@@ -1,0 +1,11 @@
+uuid: 9bbafb2d-cbee-48c1-89b7-aad03081ca49
+langcode: et
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.media_catalogs
+id: taxonomy_term.media_catalogs
+target_entity_type_id: taxonomy_term
+target_bundle: media_catalogs
+default_langcode: site_default
+language_alterable: false
