@@ -2,7 +2,7 @@ uuid: 5e54f62d-e4c4-42cb-baba-ade33ff61fe6
 langcode: et
 status: true
 dependencies: {  }
-name: 'Media catalogs'
+name: 'Meedia kataloogid'
 vid: media_catalogs
 description: ''
 weight: 0
