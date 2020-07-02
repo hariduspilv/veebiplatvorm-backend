@@ -92,9 +92,6 @@
             ]
         },
         "patches": {
-            "drupal/tablefield": {
-                "WYSIWYG support on each table cell for better content experience": "patches/tablefield-wysiwyg_support-3076448-7.patch"
-            }
         }
     },
     "require-dev": {
