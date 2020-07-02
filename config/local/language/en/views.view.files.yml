@@ -1,0 +1,74 @@
+label: Failid
+description: 'Otsi ja halda faile.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        filename:
+          label: Nimetus
+        filemime:
+          label: MIME-tüüp
+        filesize:
+          label: Size
+        status:
+          settings:
+            format_custom_false: Ajutine
+            format_custom_true: Alaline
+        created:
+          label: 'Üleslaadimise kuupäev'
+        changed:
+          label: 'Muutmise kuupäev'
+        count:
+          label: Kasutuskoht
+      filters:
+        filename:
+          expose:
+            label: Failinimi
+        filemime:
+          expose:
+            label: MIME-tüüp
+      title: Failid
+      empty:
+        area_text_custom:
+          content: 'Ühtegi faili pole saadaval.'
+  page_1:
+    display_title: 'Failide ülevaade'
+    display_options:
+      menu:
+        title: Failid
+  page_2:
+    display_title: 'Faili kasutus'
+    display_options:
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        entity_label:
+          label: Olem
+        type:
+          label: 'Olemi tüüp'
+        module:
+          label: 'Registreerin moodulit'
+        count:
+          label: 'Kasutuse loendur'
+      title: 'Faili kasutus'
+      arguments:
+        fid:
+          title: 'Kasutusinfo failile {{ arguments.fid }}'

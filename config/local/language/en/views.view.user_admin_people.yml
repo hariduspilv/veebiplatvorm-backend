@@ -1,0 +1,65 @@
+label: Kasutajad
+description: 'Sinu lehel käivate inimeste leidmine ja haldus.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        user_bulk_form:
+          label: Massuuendus
+        name:
+          label: Kasutajanimi
+        status:
+          settings:
+            format_custom_true: Aktiivne
+            format_custom_false: Blokeeritud
+        roles_target_id:
+          label: Rollid
+        created:
+          label: 'Liikmeks oldud aeg'
+        access:
+          label: 'Viimane külastus'
+      filters:
+        combine:
+          expose:
+            label: 'Nimi või e-post sisaldab'
+        status:
+          group_info:
+            group_items:
+              1:
+                title: Aktiivne
+              2:
+                title: Blokeeritud
+        roles_target_id:
+          expose:
+            label: Roll
+        permission:
+          expose:
+            label: Õigus
+      title: Kasutajad
+      empty:
+        area_text_custom:
+          content: 'Inimesed puuduvad.'
+      use_more_text: veel
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: Nimekiri
+        description: 'Sinu lehel käivate inimeste leidmine ja haldus.'
+      tab_options:
+        title: Kasutajad
+        description: 'Kasutajakontode, rollide ja õiguste haldamine.'
