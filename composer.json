@@ -28,6 +28,7 @@
         "drupal/tablefield": "^2.1",
         "drupal/token": "^1.7",
         "drupal/twig_tweak": "^2.6",
+        "drupal/webform": "^2.6",
         "drush/drush": "^10.2"
     },
     "conflict": {
