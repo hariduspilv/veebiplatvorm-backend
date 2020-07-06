@@ -17,6 +17,7 @@ module:
   contact: 0
   contextual: 0
   datetime: 0
+  datetime_range: 0
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
@@ -33,6 +34,7 @@ module:
   link: 0
   linkit: 0
   locale: 0
+  maxlength: 0
   media: 0
   media_library: 0
   menu_ui: 0

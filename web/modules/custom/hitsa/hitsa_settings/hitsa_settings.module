@@ -68,3 +68,28 @@ function hitsa_settings_theme($existing, $type, $theme, $path) {
   ];
   return $items;
 }
+/**
+ * Implements hook_ENTITY_TYPE_prepare_form() for Nodes.
+ */
+
+function hitsa_settings_node_prepare_form(\Drupal\Core\Entity\EntityInterface $entity, $operation, \Drupal\Core\Form\FormStateInterface $form_state) {
+  //galerii lisamisel õppeaasta default väärtuse muutmine
+  if ($entity->getType() == 'gallery') {
+    if ($operation == 'default') {
+      $default_value = 0;
+      $today = date('Y-m-d');
+      $vid = 'academic_year';
+      $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0,  NULL, TRUE);
+      foreach ($terms as $term) {
+        $dates = $term->get('field_date_range')->getValue();
+        $start_date = $dates[0]['value'];
+        $end_date = $dates[0]['end_value'];
+        if ($start_date <= $today AND $end_date >= $today) {
+          $default_value = $term->id();
+          break;
+        }
+      }
+      $entity->set('field_academic_year', $default_value);
+    }
+  }
+}

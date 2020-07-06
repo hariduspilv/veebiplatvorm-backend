@@ -2,7 +2,6 @@ label: Tõlge
 tips:
   locale-overview:
     label: 'Kasutajaliidese tõlge'
-    body: 'This page allows you to translate the user interface or modify existing translations. If you have installed your site initially in English, you must first add another language on the <a href="[site:url]admin/config/regional/language">Languages page</a>, in order to use this page.'
   locale-language:
     label: 'Tõlke keel'
     body: 'Vali keel, mida soovid tõlkida.'

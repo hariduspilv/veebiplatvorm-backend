@@ -1,0 +1,11 @@
+uuid: ce458255-9ae0-4b65-950f-67402739106d
+langcode: et
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.academic_year
+id: taxonomy_term.academic_year
+target_entity_type_id: taxonomy_term
+target_bundle: academic_year
+default_langcode: site_default
+language_alterable: false

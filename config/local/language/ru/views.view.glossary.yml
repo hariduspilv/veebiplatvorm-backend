@@ -7,7 +7,7 @@ display:
       exposed_form:
         options:
           submit_button: Применить
-          reset_button_label: Сбросить
+          reset_button_label: Reset
           exposed_sorts_label: 'Сортировать по'
           sort_asc_label: 'По возрастанию'
           sort_desc_label: 'По убыванию'

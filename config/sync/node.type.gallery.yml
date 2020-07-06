@@ -1,0 +1,17 @@
+uuid: 3d22ba70-a7af-431d-a91a-657924dc64d2
+langcode: et
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Galerii
+type: gallery
+description: 'Kasutaja alustab galerii lisamist, laeb pildid meediahalduri kaudu üles ja kirjeldab nende metaandmed.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

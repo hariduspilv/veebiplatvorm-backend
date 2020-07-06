@@ -5,28 +5,21 @@ tips:
     body: 'Vaata või muuda seadistust.'
   views-ui-displays:
     label: 'Nähtav selles vaates'
-    body: 'A display is a way of outputting the results, e.g., as a page or a block. A view can contain multiple displays, which are listed here. The active display is highlighted.'
   views-ui-view-admin:
     label: 'Vaate haldamine'
-    body: 'Perform administrative tasks, including adding a description and creating a clone. Click the drop-down button to view the available options.'
   views-ui-format:
     label: Väljundvorming
-    body: 'Choose how to output results. E.g., choose <em>Content</em> to output each item completely, using your configured display settings. Or choose <em>Fields</em>, which allows you to output only specific fields for each result. Additional formats can be added by installing modules to <em>extend</em> Drupal''s base functionality.'
   views-ui-fields:
     label: Väljad
-    body: 'If this view uses fields, they are listed here. You can click on a field to configure it.'
   views-ui-filter:
     label: 'Filtreeri vaadet'
-    body: 'Add filters to limit the results in the output. E.g., to only show content that is <em>published</em>, you would add a filter for <em>Published</em> and select <em>Yes</em>.'
   views-ui-filter-operations:
     label: 'Filtri toimingud'
     body: 'Lisa, järjesta või eemalda filtrid.'
   views-ui-sorts:
     label: Sorteerimistingimused
-    body: 'Control the order in which the results are output. Click on an active sort rule to configure it.'
   views-ui-sorts-operations:
     label: 'Sorteeri tegevused'
     body: 'Lisa, järjesta või eemalda sorteerimise reeglid.'
   views-ui-preview:
-    label: Preview
     body: 'Näita eelvaadet vaate väljundist.'

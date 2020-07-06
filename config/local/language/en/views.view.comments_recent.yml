@@ -2,7 +2,6 @@ label: 'Hiljutised kommentaarid'
 description: 'Viimased kommentaarid.'
 display:
   default:
-    display_title: Master
     display_options:
       title: 'Hiljutised kommentaarid'
       empty:

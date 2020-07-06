@@ -2,19 +2,10 @@ label: 'Hiljutine sisu'
 description: 'Viimati lisatud sisu.'
 display:
   default:
-    display_title: Master
     display_options:
-      exposed_form:
-        options:
-          submit_button: Apply
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       title: 'Hiljutine sisu'
       empty:
         area_text_custom:
           content: 'Sisu puudub.'
-      use_more_text: More
   block_1:
     display_title: Plokk
