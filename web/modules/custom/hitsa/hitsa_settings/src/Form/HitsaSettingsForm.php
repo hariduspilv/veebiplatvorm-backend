@@ -448,7 +448,7 @@ class HitsaSettingsForm extends ConfigFormBase {
       $form_state->setErrorByName('free_text_body', $this->t('@name field is required.', ['@name' => '"vabatekstiala sisu"']));
     }
     if (!empty($form_state->getValue('free_text_body')) AND empty($form_state->getValue('free_text_name'))) {
-      $form_state->setErrorByName('free_text_name', $this->t('@name field is required.', ['@name' => '"vabatekstiala sisu"']));
+      $form_state->setErrorByName('free_text_name', $this->t('@name field is required.', ['@name' => '"vabatekstiala pealkiri"']));
     }
   }
 
