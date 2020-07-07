@@ -1,18 +1,18 @@
-uuid: 8bfe9b86-8b61-46a3-a5bd-5f40cf89e2d6
+uuid: d31e5a2a-bf85-46e4-81aa-13247932fbf5
 langcode: et
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_images
+    - field.storage.node.field_images
     - media.type.image
-    - paragraphs.paragraphs_type.gallery_block
-id: paragraph.gallery_block.field_images
+    - node.type.gallery
+id: node.gallery.field_images
 field_name: field_images
-entity_type: paragraph
-bundle: gallery_block
+entity_type: node
+bundle: gallery
 label: Pildid
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

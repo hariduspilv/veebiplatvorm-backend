@@ -1,14 +1,14 @@
-uuid: 72c0e7f7-6cb2-4900-bfc0-589750f23ce3
+uuid: 1c7105ca-9886-479d-a39d-7e54096ad0b4
 langcode: et
 status: true
 dependencies:
   config:
     - node.type.gallery
-id: node.gallery.promote
-field_name: promote
+id: node.gallery.sticky
+field_name: sticky
 entity_type: node
 bundle: gallery
-label: 'Ülendatud esilehele'
+label: 'Püsib nimekirja alguses'
 description: ''
 required: false
 translatable: false

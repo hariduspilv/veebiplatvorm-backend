@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.gallery.field_academic_year
     - field.field.node.gallery.field_description
+    - field.field.node.gallery.field_images
     - node.type.gallery
   module:
     - user
@@ -22,4 +23,5 @@ content:
 hidden:
   field_academic_year: true
   field_description: true
+  field_images: true
   langcode: true

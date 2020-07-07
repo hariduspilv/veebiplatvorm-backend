@@ -3,6 +3,7 @@ langcode: et
 status: true
 dependencies:
   config:
+    - field.field.paragraph.gallery_block.field_gallery_id
     - field.field.paragraph.gallery_block.field_images
     - field.field.paragraph.gallery_block.field_orientation
     - paragraphs.paragraphs_type.gallery_block
@@ -13,9 +14,15 @@ targetEntityType: paragraph
 bundle: gallery_block
 mode: default
 content:
+  field_gallery_id:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_images:
     type: media_library_widget
-    weight: 1
+    weight: 2
     settings:
       media_types: {  }
     third_party_settings: {  }

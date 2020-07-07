@@ -60,7 +60,7 @@ footer_quick_links:
   link_entity_7: null
   link_entity_8: null
 footer_free_text_area:
-  name: Vabatekstiala
+  name: 'Vabatekstiala pealkiri Vabatekstiala pealkiri'
   body: "Vabataktiala sisu\r\n<p>sisu</p>"
 footer_copyright:
   name: '© 2020 - 2021 Demo Gümnaasium'

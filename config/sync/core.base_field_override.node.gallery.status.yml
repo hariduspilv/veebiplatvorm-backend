@@ -1,20 +1,20 @@
-uuid: 72c0e7f7-6cb2-4900-bfc0-589750f23ce3
+uuid: 5493ac00-9024-45b6-a108-39f0156137a2
 langcode: et
 status: true
 dependencies:
   config:
     - node.type.gallery
-id: node.gallery.promote
-field_name: promote
+id: node.gallery.status
+field_name: status
 entity_type: node
 bundle: gallery
-label: 'Ülendatud esilehele'
+label: Avaldatud
 description: ''
 required: false
 translatable: false
 default_value:
   -
-    value: 0
+    value: 1
 default_value_callback: ''
 settings:
   on_label: Sees
