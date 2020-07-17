@@ -1687,17 +1687,17 @@
         },
         {
             "name": "drupal/bootstrap_barrio",
-            "version": "4.30.0",
+            "version": "4.32.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/bootstrap_barrio.git",
-                "reference": "8.x-4.30"
+                "reference": "8.x-4.32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap_barrio-8.x-4.30.zip",
-                "reference": "8.x-4.30",
-                "shasum": "9de043aa126cdd7ebe383369e0a9d2f54d38db98"
+                "url": "https://ftp.drupal.org/files/projects/bootstrap_barrio-8.x-4.32.zip",
+                "reference": "8.x-4.32",
+                "shasum": "fe0ed5e3658096ef0759f489431e2a0e58482e49"
             },
             "require": {
                 "drupal/core": "^8 || ^9",
@@ -1706,8 +1706,8 @@
             "type": "drupal-theme",
             "extra": {
                 "drupal": {
-                    "version": "8.x-4.30",
-                    "datestamp": "1592500696",
+                    "version": "8.x-4.32",
+                    "datestamp": "1594567900",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1933,16 +1933,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.9.1",
+            "version": "8.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "e8ee964c562870381876e85d3f5eaaf8c8ecc9ee"
+                "reference": "8f0e24555c093669ce41edbb30637fe19df16802"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/e8ee964c562870381876e85d3f5eaaf8c8ecc9ee",
-                "reference": "e8ee964c562870381876e85d3f5eaaf8c8ecc9ee",
+                "url": "https://api.github.com/repos/drupal/core/zipball/8f0e24555c093669ce41edbb30637fe19df16802",
+                "reference": "8f0e24555c093669ce41edbb30637fe19df16802",
                 "shasum": ""
             },
             "require": {
@@ -2160,20 +2160,20 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2020-06-17T17:57:48+00:00"
+            "time": "2020-07-08T18:53:45+00:00"
         },
         {
             "name": "drupal/core-recommended",
-            "version": "8.9.1",
+            "version": "8.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "41042f9eaa35b027e6b2c42fa03edcb85da54a06"
+                "reference": "8301ff766f17ce8a9eb36d3ffd183cbfff01dad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/41042f9eaa35b027e6b2c42fa03edcb85da54a06",
-                "reference": "41042f9eaa35b027e6b2c42fa03edcb85da54a06",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/8301ff766f17ce8a9eb36d3ffd183cbfff01dad6",
+                "reference": "8301ff766f17ce8a9eb36d3ffd183cbfff01dad6",
                 "shasum": ""
             },
             "require": {
@@ -2185,7 +2185,7 @@
                 "doctrine/common": "v2.7.3",
                 "doctrine/inflector": "v1.2.0",
                 "doctrine/lexer": "1.0.2",
-                "drupal/core": "8.9.1",
+                "drupal/core": "8.9.2",
                 "easyrdf/easyrdf": "0.9.1",
                 "egulias/email-validator": "2.1.17",
                 "guzzlehttp/guzzle": "6.5.4",
@@ -2242,7 +2242,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Locked core dependencies; require this project INSTEAD OF drupal/core.",
-            "time": "2020-06-17T17:57:48+00:00"
+            "time": "2020-07-08T18:53:45+00:00"
         },
         {
             "name": "drupal/entity_reference_revisions",
@@ -2795,17 +2795,17 @@
         },
         {
             "name": "drupal/webform",
-            "version": "5.18.0",
+            "version": "5.19.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform.git",
-                "reference": "8.x-5.18"
+                "reference": "8.x-5.19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.18.zip",
-                "reference": "8.x-5.18",
-                "shasum": "539d0ba5bacc402cf6ea2a3419ae164703a09aa0"
+                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.19.zip",
+                "reference": "8.x-5.19",
+                "shasum": "90a2084c2647bca791cc8b18a7e2a3b49f3da7ea"
             },
             "require": {
                 "drupal/core": "^8.8"
@@ -2844,8 +2844,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-5.18",
-                    "datestamp": "1593034084",
+                    "version": "8.x-5.19",
+                    "datestamp": "1593681136",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
