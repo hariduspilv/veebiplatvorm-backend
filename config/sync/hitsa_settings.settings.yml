@@ -101,3 +101,6 @@ footer_socialmedia_links:
   link_name_9: ''
   link_url_9: ''
   link_weight_9: -2
+automatic_generation_academic_year:
+  'on': true
+  date: 04.08.

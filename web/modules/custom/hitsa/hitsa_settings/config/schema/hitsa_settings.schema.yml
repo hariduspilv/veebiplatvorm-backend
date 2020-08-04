@@ -295,6 +295,16 @@ hitsa_settings.settings:
         name:
           type: text
           label: 'Pealkiri'
+    automatic_generation_academic_year:
+      type: mapping
+      label: 'Õppeaasta automaatne genereerimine'
+      mapping:
+        on:
+          type: boolean
+          label: 'Sisselülitaud'
+        date:
+          type: text
+          label: 'Kuupäev'
   langcode:
     type: string
     label: 'Keeletähis'

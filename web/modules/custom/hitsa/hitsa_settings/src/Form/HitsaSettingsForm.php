@@ -389,6 +389,31 @@ class HitsaSettingsForm extends ConfigFormBase {
       '#title' => 'Kasutusõiguste märkus',
       '#default_value' =>  $config->get('footer_copyright.name'),
     ];
+    ##################################################### Suunamised ja muutujad #################################################
+    $form['variables'] = [
+      '#type' => 'details',
+      '#title' => 'Suunamised ja muutujad',
+      '#description' => 'Siin andmeplokis on muutujad, mida administraator saab lehte seadistades täpsustada. Näiteks saab anda uudisetüübile Meie lugu uue kuvatava nimetuse nt "Kooli blogi". Samuti saab siin plokis seadistada lehel, kuhu suunatakse avalehel tunniplaani nuppu vajutades.',
+      '#group' => 'tabs',
+    ];
+    $form['variables']['automatic_generation_academic_year_on'] = [
+      '#type' => 'select',
+      '#title' => 'Õppeaasta automaatne genereerimine on sisselülitatud',
+      '#options' => [
+        1 => $this->t('Yes'),
+        0 => $this->t('No'),
+      ],
+      '#default_value' =>  $config->get('automatic_generation_academic_year.on') ? 1 : 0,
+      '#required' => TRUE,
+    ];
+    $form['variables']['automatic_generation_academic_year_date'] = [
+      '#type' => 'textfield',
+      '#title' => 'Õppeaasta automaatse genereerimise kuupäev',
+      '#default_value' =>  $config->get('automatic_generation_academic_year.date'),
+      '#size' => 5,
+      '#description' => 'Kuupäeva formaat on dd.mm.',
+      '#required' => TRUE,
+    ];
     return $form;
   }
 
@@ -491,6 +516,8 @@ class HitsaSettingsForm extends ConfigFormBase {
       ->set('footer_free_text_area.name', $form_state->getValue('free_text_name'))
       ->set('footer_free_text_area.body', $form_state->getValue('free_text_body'))
       ->set('footer_copyright.name', $form_state->getValue('footer_copyright_name'))
+      ->set('automatic_generation_academic_year.on', $form_state->getValue('automatic_generation_academic_year_on'))
+      ->set('automatic_generation_academic_year.date', $form_state->getValue('automatic_generation_academic_year_date'))
       ->save();
     ################################################### System site settings save ######################################
 

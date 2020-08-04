@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 name: Õppeaastad
 vid: academic_year
-description: ''
+description: 'Automaatse genereerimise saab sisse või välja lülitada <a href="/admin/config/hitsa/hitsa-settings#edit-variables">siit</a>.'
 weight: 0

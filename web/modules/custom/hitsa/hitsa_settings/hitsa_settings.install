@@ -8,3 +8,12 @@ function hitsa_settings_uninstall() {
   // Deleting the configuration while uninstalling.
   \Drupal::configFactory()->getEditable('hitsa_settings.settings')->delete();
 }
+/**
+ * Set default values for automatic_generation_academic_year config
+ */
+function hitsa_settings_update_8002() {
+  $config = \Drupal::configFactory()->getEditable('hitsa_settings.settings');
+  $config->set('automatic_generation_academic_year.on', TRUE);
+  $config->set('automatic_generation_academic_year.date', '15.06.');
+  $config->save();
+}

@@ -10,7 +10,7 @@ id: paragraph.contact_block.field_contact_id
 field_name: field_contact_id
 entity_type: paragraph
 bundle: contact_block
-label: 'Kontakti ID'
+label: 'Kontakti viide'
 description: 'NB! Hetkel on see seotud Lihtleheküljega. Muuta peale Kontakti sisutüübi loomist!'
 required: false
 translatable: false
