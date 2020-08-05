@@ -148,6 +148,90 @@ class HitsaSettingsForm extends ConfigFormBase {
       '#description' => 'Kuvatakse jaluses',
       '#default_value' =>  $config->get('general.email'),
     ];
+    ##################################################### Avalehe kiirlingid #################################################
+    $form['frontpage_quick_links'] = [
+      '#type' => 'details',
+      '#title' => 'Avalehe kiirlingid',
+      '#description' => 'Avalehe kiirlinkide sisestamise ja muutmise andmeplokk, kuhu saab lisada kuni 8 veebilehe sisemist või
+       veebilehelt välja suunavat linki, mis märgistatakse vastava ikooniga. Lingi lisamiseks tuleb sisestada nii selle väljakuvatav nimi kui ka link.
+       Lingi nimetus peaks olema võimalikult lühike ja konkreetne, võimalusel ainult 1 sõna. Ei soovita üle 2 sõna.
+       Kui on soov lisada veebilehe sisemist link, siis alustage soovitud lehekülje pealkirja trükkimist
+       "Sisemine link" väljale ning süsteem pakub sobivaid linke. Lingi valimiseks klikkige sellel. Välise lingi puhul kopeerige
+       kogu veebilehe aadress algusega https:// või http:// ja lisage see "Väline veebilink" välja. Linkide järjekorra muutmiseks minge rea alguses olevale ikoonile ja
+       lohistage rida soovitud kohta. Muudatuste salvestamiseks tuleb vajutada "Salvesta seadistus" nuppu.',
+      '#group' => 'tabs',
+    ];
+    $form['frontpage_quick_links']['fp_quick_links_table'] = [
+      '#type' => 'table',
+      '#header' => [
+        'Veebilingi väljakuvatav nimi',
+        'Sisemine link',
+        'Väline veebilink',
+        'Kaal'
+      ],
+      // TableDrag: Each array value is a list of callback arguments for
+      // drupal_add_tabledrag(). The #id of the table is automatically
+      // prepended; if there is none, an HTML ID is auto-generated.
+      '#tabledrag' => [
+        [
+          'action' => 'order',
+          'relationship' => 'sibling',
+          'group' => 'table-sort-weight',
+        ],
+      ],
+    ];
+    for ($i = 0; $i < 8; $i++) {
+      $j = $i + 1;
+      // TableDrag: Mark the table row as draggable.
+      $form['frontpage_quick_links']['fp_quick_links_table'][$i]['#attributes']['class'][] = 'draggable';
+      // TableDrag: Sort the table row according to its existing/configured
+      // weight.
+      $form['frontpage_quick_links']['fp_quick_links_table'][$i]['#weight'] = $config->get('frontpage_quick_links.link_weight_' . $j);
+
+      $form['frontpage_quick_links']['fp_quick_links_table'][$i]['link_name'] = [
+        '#type' => 'textfield',
+        '#title' => 'Veebilingi väljakuvatav nimi ' . $j,
+        '#title_display' => 'invisible',
+        '#size' => 35,
+        '#default_value' => $config->get('frontpage_quick_links.link_name_' . $j),
+      ];
+      $form['frontpage_quick_links']['fp_quick_links_table'][$i]['link_entity'] = [
+        '#type' => 'entity_autocomplete',
+        '#size' => 20,
+        '#title' => 'Sisemine link ' . $j,
+        '#title_display' => 'invisible',
+        '#target_type' => 'node',
+        '#selection_handler' => 'default', // Optional. The default selection handler is pre-populated to 'default'.
+        #'#selection_settings' => [
+        #  'target_bundles' => ['article', 'page'],
+        #],
+      ];
+      if (!empty($config->get('frontpage_quick_links.link_entity_' . $j))) {
+        $node = \Drupal::entityTypeManager()->getStorage('node')->load($config->get('frontpage_quick_links.link_entity_' . $j));
+        $form['frontpage_quick_links']['fp_quick_links_table'][$i]['link_entity']['#default_value'] = $node;
+      }
+      $form['frontpage_quick_links']['fp_quick_links_table'][$i]['link_url'] = [
+        '#type' => 'url',
+        '#title' => 'Väline veebilink ' . $j,
+        '#title_display' => 'invisible',
+        '#size' => 30,
+        #'#autocomplete_route_name' => 'linkit.autocomplete',
+        #'#autocomplete_route_parameters' => [
+        #  'linkit_profile_id' => 'default',
+        #],
+        '#default_value' => $config->get('frontpage_quick_links.link_url_' . $j),
+      ];
+      // TableDrag: Weight column element.
+      $form['frontpage_quick_links']['fp_quick_links_table'][$i]['link_weight'] = [
+        '#type' => 'weight',
+        '#title' => $this->t('Weight for @title', ['@title' => 'link ' . $j]),
+        '#title_display' => 'invisible',
+        '#default_value' => $config->get('frontpage_quick_links.link_weight_' . $j),
+        // Classify the weight element for #tabledrag.
+        '#attributes' => ['class' => ['table-sort-weight']],
+      ];
+    }
+
     ##################################################### Olulisemad kontaktid #################################################
     $form['important_contacts'] = [
       '#type' => 'details',
@@ -319,7 +403,7 @@ class HitsaSettingsForm extends ConfigFormBase {
         '#type' => 'textfield',
         '#title' => 'Veebilingi väljakuvatav nimi ' . $j,
         '#title_display' => 'invisible',
-        '#size' => 30,
+        '#size' => 35,
         '#default_value' => $config->get('footer_quick_links.link_name_' . $j),
       ];
       $form['footer_quick_links']['quick_links_table'][$i]['link_entity'] = [
@@ -423,6 +507,22 @@ class HitsaSettingsForm extends ConfigFormBase {
   public function validateForm(array &$form, FormStateInterface $form_state) {
     parent::validateForm($form, $form_state);
 
+    $frontpage_quick_links = $form_state->getValue('fp_quick_links_table');
+    foreach ($frontpage_quick_links as $id => $item) {
+      $j = $id + 1;
+      if (!empty($item['link_name']) AND empty($item['link_entity']) AND empty($item['link_url'])) {
+        $message = 'Palun täida kas väli "sisemine link" või "väline veebilink" real '.$j.'.';
+        $form_state->setErrorByName('fp_quick_links_table][' . $id . '][link_entity', $message);
+        $form_state->setErrorByName('fp_quick_links_table][' . $id . '][link_url', $message);
+      }
+      if (!empty($item['link_entity']) AND empty($item['link_name'])) {
+        $form_state->setErrorByName('fp_quick_links_table]['.$id.'][link_name', $this->t('@name field is required.', ['@name' => '"veebilingi väljakuvatav nimi" real ' . $j]));
+      }
+      if (!empty($item['link_url']) AND empty($item['link_name'])) {
+        $form_state->setErrorByName('fp_quick_links_table]['.$id.'][link_name', $this->t('@name field is required.', ['@name' => '"veebilingi väljakuvatav nimi" real ' . $j]));
+      }
+    }
+
     $socialmedia_links = $form_state->getValue('socialmedia_table');
     foreach ($socialmedia_links as $id => $item) {
       $j = $id + 1;
@@ -519,6 +619,24 @@ class HitsaSettingsForm extends ConfigFormBase {
       ->set('automatic_generation_academic_year.on', $form_state->getValue('automatic_generation_academic_year_on'))
       ->set('automatic_generation_academic_year.date', $form_state->getValue('automatic_generation_academic_year_date'))
       ->save();
+    ################################################### Frontpage quick links settings save ######################################
+
+    $frontpage_quick_links = $form_state->getValue('fp_quick_links_table');
+
+    $keys = array_column($frontpage_quick_links, 'link_weight');
+    array_multisort($keys, SORT_ASC, $frontpage_quick_links);
+
+    foreach ($frontpage_quick_links as $id => $item) {
+      $j = $id + 1;
+
+      $this->config('hitsa_settings.settings')
+        ->set('frontpage_quick_links.link_name_'. $j, $item['link_name'])
+        ->set('frontpage_quick_links.link_entity_'. $j, $item['link_entity'])
+        ->set('frontpage_quick_links.link_url_'. $j, $item['link_url'])
+        ->set('frontpage_quick_links.link_weight_'. $j, $item['link_weight'])
+        ->save();
+    }
+
     ################################################### System site settings save ######################################
 
     $this->config('system.site')
