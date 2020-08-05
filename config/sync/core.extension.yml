@@ -16,6 +16,8 @@ module:
   config_translation: 0
   contact: 0
   contextual: 0
+  crop: 0
+  ctools: 0
   datetime: 0
   datetime_range: 0
   dblog: 0
@@ -26,6 +28,7 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  focal_point: 0
   help: 0
   history: 0
   hitsa_settings: 0
@@ -45,6 +48,8 @@ module:
   path_alias: 0
   quickedit: 0
   rdf: 0
+  redirect: 0
+  redirect_404: 0
   search: 0
   shortcut: 0
   svg_image: 0
@@ -61,6 +66,7 @@ module:
   webform: 0
   webform_ui: 0
   menu_link_content: 1
+  pathauto: 1
   content_translation: 10
   views: 10
   paragraphs: 11

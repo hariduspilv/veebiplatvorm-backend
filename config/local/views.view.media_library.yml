@@ -1302,7 +1302,7 @@ display:
             link: true
         changed:
           id: changed
-          label: Updated
+          label: Uuendati
           table: media_field_data
           field: changed
           relationship: none

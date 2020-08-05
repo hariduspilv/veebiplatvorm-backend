@@ -5,10 +5,10 @@ display:
       pager:
         options:
           tags:
-            previous: '‹ eelmine'
-            next: 'järgmine ›'
-            first: '« esimene'
-            last: 'viimane »'
+            previous: '‹ previous'
+            next: 'next ›'
+            first: '« first'
+            last: 'last »'
       fields:
         subject:
           label: Teema
