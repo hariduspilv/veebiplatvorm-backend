@@ -22,12 +22,18 @@
         "drupal/config_ignore": "^2.2",
         "drupal/config_split": "^1.4",
         "drupal/core-recommended": "^8.9.0",
+        "drupal/crop": "^2.1",
+        "drupal/focal_point": "^1.4",
         "drupal/linkit": "^6.0",
+        "drupal/maxlength": "^1.0",
         "drupal/paragraphs": "^1.12",
+        "drupal/pathauto": "^1.8",
+        "drupal/redirect": "^1.6",
         "drupal/svg_image": "^1.13",
         "drupal/tablefield": "^2.1",
         "drupal/token": "^1.7",
         "drupal/twig_tweak": "^2.6",
+        "drupal/webform": "^5.18",
         "drush/drush": "^10.2"
     },
     "conflict": {

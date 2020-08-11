@@ -1,0 +1,5 @@
+label: 'Taksonoomia termin'
+description: 'Teatud taksonoomia termiga seotud sisu.'
+display:
+  feed_1:
+    display_title: Andmevoog

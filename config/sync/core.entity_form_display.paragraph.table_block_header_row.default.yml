@@ -3,21 +3,22 @@ langcode: et
 status: true
 dependencies:
   config:
-    - field.field.paragraph.table_block_header_row.field_table
+    - field.field.paragraph.table_block_header_row.field_table_editor
     - paragraphs.paragraphs_type.table_block_header_row
   module:
-    - tablefield
+    - text
 id: paragraph.table_block_header_row.default
 targetEntityType: paragraph
 bundle: table_block_header_row
 mode: default
 content:
-  field_table:
-    weight: 0
+  field_table_editor:
+    weight: 1
     settings:
-      input_type: textfield
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
-    type: tablefield
+    type: text_textarea
     region: content
 hidden:
   created: true

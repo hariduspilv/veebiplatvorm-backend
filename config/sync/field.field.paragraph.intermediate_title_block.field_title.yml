@@ -12,7 +12,7 @@ bundle: intermediate_title_block
 label: 'Vahepealkirja nimi'
 description: 'Vormindatakse vastavalt valitud pealkirja tasemele.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

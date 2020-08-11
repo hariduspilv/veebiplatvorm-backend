@@ -1,0 +1,52 @@
+label: Failid
+description: 'Otsi ja halda faile.'
+display:
+  default:
+    display_options:
+      fields:
+        filename:
+          label: Nimetus
+        filemime:
+          label: MIME-tüüp
+        status:
+          settings:
+            format_custom_false: Ajutine
+            format_custom_true: Alaline
+        created:
+          label: 'Üleslaadimise kuupäev'
+        changed:
+          label: 'Muutmise kuupäev'
+        count:
+          label: Kasutuskoht
+      filters:
+        filename:
+          expose:
+            label: Failinimi
+        filemime:
+          expose:
+            label: MIME-tüüp
+      title: Failid
+      empty:
+        area_text_custom:
+          content: 'Ühtegi faili pole saadaval.'
+  page_1:
+    display_title: 'Failide ülevaade'
+    display_options:
+      menu:
+        title: Failid
+  page_2:
+    display_title: 'Faili kasutus'
+    display_options:
+      fields:
+        entity_label:
+          label: Olem
+        type:
+          label: 'Olemi tüüp'
+        module:
+          label: 'Registreerin moodulit'
+        count:
+          label: 'Kasutuse loendur'
+      title: 'Faili kasutus'
+      arguments:
+        fid:
+          title: 'Kasutusinfo failile {{ arguments.fid }}'

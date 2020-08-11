@@ -1,0 +1,18 @@
+uuid: fc6e2c5e-4f4b-4a5b-a9b2-cc097b9a457a
+langcode: et
+status: true
+dependencies:
+  config:
+    - comment.type.comment
+id: comment.comment.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment
+label: Veebileht
+description: 'Kommentaari autori kodulehe aadress.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

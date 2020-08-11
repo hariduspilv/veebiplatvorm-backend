@@ -1,0 +1,10 @@
+label: Avaleht
+description: 'Kogu avalehele määratud sisu.'
+display:
+  default:
+    display_options:
+      empty:
+        title:
+          title: 'Tere tulemast lehele [site:name]'
+  feed_1:
+    display_title: Andmevoog

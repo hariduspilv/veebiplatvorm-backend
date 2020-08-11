@@ -1,0 +1,23 @@
+uuid: 79eb7e07-4709-4a3e-892a-6cbaa88808f9
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_orientation
+    - paragraphs.paragraphs_type.gallery_block
+  module:
+    - options
+id: paragraph.gallery_block.field_orientation
+field_name: field_orientation
+entity_type: paragraph
+bundle: gallery_block
+label: Paigutus
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: landscape
+default_value_callback: ''
+settings: {  }
+field_type: list_string

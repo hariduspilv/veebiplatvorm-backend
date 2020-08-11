@@ -1,0 +1,14 @@
+uuid: 81a6dfc9-14c4-4acc-97e3-649e7199a172
+langcode: et
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: Mb_L3vE-0IBZH5s2rjpk2LNn0QHClQP9AARQdCmVLt4
+id: translations
+label: Translations
+category: Keel
+likert: false
+options: ''

@@ -1,0 +1,18 @@
+uuid: e68d3639-8167-4e19-8060-d2a64dded44f
+langcode: et
+status: true
+dependencies:
+  config:
+    - comment.type.comment
+id: comment.comment.changed
+field_name: changed
+entity_type: comment
+bundle: comment
+label: Muudetud
+description: 'Kommentaari viimase muutmise aeg.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

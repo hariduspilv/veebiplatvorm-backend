@@ -1,0 +1,24 @@
+description: 'Viimased logiteated'
+display:
+  default:
+    display_options:
+      fields:
+        nothing:
+          admin_label: Ikoon
+        severity:
+          label: Tõsidus
+        timestamp:
+          label: Kuupäev
+        message:
+          label: Teade
+        name:
+          label: Kasutaja
+      filters:
+        severity:
+          expose:
+            label: Tõsidus
+      title: 'Viimased logiteated'
+      empty:
+        area:
+          admin_label: 'Logis ei ole teateid.'
+          content: 'Logis ei ole teateid.'

@@ -1,0 +1,35 @@
+display:
+  default:
+    display_options:
+      filters:
+        status:
+          group_info:
+            label: Avaldatud
+            group_items:
+              1:
+                title: Avaldatud
+        name:
+          expose:
+            label: Nimetus
+  page:
+    display_options:
+      fields:
+        edit_media:
+          text: Muuda
+        delete_media:
+          text: Kustuta
+  widget:
+    display_options:
+      filters:
+        name:
+          expose:
+            label: Nimetus
+  widget_table:
+    display_options:
+      fields:
+        name:
+          label: Nimetus
+      filters:
+        name:
+          expose:
+            label: Nimetus

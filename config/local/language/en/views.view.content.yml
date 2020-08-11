@@ -1,0 +1,36 @@
+label: Sisu
+description: 'Otsi ja halda lehe sisu.'
+display:
+  default:
+    display_options:
+      fields:
+        title:
+          label: Pealkiri
+        type:
+          label: 'Sisu tüüp'
+        status:
+          settings:
+            format_custom_true: Avaldatud
+      filters:
+        title:
+          expose:
+            label: Pealkiri
+        type:
+          expose:
+            label: 'Sisu tüüp'
+        status:
+          group_info:
+            group_items:
+              1:
+                title: Avaldatud
+      title: Sisu
+      empty:
+        area_text_custom:
+          content: 'Sisu puudub.'
+  page_1:
+    display_options:
+      menu:
+        title: Sisu
+      tab_options:
+        title: Sisu
+        description: 'Otsi ja halda sisu'

@@ -1,0 +1,13 @@
+display:
+  default:
+    display_options:
+      fields:
+        status:
+          settings:
+            format_custom_true: Avaldatud
+      filters:
+        status:
+          group_info:
+            group_items:
+              1:
+                title: Avaldatud
