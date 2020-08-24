@@ -3,4 +3,4 @@ type: module
 description: 'Veebiplatvormide seadistused'
 core_version_requirement: ^8 || ^9
 package: 'Veebiplatvorm'
-configure: harno_settings.harno_settings_form
+configure: harno_settings.settings_form
