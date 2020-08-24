@@ -4,6 +4,7 @@ ignored_config_entities:
   - language.negotiation
   - 'language.entity.*'
   - 'collections.language.*'
+  - webform.webform.test_kaarel
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
 langcode: et
