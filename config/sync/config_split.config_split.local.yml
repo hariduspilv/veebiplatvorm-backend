@@ -87,6 +87,7 @@ graylist:
   - filter.format.full_html
   - filter.format.plain_text
   - filter.format.restricted_html
+  - harno_settings.settings
   - image.style.large
   - image.style.linkit_result_thumbnail
   - image.style.media_library
@@ -162,7 +163,7 @@ graylist:
   - views.view.who_s_new
   - views.view.who_s_online
   - 'language.entity.*'
-  - harno_settings.settings
+  - webform.webform.test_kaarel
 graylist_dependents: true
 graylist_skip_equal: true
 weight: 0
