@@ -27,9 +27,9 @@ footer_socialmedia_links:
   link_name_2: LinkedIn
   link_url_2: 'https://www.linkedin.com/?trk=public_jobs_nav-header-logo'
   link_weight_2: -9
-  link_icon_3: ''
-  link_name_3: ''
-  link_url_3: ''
+  link_icon_3: mdi-facebook
+  link_name_3: Facebook
+  link_url_3: 'https://www.facebook.com/SakuGumnaasium/'
   link_weight_3: -8
   link_icon_4: ''
   link_name_4: ''
