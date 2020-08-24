@@ -2,17 +2,17 @@
 
 /**
  * @file
- * Install and uninstall functions for the HITSA settings Module.
+ * Install and uninstall functions for the HARNO settings Module.
  */
-function hitsa_settings_uninstall() {
+function harno_settings_uninstall() {
   // Deleting the configuration while uninstalling.
-  \Drupal::configFactory()->getEditable('hitsa_settings.settings')->delete();
+  \Drupal::configFactory()->getEditable('harno_settings.settings')->delete();
 }
 /**
  * Set default values for automatic_generation_academic_year config
  */
-function hitsa_settings_update_8002() {
-  $config = \Drupal::configFactory()->getEditable('hitsa_settings.settings');
+function harno_settings_update_8002() {
+  $config = \Drupal::configFactory()->getEditable('harno_settings.settings');
   $config->set('automatic_generation_academic_year.on', TRUE);
   $config->set('automatic_generation_academic_year.date', '15.06.');
   $config->save();
@@ -20,8 +20,8 @@ function hitsa_settings_update_8002() {
 /**
  * Set default values for frontpage_quick_links link_weight config
  */
-function hitsa_settings_update_8003() {
-  $config = \Drupal::configFactory()->getEditable('hitsa_settings.settings');
+function harno_settings_update_8003() {
+  $config = \Drupal::configFactory()->getEditable('harno_settings.settings');
   $config->set('frontpage_quick_links.link_weight_1', -10);
   $config->set('frontpage_quick_links.link_weight_2', -9);
   $config->set('frontpage_quick_links.link_weight_3', -8);

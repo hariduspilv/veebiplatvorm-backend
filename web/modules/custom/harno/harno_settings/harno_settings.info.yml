@@ -1,6 +1,6 @@
-name: 'Veebiplatvormi seadistused [deprecated]'
+name: 'Veebiplatvormi seadistused'
 type: module
 description: 'Veebiplatvormide seadistused'
 core_version_requirement: ^8 || ^9
 package: 'Veebiplatvorm'
-configure: hitsa_settings.hitsa_settings_form
+configure: harno_settings.harno_settings_form

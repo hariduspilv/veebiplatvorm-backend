@@ -1,0 +1,18 @@
+harno_settings.admin_index:
+  path: '/admin/config/veebiplatvorm'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Veebiplatvorm'
+  requirements:
+    _permission: 'administer harno settings'
+  options:
+    _admin_route: TRUE
+harno_settings.settings_form:
+  path: '/admin/config/veebiplatvorm/uldised-seaded'
+  defaults:
+    _form: '\Drupal\harno_settings\Form\HarnoSettingsForm'
+    _title: 'Veebiplatvormi üldised seaded'
+  requirements:
+    _permission: 'administer harno settings'
+  options:
+    _admin_route: TRUE

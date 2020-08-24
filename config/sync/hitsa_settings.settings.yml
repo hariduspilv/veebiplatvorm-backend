@@ -104,3 +104,36 @@ footer_socialmedia_links:
 automatic_generation_academic_year:
   'on': true
   date: 04.08.
+frontpage_quick_links:
+  link_name_1: 'test galerii'
+  link_entity_1: 4
+  link_url_1: ''
+  link_weight_1: -10
+  link_name_2: ''
+  link_entity_2: null
+  link_url_2: ''
+  link_weight_2: -9
+  link_name_3: ''
+  link_entity_3: null
+  link_url_3: ''
+  link_weight_3: -8
+  link_name_4: ''
+  link_entity_4: null
+  link_url_4: ''
+  link_weight_4: -7
+  link_name_5: ''
+  link_entity_5: null
+  link_url_5: ''
+  link_weight_5: -6
+  link_name_6: ''
+  link_entity_6: null
+  link_url_6: ''
+  link_weight_6: -5
+  link_name_7: ''
+  link_entity_7: null
+  link_url_7: ''
+  link_weight_7: -4
+  link_name_8: ''
+  link_entity_8: null
+  link_url_8: ''
+  link_weight_8: -3

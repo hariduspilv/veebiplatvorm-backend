@@ -29,6 +29,7 @@ module:
   file: 0
   filter: 0
   focal_point: 0
+  harno_settings: 0
   help: 0
   history: 0
   hitsa_settings: 0

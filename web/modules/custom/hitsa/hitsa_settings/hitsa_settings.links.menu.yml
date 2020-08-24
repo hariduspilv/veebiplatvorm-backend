@@ -1,12 +1,12 @@
 hitsa_settings.admin_index:
-  title: Veebiplatvorm
+  title: Veebiplatvorm [deprecated]
   route_name: user.admin_index
   parent: system.admin_config
   description: 'Configure HITSA settings.'
   position: left
   weight: -30
 hitsa_settings.settings_form:
-  title: 'Üldised seaded'
+  title: 'Üldised seaded [deprecated]'
   description: 'Kasutaja saab sisestada ja muuta lehe üldseadistuse elemente, mis kuvatakse avaliku vaate jaluses või päises.
   Näiteks haridusasutuse üldised kontaktid, haridusasutuse sotsiaalmeedia lingid, jaluse kiirlingid,
   jaluse vabatekstiala ja jaluses kuvatav kasutusõiguste märkus.'
