@@ -93,6 +93,8 @@ footer_free_text_area:
   body: ''
 footer_copyright:
   name: ''
+news_our_story:
+  name: 'Meie lugu'
 automatic_generation_academic_year:
   on: true
   date: 15.06.

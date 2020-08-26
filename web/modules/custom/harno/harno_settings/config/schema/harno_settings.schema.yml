@@ -295,6 +295,13 @@ harno_settings.settings:
         name:
           type: text
           label: 'Pealkiri'
+    news_our_story:
+      type: mapping
+      label: 'Õppeaasta automaatne genereerimine'
+      mapping:
+        name:
+          type: text
+          label: 'Uudise Meie lugu nimetus'
     automatic_generation_academic_year:
       type: mapping
       label: 'Õppeaasta automaatne genereerimine'

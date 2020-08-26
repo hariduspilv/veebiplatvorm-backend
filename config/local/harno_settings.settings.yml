@@ -31,9 +31,9 @@ footer_socialmedia_links:
   link_name_3: Facebook
   link_url_3: 'https://www.facebook.com/SakuGumnaasium/'
   link_weight_3: -8
-  link_icon_4: ''
-  link_name_4: ''
-  link_url_4: ''
+  link_icon_4: mdi-youtube
+  link_name_4: Youtube
+  link_url_4: 'https://www.youtube.com/channel/UCpyufRRdMNyD23JesPMvSLQ'
   link_weight_4: -7
   link_icon_5: ''
   link_name_5: ''
@@ -132,3 +132,5 @@ frontpage_quick_links:
 langcode: et
 _core:
   default_config_hash: WmFHeq2GiSpb8GHe19n_nYjMMtCcCe0p8MMBd2of-zA
+news_our_story:
+  name: 'Kooli blogi'

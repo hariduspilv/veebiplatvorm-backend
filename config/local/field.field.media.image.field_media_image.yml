@@ -31,7 +31,7 @@ default_value: {  }
 default_value_callback: ''
 settings:
   file_directory: '[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'png gif jpg jpeg svg'
+  file_extensions: 'jpg jpeg png gif svg'
   max_filesize: ''
   max_resolution: ''
   min_resolution: ''

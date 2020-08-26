@@ -32,3 +32,11 @@ function harno_settings_update_8003() {
   $config->set('frontpage_quick_links.link_weight_8', -3);
   $config->save();
 }
+/**
+ * Set default value for news_our_story config
+ */
+function harno_settings_update_8004() {
+  $config = \Drupal::configFactory()->getEditable('harno_settings.settings');
+  $config->set('news_our_story.name', 'Meie lugu');
+  $config->save();
+}

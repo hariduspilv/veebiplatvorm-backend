@@ -1,14 +1,15 @@
-uuid: ba2a7d37-5b21-487c-8f9c-4836c40d4d3a
+uuid: 8e086121-5661-48ba-b3c8-149733020e52
 langcode: et
 status: true
 dependencies:
   config:
+    - field.storage.node.field_author_name
     - node.type.article
-id: node.article.title
-field_name: title
+id: node.article.field_author_name
+field_name: field_author_name
 entity_type: node
 bundle: article
-label: 'Uudise pealkiri'
+label: 'Autori nimi'
 description: ''
 required: true
 translatable: false
