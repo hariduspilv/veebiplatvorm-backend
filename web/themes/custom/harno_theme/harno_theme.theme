@@ -35,11 +35,13 @@ function harno_theme_form_system_theme_settings_alter(&$form, FormStateInterface
 function harno_theme_preprocess_block(&$variables) {
 }
 function harno_theme_preprocess_media(&$vars){
+
   if (isset($vars['elements'])){
-    if(isset($vars['elements']['thumbnail'])){
+    if(isset($vars['elements']['#thumbnail'])){
       if(isset($vars['content'])){
         if(!empty(($vars['content']['field_media_image']))){
-          $vars['content']['field_media_image']['thumbnail'] = true;
+//          dump($vars['content']['field_media_image']);
+          $vars['content']['field_media_image']['#thumbnail'] = true;
         }
       }
     }

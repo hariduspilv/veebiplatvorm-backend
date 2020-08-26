@@ -80,7 +80,8 @@
             {% endif %}
           <li>
             {% set content  = item.content %}
-            {% set  content = content|merge({'thumbnail':true}) %}
+{#            {{ dump(content) }}#}
+            {% set  content = content|merge({'#thumbnail':true}) %}
             {{ content }}
           </li>
           {% if loop.last %}

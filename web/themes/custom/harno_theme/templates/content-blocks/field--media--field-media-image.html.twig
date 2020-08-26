@@ -42,10 +42,10 @@
 ]
 %}
 {% if element %}
-  {% if not element.thumbnail %}
-   {% set img_classes = "image-field image-field--landscape" %}
-  {% else %}
+  {% if  element['#thumbnail'] ==1 %}
     {% set img_classes = "" %}
+  {% else %}
+    {% set img_classes = "image-field image-field--landscape" %}
   {% endif %}
 {% endif %}
 {% for item in items %}
@@ -55,7 +55,7 @@
   <div class="image-block">
     <a class="{{ img_classes }}" style="background-image: url({{ image_uri|image_style('landscape') }});" tabindex="0">
       <img src="assets/images/placeholder-1.gif" alt="{{ image_alt }}">
-      {% if img_classes=="" %}
+      {% if not element['#thumbnail'] %}
       <span class="gallery-icon" aria-label="{{ "Open picture" | t}}"></span>
       {% endif %}
     </a><!--/image-field-->
