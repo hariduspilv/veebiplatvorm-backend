@@ -41,10 +41,12 @@
   label_display == 'visually_hidden' ? 'visually-hidden',
 ]
 %}
-{% if not element.thumbnail %}
- {% set img_classes = "image-field image-field--landscape" %}
-{% else %}
-  {% set img_classes = "" %}
+{% if element %}
+  {% if not element.thumbnail %}
+   {% set img_classes = "image-field image-field--landscape" %}
+  {% else %}
+    {% set img_classes = "" %}
+  {% endif %}
 {% endif %}
 {% for item in items %}
   {% set image_uri = item.content['#item']|file_uri%}
@@ -53,7 +55,7 @@
   <div class="image-block">
     <a class="{{ img_classes }}" style="background-image: url({{ image_uri|image_style('landscape') }});" tabindex="0">
       <img src="assets/images/placeholder-1.gif" alt="{{ image_alt }}">
-      {% if not element.thumbnail %}
+      {% if img_classes=="" %}
       <span class="gallery-icon" aria-label="{{ "Open picture" | t}}"></span>
       {% endif %}
     </a><!--/image-field-->
