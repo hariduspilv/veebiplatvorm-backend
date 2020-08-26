@@ -1,0 +1,17 @@
+name: Harno Custom Theme
+type: theme
+description: 'Harno Custom theme'
+core: 8.x
+core_version_requirement: ^8 || ^9
+libraries:
+  - harno_theme/harno_custom
+  - harno_theme/global-styling
+
+regions:
+  header: Header
+  content: Content
+  footer: 'Footer'
+# Information added by Drupal.org packaging script on 2020-05-09
+version: '8.x-4.28'
+project: 'bootstrap_barrio'
+datestamp: 1589051364
