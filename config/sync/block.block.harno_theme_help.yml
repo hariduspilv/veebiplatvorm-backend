@@ -1,0 +1,22 @@
+uuid: 065a6cd7-bc3a-46da-b84b-756e77bf018f
+langcode: et
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - harno_theme
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: harno_theme_help
+theme: harno_theme
+region: content
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

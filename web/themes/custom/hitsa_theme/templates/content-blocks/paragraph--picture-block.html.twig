@@ -1,0 +1,13 @@
+{% if content.field_orientation %}
+ {% set style = content.field_orientation['#items'].getString() %}
+{% endif %}
+{% if style %}
+  {% set image_uri = content.field_image['#items']|file_uri %}
+  {% set image_file_alt = content.field_image[0]['#media'].field_media_image.0.alt %}
+  <div class="image-block">
+    <a class="image-field image-field--{{ style }}" style="background-image: url({{ image_uri|image_style('landscape') }});" tabindex="0">
+      <img src="assets/images/placeholder-1.gif" alt="{{ image_file_alt }}">
+      <span class="gallery-icon" aria-label="{{ "Open picture" | t}}"></span>
+    </a><!--/image-field-->
+  </div><!--/image-block-->
+{% endif %}

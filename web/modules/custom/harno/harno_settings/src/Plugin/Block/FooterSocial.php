@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Block that creates the social media block to show in the footer area
  * @Block(
- * 	id = "footer_social",
+ * 	id = "harno_footer_social",
  * 	admin_label = @Translation("Footer Social Media Icons Block"),
  * 	category = @Translation("Footer Block"),
  * )

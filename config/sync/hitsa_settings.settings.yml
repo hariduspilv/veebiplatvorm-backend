@@ -1,85 +1,47 @@
 general:
-  address: 'Rakvere, Talinna tn 5'
-  phone: '55645123'
-  email: demo@kool.ee
-  favicon: 22
-  frontpage_background: 20
-  logo: 28
+  frontpage_background: 2
+  logo: 1
+  favicon: 0
+  address: 'Rakvere, Karja 24'
+  phone: '53323117'
+  email: forzakenus@gmail.com
 langcode: et
 _core:
-  default_config_hash: JUj77e6N3QUpwLhTzL1wa9FhUhr0aDQnMMkBAqsph68
-frontpage_background: 0
-favicon: 0
+  default_config_hash: fb94hDnwZ1IHLQGcfp7yd_vYn_30KsxEWMIgauzoXX8
+footer_free_text_area:
+  name: 'Sisestame Vabateksti nii et vahe ei ole'
+  body: "Sisestame Vabateksti nii et vahe ei ole ssasdsada\r\nsdaasdas\r\nadsadsa\r\n\r\n\r\n\r\nSisestame Vabateksti nii et vahe ei ole\r\nSisestame Vabateksti nii et vahe ei ole\r\nSisestame Vabateksti nii et vahe ei ole\r\nSisestame Vabateksti nii et vahe ei ole\r\nSisestame Vabateksti nii et vahe ei ole"
+footer_copyright:
+  name: 'Kasutusõiguste märkus AAa'
 important_contacts:
   name_1: ''
-  body_1: 'Ainult sisu, ilma nimeta'
-  name_2: Direktor
-  body_2: '32355459'
-  name_3: 'Ainult nimi, ilma sisuta'
-  body_3: ''
-  name_4: 'Reg. kood'
-  body_4: '10105020'
+  body_1: ''
   weight_1: -10
-  weight_2: -9
-  weight_3: -8
-  weight_4: -7
-footer_quick_links:
-  link_name_1: lihtlehekülg
-  link_url_1: ''
-  link_weight_1: -10
-  link_name_2: 'Jaanus Liivak: võid olla matemaatikas tark, aga kui süda seisma jääb, siis mis sa sellega peale hakkad?'
-  link_url_2: 'https://sport.postimees.ee/6993025/jaanus-liivak-void-olla-matemaatikas-tark-aga-kui-suda-seisma-jaab-siis-mis-sa-sellega-peale-hakkad?_ga=2.144638320.478278038.1591558495-356562384.1589176952'
-  link_weight_2: -9
-  link_name_3: ''
-  link_url_3: ''
-  link_weight_3: -7
-  link_name_4: 'Isikuandmete töötlemine'
-  link_url_4: ''
-  link_weight_4: -7
-  link_name_5: ''
-  link_url_5: ''
-  link_weight_5: -6
-  link_name_6: ''
-  link_url_6: ''
-  link_weight_6: -4
-  link_name_7: ''
-  link_url_7: ''
-  link_weight_7: -3
-  link_name_8: ''
-  link_url_8: ''
-  link_weight_8: -3
-  link_name_9: ''
-  link_url_9: ''
-  link_weight_9: '-2'
-  link_entity_1: 2
-  link_entity_2: null
-  link_entity_3: null
-  link_entity_4: 1
-  link_entity_5: null
-  link_entity_6: null
-  link_entity_7: null
-  link_entity_8: null
-footer_free_text_area:
-  name: 'Vabatekstiala pealkiri Vabatekstiala pealkiri'
-  body: "Vabataktiala sisu\r\n<p>sisu</p>"
-footer_copyright:
-  name: '© 2020 - 2021 Demo Gümnaasium'
+  name_2: 'Link valja'
+  body_2: Testime
+  weight_2: -10
+  name_3: Madis
+  body_3: madis.loik@twn.ee
+  weight_3: -10
+  name_4: 'Oluline Isik olulises kohas'
+  body_4: 'Midagi olulist'
+  weight_4: -10
 footer_socialmedia_links:
-  link_icon_1: mdi-instagram
-  link_name_1: Instagram
-  link_url_1: 'https://www.instagram.com/vjktoimetus/'
+  link_icon_1: mdi-facebook
+  link_name_1: Facebook
+  link_url_1: 'https://hitsa-uus2.lndo.site/et/admin/config/hitsa/hitsa-settings'
   link_weight_1: -10
-  link_icon_2: mdi-facebook
-  link_name_2: Facebook
-  link_url_2: 'https://www.facebook.com/SakuGumnaasium/'
+  link_icon_2: mdi-instagram
+  link_name_2: Instaaaaa
+  link_url_2: 'https://www.instagram.com/?hl=en'
   link_weight_2: -9
-  link_icon_3: mdi-widgets
-  link_name_3: E-kool
-  link_url_3: 'https://ekool.eu/index_et.html'
+  link_icon_3: mdi-blogger
+  link_name_3: Blogger
+  link_url_3: 'https://hitsa-uus2.lndo.site/et/admin/config/hitsa/hitsa-settings'
   link_weight_3: -8
-  link_icon_4: ''
-  link_name_4: ''
-  link_url_4: ''
+  link_icon_4: mdi-twitter
+  link_name_4: '4 Twitter'
+  link_url_4: 'https://hitsa-uus2.lndo.site/et/admin/config/hitsa/hitsa-settings'
   link_weight_4: -7
   link_icon_5: ''
   link_name_5: ''
@@ -101,12 +63,9 @@ footer_socialmedia_links:
   link_name_9: ''
   link_url_9: ''
   link_weight_9: -2
-automatic_generation_academic_year:
-  'on': true
-  date: 04.08.
-frontpage_quick_links:
-  link_name_1: 'test galerii'
-  link_entity_1: 4
+footer_quick_links:
+  link_name_1: ''
+  link_entity_1: null
   link_url_1: ''
   link_weight_1: -10
   link_name_2: ''
@@ -125,15 +84,15 @@ frontpage_quick_links:
   link_entity_5: null
   link_url_5: ''
   link_weight_5: -6
-  link_name_6: ''
-  link_entity_6: null
+  link_name_6: 'Testime kiirlinki'
+  link_entity_6: 1
   link_url_6: ''
   link_weight_6: -5
-  link_name_7: ''
+  link_name_7: Testime
   link_entity_7: null
-  link_url_7: ''
+  link_url_7: 'https://hitsa-uus2.lndo.site/et/admin/config/hitsa/hitsa-settings'
   link_weight_7: -4
-  link_name_8: ''
-  link_entity_8: null
+  link_name_8: 'Testime veel'
+  link_entity_8: 2
   link_url_8: ''
   link_weight_8: -3

@@ -1,20 +1,20 @@
-uuid: 63c6188d-3975-4cc2-8301-baa40f628b11
+uuid: 1b69bf70-c2d7-4c73-b6e5-bd47de96b627
 langcode: et
 status: true
 dependencies:
   module:
-    - hitsa_settings
+    - harno_settings
   theme:
-    - hitsa_theme
+    - harno_theme
 id: footertermsofserviceblock
-theme: hitsa_theme
+theme: harno_theme
 region: footer
-weight: -3
+weight: -4
 provider: null
-plugin: footer_terms_of_service_block
+plugin: harno_footer_terms_of_service_block
 settings:
-  id: footer_terms_of_service_block
+  id: harno_footer_terms_of_service_block
   label: 'Footer Terms of Service Block'
-  provider: hitsa_settings
+  provider: harno_settings
   label_display: visible
 visibility: {  }
