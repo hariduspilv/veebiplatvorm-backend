@@ -1,3 +1,4 @@
 [submodule "web/themes/custom/harno_theme/static"]
-    path = web/themes/custom/harno_theme/static
-    url = https://git.twn.ee/scm/hit/hitsa-veebiplatvormi-fe.git
+	path = web/themes/custom/harno_theme/static
+	url = https://git.twn.ee/scm/hit/hitsa-veebiplatvormi-fe.git
+	branch = dev
