@@ -1,16 +1,16 @@
-uuid: 50171fb1-a97c-48e7-b2e2-6062cae8414e
+uuid: a65c7c2b-c27e-43ec-980c-869de3f8efff
 langcode: et
-status: true
+status: false
 dependencies:
   module:
     - system
   theme:
-    - bootstrap_barrio
+    - harno_theme
 _core:
   default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
-id: bootstrap_barrio_messages
-theme: bootstrap_barrio
-region: highlighted
+id: harno_theme_messages
+theme: harno_theme
+region: header
 weight: 0
 provider: null
 plugin: system_messages_block

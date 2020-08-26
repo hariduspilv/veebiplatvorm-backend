@@ -2,23 +2,24 @@
 
 namespace Drupal\harno_settings\Plugin\Block;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
+
 use Drupal\Core\Block\BlockBase;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Block that creates the social media block to show in the footer area
  * @Block(
- * 	id = "footer_free_text_area",
+ * 	id = "harno_footer_free_text_area",
  * 	admin_label = @Translation("Footer Free Form Text Area"),
  * 	category = @Translation("Footer Block"),
  * )
  */
 class FooterFreeTextArea extends BlockBase{
+
   /**
    * Function to build actual block
    *
    */
+
   public	function build(){
     $information = 'footer_free_text_area';
     $info = $this-> getInfo($information);

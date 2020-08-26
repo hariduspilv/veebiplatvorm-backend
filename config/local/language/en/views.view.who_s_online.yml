@@ -1,22 +1,30 @@
-label: 'Sisseloginud kasutajate infoplokk'
-description: 'Kuvab aktiivsete kasutajate kogunumbrit ja viimati aktiivsete kasutajate kasutaja nimesid.'
+label: 'Блок «Кто на сайте?»'
+description: 'Показывает имена пользователей, которые были активными в последнее время, и общее число активных пользователей.'
 display:
   default:
+    display_title: Master
     display_options:
+      exposed_form:
+        options:
+          submit_button: Применить
+          reset_button_label: Tühista
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
       filters:
         access:
           expose:
-            label: 'Viimane külastus'
-            description: 'Pärast viimase lehe vaatamist on kasutaja online'
-      title: 'Lehel olevad kasutajad'
+            label: 'Последнее посещение'
+            description: 'Пользователь считается находящимся на сайте в течение этого периода, начиная со времени последнего просмотра им страницы.'
+      title: 'Сейчас на сайте'
       header:
         result:
-          content: 'Hetkel on lehel @total kasutajat.'
+          content: 'В данный момент пользователей онлайн: @total.'
       empty:
         area_text_custom:
-          content: 'Hetkel on lehel 0 kasutajat.'
+          content: 'Сейчас 0 пользователей онлайн.'
   who_s_online_block:
-    display_title: 'Lehel olevad kasutajad'
+    display_title: 'Сейчас на сайте'
     display_options:
-      block_description: 'Lehel olevad kasutajad'
-      display_description: 'Nimekiri kasutajatest kes on hetkel sisse logitud.'
+      block_description: 'Сейчас на сайте'
+      display_description: 'Список пользователей, авторизированных в данный момент.'

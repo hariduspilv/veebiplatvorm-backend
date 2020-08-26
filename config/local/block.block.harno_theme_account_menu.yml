@@ -1,4 +1,4 @@
-uuid: 2f2ce521-801f-419e-b492-22a3c724c9ae
+uuid: a3cb224d-6ca1-4dfb-93ae-71b56d839e7d
 langcode: et
 status: false
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   module:
     - system
   theme:
-    - hitsa_theme
+    - harno_theme
 _core:
   default_config_hash: 8a31Ywc1t2zlddGd3bmDrFMefWqgSK2E02ceFdr-bfc
-id: hitsa_theme_account_menu
-theme: hitsa_theme
+id: harno_theme_account_menu
+theme: harno_theme
 region: header
 weight: 0
 provider: null

@@ -6,7 +6,7 @@ use Drupal\Core\Block\BlockBase;
 /**
  * Block that creates the social media block to show in the footer area
  * @Block(
- * 	id = "footer_quick_links",
+ * 	id = "harno_footer_quick_links",
  * 	admin_label = @Translation("Footer Quick Links Block"),
  * 	category = @Translation("Footer Block"),
  * )

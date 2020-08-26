@@ -1,20 +1,20 @@
-uuid: 0e0a58ac-974d-4571-a154-9d6c7083670c
+uuid: ef909153-ed9f-42ff-9ff8-0027ec5c1908
 langcode: et
 status: true
 dependencies:
   module:
-    - hitsa_settings
+    - harno_settings
   theme:
-    - hitsa_theme
+    - harno_theme
 id: footerquicklinksblock
-theme: hitsa_theme
+theme: harno_theme
 region: footer
-weight: -5
+weight: -6
 provider: null
-plugin: footer_quick_links
+plugin: harno_footer_quick_links
 settings:
-  id: footer_quick_links
+  id: harno_footer_quick_links
   label: 'Footer Quick Links Block'
-  provider: hitsa_settings
+  provider: harno_settings
   label_display: visible
 visibility: {  }

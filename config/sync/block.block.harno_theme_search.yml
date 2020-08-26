@@ -1,16 +1,16 @@
-uuid: 31b02bf0-5617-4d98-98d9-531822bea9a0
+uuid: 701135e0-3d0f-4bf7-ad67-f601c5269659
 langcode: et
-status: true
+status: false
 dependencies:
   module:
     - search
   theme:
-    - bootstrap_barrio
+    - harno_theme
 _core:
   default_config_hash: Q-4EcGAsu26ICu4ejEz0uE1zv4akpiaOsizxgZfAmEw
-id: bootstrap_barrio_search
-theme: bootstrap_barrio
-region: sidebar_first
+id: harno_theme_search
+theme: harno_theme
+region: header
 weight: -1
 provider: null
 plugin: search_form_block

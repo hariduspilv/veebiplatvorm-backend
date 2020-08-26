@@ -1,0 +1,15 @@
+uuid: 886005fe-35e8-4270-9b60-dfbb64a52efc
+langcode: et
+status: true
+dependencies: {  }
+name: landscape
+label: Landscape
+effects:
+  f76c15b4-8d76-46ea-8072-572ebb491c95:
+    uuid: f76c15b4-8d76-46ea-8072-572ebb491c95
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: 420
+      upscale: false

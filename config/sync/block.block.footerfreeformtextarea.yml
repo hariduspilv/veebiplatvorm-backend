@@ -1,20 +1,20 @@
-uuid: a9482016-108c-43a6-a59b-2d2b1da2c321
+uuid: 85917bb4-c9ca-44cf-a7ef-e3a188e5294e
 langcode: et
 status: true
 dependencies:
   module:
-    - hitsa_settings
+    - harno_settings
   theme:
-    - hitsa_theme
+    - harno_theme
 id: footerfreeformtextarea
-theme: hitsa_theme
+theme: harno_theme
 region: footer
-weight: -4
+weight: -5
 provider: null
-plugin: footer_free_text_area
+plugin: harno_footer_free_text_area
 settings:
-  id: footer_free_text_area
+  id: harno_footer_free_text_area
   label: 'Footer Free Form Text Area'
-  provider: hitsa_settings
+  provider: harno_settings
   label_display: visible
 visibility: {  }

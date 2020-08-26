@@ -1,20 +1,20 @@
-uuid: 12375987-d4ab-4bd8-b3fb-596593d52537
+uuid: 49f27a5c-9827-4229-bd07-cd2bac751d56
 langcode: et
 status: true
 dependencies:
   module:
-    - hitsa_settings
+    - harno_settings
   theme:
-    - hitsa_theme
+    - harno_theme
 id: footerimportantcontactsblock
-theme: hitsa_theme
+theme: harno_theme
 region: footer
-weight: -7
+weight: -8
 provider: null
-plugin: footer_important_contacts
+plugin: harno_footer_important_contacts
 settings:
-  id: footer_important_contacts
+  id: harno_footer_important_contacts
   label: 'Footer Important Contacts Block'
-  provider: hitsa_settings
+  provider: harno_settings
   label_display: visible
 visibility: {  }

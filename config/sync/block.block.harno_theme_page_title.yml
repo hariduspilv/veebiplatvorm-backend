@@ -1,13 +1,13 @@
-uuid: 4b470a5a-e798-42a7-a1b3-dfe119cbe349
+uuid: c0839ba3-e436-47f1-8ab6-c40946973c5f
 langcode: et
 status: true
 dependencies:
   theme:
-    - hitsa_theme
+    - harno_theme
 _core:
   default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
-id: hitsa_theme_page_title
-theme: hitsa_theme
+id: harno_theme_page_title
+theme: harno_theme
 region: content
 weight: -50
 provider: null

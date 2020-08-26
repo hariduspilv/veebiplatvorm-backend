@@ -1,15 +1,15 @@
-uuid: 02661180-433a-4757-a225-abc759dc5e26
+uuid: 7bf6777d-a174-4f11-bda2-6883a7cd1348
 langcode: et
 status: true
 dependencies:
   module:
     - system
   theme:
-    - bootstrap_barrio
+    - harno_theme
 _core:
   default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
-id: bootstrap_barrio_content
-theme: bootstrap_barrio
+id: harno_theme_content
+theme: harno_theme
 region: content
 weight: 0
 provider: null

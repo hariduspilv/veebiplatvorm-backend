@@ -1,18 +1,18 @@
-uuid: 4bca1418-0498-429e-904f-d3f196d2ccf3
+uuid: a5b99e41-3435-48ff-af48-8d5e908e826e
 langcode: et
-status: true
+status: false
 dependencies:
   config:
     - system.menu.main
   module:
     - system
   theme:
-    - hitsa_theme
+    - harno_theme
 _core:
   default_config_hash: ChCx7DYNUrPTt5uiRdQAPDKJQMc-_SyAQTrZh8H0o-c
-id: hitsa_theme_main_menu
-theme: hitsa_theme
-region: primary_menu
+id: harno_theme_main_menu
+theme: harno_theme
+region: header
 weight: 0
 provider: null
 plugin: 'system_menu_block:main'

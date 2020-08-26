@@ -1,20 +1,20 @@
-uuid: c6a02c55-a54a-405a-89e5-3029eaf9a15f
+uuid: 6c0f42e6-2431-42cc-8947-ee066e69d916
 langcode: et
 status: true
 dependencies:
   module:
-    - hitsa_settings
+    - harno_settings
   theme:
-    - hitsa_theme
+    - harno_theme
 id: footersocialmediaiconsblock
-theme: hitsa_theme
+theme: harno_theme
 region: footer
-weight: -6
+weight: -7
 provider: null
-plugin: footer_social
+plugin: harno_footer_social
 settings:
-  id: footer_social
+  id: harno_footer_social
   label: 'Footer Social Media Icons Block'
-  provider: hitsa_settings
+  provider: harno_settings
   label_display: visible
 visibility: {  }

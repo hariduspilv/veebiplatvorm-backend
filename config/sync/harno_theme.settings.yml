@@ -25,7 +25,6 @@ bootstrap_barrio_file: custom
 bootstrap_barrio_system_messages: messages_white
 bootstrap_barrio_table_hover: 1
 bootstrap_barrio_table_style: table-striped
-bootstrap_barrio_bootstrap_icons: 1
 _core:
-  default_config_hash: pPTAMWlf260IEjUW38wjQ_L9zWC-iFl25UEZuUoGLQI
+  default_config_hash: wOWW4rSJhHGL4WwslWBcGBGee2ab5gAsLwPb7Vcp6uw
 langcode: et

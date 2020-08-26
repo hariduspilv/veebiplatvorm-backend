@@ -7,7 +7,7 @@ use Drupal\Core\Block\BlockBase;
 /**
  * Block that creates the social media block to show in the footer area
  * @Block(
- * 	id = "footer_terms_of_service_block",
+ * 	id = "harno_footer_terms_of_service_block",
  * 	admin_label = @Translation("Footer Terms of Service Block"),
  * 	category = @Translation("Footer Block"),
  * )
