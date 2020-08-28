@@ -39,7 +39,7 @@
           <tr>
             {% for icon in row %}
               <td>
-                <a class="btn btn-link" href="{{icon.link_url}}">
+                <a target="_blank" class="btn btn-link" href="{{icon.link_url}}">
                   <i class="mdi {{icon.link_icon}}" aria-hidden="true"></i>{{icon.link_name}}</a>
               </td>
             {% endfor %}
