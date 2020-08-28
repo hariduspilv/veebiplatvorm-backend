@@ -19,8 +19,10 @@ class FooterQuickLinks extends BlockBase{
   public	function build(){
     $info = $this->getInfo();
     $build = [];
-    $build['#theme'] = 'harno_footer_quick_links_block';
-    $build['#data'] = $info;
+    if (!empty($info)) {
+      $build['#theme'] = 'harno_footer_quick_links_block';
+      $build['#data'] = $info;
+    }
     return $build;
   }
   public function getInfo(){

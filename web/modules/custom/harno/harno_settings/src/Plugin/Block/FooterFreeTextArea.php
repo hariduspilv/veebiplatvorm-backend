@@ -38,7 +38,7 @@ class FooterFreeTextArea extends BlockBase{
       $out['name'] = $conf['name'];
     }
     if(!empty($conf['body'])){
-      $out['body'] = $conf['body'];
+      $out['body'] = nl2br($conf['body']);
     }
     return $out;
   }
