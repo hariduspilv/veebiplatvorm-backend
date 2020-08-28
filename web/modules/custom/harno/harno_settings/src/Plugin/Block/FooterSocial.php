@@ -21,9 +21,12 @@ class FooterSocial extends BlockBase{
      */
     public	function build(){
         $social_info = $this->getSocialInfo();
+
         $build = [];
-        $build['#theme'] = 'harno_social_block';
-        $build['#data'] = $social_info;
+        if(!empty($social_info)) {
+          $build['#theme'] = 'harno_social_block';
+          $build['#data'] = $social_info;
+        }
         return $build;
     }
     public function getSocialInfo(){
