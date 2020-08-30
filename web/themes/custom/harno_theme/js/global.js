@@ -7,7 +7,7 @@
 
   'use strict';
 
-  Drupal.behaviors.hitsa_theme = {
+  Drupal.behaviors.harno_theme = {
     attach: function (context, settings) {
 
     }

@@ -35,24 +35,27 @@ class FooterQuickLinks extends BlockBase{
       'link_url_',
     ];
     $usable_array = [];
-    foreach ($conf as $conf_item => $conf_value) {
-      $key = str_replace($names,'',$conf_item);
-      $conf_name = str_replace('_'.$key,'',$conf_item);
-      if(!empty($conf_value) && $conf_name!='link_weight'){
-        if($conf_name=='link_entity'){
-          $entity = \Drupal::entityTypeManager()->getStorage('node')->load($conf_value);
-          $link_name = $conf['link_name_'.$key];
-          $link_internal = $entity->toLink()->getUrl()->toString();
-          $link = $entity->toLink($link_name)->toString()->getGeneratedLink();
-          $usable_array[$key]['link'] = $link;
-          $usable_array[$key]['link_internal'] = $link_internal;
-          $usable_array[$key]['type'] = 'internal_link';
+    if (!empty($conf)) {
+      foreach ($conf as $conf_item => $conf_value) {
+        $key = str_replace($names,'',$conf_item);
+        $conf_name = str_replace('_'.$key,'',$conf_item);
+        if(!empty($conf_value) && $conf_name!='link_weight'){
+          if($conf_name=='link_entity'){
+            $entity = \Drupal::entityTypeManager()->getStorage('node')->load($conf_value);
+            $link_name = $conf['link_name_'.$key];
+            $link_internal = $entity->toLink()->getUrl()->toString();
+            $link = $entity->toLink($link_name)->toString()->getGeneratedLink();
+            $usable_array[$key]['link'] = $link;
+            $usable_array[$key]['link_internal'] = $link_internal;
+            $usable_array[$key]['type'] = 'internal_link';
+          }
+          $usable_array[$key][$conf_name] = $conf_value;
         }
-        $usable_array[$key][$conf_name] = $conf_value;
       }
+  
+      return $usable_array;
     }
-
-    return $usable_array;
+    
 
   }
 }

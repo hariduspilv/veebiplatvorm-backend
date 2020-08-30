@@ -39,15 +39,16 @@ class FooterSocial extends BlockBase{
             'link_url_',
         ];
         $usable_array = [];
-        foreach ($conf as $conf_item => $conf_value) {
-            $key = str_replace($names,'',$conf_item);
-            $conf_name = str_replace('_'.$key,'',$conf_item);
-            if(!empty($conf_value) && $conf_name!='link_weight'){
+        if(!empty($conf)){
+            foreach ($conf as $conf_item => $conf_value) {
+                $key = str_replace($names,'',$conf_item);
+                $conf_name = str_replace('_'.$key,'',$conf_item);
+                if(!empty($conf_value) && $conf_name!='link_weight'){
 
-                $usable_array[$key][$conf_name] = $conf_value;
+                    $usable_array[$key][$conf_name] = $conf_value;
+                }
             }
         }
-
         if(!empty($usable_array)){
             $i=1;
             $row=1;
