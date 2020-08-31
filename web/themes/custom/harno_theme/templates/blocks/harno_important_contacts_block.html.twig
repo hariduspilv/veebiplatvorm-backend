@@ -31,21 +31,20 @@
   <div class="block-title">
     <h3>{{ "Important contacts" | t}}</h3>
   </div><!--/block-title-->
-{% if data %}
-  <ul class="contacts">
-    {% for important_contact in data %}
-      <li>
-
-        <span>{{important_contact.name}}</span>
-      {% if important_contact.type=='link' %}
-       <a class="btn btn-link in-new" target="_blank" href="{{important_contact.body}}">{{important_contact.body}}</a>
-      {% elseif important_contact.type == 'email' %}
-      <a class="btn btn-link" href="mailto:{{important_contact.body}}">{{important_contact.body}}</a>
-      {% else %}
-        <span class="bold">{{important_contact.body}}</span>
-      {% endif %}
-      </li>
-    {% endfor %}
-  </ul><!--/contacts-->
-{% endif %}
+  {% if data %}
+    <ul class="contacts important">
+      {% for important_contact in data %}
+        <li>
+          <span>{{important_contact.name}}</span>
+          {% if important_contact.type=='link' %}
+            <a class="btn btn-link in-new bold" target="_blank" href="{{important_contact.body}}">{{important_contact.body}}</a>
+          {% elseif important_contact.type == 'email' %}
+            <a class="btn btn-link" href="mailto:{{important_contact.body}}">{{important_contact.body}}</a>
+          {% else %}
+            <span class="bold">{{important_contact.body}}</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul><!--/contacts-->
+  {% endif %}
 </div><!--/block-->
