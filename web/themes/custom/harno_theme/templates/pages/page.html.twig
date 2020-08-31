@@ -142,8 +142,15 @@
 
 
       <div class="row">
+
         {% if page.sidebar_first %}
           {% set col_class = 'col-9 md-12 sm-12' %}
+
+          <div class="col-3 md-12 sm-12">
+            <aside class="sidemenu-block">
+              {{page.sidebar_first}}
+              </aside>
+          </div>
         {% else %}
           {% set col_class = 'col-12' %}
         {% endif %}
