@@ -1,0 +1,5 @@
+services:
+  harno_settings.twig_extension:
+    class: Drupal\harno_settings\TwigExtension\IFrameSrcChanger
+    tags:
+      - { name: twig.extension }
