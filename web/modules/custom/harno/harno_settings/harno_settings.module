@@ -32,6 +32,7 @@ function harno_settings_theme($existing, $type, $theme, $path) {
   global $base_path;
   $theme_path = $theme = \Drupal::theme()->getActiveTheme()->getPath();
   $path = $base_path.'/'.$theme_path.'/templates/blocks';
+
   $items['harno_social_block'] = [
     'variables' => [
       'data' => []

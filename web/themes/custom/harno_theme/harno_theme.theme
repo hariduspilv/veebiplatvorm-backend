@@ -36,6 +36,7 @@ function harno_theme_preprocess_block(&$variables) {
 }
 function harno_theme_preprocess_media(&$vars){
 
+
   if (isset($vars['elements'])){
     if(isset($vars['elements']['#thumbnail'])){
       if(isset($vars['content'])){
