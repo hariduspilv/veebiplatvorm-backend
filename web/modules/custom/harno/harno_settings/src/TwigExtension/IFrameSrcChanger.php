@@ -37,7 +37,7 @@ class IFrameSrcChanger extends \Twig_Extension {
         $out_txt = str_replace($url,$new_url,$txt);
       }
       elseif (strpos($url,'vimeo') !==false){
-        $new_url = $url.'&texttrack=en';
+        $new_url = $url.'&texttrack=et';
         $out_txt = str_replace($url,$new_url,$txt);
       }
       else{
