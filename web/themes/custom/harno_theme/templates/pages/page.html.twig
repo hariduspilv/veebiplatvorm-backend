@@ -67,6 +67,7 @@
  * @see html.html.twig
  */
 #}
+
 <div id="page-wrapper main-wrapper">
   <header id="header main-header" class="header" role="banner" aria-label="{{ 'Site header'|t }}">
     {% block head %}
@@ -159,7 +160,7 @@
           {# Title area #}
           {% if page.content %}
             {% if page.content.harno_theme_page_title %}
-{#              {{ page.content.harno_theme_page_title }}#}
+              {{ page.content.harno_theme_page_title }}
             {% endif %}
           {% endif %}
 
