@@ -139,11 +139,12 @@ function harno_settings_node_presave(Drupal\Core\Entity\EntityInterface $entity)
 }
 
 /**
- * Adding our custom validation function for the title.
+ * Adding our custom validation functions.
  */
 function harno_settings_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
   $forms = ['node_article_edit_form', 'node_article_form'];
+  $forms_user = ['user_register_form', 'user_form'];
   if (in_array($form['#form_id'], $forms)) {
     $form['#validate'][] = '_harno_settings_validate_sticky';
 
@@ -152,7 +153,27 @@ function harno_settings_form_alter(&$form, FormStateInterface $form_state, $form
     $form['field_article_type']['widget']['#options'][2] = $news_our_story_name;
     $form['sticky']['widget']['#title'] = $form['sticky']['widget']['value']['#title'] = 'Oluline uudis';
   }
+  elseif (in_array($form['#form_id'], $forms_user)) {
+    //$form['field_identification_number']['widget'][0]['value']['#maxlength'] = 11;
+    $form['#validate'][] = '_harno_settings_validate_integer_length';
+    $form['#attached']['library'][]  = 'harno_settings/admin_user_forms';
+    if(!empty($form['field_identification_number']['widget'][0]['value']['#default_value'])) {
+      $form['field_identification_number']['widget'][0]['value']['#attributes']['readonly'] = TRUE;
+    }
+  }
 }
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function harno_settings_entity_bundle_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type, $bundle) {
+  if ($bundle === 'user') {
+    if (isset($fields['field_identification_number'])) {
+      $fields['field_identification_number']->addConstraint('UniqueField', []);
+    }
+  }
+}
+
 
 /**
  * Custom validation function for news sticky value.
@@ -169,6 +190,18 @@ function _harno_settings_validate_sticky(&$form, FormStateInterface $form_state)
   }
 }
 
+/**
+ * Custom validation function for news sticky value.
+ */
+function _harno_settings_validate_integer_length(&$form, FormStateInterface $form_state) {
+  if ($form_state->hasValue('field_identification_number')) {
+    $field_identification_number = $form_state->getValue('field_identification_number');
+    $length = strlen($field_identification_number[0]['value']);
+    if ($length != 11) {
+      $form_state->setErrorByName('field_identification_number', 'Isikukood peab olema täpselt 11 numbrit. Hetkel on see ' . $length . '.');
+    }
+  }
+}
 /**
  * Implements hook_cron().
  *
