@@ -25,13 +25,13 @@
         "drupal/crop": "^2.1",
         "drupal/field_group": "^3.1",
         "drupal/focal_point": "^1.4",
+        "drupal/genpass": "1.x-dev",
         "drupal/linkit": "^6.0",
         "drupal/maxlength": "^1.0",
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.8",
         "drupal/redirect": "^1.6",
         "drupal/svg_image": "^1.13",
-        "drupal/tablefield": "^2.1",
         "drupal/token": "^1.7",
         "drupal/twig_tweak": "^2.6",
         "drupal/webform": "^5.18",
@@ -99,9 +99,7 @@
             ]
         },
         "patches": {
-            "drupal/tablefield": {
-                "WYSIWYG support on each table cell for better content experience": "patches/tablefield-wysiwyg_support-3076448-7.patch"
-            }
+
         }
     },
     "require-dev": {

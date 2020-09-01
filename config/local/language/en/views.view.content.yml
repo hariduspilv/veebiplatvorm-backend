@@ -3,6 +3,9 @@ description: 'Otsi ja halda lehe sisu.'
 display:
   default:
     display_options:
+      exposed_form:
+        options:
+          reset_button_label: Tühista
       fields:
         title:
           label: Pealkiri

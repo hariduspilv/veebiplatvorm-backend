@@ -3,6 +3,10 @@ description: 'Viimati lisatud sisu.'
 display:
   default:
     display_options:
+      exposed_form:
+        options:
+          submit_button: Применить
+          reset_button_label: Tühista
       title: 'Hiljutine sisu'
       empty:
         area_text_custom:
