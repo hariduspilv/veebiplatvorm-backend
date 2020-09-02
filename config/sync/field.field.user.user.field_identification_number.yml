@@ -11,7 +11,7 @@ field_name: field_identification_number
 entity_type: user
 bundle: user
 label: Isikukood
-description: '<b> NB! Isikukoodi saab lisada ainult ühe korra! Sisestamisel kontrolli, et see oleks korrektne. Hiljem muuta võimalik ei ole! </b>'
+description: '<b> NB! Isikukoodi saab lisada ainult ühe korra! Sisestamisel kontrolli, et see oleks korrektne. Hiljem seda muuta võimalik ei ole! </b>'
 required: true
 translatable: false
 default_value: {  }
