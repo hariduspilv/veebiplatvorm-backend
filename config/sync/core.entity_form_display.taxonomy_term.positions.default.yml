@@ -1,0 +1,30 @@
+uuid: 80d8aed3-9478-4962-a26f-143659e8bdcf
+langcode: et
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.positions
+id: taxonomy_term.positions.default
+targetEntityType: taxonomy_term
+bundle: positions
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 1
+    region: content
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true

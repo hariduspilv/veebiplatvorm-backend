@@ -1,0 +1,11 @@
+uuid: 85d7c76b-76ee-4dc6-89d3-5584d810a358
+langcode: et
+status: true
+dependencies:
+  config:
+    - node.type.worker
+id: node.worker
+target_entity_type_id: node
+target_bundle: worker
+default_langcode: site_default
+language_alterable: false
