@@ -37,9 +37,9 @@
         {% for link in data %}
           <li>
             {% if link.type!=nil %}
-              <a class="btn btn-link" href="{{ link.link_internal }}">{{ link.link_name }}</a>
+              <a class="btn btn-link" aria-label="{{ link.link_name }}" href="{{ link.link_internal }}">{{ link.link_name }}</a>
             {% else %}
-              <a class="btn btn-link in-new" target="_blank" href="{{ link.link_url }}">{{ link.link_name }}</a>
+              <a class="btn btn-link in-new" aria-label="{{ link.link_name }}" target="_blank" href="{{ link.link_url }}">{{ link.link_name }}</a>
             {% endif %}
           </li>
         {% endfor %}
