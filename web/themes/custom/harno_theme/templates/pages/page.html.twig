@@ -152,7 +152,11 @@
           {# Title area #}
           {% if page.content %}
             {% if page.content.harno_theme_page_title %}
-{#              {{ page.content.harno_theme_page_title }}#}
+              <div class="header-block">
+                <div class="header-title-block">
+                  {{ page.content.harno_theme_page_title }}
+                </div>
+              </div>
             {% endif %}
           {% endif %}
 
