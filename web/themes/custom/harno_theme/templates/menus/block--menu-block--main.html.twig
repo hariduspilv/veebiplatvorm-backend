@@ -33,38 +33,83 @@
 #}
 {% set heading_id = attributes.id ~ ('-menu'|clean_id) %}
 {% if content %}
-  {% if content['#items'] %}
-    <ul class="side-menu" data-plugin="dropdownMenu">
-      {% for menu_item in content['#items'] %}
-        {% if menu_item.below %}
-          {% set below_class = [
+{% if content['#items'] %}
+<ul class="side-menu" data-plugin="dropdownMenu">
+  {% for menu_item in content['#items'] %}
+  {% set link_options = menu_item.url.getOption('attributes') %}
+      {% if link_options.title %}
+      {% set link_desc = link_options.title %}
+      {% else %}
+      {% set link_desc = menu_item.title %}
+      {% endif %}
+  {% if menu_item.below %}
+  {% set below_class = [
             'has-dropdown'
           ] %}
-          {% if menu_item.in_active_trail %}
-            {% set below_class = below_class | merge(['open']) %}
+  {% if menu_item.in_active_trail %}
+  {% set below_class = below_class | merge(['open']) %}
+  {% endif %}
+  {% endif %}
+  <li{{attributes.addClass(below_class)}}>
+    {% if menu_item.in_active_trail %}
+    {% set link_class = 'active' %}
+    {% else %}
+    {% set link_class = '' %}
+    {% endif %}
+    {% if menu_item.url %}
+    {% if menu_item.url.external %}
+    {% set link_class = link_class ~ 'link-out' %}
+    {% endif %}
+
+    {% endif %}
+    <a class="{{ link_class }}" {% if menu_item.url.external %} target="_blank"
+      aria-label="{{"Link opens on new page"|t}}" {% endif %}
+      title="{{link_desc}}" href="{{ menu_item.url }}"
+      {% if menu_item.in_active_trail %} aria-expanded="true"
+      {% else %}{% if menu_item.below %} aria-expanded="true"
+      {% endif %}{% endif %}>
+      {{ menu_item.title }}
+      {% if menu_item.url %}
+      {% if menu_item.url.external %}
+      <i aria-hidden=“true” class=“icon-external”></i>
+      {% endif %}
+      {% endif %}
+    </a>
+    {% if menu_item.below %}
+    <ul>
+      {% for item_below in menu_item.below %}
+      {% set link_options = item_below.url.getOption('attributes') %}
+      {% if link_options.title %}
+      {% set link_desc = link_options.title %}
+      {% else %}
+      {% set link_desc = item_below.title %}
+      {% endif %}
+      {% if item_below.in_active_trail %}
+      {% set link_class = 'active' %}
+      {% else %}
+      {% set link_class = '' %}
+      {% endif %}
+      {% if item_below.url %}
+      {% if item_below.url.external %}
+      {% set link_ext = true %}
+      {% set link_class = link_class ~ 'link-out' %}
+      {% endif %}
+      {% endif %}
+      <li><a class="{{link_class}}" title="{{link_desc}}" {% if link_ext %}
+          target="_blank" aria-label="{{"Link opens on new page"|t}}"
+          {% endif %} href="{{item_below.url}}">{{item_below.title}}
+          {% if link_ext %}
+          <i aria-hidden=“true” class=“icon-external”></i>
           {% endif %}
-        {% endif %}
-        <li{{attributes.addClass(below_class)}}>
-          {% if menu_item.in_active_trail %}
-            {% set link_class = 'active' %}
-          {% else %}
-            {% set link_class = '' %}
-          {% endif %}
-          <a class="{{ link_class }}" href="{{ menu_item.url }}" {% if menu_item.in_active_trail %} aria-expanded="true" {% else %}{% if menu_item.below %} aria-expanded="true" {% endif %}{% endif %}>
-            {{ menu_item.title }}
-          </a>
-          {% if menu_item.below %}
-            <ul>
-              {% for item_below in menu_item.below %}
-                <li><a class="active" href="{{item_below.url}}">{{item_below.title}}</a></li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        </li>
+        </a></li>
       {% endfor %}
     </ul>
-  {% endif %}
+    {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
 {% endif %}
 {% block content %}
-  {# {{ content }} #}
+{# {{ content }} #}
 {% endblock %}
