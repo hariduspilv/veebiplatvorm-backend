@@ -50,7 +50,8 @@
   {% set below_class = below_class | merge(['open']) %}
   {% endif %}
   {% endif %}
-  <li{{attributes.addClass(below_class)}}>
+  <li{{attributes.removeClass('has-dropdown','open').addClass(below_class)}}>
+
     {% if menu_item.in_active_trail %}
     {% set link_class = 'active' %}
     {% else %}
