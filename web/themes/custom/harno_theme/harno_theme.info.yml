@@ -10,6 +10,7 @@ libraries:
 regions:
   header: Header
   content: Content
+  sidebar_first: 'Sidebar first'
   footer: 'Footer'
 # Information added by Drupal.org packaging script on 2020-05-09
 version: '8.x-4.28'

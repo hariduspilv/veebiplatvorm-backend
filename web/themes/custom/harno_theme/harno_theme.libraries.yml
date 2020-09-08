@@ -1,14 +1,13 @@
 global-styling:
   version: VERSION
-  js:
-    js/global.js: {}
   css:
     component:
       css/style.css: {}
       css/colors.css: {}
 harno_custom:
   js:
-    static/assets/js/main-drupal.js: {}
+    js/global.js: {}
+    static/assets/js/main.js: {}
   css:
     theme:
       static/assets/styles/default.css: {}
