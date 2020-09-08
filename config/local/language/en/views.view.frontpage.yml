@@ -6,5 +6,9 @@ display:
       empty:
         title:
           title: 'Tere tulemast lehele [site:name]'
+      exposed_form:
+        options:
+          submit_button: Применить
+          reset_button_label: Tühista
   feed_1:
     display_title: Andmevoog

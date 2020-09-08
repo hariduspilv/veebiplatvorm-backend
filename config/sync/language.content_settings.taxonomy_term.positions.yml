@@ -1,0 +1,11 @@
+uuid: d4751dca-1953-447e-89e4-ab23f5d85238
+langcode: et
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.positions
+id: taxonomy_term.positions
+target_entity_type_id: taxonomy_term
+target_bundle: positions
+default_langcode: site_default
+language_alterable: false

@@ -43,19 +43,23 @@ class FooterQuickLinks extends BlockBase{
           if($conf_name=='link_entity'){
             $entity = \Drupal::entityTypeManager()->getStorage('node')->load($conf_value);
             $link_name = $conf['link_name_'.$key];
-            $link_internal = $entity->toLink()->getUrl()->toString();
-            $link = $entity->toLink($link_name)->toString()->getGeneratedLink();
-            $usable_array[$key]['link'] = $link;
-            $usable_array[$key]['link_internal'] = $link_internal;
-            $usable_array[$key]['type'] = 'internal_link';
+            if(!empty($entity)) {
+              $link_internal = $entity->toLink()->getUrl()->toString();
+              $link = $entity->toLink($link_name)
+                ->toString()
+                ->getGeneratedLink();
+              $usable_array[$key]['link'] = $link;
+              $usable_array[$key]['link_internal'] = $link_internal;
+              $usable_array[$key]['type'] = 'internal_link';
+            }
           }
           $usable_array[$key][$conf_name] = $conf_value;
         }
       }
-  
+      
       return $usable_array;
     }
-    
+
 
   }
 }

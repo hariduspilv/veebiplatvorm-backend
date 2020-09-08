@@ -102,8 +102,29 @@ function harno_settings_node_prepare_form(\Drupal\Core\Entity\EntityInterface $e
     if ($operation == 'default') {
       // Load the current user.
       $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
-      $default_value = $user->get('name')->value; //TODO: muuta kasutaja päris nimeks, kui see lisatakse user juurde
-      $entity->set('field_author_name', $default_value);
+      if (isset($user->get('field_first_name')->value) AND isset($user->get('field_last_name')->value) ) {
+        $default_value = $user->get('field_first_name')->value . ' ' . $user->get('field_last_name')->value;
+        $entity->set('field_author_name', $default_value);
+      }
+    }
+  }
+  // lennu lisamisel järjekorra default väärtuse muutmine
+  $node_types = ['class'];
+  if (in_array($entity->getType(), $node_types)) {
+    if ($operation == 'default') {
+
+      $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+      $query = \Drupal::entityQuery('node');
+      $high_weight = $query->condition('type', 'class')
+        ->sort('field_weight', 'DESC')
+        ->range(0, 1);
+      $nids = $query->execute();
+      $nodes = $node_storage->loadMultiple($nids);
+      foreach ($nodes as $node) {
+        $default_value = $node->get('field_weight')->value + 1;
+        $entity->set('field_weight', $default_value);
+      }
+
     }
   }
 }
@@ -140,11 +161,12 @@ function harno_settings_node_presave(Drupal\Core\Entity\EntityInterface $entity)
 }
 
 /**
- * Adding our custom validation function for the title.
+ * Adding our custom validation functions.
  */
 function harno_settings_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
   $forms = ['node_article_edit_form', 'node_article_form'];
+  $forms_user = ['user_register_form', 'user_form'];
   if (in_array($form['#form_id'], $forms)) {
     $form['#validate'][] = '_harno_settings_validate_sticky';
 
@@ -153,7 +175,27 @@ function harno_settings_form_alter(&$form, FormStateInterface $form_state, $form
     $form['field_article_type']['widget']['#options'][2] = $news_our_story_name;
     $form['sticky']['widget']['#title'] = $form['sticky']['widget']['value']['#title'] = 'Oluline uudis';
   }
+  elseif (in_array($form['#form_id'], $forms_user)) {
+    //$form['field_identification_number']['widget'][0]['value']['#maxlength'] = 11;
+    $form['#validate'][] = '_harno_settings_validate_integer_length';
+    $form['#attached']['library'][]  = 'harno_settings/admin_user_forms';
+    if(!empty($form['field_identification_number']['widget'][0]['value']['#default_value'])) {
+      $form['field_identification_number']['widget'][0]['value']['#attributes']['readonly'] = TRUE;
+    }
+  }
 }
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function harno_settings_entity_bundle_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type, $bundle) {
+  if ($bundle === 'user') {
+    if (isset($fields['field_identification_number'])) {
+      $fields['field_identification_number']->addConstraint('UniqueField', []);
+    }
+  }
+}
+
 
 /**
  * Custom validation function for news sticky value.
@@ -170,6 +212,18 @@ function _harno_settings_validate_sticky(&$form, FormStateInterface $form_state)
   }
 }
 
+/**
+ * Custom validation function for news sticky value.
+ */
+function _harno_settings_validate_integer_length(&$form, FormStateInterface $form_state) {
+  if ($form_state->hasValue('field_identification_number')) {
+    $field_identification_number = $form_state->getValue('field_identification_number');
+    $length = strlen($field_identification_number[0]['value']);
+    if ($length != 11) {
+      $form_state->setErrorByName('field_identification_number', 'Isikukood peab olema täpselt 11 numbrit. Hetkel on see ' . $length . '.');
+    }
+  }
+}
 /**
  * Implements hook_cron().
  *

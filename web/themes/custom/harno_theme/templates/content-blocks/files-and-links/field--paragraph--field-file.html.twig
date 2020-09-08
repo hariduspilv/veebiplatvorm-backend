@@ -44,11 +44,18 @@
     {% if item.content['#media'] %}
       {% set file_url = item.content['#media']|file_uri|file_url %}
       {% set bundle = item.content['#media'].bundle() %}
+      {% if bundle == 'audio' %}
+        {% set field_name = 'field_media_audio_file' %}
+      {% elseif bundle == 'video'%}
+        {% set field_name = 'field_media_video_file' %}
+      {% elseif bundle == 'image'%}
+        {% set field_name = 'field_media_image' %}
+      {% endif %}
     {% endif %}
-    {% if bundle == 'image' %}
-      {% if item.content['#media'].get('field_media_image') %}
+    {% if bundle == 'image' or bundle=='audio' or bundle == 'video' %}
+      {% if item.content['#media'].get(field_name) %}
         {% set values =
-          item.content['#media'].get('field_media_image').getValue()
+          item.content['#media'].get(field_name).getValue()
         %}
         {% if values %}
           {% if values[0].title %}

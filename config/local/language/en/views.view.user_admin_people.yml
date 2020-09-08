@@ -3,6 +3,9 @@ description: 'Sinu lehel käivate inimeste leidmine ja haldus.'
 display:
   default:
     display_options:
+      exposed_form:
+        options:
+          reset_button_label: Tühista
       fields:
         user_bulk_form:
           label: Massuuendus
@@ -17,7 +20,7 @@ display:
         created:
           label: 'Liikmeks oldud aeg'
         access:
-          label: 'Viimane külastus'
+          label: 'Последнее посещение'
       filters:
         combine:
           expose:

@@ -1,0 +1,17 @@
+uuid: 0fb3b8fc-255a-42d6-b228-2eb235866533
+langcode: et
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Lend
+type: class
+description: 'Kasutaja saab lisada, muuta ja kustutada haridusasutuse lendude ja vilistlaste andmeid.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

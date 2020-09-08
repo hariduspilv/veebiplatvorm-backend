@@ -56,8 +56,8 @@ footer_socialmedia_links:
   link_url_9: ''
   link_weight_9: -2
 footer_quick_links:
-  link_name_1: Galerii
-  link_entity_1: 2
+  link_name_1: ''
+  link_entity_1: null
   link_url_1: ''
   link_weight_1: -10
   link_name_2: ''
@@ -89,8 +89,8 @@ footer_quick_links:
   link_url_8: ''
   link_weight_8: -3
 footer_free_text_area:
-  name: 'Vabatekstiala Vabatekstiala'
-  body: "Vabatekstiala\r\nVabatekstiala"
+  name: ''
+  body: ''
 footer_copyright:
   name: '© 2020 - 2021 Demo Gümnaasium'
 automatic_generation_academic_year:
@@ -101,8 +101,8 @@ frontpage_quick_links:
   link_entity_1: 1
   link_url_1: ''
   link_weight_1: -10
-  link_name_2: ''
-  link_entity_2: null
+  link_name_2: Galerii
+  link_entity_2: 4
   link_url_2: ''
   link_weight_2: -9
   link_name_3: ''

@@ -1,5 +1,11 @@
 label: 'Taksonoomia termin'
 description: 'Teatud taksonoomia termiga seotud sisu.'
 display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Применить
+          reset_button_label: Tühista
   feed_1:
     display_title: Andmevoog

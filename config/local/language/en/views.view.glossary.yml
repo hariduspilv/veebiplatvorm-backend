@@ -3,6 +3,10 @@ description: 'Kogu sisu, tähestikuliselt.'
 display:
   default:
     display_options:
+      exposed_form:
+        options:
+          submit_button: Применить
+          reset_button_label: Tühista
       fields:
         title:
           label: Pealkiri
