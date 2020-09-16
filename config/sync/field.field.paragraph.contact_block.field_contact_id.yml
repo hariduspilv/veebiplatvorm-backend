@@ -4,14 +4,14 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_contact_id
-    - node.type.page
+    - node.type.worker
     - paragraphs.paragraphs_type.contact_block
 id: paragraph.contact_block.field_contact_id
 field_name: field_contact_id
 entity_type: paragraph
 bundle: contact_block
 label: 'Kontakti viide'
-description: 'NB! Hetkel on see seotud Lihtleheküljega. Muuta peale Kontakti sisutüübi loomist!'
+description: ''
 required: false
 translatable: false
 default_value: {  }
@@ -20,7 +20,7 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      page: page
+      worker: worker
     sort:
       field: created
       direction: DESC

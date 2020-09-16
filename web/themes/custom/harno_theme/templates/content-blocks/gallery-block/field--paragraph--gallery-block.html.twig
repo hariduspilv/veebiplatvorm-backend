@@ -41,6 +41,20 @@
   label_display == 'visually_hidden' ? 'visually-hidden',
 ]
 %}
+{% if field_name == 'field_gallery_id' %}
+  {% for item in items  %}
+    {% if item.content %}
+      {% if item.content['#options'] %}
+        {% if item.content['#options'].entity %}
+          {% set gallery_id = item.content['#options'].entity.id %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    {% if gallery_id %}
+      {{  drupal_entity('node',  gallery_id , 'teaser')  }}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 {% if field_name!='field_images' %}
 {#{% if label_hidden %}#}
 {#  {% if multiple %}#}
@@ -68,6 +82,7 @@
 {#    {% endif %}#}
 {#  </div>#}
 {#{% endif %}#}
+
   {% else %}
     <div class="image-block">
     {% for item in items %}

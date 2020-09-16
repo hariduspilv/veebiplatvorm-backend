@@ -39,6 +39,9 @@
  */
 #}
 {% set classes = ['contact-block'] %}
+{% if content.field_contact_id['#items'] %}
+  {% set contact = content.field_contact_id['#items'].value %}
+{% endif %}
 {% block paragraph %}
   <div {{ attributes.addClass(classes) }}>
     {% if content.field_contact_title %}
@@ -48,9 +51,16 @@
     {% endif %}
     {% set detailed_contact = content|without('field_contact_title') %}
     <ul class="detailed-contact">
-      {% for item in content|without('field_contact_title') %}
-        {{ item }}
-      {% endfor %}
+
+      {% if contact %}
+        {% if contact.0.target_id %}
+          {{  drupal_entity('node',  contact.0.target_id , 'teaser')  }}
+        {% endif %}
+      {% else %}
+        {% for item in content|without('field_contact_title','field_contact_id') %}
+          {{ item }}
+        {% endfor %}
+      {% endif %}
     </ul>
     <!-- /detailed-contact -->
   </div>

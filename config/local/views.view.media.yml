@@ -879,7 +879,7 @@ display:
           type: select
           limit: true
           vid: media_catalogs
-          hierarchy: false
+          hierarchy: true
           error_message: true
           plugin_id: taxonomy_index_tid
       sorts:

@@ -1,0 +1,31 @@
+uuid: 1933213a-f789-41ed-a802-d46394be6c2f
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.class.field_body
+    - field.field.paragraph.class.field_title
+    - paragraphs.paragraphs_type.class
+  module:
+    - text
+id: paragraph.class.default
+targetEntityType: paragraph
+bundle: class
+mode: default
+content:
+  field_body:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }
