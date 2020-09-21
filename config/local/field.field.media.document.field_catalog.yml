@@ -7,7 +7,7 @@ dependencies:
     - media.type.document
     - taxonomy.vocabulary.media_catalogs
   content:
-    - 'taxonomy_term:media_catalogs:e4b0d7ff-7167-4e83-8530-0dc19f779501'
+    - 'taxonomy_term:media_catalogs:79e1c637-b760-4158-99b6-4804ef3b1350'
 id: media.document.field_catalog
 field_name: field_catalog
 entity_type: media
@@ -18,7 +18,7 @@ required: false
 translatable: true
 default_value:
   -
-    target_uuid: e4b0d7ff-7167-4e83-8530-0dc19f779501
+    target_uuid: 79e1c637-b760-4158-99b6-4804ef3b1350
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
