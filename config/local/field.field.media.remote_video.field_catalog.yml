@@ -1,17 +1,17 @@
-uuid: b3ba949f-01da-4d23-9f32-4e154ad89ac3
+uuid: e2525c2c-0e36-4b43-9265-1bbc74cc6ad5
 langcode: et
 status: true
 dependencies:
   config:
     - field.storage.media.field_catalog
-    - media.type.document
+    - media.type.remote_video
     - taxonomy.vocabulary.media_catalogs
   content:
     - 'taxonomy_term:media_catalogs:e4b0d7ff-7167-4e83-8530-0dc19f779501'
-id: media.document.field_catalog
+id: media.remote_video.field_catalog
 field_name: field_catalog
 entity_type: media
-bundle: document
+bundle: remote_video
 label: 'Meedia kaust'
 description: ''
 required: false
