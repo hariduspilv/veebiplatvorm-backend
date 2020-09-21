@@ -10,7 +10,7 @@ field_name: field_weight
 entity_type: node
 bundle: class
 label: 'Järjekord teiste lendude suhtes'
-description: 'Selle alusel järjestatakse avalikus vaates lennud lendude nimekirjas.'
+description: 'Järjekorra numbriks lisada lennu number. Vilistlaste lehel järjestatakse selle alusel lennud suuremast väiksemaks. Vaikimisi antakse uuele lisatavale lennule suurim number ja see pannakse vilistlaste lehel esimeseks.'
 required: true
 translatable: false
 default_value:
