@@ -424,7 +424,7 @@ display:
           exposed: true
           expose:
             operator_id: field_catalog_target_id_op
-            label: 'Meedia kataloog'
+            label: 'Meedia kaust'
             description: ''
             use_operator: false
             operator: field_catalog_target_id_op
@@ -1111,7 +1111,7 @@ display:
           exposed: true
           expose:
             operator_id: field_catalog_target_id_op
-            label: 'Meedia kataloog'
+            label: 'Meedia kaust'
             description: ''
             use_operator: false
             operator: field_catalog_target_id_op
@@ -1457,7 +1457,7 @@ display:
           exposed: true
           expose:
             operator_id: field_catalog_target_id_op
-            label: 'Meedia kataloog'
+            label: 'Meedia kaust'
             description: ''
             use_operator: false
             operator: field_catalog_target_id_op

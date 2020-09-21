@@ -1,24 +1,23 @@
-uuid: 58734bfe-8bc3-44c4-8b96-dd78b05069f6
+uuid: 256f8e4e-a611-4c48-8037-9339dd8ad19d
 langcode: et
 status: true
 dependencies:
   config:
-    - field.field.media.video.field_catalog
-    - field.field.media.video.field_media_video_file
-    - media.type.video
+    - field.field.media.document.field_catalog
+    - field.field.media.document.field_media_document
+    - media.type.document
   module:
     - file
-    - path
 _core:
-  default_config_hash: QcsaoQN46kJyeffkXCqa7aX7pPtpqJjITEqeBse33D0
-id: media.video.default
+  default_config_hash: gtZlAQdQqZgVWvvZ6v-hfmACkfEimqn_GPDbQZqNAbw
+id: media.document.default
 targetEntityType: media
-bundle: video
+bundle: document
 mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 5
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -28,49 +27,36 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  field_media_video_file:
-    weight: 2
+  field_media_document:
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
+    weight: 2
     region: content
-  langcode:
-    type: language_select
-    weight: 3
-    region: content
-    settings:
-      include_locked: true
-    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
     region: content
     settings:
-      size: 60
+      size: 120
       placeholder: ''
-    third_party_settings: {  }
-  path:
-    type: path
-    weight: 6
-    region: content
-    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 5
     region: content
     third_party_settings: {  }
   translation:
-    weight: 8
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 3
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -78,4 +64,6 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  langcode: true
+  path: true
