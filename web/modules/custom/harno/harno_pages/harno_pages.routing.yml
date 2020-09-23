@@ -1,0 +1,8 @@
+
+harno_pages.galleries_page:
+  path: 'galleries'
+  defaults:
+    _controller: '\Drupal\harno_pages\Controller\GalleriesController::index'
+    _title: 'Galleries'
+  requirements:
+    _permission: 'access content'
