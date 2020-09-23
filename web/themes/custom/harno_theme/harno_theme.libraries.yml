@@ -7,7 +7,7 @@ global-styling:
 harno_custom:
   js:
     js/global.js: {}
-    static/assets/js/main.js: {}
+    static/assets/js/main-drupal.js: {}
   css:
     theme:
       static/assets/styles/default.css: {}
