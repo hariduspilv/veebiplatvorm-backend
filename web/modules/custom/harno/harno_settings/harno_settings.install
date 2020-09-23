@@ -1,5 +1,5 @@
 <?php
-
+use Drupal\taxonomy\Entity\Term;
 /**
  * @file
  * Install and uninstall functions for the HARNO settings Module.
@@ -39,4 +39,22 @@ function harno_settings_update_8004() {
   $config = \Drupal::configFactory()->getEditable('harno_settings.settings');
   $config->set('news_our_story.name', 'Meie lugu');
   $config->save();
+}
+/**
+ * Set default taxonomy terms to Meedia kaustad
+ */
+function harno_settings_update_8006() {
+  $count = 0;
+  $categories_vocabulary = 'media_catalogs'; // Vocabulary machine name
+  $categories = ['Üldine', 'Artiklid', 'Erialad', 'Galeriid', 'Töötajad', 'Sisulehed', 'Toitlustamine']; // List of test terms
+  foreach ($categories as $key => $category) {
+    $term = Term::create(array(
+      'parent' => array(),
+      'name' => $category,
+      'vid' => $categories_vocabulary,
+      'weight' => $key
+    ))->save();
+    $count += $term;
+  }
+  return 'Lisati ' . $count . ' mõistet.';
 }
