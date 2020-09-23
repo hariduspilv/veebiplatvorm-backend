@@ -56,5 +56,41 @@ function harno_settings_update_8006() {
     ))->save();
     $count += $term;
   }
-  return 'Lisati ' . $count . ' mõistet.';
+  return 'Lisati ' . $count . ' termi.';
+}
+/**
+ * Set default taxonomy terms to Ametikohad
+ */
+function harno_settings_update_8007() {
+  $count = 0;
+  $categories_vocabulary = 'positions'; // Vocabulary machine name
+  $categories = ['Direktor', 'Arendusjuht', 'Õppenõustaja', 'Matemaatika', 'Ajalugu']; // List of test terms
+  foreach ($categories as $key => $category) {
+    $term = Term::create(array(
+      'parent' => array(),
+      'name' => $category,
+      'vid' => $categories_vocabulary,
+      'weight' => $key
+    ))->save();
+    $count += $term;
+  }
+  return 'Lisati ' . $count . ' termi.';
+}
+/**
+ * Set default taxonomy terms to Osakonnad
+ */
+function harno_settings_update_8008() {
+  $count = 0;
+  $categories_vocabulary = 'departments'; // Vocabulary machine name
+  $categories = ['Juhtkond', 'Õpetajad', 'Õppenõukogu', 'Töötajad']; // List of test terms
+  foreach ($categories as $key => $category) {
+    $term = Term::create(array(
+      'parent' => array(),
+      'name' => $category,
+      'vid' => $categories_vocabulary,
+      'weight' => $key
+    ))->save();
+    $count += $term;
+  }
+  return 'Lisati ' . $count . ' termi.';
 }
