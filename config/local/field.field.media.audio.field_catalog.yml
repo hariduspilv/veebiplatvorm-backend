@@ -7,7 +7,7 @@ dependencies:
     - media.type.audio
     - taxonomy.vocabulary.media_catalogs
   content:
-    - 'taxonomy_term:media_catalogs:79e1c637-b760-4158-99b6-4804ef3b1350'
+    - 'taxonomy_term:media_catalogs:b645263d-a29c-43a2-9e10-386925bdaadb'
 id: media.audio.field_catalog
 field_name: field_catalog
 entity_type: media
@@ -18,7 +18,7 @@ required: false
 translatable: true
 default_value:
   -
-    target_uuid: 79e1c637-b760-4158-99b6-4804ef3b1350
+    target_uuid: b645263d-a29c-43a2-9e10-386925bdaadb
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
