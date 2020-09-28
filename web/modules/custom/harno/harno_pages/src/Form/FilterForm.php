@@ -77,7 +77,12 @@ class FilterForm extends FormBase {
 
     if (!empty($_REQUEST)){
       if (!empty($_REQUEST['years'])){
-        $form['top_row']['years']['#default_value'] = explode('|',$_REQUEST['years']);
+        if(is_array($_REQUEST['years'])) {
+          $form['top_row']['years']['#default_value'] = $_REQUEST['years'];
+        }
+        else{
+          $form['top_row']['years']['#default_value'] = explode('|', $_REQUEST['years']);
+        }
       }
       if (!empty($_REQUEST['date_start'])){
         $form['bottom_row']['date_start']['#default_value'] = $_REQUEST['date_start'];
