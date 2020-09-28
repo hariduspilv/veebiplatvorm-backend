@@ -91,6 +91,12 @@
       {% set link_class = '' %}
       {% endif %}
       {% if item_below.url %}
+        {% set has_burl = true %}
+        {% set below_url = item_below.url.routeName %}
+
+        {% if below_url == '<nolink>' %}
+          {% set has_burl = false %}
+        {% endif %}
       {% if item_below.url.external %}
       {% set link_ext = true %}
       {% set link_class = link_class ~ 'link-out' %}
@@ -98,7 +104,7 @@
       {% endif %}
       <li><a class="{{link_class}}" title="{{link_desc}}" {% if link_ext %}
           target="_blank" aria-label="{{"Link opens on new page"|t}}"
-          {% endif %} href="{{item_below.url}}">{{item_below.title}}
+          {% endif %} {% if has_burl %} href="{{item_below.url}}" {% endif %}>{{item_below.title}}
           {% if link_ext %}
           <i aria-hidden=“true” class=“icon-external”></i>
           {% endif %}
