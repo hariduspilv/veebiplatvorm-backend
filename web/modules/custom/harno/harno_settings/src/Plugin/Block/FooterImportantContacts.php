@@ -52,6 +52,13 @@ class FooterImportantContacts extends BlockBase{
           else{
             $usable_array[$key]['type'] = 'text';
           }
+          if($conf_name == 'body') {
+            preg_match("/([+(\d]{1})(([\d+() -.]){5,16})([+(\d]{1})/",$conf_value,$phone_numbers);
+            if(!empty($phone_numbers)){
+              $new_number = str_replace(' ', '&nbsp;',$phone_numbers[0]);
+              $conf_value = str_replace($phone_numbers[0], $new_number, $conf_value);
+            }
+          }
           $usable_array[$key][$conf_name] = $conf_value;
         }
       }
