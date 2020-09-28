@@ -1,4 +1,3 @@
-
 harno_pages.galleries_page:
   path: 'galleries'
   defaults:
@@ -6,3 +5,7 @@ harno_pages.galleries_page:
     _title: 'Galleries'
   requirements:
     _permission: 'access content'
+harno_pages.autocomplete:
+  path: '/galleries_autocomplete'
+  defaults:
+    _controller: '\Drupal\harno_pages\Controller\AutocompleteController::handleAutocomplete'

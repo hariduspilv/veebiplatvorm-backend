@@ -57,7 +57,6 @@ function harno_theme_preprocess_pager(&$vars){
   $route_name = $vars['pager']['#route_name'];
   $route_parameters = isset($vars['pager']['#route_parameters']) ? $vars['pager']['#route_parameters'] : [];
   global $pager_page_array, $pager_total;
-
   $pager = \Drupal::service('pager.manager')->getPager();
 
 
@@ -103,16 +102,30 @@ function harno_theme_preprocess_pager(&$vars){
   // Create the "first" and "previous" links if we are not on the first page.
   if ($pager_page_array[$element] > 0) {
     $items['first'] = array();
+    $updatedParameters =  \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, 0);
+    if (isset($updatedParameters['ajax_form'])){
+      unset($updatedParameters['ajax_form']);
+    }
+    if (isset($updatedParameters['_wrapper_format'])){
+      unset($updatedParameters['_wrapper_format']);
+    }
     $options = array(
-      'query' => \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, 0),
+      'query' =>$updatedParameters,
     );
     $items['first']['href'] = \Drupal::url($route_name, $route_parameters, $options);
     if (isset($tags[0])) {
       $items['first']['text'] = $tags[0];
     }
     $items['previous'] = array();
+    $updatedParameters =  \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, $pager_page_array[$element] - 1);
+    if (isset($updatedParameters['ajax_form'])){
+      unset($updatedParameters['ajax_form']);
+    }
+    if (isset($updatedParameters['_wrapper_format'])){
+      unset($updatedParameters['_wrapper_format']);
+    }
     $options = array(
-      'query' => \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, $pager_page_array[$element] - 1),
+      'query' => $updatedParameters,
     );
     $items['previous']['href'] = \Drupal::url($route_name, $route_parameters, $options);
     if (isset($tags[1])) {
@@ -128,9 +141,18 @@ function harno_theme_preprocess_pager(&$vars){
 
     // Now generate the actual pager piece.
     for (; $i <= $pager_last && $i <= $pager_max; $i++) {
+
+      $updatedParameters =  \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, $i - 1);
+      if (isset($updatedParameters['ajax_form'])){
+        unset($updatedParameters['ajax_form']);
+      }
+      if (isset($updatedParameters['_wrapper_format'])){
+        unset($updatedParameters['_wrapper_format']);
+      }
       $options = array(
-        'query' => \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, $i - 1),
+        'query' => $updatedParameters,
       );
+
       $items['pages'][$i]['href'] = \Drupal::url($route_name, $route_parameters, $options);
       if ($i == $pager_current) {
         $vars['current'] = $i;
@@ -146,22 +168,39 @@ function harno_theme_preprocess_pager(&$vars){
   // Create the "next" and "last" links if we are not on the last page.
   if ($pager_page_array[$element] < $pager_max - 1) {
     $items['next'] = array();
+    $updatedParameters = \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, $pager_page_array[$element] + 1);
+    if (isset($updatedParameters['ajax_form'])){
+      unset($updatedParameters['ajax_form']);
+    }
+    if (isset($updatedParameters['_wrapper_format'])){
+      unset($updatedParameters['_wrapper_format']);
+    }
     $options = array(
-      'query' => \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, $pager_page_array[$element] + 1),
+      'query' => $updatedParameters,
     );
     $items['next']['href'] = \Drupal::url($route_name, $route_parameters, $options);
     if (isset($tags[3])) {
       $items['next']['text'] = $tags[3];
     }
     $items['last'] = array();
+
+    $updatedParameters = \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, $pager_max - 1);
+    if (isset($updatedParameters['ajax_form'])){
+      unset($updatedParameters['ajax_form']);
+    }
+    if (isset($updatedParameters['_wrapper_format'])){
+      unset($updatedParameters['_wrapper_format']);
+    }
     $options = array(
-      'query' => \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, $pager_max - 1),
+      'query' => $updatedParameters,
     );
+
     $items['last']['href'] = \Drupal::url($route_name, $route_parameters, $options);
     if (isset($tags[4])) {
       $items['last']['text'] = $tags[4];
     }
   }
+
   $vars['items'] = $items;
 
   // The rendered link needs to play well with any other query parameter used
@@ -170,7 +209,7 @@ function harno_theme_preprocess_pager(&$vars){
   $vars['#cache']['contexts'][] = 'url.query_args';
   if (!empty($vars['items'])){
     if (!empty($vars['items']['last'])){
-      $vars['items']['last']['real_number'] = $pager->getLimit();
+      $vars['items']['last']['real_number'] = $pager->getTotalPages();
     }
     if (!empty($vars['items']['first'])){
 

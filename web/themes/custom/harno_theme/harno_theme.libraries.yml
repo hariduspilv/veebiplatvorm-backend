@@ -1,17 +1,7 @@
 global-styling:
-  version: VERSION
-  css:
-    component:
-      css/style.css: {}
-      css/colors.css: {}
-harno_custom:
-  js:
-    js/global.js: {}
-    static/assets/js/main-drupal.js: {}
+  version: 1.0
   css:
     theme:
       static/assets/styles/default.css: {}
-  dependencies:
-    - core/jquery
-    - core/jquery.once
-    - core/drupal
+  js:
+    static/assets/js/main.js: {weight:-30}
