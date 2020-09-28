@@ -18,9 +18,24 @@
     <div class="gallery-filters">
 <form{{ attributes.addClass('filters-form') }}>
   <div class="filters-wrapper">
+    <div class="modal-header">
+      <span class="modal-title">{{ "Filter galleries" |t }}</span>
+      <span class="closeBtn"></span>
+    </div><!--/modal-header-->
  {{ children|without('years') }}
   </div>
+  <div class="mobile-filters">
+    <div class="form-item search-input" data-plugin="movingLabel">
+      {{ children.bottom.gallerySearch }}
+    </div><!--/form-item search-input-->
+    <button class="btn btn-secondary mobile-filter-trigger" data-plugin="filtersModal">{{ "Open filters" |t }}</button>
+  </div><!--/mobile-filters-->
+
+  <div class="mobile-filters-output">
+  </div><!--/mobile-filters-output-->
 </form>
+
+
     </div><!--/--gallery-filters-->
 
   </div><!--/col-12-->
