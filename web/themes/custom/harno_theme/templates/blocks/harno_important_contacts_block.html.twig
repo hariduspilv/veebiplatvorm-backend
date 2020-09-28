@@ -43,7 +43,7 @@
               <span class="bold">{{important_contact.body}}
               </span></a>
           {% else %}
-            <span class="bold">{{important_contact.body}}</span>
+            <span class="bold">{{important_contact.body |raw}}</span>
           {% endif %}
         </li>
       {% endfor %}
