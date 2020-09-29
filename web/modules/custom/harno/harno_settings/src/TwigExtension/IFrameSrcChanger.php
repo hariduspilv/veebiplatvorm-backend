@@ -29,6 +29,7 @@ class IFrameSrcChanger extends \Twig_Extension {
    */
   public static function iFrameSourceChanger($txt) {
     if (!empty($txt)){
+
       preg_match('/src="([^"]+)"/', $txt, $match);
       $url = $match[1];
       $out_txt = '';
@@ -43,6 +44,7 @@ class IFrameSrcChanger extends \Twig_Extension {
       else{
         $out_txt = $txt;
       }
+      $out_txt = str_replace('></iframe','style="background-color: #000"></iframe',$out_txt);
       return $out_txt;
     }
 //    return '<span style="color: ' . $color . '">Whatever</span>';
