@@ -57,6 +57,12 @@
     {% set file_class = 'mdi-file-word' %}
     {% elseif file_extension == 'xlsx' %}
       {% set file_class = 'mdi-file-excel' %}
+    {% elseif file_extension == 'wav' or file_extension =='avi' %}
+      {% set file_class = 'mdi-file-music' %}
+    {% elseif file_extension == 'gif' or file_extension =='jpg' or file_extension == 'jpeg'  or file_extenion =='png' %}
+      {% set file_class = 'mdi-file-music' %}
+    {% elseif file_extension == ['mp4' ,'mov', 'm4a', 'm4v ','mpeg', 'avi'] %}
+      {% set file_class = 'mdi-file-video' %}
     {% elseif file_extension == 'ppt' or file_extension == 'pptx' %}
       {% set file_class = 'mdi-file-powerpoint' %}
   {% else %}
