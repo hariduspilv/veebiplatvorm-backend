@@ -39,18 +39,26 @@
 {% set title_classes = [
   label_display == 'visually_hidden' ? 'visually-hidden'
 ] %}
-{% set link_classes = ['btn', 'btn-link', 'link-out'] %}
+{% set link_classes = ['btn', 'btn-link'] %}
 {% if items %}
   {% for item in items %}
   {% if item.content %}
+    {% if  item.content['#options'].external%}
+      {% set link_classes = link_classes|merge(['link-out']) %}
+      {% else %}
+        {% set link_classes = link_classes|merge(['link-in']) %}
+
+        {% set aria_label='Link opens on new tab' %}
+      {% endif %}
   {% if item.content['#options'] %}
         {% if item.content['#options'].external %}
             {% set target = '_blank'%}
+          {% set aria_label='Link opens on new tab' %}
         {% endif %}
     {% endif %}
     <li>
-     <a href="{{item.content['#url']}}" class="{{link_classes|join(' ')}}" target="{{target}}" rel="noopener noreferrer">{{item.content['#title']}}</a>
+     <a href="{{item.content['#url']}}" class="{{link_classes|join(' ')}}" aria-label="{{ aria_label }}" target="{{target}}" rel="noopener noreferrer">{{item.content['#title']}}</a>
     </li>
-    {% endif %}  
+    {% endif %}
   {% endfor %}
 {% endif %}
