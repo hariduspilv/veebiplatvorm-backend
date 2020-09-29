@@ -43,7 +43,9 @@
   {% for item in items %}
     {% if item.content['#media'] %}
       {% set file_url = item.content['#media']|file_uri|file_url %}
+
       {% set bundle = item.content['#media'].bundle() %}
+
       {% if bundle == 'audio' %}
         {% set field_name = 'field_media_audio_file' %}
       {% elseif bundle == 'video'%}
@@ -64,7 +66,15 @@
             {% set title = item.content['#media'].getName() %}
           {% endif %}
           <a href="{{ file_url }}" target="_blank" alt="{{ values[0].alt }}">
-            <i class="mdi mdi-file" aria-label="blank file"></i>{{ title }}
+            {% if bundle == 'image' %}
+              <i class="mdi mdi-file-image" aria-label="picture file"></i>{{ title }}
+              {% elseif bundle == 'audio' %}
+                <i class="mdi mdi-file-music" aria-label="audio file"></i>{{ title }}
+              {% elseif bundle == 'video' %}
+                <i class="mdi mdi-file-video" aria-label="audio file"></i>{{ title }}
+              {% else %}
+                <i class="mdi mdi-file" aria-label="blank file"></i>{{ title }}
+            {% endif %}
           </a>
         {% endif %}
       {% endif %}

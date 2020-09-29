@@ -47,9 +47,13 @@
     {% endif %}
     {% for item in items %}
       {% if  item.content['#options'].external%}
-        <a target="_blank" href="{{ item.content['#url']['#uri'] }}" class="btn btn-link in-new">{{ item.content['#title'] }}</a>
+        <a target="_blank" href="{{ item.content['#url']['#uri'] }}" aria-label="Link opens in new tab" class="">
+          <i class="mdi mdi-open-in-new" aria-label="link inside"></i>
+          {{ item.content['#title'] }}
+        </a>
         {% else %}
-          <a target="_blank" href="{{ path(item.content['#url'].routeName, item.content['#url'].routeParameters) }}" class="btn btn-link">{{ item.content['#title'] }}</a>
+          <a target="_blank" href="{{ path(item.content['#url'].routeName, item.content['#url'].routeParameters) }}" aria-label="Link opens in new tab" class="">
+            <i class="mdi mdi-link-variant" aria-label="link inside"></i>{{ item.content['#title'] }}</a>
       {% endif %}
     {% endfor %}
     {% if multiple %}

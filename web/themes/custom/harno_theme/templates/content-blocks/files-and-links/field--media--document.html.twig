@@ -47,10 +47,18 @@
 {% if element.0['#file']%}
   {%  set uri = element.0['#file']|file_uri%}
   {% set file_extension = element.0['#file'].getfilename()|split('.')|last %}
+  {% set file_size = element.0['#file'].getSize()/1000 %}
+  {% set file_size = file_size/1000 %}
+  {% set file_size = file_size|round(2) %}
+  {% set file_size = file_size|number_format %}
   {% if file_extension == 'pdf' %}
     {% set file_class = 'mdi-file-pdf' %}
   {% elseif file_extension == 'docx' or file_extension=='doc' or file_extension=='odt' or file_extension == 'txt' %}
     {% set file_class = 'mdi-file-word' %}
+    {% elseif file_extension == 'xlsx' %}
+      {% set file_class = 'mdi-file-excel' %}
+    {% elseif file_extension == 'ppt' or file_extension == 'pptx' %}
+      {% set file_class = 'mdi-file-powerpoint' %}
   {% else %}
     {% set file_class = 'mdi-file' %}
   {% endif %}
@@ -58,5 +66,11 @@
 {% if name %}
   <a href="{{ uri |file_url}}">
     <i class="mdi {{ file_class }}" aria-label="{{ name }}"></i>{{ name }}</a>
+{#  {% if file_size < 1 %}#}
+{#    (~1MB)#}
+{#  {% else %}#}
+{#    ({{ file_size }}MB)#}
+{#  {% endif %}#}
+
 {% endif %}
 
