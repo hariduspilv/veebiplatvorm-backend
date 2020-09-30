@@ -36,6 +36,9 @@
  * @see template_preprocess_field()
  */
 #}
+{% if element['#orientation'] %}
+  {% set orientation = element['#orientation'] %}
+{% endif %}
 {%
   set title_classes = [
   label_display == 'visually_hidden' ? 'visually-hidden',
@@ -86,17 +89,26 @@
   {% else %}
     <div class="image-block">
     {% for item in items %}
+
+      {% set content  = item.content %}
+      {% set  content = content|merge({'#orientation':orientation}) %}
       {% if loop.first %}
-        {{ item.content }}
+        {{ content }}
         {% else %}
 
           {% if loop.index == 2 %}
       <ul class="thumbnails-field">
             {% endif %}
-          <li>
+          {% if loop.index <= 6 %}
+            <li class="visible-thumb">
+              {% else %}
+
+          <li class="hidden">
+          {% endif %}
             {% set content  = item.content %}
-{#            {{ dump(content) }}#}
             {% set  content = content|merge({'#thumbnail':true}) %}
+             {% set  content = content|merge({'#orientation':orientation}) %}
+
             {{ content }}
           </li>
           {% if loop.last %}

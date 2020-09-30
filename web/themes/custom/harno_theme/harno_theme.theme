@@ -36,8 +36,8 @@ function harno_theme_preprocess_block(&$variables) {
 }
 function harno_theme_preprocess_media(&$vars){
 
-
   if (isset($vars['elements'])){
+
     if(isset($vars['elements']['#thumbnail'])){
       if(isset($vars['content'])){
         if(!empty(($vars['content']['field_media_image']))){
@@ -45,6 +45,9 @@ function harno_theme_preprocess_media(&$vars){
           $vars['content']['field_media_image']['#thumbnail'] = true;
         }
       }
+    }
+    if(isset($vars['elements']['#orientation'])){
+      $vars['content']['field_media_image']['#orientation'] = $vars['elements']['#orientation'];
     }
   }
 }
@@ -218,6 +221,14 @@ function harno_theme_preprocess_pager(&$vars){
   }
 }
 function harno_theme_preprocess_field(&$vars){
+  if($vars['field_name']=='field_content_blocks_100'){
+    if(isset($vars['element']['#col_with'])){
+      foreach ($vars['items'] as &$content){
+//        devel_dump($content);
+        $content['content']['#content-width'] = $vars['element']['#col_with'];
+      }
+    }
+  }
   if($vars['field_name'] == 'field_table_editor'){
     if (!empty($vars['items'])){
       foreach ($vars['items'] as &$item){
@@ -227,6 +238,18 @@ function harno_theme_preprocess_field(&$vars){
           }
         }
       }
+    }
+  }
+}
+function harno_theme_preprocess_paragraph(&$vars){
+  if(isset($vars['elements'])){
+    if(isset($vars['elements']['field_orientation'])){
+      $orientation = $vars['elements']['field_orientation']['#object']->get('field_orientation')->getValue();
+      $orientation = $orientation[0]['value'];
+     $vars['content']['field_images']['#orientation'] = $orientation;
+    }
+    if(isset($vars['elements']['field_content_blocks_100'])){
+      $vars['content']['field_content_blocks_100']['#col_with'] = '100';
     }
   }
 }

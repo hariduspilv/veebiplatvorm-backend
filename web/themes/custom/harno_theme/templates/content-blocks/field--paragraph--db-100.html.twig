@@ -46,15 +46,9 @@
   not paragraph.isPublished() ? 'paragraph--unpublished'
 ]
 %}
-  <div class="col-12 sm-12">
+<div class="col-12 sm-12">
 {% block element %}
 {{ element }}
 {% endblock element %}
-{% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {% block content %}
-      {{ content }}
-    {% endblock %}
-  </div>
-{% endblock paragraph %}
+
   </div>
