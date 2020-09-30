@@ -51,10 +51,41 @@
     {% endif %}
     {% set detailed_contact = content|without('field_contact_title') %}
     <ul class="detailed-contact">
-
       {% if contact %}
+
         {% if contact.0.target_id %}
-          {{  drupal_entity('node',  contact.0.target_id , 'teaser')  }}
+          {% set node =  drupal_entity('node',  contact.0.target_id , 'teaser')['#node']%}
+          {% set fields = [
+            {'fname':'title','alt_name':'field_name'},
+            {'fname':'field_phone','href_start':'tel:','class':'phone'},
+            {'fname':'field_email','href_start':'mailto:','class':'e-mail'},
+            {'fname':'field_link','not_referenced':true},
+            {'fname':'field_address','not_referenced':true},
+          ] %}
+          {% for field in fields %}
+
+            {% if content[field.fname]['#title'] %}
+              {{ content[field.fname] }}
+            {% else %}
+              {% if content[field.alt_name]['#title'] %}
+                {{ content[field.alt_name] }}
+                {% else %}
+                  {% if not field.not_referenced  and node.get(field.fname).value %}
+                    {% for value in node.get(field.fname).getValue() %}
+                      <li>
+                        {% if field.fname=='title' %}
+                          <span class="person-name">{{ value.value }}</span>
+                        {% else %}
+                          <a href="{{ field.href_start }}{{ value.value }}"
+                             class="btn btn-link {{ field.class }}">{{ value.value }}</a>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  {% endif %}
+              {% endif %}
+            {% endif %}
+            {# {{ devel_dump(node.get(field).value) }} #}
+          {% endfor %}
         {% endif %}
       {% else %}
         {% for item in content|without('field_contact_title','field_contact_id') %}
