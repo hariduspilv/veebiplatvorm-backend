@@ -47,8 +47,7 @@
       {% set link_classes = link_classes|merge(['link-out']) %}
       {% else %}
         {% set link_classes = link_classes|merge(['link-in']) %}
-
-        {% set aria_label='Link opens on new tab' %}
+      {% set aria_label='Link opens on new tab' %}
       {% endif %}
   {% if item.content['#options'] %}
         {% if item.content['#options'].external %}
