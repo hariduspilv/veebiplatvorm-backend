@@ -100,8 +100,11 @@
     {{ title_suffix }}
     <div{{ content_attributes.addClass('node__content', 'clearfix','col-12') }}>
       <div class="row">
-        <div class="col-8 md-6 sm-12">
-
+        {% set width_classes = 'col-8 md-6 sm-12' %}
+        {% if not content.field_one_image['#title'] %}
+          {% set width_classes = 'col-12 md-12 sm-12' %}
+        {% endif %}
+        <div class="{{ width_classes }}">
           {% if content.body %}
             {{ content.body }}
           {% endif %}
