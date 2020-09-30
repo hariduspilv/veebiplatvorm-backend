@@ -47,6 +47,7 @@
     {% set orientation = element['#orientation'] %}
   {% endif %}
   {% if  element['#thumbnail'] ==1 %}
+    {% set orientation='landscape' %}
     {% set img_classes = "thumb thumb--landscape" %}
   {% else %}
     {% set img_classes = "image-field image-field--"~orientation %}
@@ -57,7 +58,7 @@
   {% set image_uri = item.content['#item']|file_uri%}
   {% set image_alt = item.content['#item'].getValue().alt %}
 
-    <a href="#" class="{{ img_classes }}" style="background-image: url('{{ image_uri|image_style('landscape') }}');" tabindex="0">
+    <a href="#" class="{{ img_classes }}" style="background-image: url('{{ image_uri|image_style(orientation) }}');" tabindex="0">
       <img src="/themes/custom/harno_theme/static/assets/images/placeholder-1.gif" alt="{{ image_alt }}" title="Gallerii pilt">
       {% if not element['#thumbnail'] %}
       <span class="gallery-icon" aria-label="{{ "Open picture" | t}}"></span>
