@@ -53,11 +53,11 @@
   {% set file_size = file_size|number_format %}
   {% if file_extension == 'pdf' %}
     {% set file_class = 'mdi-file-pdf' %}
-  {% elseif file_extension == 'docx' or file_extension=='doc' or file_extension=='odt'  %}
+  {% elseif file_extension == 'docx' or file_extension=='doc'   %}
     {% set file_class = 'mdi-file-word' %}
-  {% elseif file_extension =='txt'  %}
+  {% elseif file_extension in ['txt','odt','rtf']  %}
     {% set file_class = 'mdi-note-text' %}
-    {% elseif file_extension in ['xlsx','xls']  %}
+    {% elseif file_extension in ['xlsx','xls','ods','odf']  %}
       {% set file_class = 'mdi-file-chart' %}
     {% elseif file_extension == 'wav' or file_extension =='avi' %}
       {% set file_class = 'mdi-file-music' %}
@@ -65,7 +65,7 @@
       {% set file_class = 'mdi-file-music' %}
     {% elseif file_extension in ['mp4' ,'mov', 'm4a', 'm4v ','mpeg', 'avi'] %}
       {% set file_class = 'mdi-file-video' %}
-    {% elseif file_extension == 'ppt' or file_extension == 'pptx' %}
+    {% elseif file_extension in ['ppt','pptx','odp'] %}
       {% set file_class = 'mdi-file-powerpoint' %}
   {% else %}
     {% set file_class = 'mdi-file' %}
