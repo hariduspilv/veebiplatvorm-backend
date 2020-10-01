@@ -1,6 +1,6 @@
 uuid: 1c672f65-b39f-4941-8145-b94349cc0b64
 langcode: et
-status: false
+status: true
 dependencies:
   module:
     - system
@@ -10,8 +10,8 @@ _core:
   default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
 id: harno_theme_breadcrumbs
 theme: harno_theme
-region: header
-weight: 0
+region: content
+weight: -10
 provider: null
 plugin: system_breadcrumb_block
 settings:
