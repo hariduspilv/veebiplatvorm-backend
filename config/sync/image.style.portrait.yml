@@ -1,17 +1,17 @@
-uuid: 886005fe-35e8-4270-9b60-dfbb64a52efc
+uuid: 486ca427-cef9-46da-b775-f898df9b06f8
 langcode: et
 status: true
 dependencies:
   module:
     - focal_point
-name: landscape
-label: Landscape
+name: portrait
+label: Portrait
 effects:
-  4c627f94-7bac-4917-bf22-ea3634ea03da:
-    uuid: 4c627f94-7bac-4917-bf22-ea3634ea03da
+  3afc0519-9aad-4742-b6b6-ae3e17873fb7:
+    uuid: 3afc0519-9aad-4742-b6b6-ae3e17873fb7
     id: focal_point_scale_and_crop
     weight: 1
     data:
       width: 3888
-      height: 2592
+      height: 5832
       crop_type: focal_point
