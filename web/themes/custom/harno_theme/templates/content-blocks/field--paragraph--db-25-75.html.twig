@@ -46,15 +46,20 @@
   not paragraph.isPublished() ? 'paragraph--unpublished'
 ]
 %}
+{% if element['#tablet_with'] %}
+  {% set md_class= 'md-12' %}
+{% else %}
+  {% set md_class= 'md-6' %}
+{% endif %}
 {% block element %}
   {% if element['#field_name'] == 'field_content_blocks_25_1'  %}
-    <div class="col-3 md-6 sm-12">
+    <div class="col-3 {{ md_class }} sm-12">
 
       {{ element }}
 
     </div>
   {% elseif element['#field_name'] == 'field_content_blocks_75_1'%}
-    <div class="col-9 md-6 sm-12">
+    <div class="col-9 {{ md_class }} sm-12">
       {{ element }}
 
     </div>

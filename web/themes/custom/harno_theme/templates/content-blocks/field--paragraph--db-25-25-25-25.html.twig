@@ -46,7 +46,12 @@
   not paragraph.isPublished() ? 'paragraph--unpublished'
 ]
 %}
-<div class="col-3 md-6 sm-12">
+{% if element['#tablet_with'] %}
+  {% set md_class= 'md-12' %}
+  {% else %}
+    {% set md_class= 'md-6' %}
+{% endif %}
+<div class="col-3 {{ md_class }} sm-12">
 {% block element %}
 {{ element }}
 {% endblock element %}

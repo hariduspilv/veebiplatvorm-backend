@@ -242,8 +242,57 @@ function harno_theme_preprocess_field(&$vars){
   }
 }
 function harno_theme_preprocess_paragraph(&$vars){
+
   if(isset($vars['elements'])){
-    if(isset($vars['elements']['field_orientation'])){
+    if (isset($vars['content']['field_content_blocks_25_1']) && isset($vars['content']['field_content_blocks_25_2']) && isset($vars['content']['field_content_blocks_25_3'])&& isset($vars['content']['field_content_blocks_25_4'])){
+      $numitems = count($vars['content']);
+      $i=0;
+      foreach ($vars['content'] as $key => &$content){
+        if (!isset($content['#title'])){
+          $i++;
+        }
+      }
+        $j=0;
+      $reverse_array = array_reverse($vars['content'],true);
+      if ($i==1 or $i==3) {
+        foreach ($reverse_array as &$content) {
+          if (!empty($content['#title'])) {
+            if ($j < $i) {
+                $content['#tablet_with'] = TRUE;
+
+            }
+            if ($i == 3) {
+              $content['#tablet_with'] = TRUE;
+            }
+            $j++;
+          }
+        }
+      }
+      $vars['content'] = array_reverse($reverse_array,true);
+
+    }
+    if (isset($vars['content']['field_content_blocks_25_1']) && isset($vars['content']['field_content_blocks_75_1'])) {
+      $i=0;
+      foreach ($vars['content'] as $key => &$content){
+        if (!isset($content['#title'])){
+          $i++;
+        }
+      }
+      $reverse_array = array_reverse($vars['content'],true);
+      if ($i==1) {
+        $j=0;
+        foreach ($reverse_array as &$content) {
+          if (!empty($content['#title'])) {
+            if ($j < $i) {
+              $content['#tablet_with'] = TRUE;
+            }
+            $j++;
+          }
+        }
+      }
+      $vars['content'] = array_reverse($reverse_array,true);
+    }
+      if(isset($vars['elements']['field_orientation'])){
       $orientation = $vars['elements']['field_orientation']['#object']->get('field_orientation')->getValue();
       $orientation = $orientation[0]['value'];
      $vars['content']['field_images']['#orientation'] = $orientation;
