@@ -46,15 +46,14 @@
   not paragraph.isPublished() ? 'paragraph--unpublished'
 ]
 %}
-<div class="col-6 md-6 sm-12">
 {% block element %}
-{{ element }}
+  {% if element['#field_name'] == 'field_content_blocks_50_1'  %}
+    <div class="col-6 md-6 sm-12">
+      {{ element }}
+    </div>
+  {% elseif element['#field_name'] == 'field_content_blocks_50_2'%}
+    <div class="col-6 md-6 sm-12">
+      {{ element }}
+    </div>
+  {% endif %}
 {% endblock element %}
-{% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {% block content %}
-      {{ content }}
-    {% endblock %}
-  </div>
-{% endblock paragraph %}
-</div>
