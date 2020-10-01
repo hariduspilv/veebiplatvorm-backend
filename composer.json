@@ -42,6 +42,7 @@
         "drupal/maxlength": "^1.0",
         "drupal/media_bulk_upload": "^1.0",
         "drupal/menu_block": "^1.6",
+        "drupal/menu_breadcrumb": "^1.14",
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.8",
         "drupal/redirect": "^1.6",

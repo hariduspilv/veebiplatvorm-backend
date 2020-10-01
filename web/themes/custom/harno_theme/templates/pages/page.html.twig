@@ -67,7 +67,6 @@
  * @see html.html.twig
  */
 #}
-
 <div id="page-wrapper main-wrapper">
   <header id="header main-header" class="header" role="banner" aria-label="{{ 'Site header'|t }}">
     {% block head %}
@@ -141,19 +140,25 @@
         </div>
       </div>
 
-
+      <div class="row">
+        <div class="col-12 md-12 sm-12">
+          {% if page.content.harno_theme_breadcrumbs %}
+            {{ page.content.harno_theme_breadcrumbs }}
+          {% endif %}
+        </div>
+      </div>
       <div class="row">
 
         {% if page.sidebar_first %}
           {% set col_class = 'col-9 md-12 sm-12' %}
 
-          <div class="col-3 md-12 sm-12">
+          <div class="col-3 md-12 sm-12 with-sidemenu">
             <aside class="sidemenu-block">
               {{page.sidebar_first}}
               </aside>
           </div>
         {% else %}
-          {% set col_class = 'col-12' %}
+          {% set col_class = 'col-12 ' %}
         {% endif %}
         <div class="{{ col_class }}">
 
@@ -165,7 +170,7 @@
           {% endif %}
 
           {% if page.content %}
-            {{ page.content|without('harno_theme_page_title') }}
+            {{ page.content|without('harno_theme_page_title','harno_theme_breadcrumbs') }}
           {% endif %}
         </div><!--/col-12-->
       </div><!--/row-->
