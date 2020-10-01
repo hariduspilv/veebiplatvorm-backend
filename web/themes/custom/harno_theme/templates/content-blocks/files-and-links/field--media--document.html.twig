@@ -71,7 +71,7 @@
     {% set file_class = 'mdi-file' %}
   {% endif %}
 {% endif %}
-{% if name and file_url %}
+{% if name and uri %}
   <a href="{{ uri |file_url}}">
     <i class="mdi {{ file_class }}" aria-label="{{ name }}"></i>{{ name }}</a>
 {#  {% if file_size < 1 %}#}
