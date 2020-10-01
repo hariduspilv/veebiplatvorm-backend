@@ -17,7 +17,7 @@ required: true
 translatable: false
 default_value:
   -
-    value: "<table>\r\n\t<caption>Tabeli tiitel muuta seda teksti</caption>\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Päis 1</th>\r\n\t\t\t<th>Päis 2</th>\r\n\t\t\t<th>Päis 3</th>\r\n\t\t\t<th>Päis 4</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n"
+    value: "<table>\r\n\t<caption>Tabeli tiitel muuta seda teksti.</caption>\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th scope=\"col\">Päis 1</th>\r\n\t\t\t<th scope=\"col\">Päis 2</th>\r\n\t\t\t<th scope=\"col\">Päis 3</th>\r\n\t\t\t<th scope=\"col\">Päis 4</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n"
     format: full_html
 default_value_callback: ''
 settings: {  }
