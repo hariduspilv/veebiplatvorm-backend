@@ -2,6 +2,11 @@
  * @file
  * Subtheme specific CSS.
  */
-.kint dt{
-    width: 100%;
+.with-sidemenu .text-field{
+  width: 100% !important;
 }
+.col-8 .text-field, .col-9 .text-field, .col-7 .text-field, .col-6 .text-field, .col-5 .text-field, .col-4 .text-field, .col-3 .text-field
+  {
+    width: 100% !important;
+  }
+
