@@ -1,6 +1,6 @@
 uuid: a000542e-21f2-40c4-a67e-3502b9575799
 langcode: et
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -11,7 +11,7 @@ _core:
 id: harno_theme_branding
 theme: harno_theme
 region: header
-weight: 0
+weight: -11
 provider: null
 plugin: system_branding_block
 settings:
