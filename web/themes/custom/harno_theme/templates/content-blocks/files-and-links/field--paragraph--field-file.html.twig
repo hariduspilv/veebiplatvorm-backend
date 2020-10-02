@@ -67,11 +67,11 @@
           {% endif %}
           <a href="{{ file_url }}" target="_blank" alt="{{ values[0].alt }}">
             {% if bundle == 'image' %}
-              <i class="mdi mdi-file-image" aria-label="picture file"></i>{{ title }}
+              <i class="mdi mdi-file-image" aria-label="{{ 'picture file'|t }}"></i>{{ title }}
               {% elseif bundle == 'audio' %}
-                <i class="mdi mdi-file-music" aria-label="audio file"></i>{{ title }}
+                <i class="mdi mdi-file-music" aria-label="{{ 'audio file'|t }}"></i>{{ title }}
               {% elseif bundle == 'video' %}
-                <i class="mdi mdi-file-video" aria-label="audio file"></i>{{ title }}
+                <i class="mdi mdi-file-video" aria-label="{{ 'video file'|t }}"></i>{{ title }}
               {% else %}
                 <i class="mdi mdi-file" aria-label="blank file"></i>{{ title }}
             {% endif %}
