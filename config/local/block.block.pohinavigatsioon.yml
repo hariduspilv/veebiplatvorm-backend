@@ -21,7 +21,7 @@ settings:
   label_display: visible
   follow: false
   follow_parent: child
-  level: 2
+  level: 3
   depth: 0
   expand: true
   parent: 'main:'

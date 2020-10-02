@@ -68,53 +68,31 @@
  */
 #}
 <div id="page-wrapper main-wrapper">
-  <header id="header main-header" class="header" role="banner" aria-label="{{ 'Site header'|t }}">
-    {% block head %}
-      {% if page.secondary_menu or page.top_header or page.top_header_form %}
-        <nav{{ navbar_top_attributes }}>
-          {% if container_navbar %}
-          <div class="container">
-            {% endif %}
-            {{ page.secondary_menu }}
-            {{ page.top_header }}
-            {% if page.top_header_form %}
-              <div class="form-inline navbar-form ml-auto">
-                {{ page.top_header_form }}
-              </div>
-            {% endif %}
-            {% if container_navbar %}
-          </div>
+  <header id="header main-header" class="header main-header" role="banner" aria-label="{{ 'Site header'|t }}">
+    <div class="container">
+      <div class="row">
+        <div class="col-3 sm-12 md-12">
+          {% if page.header and page.header.harno_theme_branding %}
+            {{ page.header.harno_theme_branding }}
           {% endif %}
-        </nav>
-      {% endif %}
-      <nav{{ navbar_attributes }}>
-        {% if container_navbar %}
-        <div class="container">
-          {% endif %}
-          {{ page.header }}
-          {% if page.primary_menu or page.header_form %}
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                    data-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false"
-                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse justify-content-end" id="CollapsingNavbar">
-              {{ page.primary_menu }}
-              {% if page.header_form %}
-                <div class="form-inline navbar-form justify-content-end">
-                  {{ page.header_form }}
-                </div>
+        </div>
+        <div class="col-9 sm-12 md-12">
+          <div class="row">
+            <div class="col-12 sm-12 md-12">
+              top-nav
+            </div>
+            <div class="col-12 sm-12 md-12">
+
+              {% if page.header and page.header.harno_theme_main_menu %}
+              <div class="desktop-menu">
+                {{ page.header.harno_theme_main_menu }}
+              </div><!--/desktop-menu-->
               {% endif %}
             </div>
-          {% endif %}
-          {% if sidebar_collapse %}
-            <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
-                    data-target="#CollapsingLeft" aria-controls="CollapsingLeft" aria-expanded="false"
-                    aria-label="Toggle navigation"></button>
-          {% endif %}
-          {% if container_navbar %}
+          </div>
         </div>
-        {% endif %}
-      </nav>
-    {% endblock %}
+      </div>
+    </div>
   </header>
   {% if page.highlighted %}
     <div class="highlighted">
@@ -150,12 +128,12 @@
       <div class="row">
 
         {% if page.sidebar_first %}
-          {% set col_class = 'col-9 md-12 sm-12' %}
+          {% set col_class = 'col-9 md-12 sm-12 p-sidemenu-left with-sidemenu' %}
 
-          <div class="col-3 md-12 sm-12 with-sidemenu">
+          <div class="col-3 md-12 sm-12 p-sidemenu-right">
             <aside class="sidemenu-block">
               {{page.sidebar_first}}
-              </aside>
+            </aside>
           </div>
         {% else %}
           {% set col_class = 'col-12 ' %}
@@ -170,7 +148,8 @@
           {% endif %}
 
           {% if page.content %}
-            {{ page.content|without('harno_theme_page_title','harno_theme_breadcrumbs') }}
+            {% set general_content = page.content %}
+            {{ general_content|without('harno_theme_page_title','harno_theme_breadcrumbs') }}
           {% endif %}
         </div><!--/col-12-->
       </div><!--/row-->
