@@ -155,9 +155,9 @@ class HarnoSettingsForm extends ConfigFormBase {
       '#description' => 'Avalehe kiirlinkide sisestamise ja muutmise andmeplokk, kuhu saab lisada kuni 8 veebilehe sisemist või
        veebilehelt välja suunavat linki, mis märgistatakse vastava ikooniga. Lingi lisamiseks tuleb sisestada nii selle väljakuvatav nimi kui ka link.
        Lingi nimetus peaks olema võimalikult lühike ja konkreetne, võimalusel ainult 1 sõna. Ei soovita üle 2 sõna.
-       Kui on soov lisada veebilehe sisemist link, siis alustage soovitud lehekülje pealkirja trükkimist
-       "Sisemine link" väljale ning süsteem pakub sobivaid linke. Lingi valimiseks klikkige sellel. Välise lingi puhul kopeerige
-       kogu veebilehe aadress algusega https:// või http:// ja lisage see "Väline veebilink" välja. Linkide järjekorra muutmiseks minge rea alguses olevale ikoonile ja
+       Kui on soov lisada veebilehe sisemist linki, siis alustage soovitud lehekülje pealkirja trükkimist
+       "Sisemine link" väljale ning süsteem pakub sobivaid linke. Lingi valimiseks klõpsake sellel. Välise lingi puhul kopeerige
+       kogu veebilehe aadress algusega https:// või http:// ja lisage see "Väline veebilink" väljale. Linkide järjekorra muutmiseks minge rea alguses olevale ikoonile ja
        lohistage rida soovitud kohta. Muudatuste salvestamiseks tuleb vajutada "Salvesta seadistus" nuppu.',
       '#group' => 'tabs',
     ];
@@ -366,9 +366,9 @@ class HarnoSettingsForm extends ConfigFormBase {
       '#title' => 'Jaluse kiirlingid',
       '#description' => 'Jaluse kiirlinkide sisestamise ja muutmise andmeplokk, kuhu saab lisada kuni 8 veebilehe sisemist või
        veebilehelt välja suunavat linki, mis märgistatakse vastava ikooniga. Lingi lisamiseks tuleb sisestada nii selle väljakuvatav nimi kui ka link.
-       Kui on soov lisada veebilehe sisemist link, siis alustage soovitud lehekülje pealkirja trükkimist
-       "Sisemine link" väljale ning süsteem pakub sobivaid linke. Lingi valimiseks klikkige sellel. Välise lingi puhul kopeerige
-       kogu veebilehe aadress algusega https:// või http:// ja lisage see "Väline veebilink" välja. Linkide järjekorra muutmiseks minge rea alguses olevale ikoonile ja
+       Kui on soov lisada veebilehe sisemist linki, siis alustage soovitud lehekülje pealkirja trükkimist
+       "Sisemine link" väljale ning süsteem pakub sobivaid linke. Lingi valimiseks klõpsake sellel. Välise lingi puhul kopeerige
+       kogu veebilehe aadress algusega https:// või http:// ja lisage see "Väline veebilink" väljale. Linkide järjekorra muutmiseks minge rea alguses olevale ikoonile ja
        lohistage rida soovitud kohta. Muudatuste salvestamiseks tuleb vajutada "Salvesta seadistus" nuppu.',
       '#group' => 'tabs',
     ];
@@ -517,7 +517,7 @@ class HarnoSettingsForm extends ConfigFormBase {
     foreach ($frontpage_quick_links as $id => $item) {
       $j = $id + 1;
       if (!empty($item['link_name']) AND empty($item['link_entity']) AND empty($item['link_url'])) {
-        $message = 'Palun täida kas väli "sisemine link" või "väline veebilink" real '.$j.'.';
+        $message = 'Palun täida avalehe kiirlingid real '.$j. ', kas väli "sisemine link" või "väline veebilink".';
         $form_state->setErrorByName('fp_quick_links_table][' . $id . '][link_entity', $message);
         $form_state->setErrorByName('fp_quick_links_table][' . $id . '][link_url', $message);
       }
@@ -563,7 +563,7 @@ class HarnoSettingsForm extends ConfigFormBase {
     foreach ($footer_quick_links as $id => $item) {
       $j = $id + 1;
       if (!empty($item['link_name']) AND empty($item['link_entity']) AND empty($item['link_url'])) {
-        $message = 'Palun täida kas väli "sisemine link" või "väline veebilink" real '.$j.'.';
+        $message = 'Palun täida jaluse kiirlingid real '.$j. ', kas väli "sisemine link" või "väline veebilink".';
         $form_state->setErrorByName('quick_links_table][' . $id . '][link_entity', $message);
         $form_state->setErrorByName('quick_links_table][' . $id . '][link_url', $message);
       }
