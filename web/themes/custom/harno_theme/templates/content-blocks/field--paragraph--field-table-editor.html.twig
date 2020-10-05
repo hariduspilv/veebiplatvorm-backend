@@ -42,15 +42,10 @@
   ]
 %}
 {% if items %}
-<div class="table-wrapper" data-plugin="tableScroll">
-  <div class="table-scrollable">
     {% for item in items %}
       {{ item.content }}
     {% endfor %}
-  </div><!--/table-scrollable-->
-  <div class="mobile-edge-right"></div>
-  <div class="mobile-edge-left"></div>
-</div><!--/table-wrapper-->
+
 {% endif %}
 
 

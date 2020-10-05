@@ -33,6 +33,13 @@ function harno_theme_form_system_theme_settings_alter(&$form, FormStateInterface
   ];
 }
 function harno_theme_preprocess_block(&$variables) {
+  if(!empty($variables['elements'])){
+    if (isset($variables['elements']['#sidemenu'])){
+      if (!$variables['elements']['#sidemenu']) {
+        $variables['content']['#sidemenu'] = true;
+      }
+    }
+  }
 }
 function harno_theme_preprocess_media(&$vars){
 
@@ -235,6 +242,12 @@ function harno_theme_preprocess_field(&$vars){
         if(!empty($item['content'])){
           if(!empty(($item['content']['#text']))){
             $item['content']['#text'] = str_replace('<table>','<table class="main-table">',$item['content']['#text'] );
+            $item['content']['#text'] = str_replace('<table','<div class="table-wrapper" data-plugin="tableScroll">
+  <div class="table-scrollable"><table',$item['content']['#text'] );
+            $item['content']['#text'] = str_replace('</table>','</table><div class="mobile-edge-right"></div>
+    <div class="mobile-edge-left"></div>
+  </div><!--/table-scrollable-->
+</div><!--/table-wrapper-->',$item['content']['#text'] );
           }
         }
       }
