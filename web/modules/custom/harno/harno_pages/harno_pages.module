@@ -35,6 +35,10 @@ function harno_pages_node_presave(\Drupal\node\NodeInterface $node) {
     $tags = ['node_type:' . $node->getType()];
     Cache::invalidateTags($tags);
   }
+  if($node_type=='page') {
+    $tags = ['gallery-block'];
+    Cache::invalidateTags($tags);
+  }
 }
 
 /**
@@ -45,6 +49,10 @@ function harno_pages_node_delete(\Drupal\node\NodeInterface $node) {
   $node_type = $node->getType();
   if($node_type=='gallery') {
     $tags = ['node_type:' . $node->getType()];
+    Cache::invalidateTags($tags);
+  }
+  if($node_type=='page') {
+    $tags = ['gallery-block'];
     Cache::invalidateTags($tags);
   }
 }

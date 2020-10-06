@@ -228,6 +228,9 @@ function harno_theme_preprocess_pager(&$vars){
   }
 }
 function harno_theme_preprocess_field(&$vars){
+  if ($vars['field_name'] == 'field_images'){
+    $vars['#cache']['tags'] = ['gallery-block'];
+  }
   if($vars['field_name']=='field_content_blocks_100'){
     if(isset($vars['element']['#col_with'])){
       foreach ($vars['items'] as &$content){
