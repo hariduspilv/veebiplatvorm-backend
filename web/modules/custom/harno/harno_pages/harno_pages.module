@@ -32,12 +32,10 @@ function harno_pages_node_presave(\Drupal\node\NodeInterface $node) {
   // Allows for clearing of blocks based on node type.
   $node_type = $node->getType();
   if($node_type=='gallery') {
-    $tags = ['node_type:' . $node->getType()];
-    Cache::invalidateTags($tags);
+    \Drupal::service('cache.render')->invalidateAll();
   }
   if($node_type=='page') {
-    $tags = ['gallery-block'];
-    Cache::invalidateTags($tags);
+    \Drupal::service('cache.render')->invalidateAll();
   }
 }
 
@@ -47,11 +45,11 @@ function harno_pages_node_presave(\Drupal\node\NodeInterface $node) {
 function harno_pages_node_delete(\Drupal\node\NodeInterface $node) {
   // Allows for clearing of blocks based on node type.
   $node_type = $node->getType();
-  if($node_type=='gallery') {
+  if($node_type == 'gallery') {
     $tags = ['node_type:' . $node->getType()];
     Cache::invalidateTags($tags);
   }
-  if($node_type=='page') {
+  if($node_type == 'page') {
     $tags = ['gallery-block'];
     Cache::invalidateTags($tags);
   }
