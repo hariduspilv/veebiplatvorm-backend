@@ -46,18 +46,23 @@
   not paragraph.isPublished() ? 'paragraph--unpublished'
 ]
 %}
+{% if element['#tablet_with'] %}
+  {% set md_class= 'md-6' %}
+  {% else %}
+    {% set md_class= 'md-12' %}
+{% endif %}
 {% block element %}
-{% if element['#field_name'] == 'field_content_blocks_50_1'  %}
-  <div class="col-6 md-12 sm-12">
+  {% if element['#field_name'] == 'field_content_blocks_50_1'  %}
+    <div class="col-6 {{ md_class}} sm-12">
 
-{{ element }}
-
-  </div>
-{% elseif element['#field_name'] == 'field_content_blocks_25_1' or element['#field_name']=='field_content_blocks_25_2' %}
-  <div class="col-3 md-6 sm-12">
       {{ element }}
 
-  </div>
-{% endif %}
+    </div>
+  {% elseif element['#field_name'] == 'field_content_blocks_25_1' or element['#field_name']=='field_content_blocks_25_2' %}
+    <div class="col-3 md-6 sm-12">
+      {{ element }}
+
+    </div>
+  {% endif %}
 
 {% endblock element %}

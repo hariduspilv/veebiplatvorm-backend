@@ -308,6 +308,48 @@ function harno_theme_preprocess_paragraph(&$vars){
       }
       $vars['content'] = array_reverse($reverse_array,true);
     }
+    if (isset($vars['content']['field_content_blocks_25_1']) && isset($vars['content']['field_content_blocks_50_1'])&& isset($vars['content']['field_content_blocks_25_2'])) {
+      $i=0;
+      $quarter_width = 0;
+      foreach ($vars['content'] as $key => &$content){
+
+        if (isset($content['#field_name'])){
+          if (strpos($content['#field_name'], 'field_content_blocks_25') !== false) {
+            $quarter_width++;
+          }
+        }
+        if (!isset($content['#title'])){
+          $i++;
+        }
+      }
+      if ($quarter_width>0 && $quarter_width<2){
+
+        foreach ($vars['content'] as &$content) {
+          if (isset($content['#field_name'])){
+            if (strpos($content['#field_name'], 'field_content_blocks_50') !== false) {
+              $content['#tablet_with'] = true;
+              $quarter_width--;
+            }
+          }
+          if ($quarter_width==0){
+            break;
+          }
+        }
+      }
+      $reverse_array = array_reverse($vars['content'],true);
+      if ($i==1) {
+        $j=0;
+        foreach ($reverse_array as &$content) {
+          if (!empty($content['#title'])) {
+            if ($j < $i) {
+              $content['#tablet_with'] = TRUE;
+            }
+            $j++;
+          }
+        }
+      }
+      $vars['content'] = array_reverse($reverse_array,true);
+    }
       if(isset($vars['elements']['field_orientation'])){
       $orientation = $vars['elements']['field_orientation']['#object']->get('field_orientation')->getValue();
       $orientation = $orientation[0]['value'];
