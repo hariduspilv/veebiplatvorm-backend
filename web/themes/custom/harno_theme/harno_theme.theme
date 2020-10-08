@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -362,5 +363,16 @@ function harno_theme_preprocess_paragraph(&$vars){
     if(isset($vars['elements']['field_content_blocks_100'])){
       $vars['content']['field_content_blocks_100']['#col_with'] = '100';
     }
+  }
+}
+function harno_theme_preprocess_breadcrumb(&$vars){
+  if (count($vars['links'])==1) {
+    $current_path = \Drupal::service('path.current')->getPath();
+    $request = \Drupal::request();
+    if ($route = $request->attributes->get(\Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_OBJECT)) {
+      $title = \Drupal::service('title_resolver')->getTitle($request, $route);
+    }
+    $vars['links'][] = Link::createFromRoute($title, $current_path);
+    $vars['breadcrumb'][] = [ 'text' => $title];
   }
 }
