@@ -126,6 +126,15 @@
           {% set col_class = 'col-9 md-12 sm-12 p-sidemenu-left with-sidemenu' %}
 
           <div class="col-3 md-12 sm-12 p-sidemenu-right">
+            <div class="header-block-mobile">
+              <div class="header-block-mobile__title-block">
+                {{ page.content.harno_theme_page_title }}
+              </div><!--/__title-block-->
+              <div class="header-block-mobile__btn-block">
+                <a href="javascript:void(0);" class="btn btn-primary before-share" aria-label="share story"></a>
+                <a href="javascript:void(0);" class="btn btn-primary before-print sm-hide" aria-label="print page"></a>
+              </div><!--/__btn-block-->
+            </div><!--/header-block-mobile-->
             <aside class="sidemenu-block">
               {{page.sidebar_first}}
             </aside>
@@ -138,7 +147,21 @@
           {# Title area #}
           {% if page.content %}
             {% if page.content.harno_theme_page_title %}
+              {% if page.sidebar_first %}
+                {% set half_title_class='-sidemenu' %}
+                {% else %}
+                  {% set half_title_class='' %}
+              {% endif %}
+          <div class="header-block{{ half_title_class }}">
+            <div class="header-block{{ half_title_class }}__title-block">
               {{ page.content.harno_theme_page_title }}
+            </div><!--/__btn-block-->
+            <div class="header-block-sidemenu__btn-block">
+              <a href="javascript:void(0);" class="btn btn-primary before-share" aria-label="share story"></a>
+              <a href="javascript:void(0);" class="btn btn-primary before-print sm-hide" aria-label="print page"></a>
+            </div><!--/__btn-block-->
+          </div><!--/header-block-sidemenu-->
+
             {% endif %}
           {% endif %}
 

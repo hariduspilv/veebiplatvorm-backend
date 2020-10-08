@@ -48,9 +48,10 @@
   ]
 %}
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
+{#  <div{{ attributes.addClass(classes) }}>#}
+{#  Vaadata kas saab kunagi lisada quickedit classid et midagi katki ei läheks#}
     {% block content %}
       {{ content }}
     {% endblock %}
-  </div>
+{#  </div>#}
 {% endblock paragraph %}
