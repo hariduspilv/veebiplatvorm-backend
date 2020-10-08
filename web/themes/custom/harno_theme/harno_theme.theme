@@ -351,8 +351,12 @@ function harno_theme_preprocess_paragraph(&$vars){
       $vars['content'] = array_reverse($reverse_array,true);
     }
       if(isset($vars['elements']['field_orientation'])){
+
       $orientation = $vars['elements']['field_orientation']['#object']->get('field_orientation')->getValue();
       $orientation = $orientation[0]['value'];
+        if (!empty($vars['content']['field_gallery_id'])){
+          $vars['content']['field_gallery_id']['#orientation'] = $orientation;
+        }
      $vars['content']['field_images']['#orientation'] = $orientation;
     }
     if(isset($vars['elements']['field_content_blocks_100'])){

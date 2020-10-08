@@ -71,6 +71,7 @@
   'clearfix',
 ] %}
 {% if view_mode=='teaser' %}
+  <div class="image-block">
   {% set fields = [
     {'fname':'title'},
     {'fname':'field_phone','href_start':'tel:','class':'phone'},
@@ -88,8 +89,13 @@
         {% if loop.index == 2 %}
           <ul class="thumbnails-field">
         {% endif %}
-        <li>
-          <a href="{{ drupal_image(image.target_id)['#uri']|file_url }}" style="background-image: url('{{ drupal_image(image.target_id,'thumbnail')['#uri']|file_url }}');" tabindex="0">
+        {% if not loop.first and loop.index<7 %}
+          {% set thumb_class = 'visible-thumb' %}
+          {% else %}
+            {% set thumb_class = 'hidden' %}
+        {% endif %}
+        <li class="{{ thumb_class }}">
+          <a class="thumb thumb--landscape" href="{{ drupal_image(image.target_id)['#uri']|file_url }}" style="background-image: url('{{ drupal_image(image.target_id,'thumbnail')['#uri']|file_url }}');" tabindex="0">
             <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" alt="fishing lure">
           </a>
         </li>
@@ -99,6 +105,7 @@
       {% endif %}
     {% endfor %}
   {% endif %}
+  </div>
 {#  {% for field in fields %}#}
 {#    {% if  node.get(field.fname).value %}#}
 {#      {% for value in node.get(field.fname).getValue() %}#}

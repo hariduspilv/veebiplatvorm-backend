@@ -54,7 +54,46 @@
       {% endif %}
     {% endif %}
     {% if gallery_id %}
-      {{  drupal_entity('node',  gallery_id , 'teaser')  }}
+      {% set node =  drupal_entity('node',  gallery_id , 'teaser')['#node']%}
+      <div class="image-block">
+        {% set fields = [
+          {'fname':'title'},
+          {'fname':'field_phone','href_start':'tel:','class':'phone'},
+          {'fname':'field_email','href_start':'mailto:','class':'e-mail'},
+        ] %}
+        {% if node.get('field_images').value %}
+          {% set images = node.get('field_images').getValue() %}
+          {% if not orientation %}
+          {% set orientation = 'landscape' %}
+              {% endif %}
+          {% for image in images %}
+            {% if loop.first %}
+              <a class="image-field image-field--{{ orientation }}" style="background-image: url('{{ drupal_image(image.target_id)['#uri']|file_url }}');" tabindex="0">
+                <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" alt="fishing lure">
+                <span class="gallery-icon" aria-label="Ava pilt"></span>
+              </a><!--/image-field-->
+            {% else %}
+              {% if loop.index == 2 %}
+                <ul class="thumbnails-field">
+              {% endif %}
+              {% if not loop.first and loop.index<7 %}
+                {% set thumb_class = 'visible-thumb' %}
+              {% else %}
+                {% set thumb_class = 'hidden' %}
+              {% endif %}
+              <li class="{{ thumb_class }}">
+                <a class="thumb thumb--landscape" href="{{ drupal_image(image.target_id)['#uri']|file_url }}" style="background-image: url('{{ drupal_image(image.target_id,'thumbnail')['#uri']|file_url }}');" tabindex="0">
+                  <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" alt="fishing lure">
+                </a>
+              </li>
+              {% if loop.last %}
+                </ul><!--/thumbnails-field-->
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+{#      {{  drupal_entity('node',  gallery_id , 'teaser')  }}#}
     {% endif %}
   {% endfor %}
 {% endif %}
