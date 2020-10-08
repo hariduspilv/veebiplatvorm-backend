@@ -108,11 +108,13 @@
           {{ content.body }}
         {% endif %}
       </div>
+      {% if  content.field_one_image['#title'] %}
       <div class="col-4 md-6 sm-12">
         {% if content.field_one_image %}
           {{ content.field_one_image }}
         {% endif %}
       </div><!--/col-5 md-12 sm-12-->
+      {% endif %}
     </div>
   {% endif %}
   {% if content.field_distribution_blocks %}
