@@ -53,13 +53,14 @@
 {% endif %}
 <div class="col-3 {{ md_class }} sm-12">
 {% block element %}
-{{ element }}
+ {% for item in items  %}
+  {% if loop.length > 1  %}
+    {% if loop.index > 1 %}
+      <div class="row-spacer-40"></div>
+    {% endif %}
+  {% endif %}
+  {{ item.content }}
+{% endfor %}
 {% endblock element %}
-{% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {% block content %}
-      {{ content }}
-    {% endblock %}
-  </div>
-{% endblock paragraph %}
+
 </div>

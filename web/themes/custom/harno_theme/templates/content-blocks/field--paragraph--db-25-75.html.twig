@@ -55,12 +55,26 @@
   {% if element['#field_name'] == 'field_content_blocks_25_1'  %}
     <div class="col-3 {{ md_class }} sm-12">
 
-      {{ element }}
+      {% for item in items  %}
+        {% if loop.length > 1  %}
+          {% if loop.index > 1 %}
+            <div class="row-spacer-40"></div>
+          {% endif %}
+        {% endif %}
+        {{ item.content }}
+      {% endfor %}
 
     </div>
   {% elseif element['#field_name'] == 'field_content_blocks_75_1'%}
     <div class="col-9 {{ md_class }} sm-12">
-      {{ element }}
+      {% for item in items  %}
+        {% if loop.length > 1  %}
+          {% if loop.index > 1 %}
+            <div class="row-spacer-40"></div>
+          {% endif %}
+        {% endif %}
+        {{ item.content }}
+      {% endfor %}
 
     </div>
   {% endif %}
