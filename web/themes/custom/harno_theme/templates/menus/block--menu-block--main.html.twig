@@ -58,6 +58,11 @@
     {% set link_class = '' %}
     {% endif %}
     {% if menu_item.url %}
+      {% set has_url = true %}
+      {% set main_url = item_below.url.routeName %}
+      {% if main_url == '<nolink>' %}
+        {% set has_url = false %}
+      {% endif %}
     {% if menu_item.url.external %}
     {% set link_class = link_class ~ 'link-out' %}
     {% endif %}
@@ -65,7 +70,7 @@
     {% endif %}
     <a class="{{ link_class }}" {% if menu_item.url.external %} target="_blank"
       aria-label="{{"Link opens on new page"|t}}" {% endif %}
-      title="{{link_desc}}" href="{{ menu_item.url }}"
+      title="{{link_desc}}" {% if has_burl %} href="{{menu_item.url}}" {% endif %}"
       {% if menu_item.in_active_trail %} aria-expanded="true"
       {% else %}{% if menu_item.below %} aria-expanded="true"
       {% endif %}{% endif %}>
