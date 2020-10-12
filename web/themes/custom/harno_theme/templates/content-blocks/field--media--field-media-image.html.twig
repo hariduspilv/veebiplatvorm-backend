@@ -59,7 +59,7 @@
   {% set image_alt = item.content['#item'].getValue().alt %}
 
     <a href="#" class="{{ img_classes }}" style="background-image: url('{{ image_uri|image_style(orientation) }}');" tabindex="0">
-      <img src="/themes/custom/harno_theme/static/assets/images/placeholder-1.gif" alt="{{ image_alt }}" title="Gallerii pilt">
+      <img src="/themes/custom/harno_theme/static/assets/images/placeholder-1.gif" {% if image_alt%} alt="{{ image_alt }}" {% endif%} title="Gallerii pilt">
       {% if not element['#thumbnail'] %}
       <span class="gallery-icon" aria-label="{{ "Open gallery" | t}}"></span>
       {% endif %}

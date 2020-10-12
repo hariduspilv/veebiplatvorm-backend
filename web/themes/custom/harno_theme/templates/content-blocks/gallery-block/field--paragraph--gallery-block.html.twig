@@ -73,11 +73,11 @@
 
             {% if media['#media'] %}
               {% set media_uri = media['#media']|file_uri %}
-
+              {% set media_alt = media['#media'].get('field_media_image').alt %}
             {% if loop.first %}
               <a class="image-field image-field--{{ orientation }}" style="background-image: url('{{ drupal_image(media_uri,orientation)['#uri']|file_url }}');" tabindex="0">
-                <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" alt="fishing lure">
-                <span class="gallery-icon" aria-label="Ava pilt"></span>
+                <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" {% if media_alt%} alt="{{ media_alt }}" {% endif%}>
+                <span class="gallery-icon" aria-label="{{ "Open gallery" |t }}"></span>
               </a><!--/image-field-->
             {% else %}
               {% if loop.index == 2 %}
@@ -90,7 +90,7 @@
               {% endif %}
               <li class="{{ thumb_class }}">
                 <a class="thumb thumb--landscape" href="{{ drupal_image(image.target_id)['#uri']|file_url }}" style="background-image: url('{{ drupal_image(media_uri,'thumbnail')['#uri']|file_url }}');" tabindex="0">
-                  <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" alt="fishing lure">
+                  <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" {% if media_alt%} alt="{{ media_alt }}" {% endif%}>
                 </a>
               </li>
               {% if loop.last %}
