@@ -55,6 +55,7 @@
     {% endif %}
     {% if gallery_id %}
       {% set node =  drupal_entity('node',  gallery_id , 'teaser')['#node']%}
+
       <div class="image-block">
         {% set fields = [
           {'fname':'title'},
@@ -62,13 +63,19 @@
           {'fname':'field_email','href_start':'mailto:','class':'e-mail'},
         ] %}
         {% if node.get('field_images').value %}
+          {% set media_uri = node.field_images%}
           {% set images = node.get('field_images').getValue() %}
           {% if not orientation %}
           {% set orientation = 'landscape' %}
               {% endif %}
           {% for image in images %}
+            {% set media = drupal_entity('media',image.target_id) %}
+
+            {% if media['#media'] %}
+              {% set media_uri = media['#media']|file_uri %}
+
             {% if loop.first %}
-              <a class="image-field image-field--{{ orientation }}" style="background-image: url('{{ drupal_image(image.target_id)['#uri']|file_url }}');" tabindex="0">
+              <a class="image-field image-field--{{ orientation }}" style="background-image: url('{{ drupal_image(media_uri,orientation)['#uri']|file_url }}');" tabindex="0">
                 <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" alt="fishing lure">
                 <span class="gallery-icon" aria-label="Ava pilt"></span>
               </a><!--/image-field-->
@@ -82,13 +89,14 @@
                 {% set thumb_class = 'hidden' %}
               {% endif %}
               <li class="{{ thumb_class }}">
-                <a class="thumb thumb--landscape" href="{{ drupal_image(image.target_id)['#uri']|file_url }}" style="background-image: url('{{ drupal_image(image.target_id,'thumbnail')['#uri']|file_url }}');" tabindex="0">
+                <a class="thumb thumb--landscape" href="{{ drupal_image(image.target_id)['#uri']|file_url }}" style="background-image: url('{{ drupal_image(media_uri,'thumbnail')['#uri']|file_url }}');" tabindex="0">
                   <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" alt="fishing lure">
                 </a>
               </li>
               {% if loop.last %}
                 </ul><!--/thumbnails-field-->
               {% endif %}
+            {% endif %}
             {% endif %}
           {% endfor %}
         {% endif %}
