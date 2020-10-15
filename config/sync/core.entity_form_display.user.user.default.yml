@@ -43,14 +43,10 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  language:
-    weight: 4
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   timezone:
     weight: 6
     region: content
 hidden:
   contact: true
   langcode: true
+  language: true
