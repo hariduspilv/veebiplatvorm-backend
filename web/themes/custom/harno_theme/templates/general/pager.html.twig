@@ -39,13 +39,13 @@
       {# Print previous item if we are not on the first page. #}
       {% if items.previous %}
         <li>
-          <a href="{{ items.previous.href }}" class="back" title="previous" rel="prev" aria-disabled="true" {{ items.previous.attributes|without('href', 'title', 'rel') }}>
+          <a href="{{ items.previous.href }}" class="back" title="{{"previous"|t}}" rel="prev" aria-disabled="true" {{ items.previous.attributes|without('href', 'title', 'rel') }}>
             <span class="sr-only">{{ "previous"|t }}</span>
           </a>
         </li>
         {% else %}
           <li>
-            <a href="{{ items.previous.href }}" class="back disabled" title="previous" rel="prev" aria-disabled="true" {{ items.previous.attributes|without('href', 'title', 'rel') }}>
+            <a href="{{ items.previous.href }}" class="back disabled" title="{{"previous"|t}}" rel="prev" aria-disabled="true" {{ items.previous.attributes|without('href', 'title', 'rel') }}>
               <span class="sr-only">{{ "previous"|t }}</span>
             </a>
           </li>

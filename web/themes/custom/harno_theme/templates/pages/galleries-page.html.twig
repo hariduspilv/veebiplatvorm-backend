@@ -31,6 +31,15 @@
 												{% set media = drupal_entity('media',target_id) %}
 												{% if media %}
 													{% set media_image = drupal_image( media['#media'].field_media_image.0.value.target_id ,'thumbnail') %}
+													{% set alt = '' %}
+													{% if media['#media'].field_media_image.0.get('alt').getString %}
+														{% set alt = media['#media'].field_media_image.0.get('alt').getString %}
+													{% endif %}
+													{% set title = '' %}
+													{% if media['#media'].field_media_image.0.get('title').getString %}
+														{% set title = media['#media'].field_media_image.0.get('title').getString %}
+													{% endif %}
+
 
 												{% endif %}
 											{% endif %}
@@ -42,14 +51,16 @@
 									<div class="gallery-block">
 										{% if media_image['#uri'] %}
 											<div class="gallery-block__thumbnail" style="background-image: url({{ media_image['#uri']|file_url }});">
-												<img src="assets/images/placeholder-1.gif" alt="fishing lure" title="Galerii pilt">
+												<img src="assets/images/placeholder-1.gif" {% if alt %} alt="{{alt}}" {% endif %} {% if title %} title="{{title}}" {% endif %}>
+
 											</div>
 											<!--/gallery-block__thumbnail-->
 										{% endif %}
 
 										<div class="gallery-block__gallery-info">
 											<h4>
-												<a href=" {{ drupal_url('node/'~ gallery.id) }}">
+												<a aria-label="{{"Open gallery detail view" |t}}" href=" {{ drupal_url('node/'~ gallery.id) }}">
+
 													{{ gallery.getTitle() }}</a>
 											</h4>
 											<span class="date-indicator">{{ gallery.getCreatedTime()|date('d.m.Y') }}</span>
