@@ -70,14 +70,14 @@
   <span class="btn btn-tag">{{ label['#title'] }}</span>
 </span>
   {% elseif element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name']=='gallerySearch' %}
+
     {% if element['#name']=='date_end' %}
       <span class="date-separator">-</span>
     {% endif %}
     <div class="form-item {% if element['#name']=='gallerySearch' %} search-input{% endif %}" data-plugin="movingLabel">
-      <label class="form-label" for="{{ element['#id'] }}" title="Vali alguse kuupäev">{{ label['#title'] }}</label>
+      <label class="form-label" for="{{ element['#id'] }}" title="{{label['#title']}}">{{ label['#title'] }}</label>
       {{ children }}
       {% if element['#name']=='gallerySearch' %}
-        <button class="btn search-submit-btn" type="submit" title="Otsi">{{ "Search" |t}}</button>
       {% endif %}
     </div>
   {% else %}

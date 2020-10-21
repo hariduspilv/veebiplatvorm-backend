@@ -1,13 +1,15 @@
 <?php
-namespace Drupal\harno_pages\Form;
 
+namespace Drupal\harno_pages\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Console\Command\Generate\AjaxCommand;
 use Drupal\harno_pages\Controller\GalleriesController;
 use Drupal\Core\Entity\Element\EntityAutocomplete;
 
+/**
+ *
+ */
 class FilterForm extends FormBase {
 
   /**
@@ -21,10 +23,9 @@ class FilterForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state,$academic_years=null) {
-//    devel_dump($academic_years);
-
-    if (!empty($academic_years)){
+  public function buildForm(array $form, FormStateInterface $form_state, $academic_years = NULL) {
+    // devel_dump($academic_years);
+    if (!empty($academic_years)) {
       $form['years'] = [
         '#title' => t('Choose year'),
         '#id' => 'gallery-years',
@@ -39,64 +40,80 @@ class FilterForm extends FormBase {
     }
     $form['bottom'] = [
       '#type' => 'fieldset',
-      '#id' => 'galleries-bottomFilter'
+      '#id' => 'galleries-bottomFilter',
     ];
-    $form['bottom'] ['date_start'] = [
+    $form['bottom']['date_start'] = [
       '#type' => 'textfield',
       '#title' => t('Show from'),
       '#ajax' => [
         'wrapper' => 'filter-target',
         'event' => 'change',
-        'keypress'=>TRUE,
+        'keypress' => TRUE,
         'callback' => '::filterResults',
-        'disable-refocus' => true,
+        'disable-refocus' => TRUE,
       ],
     ];
-    $form['bottom'] ['date_end'] = [
+    $form['bottom']['date_end'] = [
       '#type' => 'textfield',
       '#title' => t('Show to'),
       '#ajax' => [
         'wrapper' => 'filter-target',
         'event' => 'change',
-        'keypress'=>TRUE,
+        'keypress' => TRUE,
         'callback' => '::filterResults',
-        'disable-refocus' => true,
+        'disable-refocus' => TRUE,
       ],
     ];
-    $form['bottom'] ['gallerySearch'] = [
+    $form['bottom']['searchgroup'] = [
+      '#type' => 'fieldset',
+      '#id' => 'galleriesSearchGroup',
+    ];
+    $form['bottom']['searchgroup']['gallerySearch'] = [
       '#type' => 'textfield',
-      '#title' => t('Search galleries'),
+      '#title' => t('Search'),
       '#ajax' => [
         'wrapper' => 'filter-target',
         'event' => 'change',
+        'keypress' => TRUE,
         'callback' => '::filterResults',
-        'keypress'=>TRUE,
-        'disable-refocus' => true,
+        'disable-refocus' => TRUE,
       ],
     ];
+    $form['bottom']['searchgroup']['searchButton'] = [
+      '#attributes' => [
+        'style' => 'display:none;',
+      ],
+      '#type' => 'button',
+      '#title' => t('Search'),
+      '#value' => t('Search'),
+      '#ajax' => [
+        'callback' => '::filterResults',
+      ],
 
-    if (!empty($_REQUEST)){
-      if (!empty($_REQUEST['years'])){
-        if(is_array($_REQUEST['years'])) {
+    ];
+    if (!empty($_REQUEST)) {
+      if (!empty($_REQUEST['years'])) {
+        if (is_array($_REQUEST['years'])) {
           $form['top_row']['years']['#default_value'] = $_REQUEST['years'];
         }
-        else{
+        else {
           $form['top_row']['years']['#default_value'] = explode('|', $_REQUEST['years']);
         }
       }
-      if (!empty($_REQUEST['date_start'])){
+      if (!empty($_REQUEST['date_start'])) {
         $form['bottom_row']['date_start']['#default_value'] = $_REQUEST['date_start'];
       }
-      if (!empty($_REQUEST['date_end'])){
+      if (!empty($_REQUEST['date_end'])) {
         $form['bottom_row']['date_end']['#default_value'] = $_REQUEST['date_end'];
       }
-      if (!empty($_REQUEST['gallerySearch'])){
+      if (!empty($_REQUEST['gallerySearch'])) {
         $form['bottom_row']['gallerySearch']['#default_value'] = $_REQUEST['gallerySearch'];
       }
     }
     $form['#theme_wrappers'] = ['form-galleries'];
     return $form;
   }
+
   /**
    * {@inheritdoc}
    */
@@ -105,9 +122,14 @@ class FilterForm extends FormBase {
 
     $form_state->setRebuild(TRUE);
   }
-  public function filterResults(array &$form, FormStateInterface $form_state){
+
+  /**
+   *
+   */
+  public function filterResults(array &$form, FormStateInterface $form_state) {
     $galleries = new GalleriesController();
     $galleries = $galleries->getGalleries();
+
     $parameters = [];
     $form_values = $form_state->getValues();
     if (!empty($form_values)) {
@@ -121,24 +143,25 @@ class FilterForm extends FormBase {
           }
         }
       }
-      if (!empty($form_values['date_start'])){
+      if (!empty($form_values['date_start'])) {
         $parameters['date_start'] = $_REQUEST['date_start'];
       }
-      if (!empty($form_values['date_end'])){
+      if (!empty($form_values['date_end'])) {
         $parameters['date_end'] = $_REQUEST['date_end'];
       }
-      if (!empty($form_values['gallerySearch'])){
+      if (!empty($form_values['gallerySearch'])) {
         $parameters['gallerySearch'] = $_REQUEST['gallerySearch'];
       }
     }
     $build = [];
     $build['#theme'] = 'galleries-response';
 
-    $build['#content']=$galleries;
-    $build['#pager'] =[
-      '#type'=>'pager',
-      '#parameters'=>$parameters,
-      ];
+    $build['#content'] = $galleries;
+    $build['#pager'] = [
+      '#type' => 'pager',
+      '#parameters' => $parameters,
+    ];
     return $build;
   }
+
 }

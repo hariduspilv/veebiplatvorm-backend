@@ -10,14 +10,14 @@
  * @see template_preprocess_input()
  */
 #}
-
 {% if element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name'] == 'gallerySearch' %}
-  {% if element['#name'] == 'date_start' or element['#name']=='date_end' %}
-    <input{{ attributes }} />{{ children }}
-    <button class="btn input-date"></button>
-  {% else %}
-    <input{{ attributes }} />{{ children }}
-  {% endif %}
+	{% if element['#name'] == 'date_start' or element['#name'] == 'date_end' %}
+		<input{{attributes}}/>{{ children }}
+		<button class="btn input-date"></button>
+	{% else %}
+		<input{{attributes}}/>{{ children }}
+		<button data-drupal-selector="edit-searchbutton" id="edit-searchbutton" name="op"  class="btn js-form-submit form-submit search-submit-btn" type="submit" title="Otsi">{{ "Search" |t}}</button>
+	{% endif %}
 {% else %}
-    <input{{ attributes }} />{{ children }}
+	<input{{attributes}}/>{{ children }}
 {% endif %}
