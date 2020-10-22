@@ -49,6 +49,8 @@
   {% if menu_item.in_active_trail %}
   {% set below_class = below_class | merge(['open']) %}
   {% endif %}
+  {% else %}
+    {% set below_class = '' %}
   {% endif %}
   <li{{attributes.removeClass('has-dropdown','open').addClass(below_class)}}>
 
@@ -59,9 +61,11 @@
     {% endif %}
     {% if menu_item.url %}
       {% set has_url = true %}
-      {% set main_url = item_below.url.routeName %}
+      {% set main_url = menu_item.url.routeName %}
       {% if main_url == '<nolink>' %}
-        {% set has_url = false %}
+        {% set main_url = 'javascript:void(0)' %}
+      {% else %}
+        {% set main_url = menu_item.url.toString %}
       {% endif %}
     {% if menu_item.url.external %}
     {% set link_class = link_class ~ 'link-out' %}
@@ -70,9 +74,18 @@
     {% endif %}
     <a class="{{ link_class }}" {% if menu_item.url.external %} target="_blank"
       aria-label="{{"Link opens on new page"|t}}" {% endif %}
-      title="{{link_desc}}" {% if has_burl %} href="{{menu_item.url}}" {% endif %}"
-      {% if menu_item.in_active_trail %} aria-expanded="true"
-      {% else %}{% if menu_item.below %} aria-expanded="true"
+      title="{{link_desc}}" {% if has_url %} href="{{main_url}}" {% endif %}"
+      {% if menu_item.in_active_trail %}
+        {% if not menu_item.below %}
+        aria-current="page"
+        {% else %}
+          aria-expanded="true"
+        {% endif %}
+
+      {% else %}
+      {% if menu_item.below %}
+      aria-expanded="false"
+
       {% endif %}{% endif %}>
       {{ menu_item.title }}
       {% if menu_item.url %}
@@ -99,7 +112,10 @@
         {% set has_burl = true %}
         {% set below_url = item_below.url.routeName %}
         {% if below_url == '<nolink>' %}
-          {% set has_burl = false %}
+          {% set below_url = 'javascript:void(0)' %}
+          {% else %}
+{% set below_url = item_below.url.toString %}
+
         {% endif %}
       {% if item_below.url.external %}
       {% set link_ext = true %}
@@ -108,7 +124,7 @@
       {% endif %}
       <li><a class="{{link_class}}" title="{{link_desc}}" {% if link_ext %}
           target="_blank" aria-label="{{"Link opens on new page"|t}}"
-          {% endif %} {% if has_burl %} href="{{item_below.url}}" {% endif %}>{{item_below.title}}
+          {% endif %} {% if has_burl %} href="{{below_url}}" {% endif %} {% if item_below.in_active_trail %}aria-current="page"{% endif %}>{{item_below.title}}
           {% if link_ext %}
           <i aria-hidden=“true” class=“icon-external”></i>
           {% endif %}
@@ -118,6 +134,12 @@
     {% endif %}
     </li>
     {% endfor %}
+<li class="show-more" data-showmore="{{"Show more" |t}}" data-showless="{{"Show less"|t}}">
+<span>{{"Show more" |t}}</span>
+
+</li>
+<!--/show-more-->
+
 </ul>
 {% endif %}
 {% endif %}
