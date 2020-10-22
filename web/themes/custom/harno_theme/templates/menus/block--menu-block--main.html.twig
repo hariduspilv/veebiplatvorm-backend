@@ -61,14 +61,16 @@
     {% endif %}
     {% if menu_item.url %}
       {% set has_url = true %}
-      {% set main_url = menu_item.url.routeName %}
-      {% if main_url == '<nolink>' %}
+        {% set main_url = menu_item.url.toString %}
+      {% if main_url == '' %}
         {% set main_url = 'javascript:void(0)' %}
       {% else %}
         {% set main_url = menu_item.url.toString %}
       {% endif %}
+
+
     {% if menu_item.url.external %}
-    {% set link_class = link_class ~ 'link-out' %}
+    {# {% set link_class = link_class ~ 'link-out' %} #}
     {% endif %}
 
     {% endif %}
@@ -90,7 +92,7 @@
       {{ menu_item.title }}
       {% if menu_item.url %}
       {% if menu_item.url.external %}
-      <i aria-hidden=“true” class=“icon-external”></i>
+        <i aria-label="{{"Link opens on new page"|t}}"  class="mdi mdi-open-in-new"></i>
       {% endif %}
       {% endif %}
     </a>
@@ -110,23 +112,23 @@
       {% endif %}
       {% if item_below.url %}
         {% set has_burl = true %}
-        {% set below_url = item_below.url.routeName %}
-        {% if below_url == '<nolink>' %}
+        {% set below_url = item_below.url.toString %}
+        {% if below_url == '' %}
           {% set below_url = 'javascript:void(0)' %}
           {% else %}
-{% set below_url = item_below.url.toString %}
+        {% set below_url = item_below.url.toString %}
 
         {% endif %}
       {% if item_below.url.external %}
       {% set link_ext = true %}
-      {% set link_class = link_class ~ 'link-out' %}
+      {# {% set link_class = link_class ~ 'link-out' %} #}
       {% endif %}
       {% endif %}
       <li><a class="{{link_class}}" title="{{link_desc}}" {% if link_ext %}
           target="_blank" aria-label="{{"Link opens on new page"|t}}"
           {% endif %} {% if has_burl %} href="{{below_url}}" {% endif %} {% if item_below.in_active_trail %}aria-current="page"{% endif %}>{{item_below.title}}
           {% if link_ext %}
-          <i aria-hidden=“true” class=“icon-external”></i>
+            <i aria-label="{{"Link opens on new page"|t}}" class="mdi mdi-open-in-new"></i>
           {% endif %}
         </a></li>
       {% endfor %}
