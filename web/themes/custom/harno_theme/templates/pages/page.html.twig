@@ -68,177 +68,218 @@
  */
 #}
 <div id="page-wrapper main-wrapper">
-  <header id="header main-header" class="header main-header" role="banner" aria-label="{{ 'Site header'|t }}">
-    <div class="container">
-      <div class="row">
-        <div class="col-3 sm-12 md-12">
-          {% if page.header and page.header.harno_theme_branding %}
-            {{ page.header.harno_theme_branding }}
-          {% endif %}
-        </div>
-        <div class="col-9 sm-12 md-12">
-          <div class="row">
-            <div class="col-12 sm-12 md-12">
-              top-nav
-            </div>
-            <div class="col-12 sm-12 md-12">
+	<header id="header main-header" class="header main-header" role="banner" aria-label="{{ 'Site header'|t }}">
+		<div class="container">
+			<div class="row">
+				<div class="col-3 sm-12 md-12">
+					{% if page.header and page.header.harno_theme_branding %}
+						{{ page.header.harno_theme_branding }}
+					{% endif %}
+				</div>
+				<div class="col-9 sm-12 md-12">
+					<div class="row">
+						<div class="col-12 sm-12 md-12">
+							top-nav
+						</div>
+						<div class="col-12 sm-12 md-12">
 
-              {% if page.header and page.header.harno_theme_main_menu %}
-              <div class="desktop-menu">
-                {{ page.header.harno_theme_main_menu }}
-              </div><!--/desktop-menu-->
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-  {% if page.highlighted %}
-    <div class="highlighted">
-      <aside class="{{ container }} section clearfix" role="complementary">
-        {{ page.highlighted }}
-      </aside>
-    </div>
-  {% endif %}
-  {% if page.featured_top %}
-    {% block featured %}
-      <div class="featured-top">
-        <aside class="featured-top__inner section {{ container }} clearfix" role="complementary">
-          {{ page.featured_top }}
-        </aside>
-      </div>
-    {% endblock %}
-  {% endif %}
-  <main class="page-main">
-    <div class="container">
+							{% if page.header and page.header.harno_theme_main_menu %}
+								<div class="desktop-menu">
+									{{ page.header.harno_theme_main_menu }}
+								</div>
+								<!--/desktop-menu-->
+								<div class="mobile-banner">
+									<div class="mobile-links">
+										<a class="menu-link" href="javascript:void(0)" data-plugin="mobileMenu">
+											<span class="mdi mdi-menu"></span>
+										</a>
+										<!--/menu-link-->
+									</div>
+									<!--/mobile-links-->
+									<div class="mobile-menu">
+										<div class="panel-header">
+											<a href="#" class="close-btn">
+												<div class="mdi mdi-close"></div>
+											</a>
+											<!--/close-btn-->
+										</div>
+										<!--/panel-header-->
+										{{ page.header.harno_theme_main_menu }}
 
-      <div class="row">
-        <div class="col-12 md-12 sm-12">
-          {% if page.content.harno_theme_breadcrumbs %}
-            {{ page.content.harno_theme_breadcrumbs }}
-          {% endif %}
-        </div>
-      </div>
-      <div class="row">
+										<!--/main-menu-->
+									</div>
+									<!--/mobile-menu-->
+								</div>
+								<!--/mobile-banner-->
 
-        {% if page.sidebar_first %}
-          {% set col_class = 'col-9 md-12 sm-12 p-sidemenu-left with-sidemenu' %}
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	{% if page.highlighted %}
+		<div class="highlighted">
+			<aside class="{{ container }} section clearfix" role="complementary">
+				{{ page.highlighted }}
+			</aside>
+		</div>
+	{% endif %}
+	{% if page.featured_top %}
+		{% block featured %}
+			<div class="featured-top">
+				<aside class="featured-top__inner section {{ container }} clearfix" role="complementary">
+					{{ page.featured_top }}
+				</aside>
+			</div>
+		{% endblock %}
+	{% endif %}
+	<main class="page-main">
+		<div class="container">
 
-          <div class="col-3 md-12 sm-12 p-sidemenu-right">
-            <div class="header-block-mobile">
-              <div class="header-block-mobile__title-block">
-                {{ page.content.harno_theme_page_title }}
-              </div><!--/__title-block-->
-              <div class="header-block-mobile__btn-block">
-                <a href="javascript:void(0);" class="btn btn-primary before-share" aria-label="share"></a>
-                <a href="javascript:void(0);" class="btn btn-primary before-print sm-hide" aria-label="print page"></a>
-              </div><!--/__btn-block-->
-            </div><!--/header-block-mobile-->
-            <aside class="sidemenu-block">
-              {{page.sidebar_first}}
-            </aside>
-          </div>
-        {% else %}
-          {% set col_class = 'col-12 ' %}
-        {% endif %}
-        <div class="{{ col_class }}">
+			<div class="row">
+				<div class="col-12 md-12 sm-12">
+					{% if page.content.harno_theme_breadcrumbs %}
+						{{ page.content.harno_theme_breadcrumbs }}
+					{% endif %}
+				</div>
+			</div>
+			<div class="row">
 
-          {# Title area #}
-          {% if page.content %}
-            {% if page.content.harno_theme_page_title %}
-              {% if page.sidebar_first %}
-                {% set half_title_class='-sidemenu' %}
-                {% else %}
-                  {% set half_title_class='' %}
-              {% endif %}
-          <div class="header-block{{ half_title_class }}">
-            <div class="header-block{{ half_title_class }}__title-block">
-              {{ page.content.harno_theme_page_title }}
-            </div><!--/__btn-block-->
-            <div class="header-block-sidemenu__btn-block">
-              <a href="javascript:void(0);" class="btn btn-primary before-share" aria-label="share"></a>
-              <a href="javascript:void(0);" class="btn btn-primary before-print sm-hide" aria-label="print page"></a>
-            </div><!--/__btn-block-->
-          </div><!--/header-block-sidemenu-->
+				{% if page.sidebar_first %}
+					{% set col_class = 'col-9 md-12 sm-12 p-sidemenu-left with-sidemenu' %}
 
-            {% endif %}
-          {% endif %}
+					<div class="col-3 md-12 sm-12 p-sidemenu-right">
+						<div class="header-block-mobile">
+							<div class="header-block-mobile__title-block">
+								{{ page.content.harno_theme_page_title }}
+							</div>
+							<!--/__title-block-->
+							<div class="header-block-mobile__btn-block">
+								<a href="javascript:void(0);" class="btn btn-primary before-share" aria-label="share"></a>
+								<a href="javascript:void(0);" class="btn btn-primary before-print sm-hide" aria-label="print page"></a>
+							</div>
+							<!--/__btn-block-->
+						</div>
+						<!--/header-block-mobile-->
+						<aside class="sidemenu-block">
+							{{page.sidebar_first}}
+						</aside>
+					</div>
+				{% else %}
+					{% set col_class = 'col-12 ' %}
+				{% endif %}
+				<div
+					class="{{ col_class }}">
 
-          {% if page.content %}
-            {% set general_content = page.content %}
-            {{ general_content|without('harno_theme_page_title','harno_theme_breadcrumbs') }}
-          {% endif %}
-        </div><!--/col-12-->
-      </div><!--/row-->
-    </div><!--/container-->
-  </main>
-  {# <div id="main-wrapper page-main" class="layout-main-wrapper clearfix"> #}
-  {# {% block content %} #}
-  {# <div id="main" class="{{ container }}"> #}
-  {# {{ page.breadcrumb }} #}
-  {# <div class="row row-offcanvas row-offcanvas-left clearfix"> #}
-  {# <main{{ content_attributes }}> #}
-  {# <section class="section"> #}
-  {# <a id="main-content" tabindex="-1"></a> #}
-  {# {{ page.content }} #}
-  {# </section> #}
-  {# </main> #}
-  {# {% if page.sidebar_first %} #}
-  {# <div{{ sidebar_first_attributes }}> #}
-  {# <aside class="section" role="complementary"> #}
-  {# {{ page.sidebar_first }} #}
-  {# </aside> #}
-  {# </div> #}
-  {# {% endif %} #}
-  {# {% if page.sidebar_second %} #}
-  {# <div{{ sidebar_second_attributes }}> #}
-  {# <aside class="section" role="complementary"> #}
-  {# {{ page.sidebar_second }} #}
-  {# </aside> #}
-  {# </div> #}
-  {# {% endif %} #}
-  {# </div> #}
-  {# </div> #}
-  {# {% endblock %} #}
-  {# </div> #}
-  {% if page.featured_bottom_first or page.featured_bottom_second or page.featured_bottom_third %}
-    <div class="featured-bottom">
-      <aside class="{{ container }} clearfix" role="complementary">
-        {{ page.featured_bottom_first }}
-        {{ page.featured_bottom_second }}
-        {{ page.featured_bottom_third }}
-      </aside>
-    </div>
-  {% endif %}
-  <footer class="main-footer">
-    {% block footer %}
-      {% if page.footer %}
-        <div class="footer-content">
-          <div class="container">
-            <div class="row">
-              {{ page.footer|without('footertermsofserviceblock') }}
-            </div><!--/row-->
-          </div><!--/container-->
-        </div><!--/footer-content-->
-      {% endif %}
-    {% endblock %}
-    <div class="footer-navigation">
-      <div class="container-fluid">
-        <div class="footer-bottom text-center">
-          <nav>
-            <ul class="sitemap-nav">
-              <li>
-                <a href="{{ front_page }}">{{ "Home page" | t }}</a>
-              </li>
-              <li>
-                <a href="#">{{ "Sitemap" | t }}</a>
-              </li>
-            </ul><!--/sitemap-nav-->
-          </nav>
-          {{ page.footer.footertermsofserviceblock }}
-        </div><!--/footer-bottom text-center-->
-      </div><!--/container-fluid-->
-    </div><!--/footer-navigation-->
-  </footer>
+					{# Title area #}
+					{% if page.content %}
+						{% if page.content.harno_theme_page_title %}
+							{% if page.sidebar_first %}
+								{% set half_title_class='-sidemenu' %}
+							{% else %}
+								{% set half_title_class='' %}
+							{% endif %}
+							<div class="header-block{{ half_title_class }}">
+								<div class="header-block{{ half_title_class }}__title-block">
+									{{ page.content.harno_theme_page_title }}
+								</div>
+								<!--/__btn-block-->
+								<div class="header-block-sidemenu__btn-block">
+									<a href="javascript:void(0);" class="btn btn-primary before-share" aria-label="share"></a>
+									<a href="javascript:void(0);" class="btn btn-primary before-print sm-hide" aria-label="print page"></a>
+								</div>
+								<!--/__btn-block-->
+							</div>
+							<!--/header-block-sidemenu-->
+
+						{% endif %}
+					{% endif %}
+
+					{% if page.content %}
+						{% set general_content = page.content %}
+						{{ general_content|without('harno_theme_page_title','harno_theme_breadcrumbs') }}
+					{% endif %}
+				</div>
+				<!--/col-12-->
+			</div>
+			<!--/row-->
+		</div>
+		<!--/container-->
+	</main>
+	{# <div id="main-wrapper page-main" class="layout-main-wrapper clearfix"> #}
+	{# {% block content %} #}
+	{# <div id="main" class="{{ container }}"> #}
+	{# {{ page.breadcrumb }} #}
+	{# <div class="row row-offcanvas row-offcanvas-left clearfix"> #}
+	{# <main{{ content_attributes }}> #}
+	{# <section class="section"> #}
+	{# <a id="main-content" tabindex="-1"></a> #}
+	{# {{ page.content }} #}
+	{# </section> #}
+	{# </main> #}
+	{# {% if page.sidebar_first %} #}
+	{# <div{{ sidebar_first_attributes }}> #}
+	{# <aside class="section" role="complementary"> #}
+	{# {{ page.sidebar_first }} #}
+	{# </aside> #}
+	{# </div> #}
+	{# {% endif %} #}
+	{# {% if page.sidebar_second %} #}
+	{# <div{{ sidebar_second_attributes }}> #}
+	{# <aside class="section" role="complementary"> #}
+	{# {{ page.sidebar_second }} #}
+	{# </aside> #}
+	{# </div> #}
+	{# {% endif %} #}
+	{# </div> #}
+	{# </div> #}
+	{# {% endblock %} #}
+	{# </div> #}
+		{% if page.featured_bottom_first or page.featured_bottom_second or page.featured_bottom_third %}
+			<div class="featured-bottom"> <aside class="{{ container }} clearfix" role="complementary">
+				{{ page.featured_bottom_first }}
+				{{ page.featured_bottom_second }}
+				{{ page.featured_bottom_third }}
+			</aside>
+		</div>
+	{% endif %}
+	<footer class="main-footer">
+		{% block footer %}
+			{% if page.footer %}
+				<div class="footer-content">
+					<div class="container">
+						<div class="row">
+							{{ page.footer|without('footertermsofserviceblock') }}
+						</div>
+						<!--/row-->
+					</div>
+					<!--/container-->
+				</div>
+				<!--/footer-content-->
+			{% endif %}
+		{% endblock %}
+		<div class="footer-navigation">
+			<div class="container-fluid">
+				<div class="footer-bottom text-center">
+					<nav>
+						<ul class="sitemap-nav">
+							<li>
+								<a href="{{ front_page }}">{{ "Home page" | t }}</a>
+							</li>
+							<li>
+								<a href="#">{{ "Sitemap" | t }}</a>
+							</li>
+						</ul>
+						<!--/sitemap-nav-->
+					</nav>
+					{{ page.footer.footertermsofserviceblock }}
+				</div>
+				<!--/footer-bottom text-center-->
+			</div>
+			<!--/container-fluid-->
+		</div>
+		<!--/footer-navigation-->
+	</footer>
 </div>
