@@ -26,55 +26,63 @@
 #}
 {{ menus.menu_links(items, attributes, 0) }}
 {% macro menu_links(items, attributes, menu_level) %}
-  {% import _self as menus %}
-  {% if items %}
-    {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('main-menu').setAttribute('data-plugin','mainMenuDropdown') }}>
-    {% else %}
-        <div class="main-menu-dropdown">
-    {% endif %}
-    {% for item in items %}
-      {% if menu_level > 0 %}
-        {% if loop.index == 1 %}
-          <ul class="dropdown-link-block">
-        {% endif %}
-      {% endif %}
-{#      {{ devel_dump(item) }}#}
-      {% if item.in_active_trail %}
-        {% set link_class = ['active'] %}
-       {% else %}
-        {% set link_class = [] %}
-      {% endif %}
-      <li{{ item.attributes }}>
-        {% set link_link = item.url.toString() %}
-        {% if link_link=='' %}
+	{% import _self as menus %}
+	{% if items %}
+		{% if menu_level == 0 %}
+			<ul{{attributes.addClass('main-menu').setAttribute('data-plugin','mainMenuDropdown')}}>
+			{% else %}
+				<div class="main-menu-dropdown">
+				{% endif %}
+				{% for item in items %}
+					{% if menu_level > 0 %}
+						{% if loop.index == 1 %}
+							<ul class="dropdown-link-block">
+							{% endif %}
+						{% endif %}
 
-          {% set no_link_class= '' %}
-          {% if item.in_active_trail %}
-            {% set no_link_class= 'active' %}
-          {% endif %}
-          <a class="{{ no_link_class }}" >{{ item.title }}</a>
-          {% else %}
-            {{ link(item.title, item.url,{'class':link_class}) }}
-        {% endif %}
-        {% if item.below %}
-          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-        {% endif %}
-      </li>
-            {% if menu_level > 0 %}
-            {% if loop.last or loop.index is divisible by(4)  %}
-            </ul>
-              {% endif %}
-              {% if loop.index is divisible by(4) and not index.last %}
-                <ul class="dropdown-link-block">
-              {% endif %}
-              {% endif %}
-    {% endfor %}
-  {% if menu_level == 0 %}
-    </ul>
-    {% endif %}
-          {% if not menu_level==0 %}
-        </div>
-          {% endif %}
-  {% endif %}
+						{% if item.in_active_trail %}
+							{% set link_class = ['active'] %}
+						{% else %}
+							{% set link_class = [] %}
+						{% endif %}
+						<li{{item.attributes}}>
+							{% set link_link = item.url.toString() %}
+							{% if link_link=='' %}
+								{% set no_link_class= '' %}
+								{% if item.in_active_trail %}
+									{% set no_link_class= 'active' %}
+								{% endif %}
+								<a {% if item.url.external %} target="_blank" {% endif %} class="{{ no_link_class }}">{{ item.title }}
+									{% if item.url.external %}
+										<i class="mdi mdi-open-in-new" aria-label="link opens on new page"></i>
+									{% endif %}
+								</a>
+							{% else %}
+								<a {% if item.url.external %} target="_blank" {% endif %} class="{{ link_class }}">{{ item.title }}
+									{% if item.url.external %}
+										<i class="mdi mdi-open-in-new" aria-label="link opens on new page"></i>
+									{% endif %}
+								</a>
+								{# {{ link(item.title, item.url,{'class':link_class}) }} #}
+							{% endif %}
+							{% if item.below %}
+								{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+							{% endif %}
+						</li>
+						{% if menu_level > 0 %}
+							{% if loop.last or loop.index is divisible by(4)  %}
+							</ul>
+						{% endif %}
+						{% if loop.index is divisible by(4) and not index.last %}
+							<ul class="dropdown-link-block">
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+					{% if menu_level == 0 %}
+					</ul>
+				{% endif %}
+				{% if not menu_level==0 %}
+				</div>
+		{% endif %}
+	{% endif %}
 {% endmacro %}
