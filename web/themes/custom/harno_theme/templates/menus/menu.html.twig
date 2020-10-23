@@ -41,18 +41,34 @@
 						{% endif %}
 
 						{% if item.in_active_trail %}
-							{% set link_class = ['active'] %}
+							{% set link_class = 'active' %}
 						{% else %}
-							{% set link_class = [] %}
+							{% set link_class = '' %}
 						{% endif %}
 						<li{{item.attributes}}>
-							{% set link_link = item.url.toString() %}
-              {% if item.url.external %}
-              {% set external = true %}
-              {% else %}
-                {% set external = false %}
-              {% endif %}
-							{% if link_link=='' %}
+							{# {{devel_dump(item.url.toString())}} #}
+							{% if not item.url.isExternal() and item.url.getRouteName() is same as('<nolink>') %}
+								{% set link_link = '' %}
+							{% else %}
+								{% if item.url.external %}
+
+									{% set link_link = item.url.toString %}
+								{% else %}
+									{% if item.url.routeName == '<front>' %}
+										{% set link_link = url('view.frontpage.page_1') %}
+									{% else %}
+										{% set link_link = item.url.getInternalPath() %}
+									{% endif %}
+								{% endif %}
+
+							{% endif %}
+
+							{% if item.url.external %}
+								{% set external = true %}
+							{% else %}
+								{% set external = false %}
+							{% endif %}
+							{% if link_link == '' %}
 								{% set no_link_class= '' %}
 								{% if item.in_active_trail %}
 									{% set no_link_class= 'active' %}
@@ -63,7 +79,7 @@
 									{% endif %}
 								</a>
 							{% else %}
-								<a {% if external %} target="_blank" {% endif %} class="{{ link_class }}">{{ item.title }}
+								<a href="{{item.url}}" {% if external %} target="_blank" {% endif %} class="{{ link_class }}">{{ item.title }}
 									{% if external %}
 										<i class="mdi mdi-open-in-new" aria-label="link opens on new page"></i>
 									{% endif %}
@@ -86,7 +102,7 @@
 					{% if menu_level == 0 %}
 					</ul>
 				{% endif %}
-				{% if not menu_level==0 %}
+				{% if not menu_level == 0 %}
 				</div>
 		{% endif %}
 	{% endif %}
