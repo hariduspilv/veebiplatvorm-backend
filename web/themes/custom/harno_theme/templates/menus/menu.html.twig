@@ -47,19 +47,24 @@
 						{% endif %}
 						<li{{item.attributes}}>
 							{% set link_link = item.url.toString() %}
+              {% if item.url.external %}
+              {% set external = true %}
+              {% else %}
+                {% set external = false %}
+              {% endif %}
 							{% if link_link=='' %}
 								{% set no_link_class= '' %}
 								{% if item.in_active_trail %}
 									{% set no_link_class= 'active' %}
 								{% endif %}
-								<a {% if item.url.external %} target="_blank" {% endif %} class="{{ no_link_class }}">{{ item.title }}
-									{% if item.url.external %}
+								<a {% if external %} target="_blank" {% endif %} class="{{ no_link_class }}">{{ item.title }}
+									{% if external %}
 										<i class="mdi mdi-open-in-new" aria-label="link opens on new page"></i>
 									{% endif %}
 								</a>
 							{% else %}
-								<a {% if item.url.external %} target="_blank" {% endif %} class="{{ link_class }}">{{ item.title }}
-									{% if item.url.external %}
+								<a {% if external %} target="_blank" {% endif %} class="{{ link_class }}">{{ item.title }}
+									{% if external %}
 										<i class="mdi mdi-open-in-new" aria-label="link opens on new page"></i>
 									{% endif %}
 								</a>
