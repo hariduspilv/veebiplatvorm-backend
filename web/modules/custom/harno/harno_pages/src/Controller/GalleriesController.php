@@ -23,6 +23,7 @@ class GalleriesController extends ControllerBase {
     $build['#academic_years'] = $filter_form;
     $build['#content'] = $galleries;
     $build['#pager'] = ['#type' => 'pager'];
+    $build['#attached']['library'][] = 'harno_pages/harno_pages';
     $build['#cache'] = [
       'conttexts' => ['url.query_args'],
       'tags' => ['node_type:gallery'],
@@ -62,8 +63,9 @@ class GalleriesController extends ControllerBase {
 
         }
         else {
-          $years = explode('|', $_REQUEST['years']);
+          $years = explode(',', $_REQUEST['years']);
         }
+        // devel_dump($years);
         $year_group = $query->orConditionGroup();
         foreach ($years as $year) {
           if ($year == 'older') {

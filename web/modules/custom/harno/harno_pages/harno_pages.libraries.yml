@@ -1,0 +1,6 @@
+harno_pages:
+  js:
+    js/urlparameters.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

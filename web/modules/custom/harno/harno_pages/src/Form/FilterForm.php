@@ -25,9 +25,12 @@ class FilterForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state, $academic_years = NULL) {
     // devel_dump($academic_years);
+    $form['#attributes']['data-plugin'] = 'filters';
+    $form['#attributes']['role'] = 'filter';
     if (!empty($academic_years)) {
       $form['years'] = [
         '#title' => t('Choose year'),
+        // '#attributes' => ['name' => 'years'],
         '#id' => 'gallery-years',
         '#type' => 'checkboxes',
         '#ajax' => [
@@ -101,13 +104,13 @@ class FilterForm extends FormBase {
         }
       }
       if (!empty($_REQUEST['date_start'])) {
-        $form['bottom_row']['date_start']['#default_value'] = $_REQUEST['date_start'];
+        $form['bottom']['date_start']['#default_value'] = $_REQUEST['date_start'];
       }
       if (!empty($_REQUEST['date_end'])) {
-        $form['bottom_row']['date_end']['#default_value'] = $_REQUEST['date_end'];
+        $form['bottom']['date_end']['#default_value'] = $_REQUEST['date_end'];
       }
       if (!empty($_REQUEST['gallerySearch'])) {
-        $form['bottom_row']['gallerySearch']['#default_value'] = $_REQUEST['gallerySearch'];
+        $form['bottom']['searchgroup']['gallerySearch']['#default_value'] = $_REQUEST['gallerySearch'];
       }
     }
     $form['#theme_wrappers'] = ['form-galleries'];
