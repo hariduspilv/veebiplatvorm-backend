@@ -95,12 +95,13 @@ class FilterForm extends FormBase {
 
     ];
     if (!empty($_REQUEST)) {
+      // devel_dump($_REQUEST);
       if (!empty($_REQUEST['years'])) {
         if (is_array($_REQUEST['years'])) {
-          $form['top_row']['years']['#default_value'] = $_REQUEST['years'];
+          // $form['years']['#default_value'] = $_REQUEST['years'];
         }
         else {
-          $form['top_row']['years']['#default_value'] = explode('|', $_REQUEST['years']);
+          // $form['years']['#default_value'] = explode('|', $_REQUEST['years']);
         }
       }
       if (!empty($_REQUEST['date_start'])) {
@@ -113,6 +114,7 @@ class FilterForm extends FormBase {
         $form['bottom']['searchgroup']['gallerySearch']['#default_value'] = $_REQUEST['gallerySearch'];
       }
     }
+    // devel_dump($form);
     $form['#theme_wrappers'] = ['form-galleries'];
     return $form;
   }
@@ -138,11 +140,13 @@ class FilterForm extends FormBase {
     if (!empty($form_values)) {
       if (!empty($form_values['years'])) {
         foreach ($form_values['years'] as $year) {
-          if (empty($parameters['years'])) {
-            $parameters['years'] = $year;
-          }
-          else {
-            $parameters['years'] .= '|' . $year;
+          if (!empty($year)) {
+            if (empty($parameters['years'])) {
+              $parameters['years'][$year] = $year;
+            }
+            else {
+              $parameters['years'][$year] = $year;
+            }
           }
         }
       }
@@ -158,7 +162,6 @@ class FilterForm extends FormBase {
     }
     $build = [];
     $build['#theme'] = 'galleries-response';
-
     $build['#content'] = $galleries;
     $build['#pager'] = [
       '#type' => 'pager',

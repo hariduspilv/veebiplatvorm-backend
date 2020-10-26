@@ -123,7 +123,7 @@ function harno_theme_preprocess_pager(&$vars){
     $options = array(
       'query' =>$updatedParameters,
     );
-    $items['first']['href'] = \Drupal::url($route_name, $route_parameters, $options);
+    $items['first']['href'] = urldecode(\Drupal::url($route_name, $route_parameters, $options));
     if (isset($tags[0])) {
       $items['first']['text'] = $tags[0];
     }
@@ -138,7 +138,7 @@ function harno_theme_preprocess_pager(&$vars){
     $options = array(
       'query' => $updatedParameters,
     );
-    $items['previous']['href'] = \Drupal::url($route_name, $route_parameters, $options);
+    $items['previous']['href'] = urldecode(\Drupal::url($route_name, $route_parameters, $options));
     if (isset($tags[1])) {
       $items['previous']['text'] = $tags[1];
     }
@@ -164,7 +164,7 @@ function harno_theme_preprocess_pager(&$vars){
         'query' => $updatedParameters,
       );
 
-      $items['pages'][$i]['href'] = \Drupal::url($route_name, $route_parameters, $options);
+      $items['pages'][$i]['href'] = urldecode(\Drupal::url($route_name, $route_parameters, $options));
       if ($i == $pager_current) {
         $vars['current'] = $i;
       }
@@ -206,7 +206,7 @@ function harno_theme_preprocess_pager(&$vars){
       'query' => $updatedParameters,
     );
 
-    $items['last']['href'] = \Drupal::url($route_name, $route_parameters, $options);
+    $items['last']['href'] = urldecode(\Drupal::url($route_name, $route_parameters, $options));
     if (isset($tags[4])) {
       $items['last']['text'] = $tags[4];
     }
