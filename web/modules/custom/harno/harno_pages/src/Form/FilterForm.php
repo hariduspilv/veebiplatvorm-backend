@@ -47,6 +47,9 @@ class FilterForm extends FormBase {
     ];
     $form['bottom']['date_start'] = [
       '#type' => 'textfield',
+      '#attributes' => [
+        'alt' => t('Filter starting from')
+      ],
       '#title' => t('Show from'),
       '#ajax' => [
         'wrapper' => 'filter-target',
@@ -58,6 +61,9 @@ class FilterForm extends FormBase {
     ];
     $form['bottom']['date_end'] = [
       '#type' => 'textfield',
+      '#attributes' => [
+        'alt' => t('Filter ending with')
+      ],
       '#title' => t('Show to'),
       '#ajax' => [
         'wrapper' => 'filter-target',
@@ -74,6 +80,9 @@ class FilterForm extends FormBase {
     $form['bottom']['searchgroup']['gallerySearch'] = [
       '#type' => 'textfield',
       '#title' => t('Search'),
+      '#attributes' => [
+        'alt' => t('Type gallery title you are looking for'),
+      ],
       '#ajax' => [
         'wrapper' => 'filter-target',
         'event' => 'change',
