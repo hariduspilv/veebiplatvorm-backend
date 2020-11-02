@@ -25,9 +25,7 @@
  {{ children|without('years') }}
   </div>
   <div class="mobile-filters">
-    <div class="form-item search-input" data-plugin="movingLabel">
-      {{ children.bottom.gallerySearch }}
-    </div><!--/form-item search-input-->
+      {{ children.bottom.searchgroup.gallerySearch }}
     <button class="btn btn-secondary mobile-filter-trigger" data-plugin="filtersModal">{{ "Open filters" |t }}</button>
   </div><!--/mobile-filters-->
 
