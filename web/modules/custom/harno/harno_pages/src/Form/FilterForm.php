@@ -141,6 +141,23 @@ class FilterForm extends FormBase {
    *
    */
   public function filterResults(array &$form, FormStateInterface $form_state) {
+    unset($form['pager']);
+    if(!empty($_GET)){
+      if (!empty($_GET['_wrapper_format'])){
+        unset($_GET['page']);
+        unset($_REQUEST['page']);
+        unset($GLOBALS['_REQUEST']['page']);
+        unset($GLOBALS['_REQUEST']['page']);
+//        unset($GLOBALS['request']->query->parameters["page"]);
+        $existingQuery = \Drupal::service('request_stack')->getCurrentRequest()->query->all();
+        $existingQuery = \Drupal::service('request_stack')->getCurrentRequest()->query->remove('page');
+
+        $existingQuery = \Drupal::service('request_stack')->getCurrentRequest()->query->get('page');
+
+
+
+      }
+    }
     $galleries = new GalleriesController();
     $galleries = $galleries->getGalleries();
 
@@ -168,7 +185,13 @@ class FilterForm extends FormBase {
       if (!empty($form_values['gallerySearch'])) {
         $parameters['gallerySearch'] = $_REQUEST['gallerySearch'];
       }
+      if(!empty($_GET)){
+        if (!empty($_GET['_wrapper_format'])){
+//          $parameters['page']=0;
+        }
+      }
     }
+
     $build = [];
     $build['#theme'] = 'galleries-response';
     $build['#content'] = $galleries;

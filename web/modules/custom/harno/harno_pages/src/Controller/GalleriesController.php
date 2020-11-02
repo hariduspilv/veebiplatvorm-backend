@@ -39,9 +39,24 @@ class GalleriesController extends ControllerBase {
     $query = \Drupal::entityQuery('node');
     $query->condition('status', 1);
     $query->condition('type', $bundle);
+
+
+
     $query->sort('field_academic_year.entity.field_date_range', 'DESC');
     $query->sort('created', 'DESC');
     if (!empty($_REQUEST)) {
+//      dump($_REQUEST);
+      if(!empty($_REQUEST['_wrapper_format'])){
+        if(isset($_REQUEST['page'])){
+          $_REQUEST['page'] = 0;
+          if(isset($_GET['page'])){
+            $_GET['page']=0;
+            $existingQuery = \Drupal::service('request_stack')->getCurrentRequest()->query->all();
+            $existingQuery = \Drupal::service('request_stack')->getCurrentRequest()->query->remove('page');
+          }
+        }
+
+      }
       if (!empty($_REQUEST['gallerySearch'])) {
         $query->condition('title', $_REQUEST['gallerySearch'], 'CONTAINS');
       }
