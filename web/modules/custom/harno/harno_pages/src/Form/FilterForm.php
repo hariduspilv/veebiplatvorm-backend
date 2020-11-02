@@ -85,9 +85,9 @@ class FilterForm extends FormBase {
       ],
       '#ajax' => [
         'wrapper' => 'filter-target',
-        'event' => 'change',
         'keypress' => TRUE,
         'callback' => '::filterResults',
+        'event' => 'finishedinput',
         'disable-refocus' => TRUE,
       ],
     ];
@@ -103,6 +103,7 @@ class FilterForm extends FormBase {
       ],
 
     ];
+
     if (!empty($_REQUEST)) {
       // devel_dump($_REQUEST);
       if (!empty($_REQUEST['years'])) {
