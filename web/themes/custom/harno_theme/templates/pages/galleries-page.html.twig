@@ -49,6 +49,7 @@
 								<div class="col-3 md-6 sm-12">
 
 									<div class="gallery-block">
+                    <a class="gallery-block" aria-label="{{"Open gallery detail view" |t}}" href=" {{ drupal_url('node/'~ gallery.id) }}">
 										{% if media_image['#uri'] %}
 											<div class="gallery-block__thumbnail" style="background-image: url({{ media_image['#uri']|file_url }});">
 												<img src="assets/images/placeholder-1.gif" {% if alt %} alt="{{alt}}" {% endif %} {% if title %} title="{{title}}" {% endif %}>
@@ -58,13 +59,14 @@
 										{% endif %}
 
 										<div class="gallery-block__gallery-info">
-											<h4>
-												<a aria-label="{{"Open gallery detail view" |t}}" href=" {{ drupal_url('node/'~ gallery.id) }}">
+											<h3>
 
-													{{ gallery.getTitle() }}</a>
-											</h4>
+
+													{{ gallery.getTitle() }}
+											</h3>
 											<span class="date-indicator">{{ gallery.getCreatedTime()|date('d.m.Y') }}</span>
 										</div>
+                    </a>
 										<!--/gallery-block__gallery-info-->
 									</div>
 									<!--/gallery-block-->

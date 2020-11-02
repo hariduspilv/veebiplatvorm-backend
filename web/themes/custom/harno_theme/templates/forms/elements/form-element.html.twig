@@ -75,7 +75,7 @@
       <span class="date-separator">-</span>
     {% endif %}
     <div class="form-item {% if element['#name']=='gallerySearch' %} search-input{% endif %}" data-plugin="movingLabel">
-      <label class="form-label" for="{{ element['#id'] }}" title="{{label['#title']}}">{{ label['#title'] }}</label>
+      <label class="form-label" for="{{ element['#id'] }}">{{ label['#title'] }}</label>
       {{ children }}
       {% if element['#name']=='gallerySearch' %}
       {% endif %}
