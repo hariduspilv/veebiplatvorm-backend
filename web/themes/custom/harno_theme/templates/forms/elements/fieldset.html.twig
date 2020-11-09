@@ -37,8 +37,13 @@
   {% elseif element['#id']=='galleries-bottomFilter' %}
     <div class="filters-bottom">
       <div class="date-inputs">
-      {{ children }}
+        {{ element.date_start }}
+        <span class="date-separator">-</span>
+        {{ element.date_end }}
+{#      {{ children }}#}
       </div>
+      {{ element.searchgroup.gallerySearch }}
+{#      {{ dd(element) }}#}
       <button class="btn btn-primary filters-ready">{{ "Ready"|t }}</button>
     </div>
   {% else %}

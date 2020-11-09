@@ -1,92 +1,95 @@
 <div id="filter-target">
-	{% if content %}
-		{% for year_name,year in content %}
-			<div class="row">
-				<div class="col-12 md-12 sm-12">
+  {% if content %}
+    {% for year_name,year in content %}
+      <div class="row">
+        <div class="col-12 md-12 sm-12">
 
-					<div class="title-block--gallery">
-						<h2>{{ year_name }}</h2>
-					</div>
-					<!--/title-block--gallery-->
+          <div class="title-block--gallery">
+            <h2>{{ year_name }}</h2>
+          </div>
+          <!--/title-block--gallery-->
 
-				</div>
-				<!--/col-12 md-12 sm-12-->
-			</div>
-			<!--/row-->
+        </div>
+        <!--/col-12 md-12 sm-12-->
+      </div>
+      <!--/row-->
 
-			<div class="row">
-				{% for gallery in year %}
+      <div class="row">
+        {% for gallery in year %}
 
-					{% if gallery.field_images %}
-						{% if gallery.field_images.0 %}
-							{% if gallery.field_images.0.getValue() %}
-								{% set target_id = gallery.field_images.0.value.target_id %}
-								{% if target_id %}
+          {% if gallery.field_images %}
+            {% if gallery.field_images.0 %}
+              {% if gallery.field_images.0.getValue() %}
+                {% set target_id = gallery.field_images.0.value.target_id %}
+                {% if target_id %}
 
-									{% set media = drupal_entity('media',target_id) %}
-									{% if media %}
-										{% set media_image = drupal_image( media['#media'].field_media_image.0.value.target_id ,'thumbnail') %}
-										{% set alt = '' %}
-										{% if media['#media'].field_media_image.0.get('alt').getString %}
-											{% set alt = media['#media'].field_media_image.0.get('alt').getString %}
-										{% endif %}
-										{% set title = '' %}
-										{% if media['#media'].field_media_image.0.get('title').getString %}
-											{% set title = media['#media'].field_media_image.0.get('title').getString %}
-										{% endif %}
-
-
-									{% endif %}
-								{% endif %}
-							{% endif %}
-						{% endif %}
-					{% endif %}
-					<div class="col-3 md-6 sm-12">
-
-						<div class="gallery-block">
-							{% if media_image['#uri'] %}
-								<div class="gallery-block__thumbnail" style="background-image: url({{ media_image['#uri']|file_url }});">
-									<img src="assets/images/placeholder-1.gif" {% if alt %} alt="{{alt}}" {% endif %} {% if title %} title="{{title}}" {% endif %}>
+                  {% set media = drupal_entity('media',target_id) %}
+                  {% if media %}
+                    {% set media_image = drupal_image( media['#media'].field_media_image.0.value.target_id ,'thumbnail') %}
+                    {% set alt = '' %}
+                    {% if media['#media'].field_media_image.0.get('alt').getString %}
+                      {% set alt = media['#media'].field_media_image.0.get('alt').getString %}
+                    {% endif %}
+                    {% set title = '' %}
+                    {% if media['#media'].field_media_image.0.get('title').getString %}
+                      {% set title = media['#media'].field_media_image.0.get('title').getString %}
+                    {% endif %}
 
 
-								</div>
-								<!--/gallery-block__thumbnail-->
-							{% endif %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+          <div class="col-3 md-6 sm-12">
 
-							<div class="gallery-block__gallery-info">
-								<h4>
-									<a aria-label="{{"Open gallery detail view" |t}}" href=" {{ drupal_url('node/'~ gallery.id) }}">
-										{{ gallery.getTitle() }}</a>
-								</h4>
-								<span class="date-indicator">{{ gallery.getCreatedTime()|date('d.m.Y') }}</span>
-							</div>
-							<!--/gallery-block__gallery-info-->
-						</div>
-						<!--/gallery-block-->
+            <div class="gallery-block">
+              <a class="gallery-block" aria-label="{{"Open gallery detail view" |t}}" href=" {{ drupal_url('node/'~ gallery.id) }}">
+                {% if media_image['#uri'] %}
+                  <div class="gallery-block__thumbnail" style="background-image: url({{ media_image['#uri']|file_url }});">
+                    <img src="assets/images/placeholder-1.gif" {% if alt %} alt="{{alt}}" {% endif %} {% if title %} title="{{title}}" {% endif %}>
 
-					</div>
-					<!--/col-3 md-6 sm-12-->
-				{% endfor %}
-			</div>
-		{% endfor %}
-		<div class="row">
-			<div class="col-12 md-12 sm-12">
-				<div class="paginator-block">
-					{{ pager }}
-				</div>
+                  </div>
+                  <!--/gallery-block__thumbnail-->
+                {% endif %}
 
-			</div>
-			<!--/col-12-->
-		</div>
-		<!--/row-->
-	{% else %}
-		<div class="row">
-			<div class="col-12 md-12 sm-12">
-				<strong>
-					{{"No galleries matching the filters were found!"|t}}
-				</strong>
-			</div>
-		</div>
+                <div class="gallery-block__gallery-info">
+                  <h3>
 
-	{% endif %}
+
+                    {{ gallery.getTitle() }}
+                  </h3>
+                  <span class="date-indicator">{{ gallery.getCreatedTime()|date('d.m.Y') }}</span>
+                </div>
+              </a>
+              <!--/gallery-block__gallery-info-->
+            </div>
+            <!--/gallery-block-->
+
+          </div>
+          <!--/col-3 md-6 sm-12-->
+        {% endfor %}
+      </div>
+    {% endfor %}
+    <div class="row">
+      <div class="col-12 md-12 sm-12">
+        <div class="paginator-block">
+          {{ pager }}
+        </div>
+
+      </div>
+      <!--/col-12-->
+    </div>
+    <!--/row-->
+
+
+  {% else %}
+    <div class="row">
+      <div class="col-12 md-12 sm-12">
+        <div class="search-null-results">
+          <h4>{{"No galleries matching the filters were found!"|t}}</h4>
+        </div><!--/search-null-results-->
+      </div>
+    </div>
+  {% endif %}
 </div>

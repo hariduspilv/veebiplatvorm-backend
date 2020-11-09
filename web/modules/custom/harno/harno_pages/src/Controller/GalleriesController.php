@@ -39,9 +39,6 @@ class GalleriesController extends ControllerBase {
     $query = \Drupal::entityQuery('node');
     $query->condition('status', 1);
     $query->condition('type', $bundle);
-
-
-
     $query->sort('field_academic_year.entity.field_date_range', 'DESC');
     $query->sort('created', 'DESC');
     if (!empty($_REQUEST)) {
@@ -58,7 +55,13 @@ class GalleriesController extends ControllerBase {
 
       }
       if (!empty($_REQUEST['gallerySearch'])) {
-        $query->condition('title', $_REQUEST['gallerySearch'], 'CONTAINS');
+        $query->condition('title',$_REQUEST['gallerySearch'], 'CONTAINS');
+      }
+      if (!empty($_REQUEST['gallerySearchMobile'])) {
+        $query->condition('title', $_REQUEST['gallerySearchMobile'], 'CONTAINS');
+      }
+      if(empty($_REQUEST['gallerySearch']) or empty($_REQUEST['gallerySearchMobile'])){
+        $query->condition('title','','CONTAINS');
       }
       if (!empty($_REQUEST['date_start'])) {
         $startDate = strtotime('midnight' . $_REQUEST['date_start']);

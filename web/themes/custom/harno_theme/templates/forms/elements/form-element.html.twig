@@ -69,12 +69,10 @@
   {{ children }}
   <span class="btn btn-tag">{{ label['#title'] }}</span>
 </span>
-  {% elseif element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name']=='gallerySearch' %}
+  {% elseif element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name']=='gallerySearch' or element['#name'] == 'gallerySearchMobile' %}
 
-    {% if element['#name']=='date_end' %}
-      <span class="date-separator">-</span>
-    {% endif %}
-    <div class="form-item {% if element['#name']=='gallerySearch' %} search-input{% endif %}" data-plugin="movingLabel">
+
+    <div class="form-item {% if element['#name'] == 'gallerySearchMobile'%}sm-show{% endif%} {% if element['#name'] in ['gallerySearchMobile','gallerySearch'] %} search-input{% endif %}" data-plugin="movingLabel">
       <label class="form-label" for="{{ element['#id'] }}">{{ label['#title'] }}</label>
       {{ children }}
       {% if element['#name']=='gallerySearch' %}

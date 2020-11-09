@@ -91,6 +91,20 @@ class FilterForm extends FormBase {
         'disable-refocus' => TRUE,
       ],
     ];
+    $form['bottom']['searchgroup']['gallerySearchMobile'] = [
+      '#type' => 'textfield',
+      '#title' => t('Search'),
+      '#attributes' => [
+        'alt' => t('Type gallery title you are looking for'),
+      ],
+      '#ajax' => [
+        'wrapper' => 'filter-target',
+        'keypress' => TRUE,
+        'callback' => '::filterResults',
+        'event' => 'finishedinput',
+        'disable-refocus' => TRUE,
+      ],
+    ];
     $form['bottom']['searchgroup']['searchButton'] = [
       '#attributes' => [
         'style' => 'display:none;',
@@ -122,6 +136,9 @@ class FilterForm extends FormBase {
       }
       if (!empty($_REQUEST['gallerySearch'])) {
         $form['bottom']['searchgroup']['gallerySearch']['#default_value'] = $_REQUEST['gallerySearch'];
+      }
+      if (!empty($_REQUEST['gallerySearchMobile'])) {
+        $form['bottom']['searchgroup']['gallerySearch']['#default_value'] = $_REQUEST['gallerySearchMobile'];
       }
     }
     // devel_dump($form);
@@ -185,6 +202,9 @@ class FilterForm extends FormBase {
       }
       if (!empty($form_values['gallerySearch'])) {
         $parameters['gallerySearch'] = $_REQUEST['gallerySearch'];
+      }
+      if (!empty($form_values['gallerySearchMobile'])) {
+        $parameters['gallerySearchMobile'] = $_REQUEST['gallerySearchMobile'];
       }
       if(!empty($_GET)){
         if (!empty($_GET['_wrapper_format'])){

@@ -45,7 +45,7 @@
         </li>
         {% else %}
           <li>
-            <a href="{{ items.previous.href }}" class="back disabled" rel="prev" aria-disabled="true" {{ items.previous.attributes|without('href', 'title', 'rel') }}>
+            <a href="{{ items.previous.href }}" class="back disabled" rel="prev" tabindex="-1" aria-disabled="true" {{ items.previous.attributes|without('href', 'title', 'rel') }}>
               <span class="sr-only">{{ "previous"|t }}</span>
             </a>
           </li>
@@ -99,7 +99,7 @@
         </li>
         {% else %}
           <li class="pager__item pager__item--next">
-            <a href="{{ items.next.href }}" class="next disabled"  rel="next"{{ items.next.attributes|without('href', 'title', 'rel') }}>
+            <a href="{{ items.next.href }}" class="next disabled"  aria-label="false" tabindex="-1" rel="next"{{ items.next.attributes|without('href', 'title', 'rel') }}>
               <span class="sr-only">{{ "next"|t }}</span>
             </a>
           </li>

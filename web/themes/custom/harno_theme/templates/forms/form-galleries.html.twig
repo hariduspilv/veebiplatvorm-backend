@@ -11,7 +11,6 @@
  */
 #}
 {#{{ devel_dump(children) }}#}
-
 <div class="content-block content-block--filters">
 <div class="row">
   <div class="col-12 md-12 sm-12">
@@ -25,12 +24,14 @@
  {{ children|without('years') }}
   </div>
   <div class="mobile-filters">
-      {{ children.bottom.searchgroup.gallerySearch }}
+    {{ children.bottom.searchgroup.gallerySearchMobile }}
+
     <button class="btn btn-secondary mobile-filter-trigger" data-plugin="filtersModal">{{ "Open filters" |t }}</button>
   </div><!--/mobile-filters-->
 
   <div class="mobile-filters-output">
   </div><!--/mobile-filters-output-->
+  {{ form }}
 </form>
 
 
