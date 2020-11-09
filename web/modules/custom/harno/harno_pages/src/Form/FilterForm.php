@@ -105,15 +105,33 @@ class FilterForm extends FormBase {
         'disable-refocus' => TRUE,
       ],
     ];
-    $form['bottom']['searchgroup']['searchButton'] = [
+    $form['bottom']['searchgroup']['searchbutton'] = [
       '#attributes' => [
         'style' => 'display:none;',
       ],
       '#type' => 'button',
       '#title' => t('Search'),
-      '#value' => t('Search'),
+      '#value' => t('Submit'),
       '#ajax' => [
         'callback' => '::filterResults',
+        'wrapper' => 'filter-target',
+        'disable-refocus' => true,
+        'keypress'=>TRUE,
+      ],
+
+    ];
+    $form['bottom']['searchgroup']['searchbuttonmobile'] = [
+      '#attributes' => [
+        'style' => 'display:none;',
+      ],
+      '#type' => 'button',
+      '#title' => t('Search'),
+      '#value' => t('Submit'),
+      '#ajax' => [
+        'callback' => '::filterResults',
+        'wrapper' => 'filter-target',
+        'disable-refocus' => true,
+        'keypress'=>TRUE,
       ],
 
     ];

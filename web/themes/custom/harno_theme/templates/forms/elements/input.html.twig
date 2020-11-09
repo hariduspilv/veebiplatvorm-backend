@@ -15,11 +15,17 @@
 	{% if element['#name'] == 'date_start' or element['#name'] == 'date_end' %}
 		<input{{attributes}}/>{{ children }}
 		<button class="btn input-date"></button>
-	{% else %}
+    {% elseif element['#name'] == 'gallerySearchMobile' %}
+      <input{{attributes}}/>{{ children }}
+      <button data-drupal-selector="edit_searchbbuttonmobile" value="Submit" data-disable-refocus="true" id="edit-searchbuttonmobile" name="op"  class="btn js-form-submit form-submit search-submit-btn" type="submit" title="Otsi">{{ "Search" |t}}</button>
+
+    {% else %}
 		<input{{attributes}}/>{{ children }}
 {#    {{ dd() }}#}
-		<button data-drupal-selector="edit-searchbutton" id="edit-searchbutton" name="op"  class="btn js-form-submit form-submit search-submit-btn" type="submit" title="Otsi">{{ "Search" |t}}</button>
+		<button data-drupal-selector="edit_searchbutton" value="Submit" data-disable-refocus="true" id="edit-searchbutton" name="op"  class="btn js-form-submit form-submit search-submit-btn" type="submit" title="Otsi">{{ "Search" |t}}</button>
 	{% endif %}
+  {% elseif element['#id'] == 'edit-searchbutton' %}
+    <button{{ attributes.removeClass('btn-primary') }}>{{ element['#value'] }}</button>{{ children }}
 {% else %}
 	<input{{attributes}}/>{{ children }}
 {% endif %}
