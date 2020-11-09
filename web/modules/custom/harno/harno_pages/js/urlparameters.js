@@ -29,8 +29,23 @@ $.formFilter = {
   },
   bindFilters: function () {
     var self = this;
-    self.options.inputs.on("change", function (e) {
+
+    self.options.inputs.on("input", function (e) {
+
       e.preventDefault();
+      if ($(this).attr('name') === 'gallerySearch') {
+        self.options.form.find('#edit-gallerysearchmobile').val($(this).val());
+      }
+      if ($(this).attr('name') === 'gallerySearchMobile') {
+        self.options.form.find('#edit-gallerysearch').val($(this).val());
+      }
+
+      self.pushURL();
+    });
+    self.options.inputs.on("change", function (e) {
+
+      e.preventDefault();
+
       if ($(this).attr('name') === 'sort') {
         self.options.form.find('#sort-text').text($(this).next('label').text().toLowerCase().trim());
       }
