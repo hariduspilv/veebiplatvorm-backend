@@ -198,7 +198,7 @@ class FilterForm extends FormBase {
     $galleries = $galleries->getGalleries();
 
     $parameters = [];
-    $form_values = $form_state->getValues();
+    $form_values = $form_state->getUserInput();
     if (!empty($form_values)) {
       if (!empty($form_values['years'])) {
         foreach ($form_values['years'] as $year) {
@@ -212,16 +212,16 @@ class FilterForm extends FormBase {
           }
         }
       }
-      if (!empty($form_values['date_start'])) {
+      if (isset($form_values['date_start'])) {
         $parameters['date_start'] = $_REQUEST['date_start'];
       }
-      if (!empty($form_values['date_end'])) {
+      if (isset($form_values['date_end'])) {
         $parameters['date_end'] = $_REQUEST['date_end'];
       }
-      if (!empty($form_values['gallerySearch'])) {
+      if (isset($form_values['gallerySearch'])) {
         $parameters['gallerySearch'] = $_REQUEST['gallerySearch'];
       }
-      if (!empty($form_values['gallerySearchMobile'])) {
+      if (isset($form_values['gallerySearchMobile'])) {
         $parameters['gallerySearchMobile'] = $_REQUEST['gallerySearchMobile'];
       }
       if(!empty($_GET)){
