@@ -43,9 +43,9 @@ class GalleriesController extends ControllerBase {
     $query->sort('created', 'DESC');
     if (!empty($_REQUEST)) {
 //      dump($_REQUEST);
-      if(!empty($_REQUEST['_wrapper_format'])){
-        if(isset($_REQUEST['page'])){
-          $_REQUEST['page'] = 0;
+      if(!empty($_GET['_wrapper_format'])){
+        if(isset($_GET['page'])){
+          $_GET['page'] = 0;
           if(isset($_GET['page'])){
             $_GET['page']=0;
             $existingQuery = \Drupal::service('request_stack')->getCurrentRequest()->query->all();
@@ -54,20 +54,20 @@ class GalleriesController extends ControllerBase {
         }
 
       }
-      if (!empty($_REQUEST['gallerySearch'])) {
-        $query->condition('title',$_REQUEST['gallerySearch'], 'CONTAINS');
+      if (!empty($_POST['gallerySearch'])) {
+        $query->condition('title',$_POST['gallerySearch'], 'CONTAINS');
       }
-      if (!empty($_REQUEST['gallerySearchMobile'])) {
-        $query->condition('title', $_REQUEST['gallerySearchMobile'], 'CONTAINS');
+      if (!empty($_POST['gallerySearchMobile'])) {
+        $query->condition('title', $_POST['gallerySearchMobile'], 'CONTAINS');
       }
-      if(empty($_REQUEST['gallerySearch']) or empty($_REQUEST['gallerySearchMobile'])){
+      if(empty($_POST['gallerySearch']) or empty($_POST['gallerySearchMobile'])){
         $query->condition('title','','CONTAINS');
       }
-      if (!empty($_REQUEST['date_start'])) {
-        $startDate = strtotime('midnight' . $_REQUEST['date_start']);
+      if (!empty($_POST['date_start'])) {
+        $startDate = strtotime('midnight' . $_POST['date_start']);
       }
-      if (!empty($_REQUEST['date_end'])) {
-        $endDate = strtotime('midnight' . $_REQUEST['date_end'] . '+1 day');
+      if (!empty($_POST['date_end'])) {
+        $endDate = strtotime('midnight' . $_POST['date_end'] . '+1 day');
       }
       if (!empty($startDate)) {
         $query->condition('created', $startDate, '>=');
@@ -75,13 +75,13 @@ class GalleriesController extends ControllerBase {
       if (!empty($endDate)) {
         $query->condition('created', $endDate, '<=');
       }
-      if (!empty($_REQUEST['years'])) {
-        $years = $_REQUEST['years'];
+      if (!empty($_POST['years'])) {
+        $years = $_POST['years'];
         if (is_array($years)) {
 
         }
         else {
-          $years = explode(',', $_REQUEST['years']);
+          $years = explode(',', $_POST['years']);
         }
         // devel_dump($years);
         $year_group = $query->orConditionGroup();
