@@ -41,33 +41,40 @@ class GalleriesController extends ControllerBase {
     $query->condition('type', $bundle);
     $query->sort('field_academic_year.entity.field_date_range', 'DESC');
     $query->sort('created', 'DESC');
+
     if (!empty($_REQUEST)) {
-//      dump($_REQUEST);
-      if(!empty($_GET['_wrapper_format'])){
-        if(isset($_GET['page'])){
-          $_GET['page'] = 0;
-          if(isset($_GET['page'])){
-            $_GET['page']=0;
+
+      if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $parameters = $_GET;
+      }
+      else{
+        $parameters = $_POST;
+      }
+      if(!empty($_REQUEST['_wrapper_format'])){
+        if(isset($_REQUEST['page'])){
+          $_REQUEST['page'] = 0;
+          if(isset($_REQUEST['page'])){
+            $_REQUEST['page']=0;
             $existingQuery = \Drupal::service('request_stack')->getCurrentRequest()->query->all();
             $existingQuery = \Drupal::service('request_stack')->getCurrentRequest()->query->remove('page');
           }
         }
 
       }
-      if (!empty($_POST['gallerySearch'])) {
-        $query->condition('title',$_POST['gallerySearch'], 'CONTAINS');
+      if (!empty($parameters['gallerySearch'])) {
+        $query->condition('title',$parameters['gallerySearch'], 'CONTAINS');
       }
-      if (!empty($_POST['gallerySearchMobile'])) {
-        $query->condition('title', $_POST['gallerySearchMobile'], 'CONTAINS');
+      if (!empty($parameters['gallerySearchMobile'])) {
+        $query->condition('title', $parameters['gallerySearchMobile'], 'CONTAINS');
       }
-      if(empty($_POST['gallerySearch']) or empty($_POST['gallerySearchMobile'])){
+      if(empty($parameters['gallerySearch']) or empty($parameters['gallerySearchMobile'])){
         $query->condition('title','','CONTAINS');
       }
-      if (!empty($_POST['date_start'])) {
-        $startDate = strtotime('midnight' . $_POST['date_start']);
+      if (!empty($parameters['date_start'])) {
+        $startDate = strtotime('midnight' . $parameters['date_start']);
       }
-      if (!empty($_POST['date_end'])) {
-        $endDate = strtotime('midnight' . $_POST['date_end'] . '+1 day');
+      if (!empty($parameters['date_end'])) {
+        $endDate = strtotime('midnight' . $parameters['date_end'] . '+1 day');
       }
       if (!empty($startDate)) {
         $query->condition('created', $startDate, '>=');
@@ -75,13 +82,13 @@ class GalleriesController extends ControllerBase {
       if (!empty($endDate)) {
         $query->condition('created', $endDate, '<=');
       }
-      if (!empty($_POST['years'])) {
-        $years = $_POST['years'];
+      if (!empty($parameters['years'])) {
+        $years = $parameters['years'];
         if (is_array($years)) {
 
         }
         else {
-          $years = explode(',', $_POST['years']);
+          $years = explode(',', $parameters['years']);
         }
         // devel_dump($years);
         $year_group = $query->orConditionGroup();
