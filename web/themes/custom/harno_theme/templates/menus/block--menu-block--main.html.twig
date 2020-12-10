@@ -54,7 +54,7 @@
   {% endif %}
   <li{{attributes.removeClass('has-dropdown','open').addClass(below_class)}}>
 
-    {% if menu_item.in_active_trail %}
+    {% if menu_item.in_active_trail  %}
     {% set link_class = 'active' %}
     {% else %}
     {% set link_class = '' %}
@@ -68,11 +68,17 @@
         {% set main_url = menu_item.url.toString %}
       {% endif %}
 
-
     {% if menu_item.url.external %}
     {# {% set link_class = link_class ~ 'link-out' %} #}
     {% endif %}
 
+    {% endif %}
+    {% if menu_item.below %}
+    {% for below_active_item in menu_item.below  %}
+    {% if below_active_item.in_active_trail %}
+    {% set link_class = '' %}
+    {% endif %}
+    {% endfor %}
     {% endif %}
     <a class="{{ link_class }}" {% if menu_item.url.external %} target="_blank"
       aria-label="{{"Link opens on new page"|t}}" {% endif %}
