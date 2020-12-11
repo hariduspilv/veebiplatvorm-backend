@@ -44,7 +44,7 @@
 							{% set link_class = 'active' %}
           {% set open_class = ['sm-open'] %}
 
-          <li {{attributes.addClass(open_class)}} >
+          <li {{attributes.addClass(open_class).removeClass("main-menu")}} >
 							{% set active_link = true %}
 						{% else %}
           <li{{item.attributes}}>
