@@ -59,8 +59,13 @@
             {% set external = false %}
           {% endif %}
           {% if not external %}
-
-            {% if not item.url.isRouted() %}
+            {% if item.url.isRouted() %}
+              {% set routed = true %}
+              {% else %}
+              {% set routed = false %}
+            {% endif %}
+            {% if not routed %}
+              {% set link_link = '' %}
             {% else %}
                 {% if item.url.getRouteName() is same as ('<nolink>') %}
                   {% set link_link = '' %}
@@ -76,7 +81,6 @@
           {% else %}
             {% set link_link = item.url.toString %}
           {% endif %}
-
 {#							{% if not item.url.isExternal() and item.url.isRouted() is same as('<nolink>') %}#}
 {#								{% set link_link = '' %}#}
 {#							{% else %}#}
