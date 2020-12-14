@@ -109,13 +109,13 @@
 								{% if item.in_active_trail %}
 									{% set no_link_class= 'active' %}
 								{% endif %}
-								<a href="javascript:void(0)"  {% if external %}  target="_blank" {% endif %} class="{{ no_link_class }}" {% if active_link %} aria-current="page" {% if item.below %} aria-expanded="true" {% endif %} {% else %} {% if item.below %} aria-expanded="false" {% endif %} {% endif %}>{{ item.title }}
+								<a href="javascript:void(0)"  {% if external %} aria-label="{{ "link opens on new page" }}"  target="_blank" {% endif %} class="{{ no_link_class }}" {% if active_link %} aria-current="page" {% if item.below %} aria-expanded="true" {% endif %} {% else %} {% if item.below %} aria-expanded="false" {% endif %} {% endif %}>{{ item.title }}
 									{% if external %}
 										<i class="mdi mdi-open-in-new" aria-label="{{ "link opens on new page" }}"></i>
 									{% endif %}
 								</a>
 							{% else %}
-								<a href="{{item.url}}"  {% if external %} target="_blank" {% endif %} class="{{ link_class }}" {% if active_link %} aria-current="page" {% if item.below %} aria-expanded="true" {% endif %} {% else %} {% if item.below %} aria-expanded="false" {% endif %} {% endif %}>{{ item.title }}
+								<a href="{{item.url}}"  {% if external %} aria-label="{{ "link opens on new page" }}" target="_blank" {% endif %} class="{{ link_class }}" {% if active_link %} aria-current="page" {% if item.below %} aria-expanded="true" {% endif %} {% else %} {% if item.below %} aria-expanded="false" {% endif %} {% endif %}>{{ item.title }}
 									{% if external %}
 										<i class="mdi mdi-open-in-new" aria-label="{{ "link opens on new page" }}" ></i>
 									{% endif %}
