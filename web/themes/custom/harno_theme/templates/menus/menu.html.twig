@@ -34,6 +34,7 @@
 				<div class="main-menu-dropdown">
 				{% endif %}
 				{% for item in items %}
+          {% set front =  false %}
 					{% if menu_level > 0 %}
 						{% if loop.index == 1 %}
 							<ul class="dropdown-link-block">
@@ -71,6 +72,7 @@
                   {% set link_link = '' %}
                 {% else %}
                   {% if item.url.routeName == '<front>' %}
+                    {% set front = true %}
                     {% set link_link = url('view.frontpage.page_1') %}
                   {% else %}
                     {% set link_link = item.url.getInternalPath() %}
@@ -120,7 +122,7 @@
 								</a>
 								{# {{ link(item.title, item.url,{'class':link_class}) }} #}
 							{% endif %}
-							{% if item.below %}
+							{% if item.below and not front%}
 								{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
 							{% endif %}
 						</li>
