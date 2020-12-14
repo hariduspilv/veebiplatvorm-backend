@@ -83,6 +83,10 @@
           {% else %}
             {% set link_link = item.url.toString %}
           {% endif %}
+          {% if link_link == 'node' %}
+           {% set front = true %}
+          {% set link_link = url('view.frontpage.page_1') %}
+          {% endif %}
 {#							{% if not item.url.isExternal() and item.url.isRouted() is same as('<nolink>') %}#}
 {#								{% set link_link = '' %}#}
 {#							{% else %}#}
@@ -109,6 +113,7 @@
 								{% if item.in_active_trail %}
 									{% set no_link_class= 'active' %}
 								{% endif %}
+
 								<a href="javascript:void(0)"  {% if external %}  target="_blank" {% endif %} class="{{ no_link_class }}" {% if active_link %} aria-current="page" {% if item.below %} aria-expanded="true" {% endif %} {% else %} {% if item.below %} aria-expanded="false" {% endif %} {% endif %}>{{ item.title }}
 									{% if external %}
                     <span class="sr-only">{{ "link opens on new page" |t }}</span>
