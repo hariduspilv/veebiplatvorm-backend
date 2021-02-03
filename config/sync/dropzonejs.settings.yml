@@ -3,3 +3,4 @@ filename_transliteration: true
 _core:
   default_config_hash: M0v0CbvjQEfkmWkAAlkixEAbWtoTGkcU4r75GwWHgSc
 langcode: et
+upload_timeout_ms: 0
