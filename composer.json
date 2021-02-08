@@ -115,10 +115,12 @@
             ]
         },
         "patches": {
+            "drupal/core": {
+                "Class active-trail not added to li element when linking to front page https://www.drupal.org/project/drupal/issues/1578832": "https://www.drupal.org/files/issues/2018-11-27/menu-class-active-trail-1578832-52.patch"
+            },
             "drupal/media_bulk_upload": {
                 "Provide a way to add alt text when doing bulk upload [media_bulk_upload] https://www.drupal.org/project/media_bulk_upload/issues/3023825": "https://www.drupal.org/files/issues/2020-06-26/media_bulk_upload-3023825-25.patch"
             },
-
             "drupal/dropzonejs": {
                 "Provide a way to add alt text when doing bulk upload [dropzonejs] https://www.drupal.org/project/media_bulk_upload/issues/3023825": "https://www.drupal.org/files/issues/2020-10-05/dropzonejs-3023825-27.patch"
             }
