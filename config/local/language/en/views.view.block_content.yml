@@ -12,6 +12,8 @@ display:
           label: 'Ploki kirjeldus'
         type:
           label: 'Ploki tüüp'
+        changed:
+          label: Uuendati
       filters:
         info:
           expose:

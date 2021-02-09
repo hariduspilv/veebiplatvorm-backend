@@ -9,6 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.gallery_block
   module:
     - media_library
+    - media_library_edit
 id: paragraph.gallery_block.default
 targetEntityType: paragraph
 bundle: gallery_block
@@ -25,7 +26,9 @@ content:
     weight: 2
     settings:
       media_types: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
     region: content
   field_orientation:
     weight: 0

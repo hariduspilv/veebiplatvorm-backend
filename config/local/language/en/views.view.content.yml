@@ -12,8 +12,11 @@ display:
         type:
           label: 'Sisu tüüp'
         status:
+          label: Staatus
           settings:
             format_custom_true: Avaldatud
+        changed:
+          label: Uuendati
       filters:
         title:
           expose:
@@ -22,10 +25,15 @@ display:
           expose:
             label: 'Sisu tüüp'
         status:
+          expose:
+            label: Staatus
           group_info:
             group_items:
               1:
                 title: Avaldatud
+        langcode:
+          expose:
+            label: Keel
       title: Sisu
       empty:
         area_text_custom:

@@ -12,6 +12,7 @@ display:
         name:
           label: Kasutajanimi
         status:
+          label: Staatus
           settings:
             format_custom_true: Aktiivne
             format_custom_false: Blokeeritud
@@ -27,6 +28,7 @@ display:
             label: 'Nimi või e-post sisaldab'
         status:
           group_info:
+            label: Staatus
             group_items:
               1:
                 title: Aktiivne

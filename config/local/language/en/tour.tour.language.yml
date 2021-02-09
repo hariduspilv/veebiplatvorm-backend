@@ -1,5 +1,7 @@
+label: Keel
 tips:
   language-overview:
+    label: Keeled
     body: '<p>Leht "Keeled" võimaldab lisada, muuta, kustutada ning muuta keelte järjekorda</p>'
   language-add:
     label: 'Keelte lisamine'

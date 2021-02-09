@@ -17,6 +17,9 @@ settings:
     -
       value: portrait
       label: 'Portrait ehk püstvorming'
+    -
+      value: natural
+      label: 'Natural size ehk lõikamist ei toimu'
   allowed_values_function: ''
 module: options
 locked: false

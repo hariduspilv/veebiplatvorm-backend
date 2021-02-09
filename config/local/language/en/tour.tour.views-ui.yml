@@ -22,4 +22,5 @@ tips:
     label: 'Sorteeri tegevused'
     body: 'Lisa, järjesta või eemalda sorteerimise reeglid.'
   views-ui-preview:
+    label: Eelvaade
     body: 'Näita eelvaadet vaate väljundist.'

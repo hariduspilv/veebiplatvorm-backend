@@ -12,7 +12,7 @@ field_name: field_orientation
 entity_type: paragraph
 bundle: picture_block
 label: Paigutus
-description: "Määrab kas kuvamisel on pilt püstivormingus või rõhtvormingus. \r\n<ul>\r\n    <li>Landscape ehk rõhtvorming - pildi kõrgus on 1/3 ja pildi laius on 2/3</li>\r\n    <li>Portrait ehk püstvorming - pildi kõrgus on 2/3 ja pildi laius on 1/3 </li>\r\n</ul>"
+description: "Määrab kas kuvamisel on pilt püstivormingus või rõhtvormingus. \r\n<ul>\r\n    <li>Landscape ehk rõhtvorming - pilt skaleeritakse jaotise laiuseks ning pildi kõrgus on 1/3 ja pildi laius on 2/3 sellest üle olevad alad lõigatakse ära.</li>\r\n    <li>Portrait ehk püstvorming - pilt skaleeritakse sisuploki laiuseks ning pildi kõrgus on 2/3 ja pildi laius on 1/3 sellest üle olevad alad lõigatakse ära. </li>\r\n    <li>Natural size - pilt skaleeritakse jaotise laiuseks, lõikamist ei toimu.</li>\r\n</ul>"
 required: true
 translatable: false
 default_value:

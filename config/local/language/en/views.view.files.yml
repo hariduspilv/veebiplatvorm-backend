@@ -12,6 +12,7 @@ display:
         filemime:
           label: MIME-tüüp
         status:
+          label: Staatus
           settings:
             format_custom_false: Ajutine
             format_custom_true: Alaline
@@ -28,6 +29,9 @@ display:
         filemime:
           expose:
             label: MIME-tüüp
+        status:
+          expose:
+            label: Staatus
       title: Failid
       empty:
         area_text_custom:

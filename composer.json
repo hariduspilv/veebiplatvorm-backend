@@ -35,12 +35,14 @@
         "drupal/config_split": "^2.0@beta",
         "drupal/core-recommended": "^8.9.0",
         "drupal/crop": "^2.1",
+        "drupal/default_content": "2.0.x-dev@dev",
         "drupal/field_group": "^3.1",
         "drupal/focal_point": "^1.4",
         "drupal/genpass": "1.x-dev",
         "drupal/linkit": "^6.0",
         "drupal/maxlength": "^1.0",
         "drupal/media_bulk_upload": "^1.0",
+        "drupal/media_library_edit": "^2.0",
         "drupal/menu_block": "^1.6",
         "drupal/menu_breadcrumb": "^1.14",
         "drupal/paragraphs": "^1.12",
@@ -117,6 +119,9 @@
         "patches": {
             "drupal/core": {
                 "Class active-trail not added to li element when linking to front page https://www.drupal.org/project/drupal/issues/1578832": "https://www.drupal.org/files/issues/2018-11-27/menu-class-active-trail-1578832-52.patch"
+            },
+            "drupal/media_library_edit": {
+                "On fields with multiple media items, other items disappear after saving. https://www.drupal.org/project/media_library_edit/issues/3192521": "https://www.drupal.org/files/issues/2021-01-13/update_save_callback-3192521-2.patch"
             },
             "drupal/media_bulk_upload": {
                 "Provide a way to add alt text when doing bulk upload [media_bulk_upload] https://www.drupal.org/project/media_bulk_upload/issues/3023825": "https://www.drupal.org/files/issues/2020-06-26/media_bulk_upload-3023825-25.patch"

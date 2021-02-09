@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4e6ae1d5d1c7ab851b2b629d5b7a356",
+    "content-hash": "4b376bf5c63832d83a0a2bb1cbf29837",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2440,6 +2440,80 @@
             }
         },
         {
+            "name": "drupal/default_content",
+            "version": "dev-2.0.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/default_content.git",
+                "reference": "1b71f729cb3dab927df29deba5c22c1f0c14e6fd"
+            },
+            "require": {
+                "drupal/core": "^8.7.7 || ^9"
+            },
+            "require-dev": {
+                "drupal/paragraphs": "^1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.0.x": "2.0.x-dev"
+                },
+                "drupal": {
+                    "version": "2.0.0-alpha1+3-dev",
+                    "datestamp": "1612486939",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "Sam152",
+                    "homepage": "https://www.drupal.org/user/1485048"
+                },
+                {
+                    "name": "andypost",
+                    "homepage": "https://www.drupal.org/user/118908"
+                },
+                {
+                    "name": "benjy",
+                    "homepage": "https://www.drupal.org/user/1852732"
+                },
+                {
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "jibran",
+                    "homepage": "https://www.drupal.org/user/1198144"
+                },
+                {
+                    "name": "larowlan",
+                    "homepage": "https://www.drupal.org/user/395439"
+                }
+            ],
+            "description": "Imports default content when a module is enabled",
+            "homepage": "https://www.drupal.org/project/default_content",
+            "support": {
+                "source": "https://git.drupalcode.org/project/default_content"
+            },
+            "time": "2021-02-05T01:01:50+00:00"
+        },
+        {
             "name": "drupal/dropzonejs",
             "version": "2.4.0",
             "source": {
@@ -2986,6 +3060,57 @@
             "support": {
                 "source": "git://git.drupal.org/project/media_bulk_upload.git",
                 "issues": "https://www.drupal.org/project/issues/media_bulk_upload"
+            }
+        },
+        {
+            "name": "drupal/media_library_edit",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/media_library_edit.git",
+                "reference": "8.x-2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_library_edit-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "611b1fe827c8f8dc892326ded6468ff097fecdb3"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.0",
+                    "datestamp": "1607795681",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                },
+                "patches_applied": {
+                    "On fields with multiple media items, other items disappear after saving. https://www.drupal.org/project/media_library_edit/issues/3192521": "https://www.drupal.org/files/issues/2021-01-13/update_save_callback-3192521-2.patch"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "ahebrank",
+                    "homepage": "https://www.drupal.org/user/3190515"
+                }
+            ],
+            "description": "Add an edit button to the Media Library widget when an item is selected.",
+            "homepage": "https://www.drupal.org/project/media_library_edit",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/media_library_edit",
+                "issues": "https://www.drupal.org/project/issues/media_library_edit"
             }
         },
         {
@@ -7611,6 +7736,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/config_split": 10,
+        "drupal/default_content": 20,
         "drupal/genpass": 20
     },
     "prefer-stable": true,

@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.picture_block
   module:
     - media_library
+    - media_library_edit
 id: paragraph.picture_block.default
 targetEntityType: paragraph
 bundle: picture_block
@@ -18,7 +19,9 @@ content:
     weight: 0
     settings:
       media_types: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
     region: content
   field_orientation:
     weight: 1

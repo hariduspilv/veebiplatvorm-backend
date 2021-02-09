@@ -6,11 +6,17 @@ display:
           reset_button_label: Tühista
       fields:
         status:
+          label: Staatus
           settings:
             format_custom_true: Avaldatud
+        changed:
+          label: Uuendati
       filters:
         status:
           group_info:
             group_items:
               1:
                 title: Avaldatud
+        langcode:
+          expose:
+            label: Keel
