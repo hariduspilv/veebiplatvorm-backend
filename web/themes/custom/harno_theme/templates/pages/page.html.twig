@@ -82,35 +82,27 @@
 							top-nav
 						</div>
 						<div class="col-12 sm-12 md-12">
-
 							{% if page.header and page.header.harno_theme_main_menu %}
 								<div class="desktop-menu">
 									{{ page.header.harno_theme_main_menu }}
 								</div>
 								<!--/desktop-menu-->
-								<div class="mobile-banner">
-									<div class="mobile-links">
-										<a class="menu-link" href="javascript:void(0)" data-plugin="mobileMenu">
-											<span class="mdi mdi-menu"></span>
-										</a>
-										<!--/menu-link-->
-									</div>
-									<!--/mobile-links-->
-									<div class="mobile-menu">
-										<div class="panel-header">
-											<a href="#" class="close-btn">
-												<div class="mdi mdi-close"></div>
-											</a>
-											<!--/close-btn-->
-										</div>
-										<!--/panel-header-->
-										{{ page.header.harno_theme_main_menu }}
+                <div class="mobile-banner">
+                <div class="mobile-links">
+                  <button class="menu-link" data-plugin="mobileMenu" aria-label="{{ "Toggle menu"|t }}" aria-expanded="false">
+                    <i class="mdi mdi-menu"></i>
+                  </button><!--/menu-link-->
+                </div><!--/mobile-links-->
+                <div class="mobile-menu">
+                  <div class="panel-header">
+                    <button href="#" class="close-btn" aria-label="{{ "Close menu" |t }}">
+                      <div class="mdi mdi-close"></div>
+                    </button><!--/close-btn-->
+                  </div><!--/panel-header-->
+                  {{ page.header.pohinavigatsioon_2 }}
+                </div><!--/mobile-menu-->
+              </div><!--/mobile-banner-->
 
-										<!--/main-menu-->
-									</div>
-									<!--/mobile-menu-->
-								</div>
-								<!--/mobile-banner-->
 
 							{% endif %}
 						</div>
