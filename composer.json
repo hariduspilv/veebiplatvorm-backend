@@ -128,6 +128,9 @@
             },
             "drupal/dropzonejs": {
                 "Provide a way to add alt text when doing bulk upload [dropzonejs] https://www.drupal.org/project/media_bulk_upload/issues/3023825": "https://www.drupal.org/files/issues/2020-10-05/dropzonejs-3023825-27.patch"
+            },
+            "drupal/focal_point": {
+                "Stylish the preview button according to the admin theme CSS https://www.drupal.org/project/focal_point/issues/3162961": "https://www.drupal.org/files/issues/2020-08-03/focal_point-stylish_preview_button-3162961-2.patch"
             }
         }
     },

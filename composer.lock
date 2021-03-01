@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b376bf5c63832d83a0a2bb1cbf29837",
+    "content-hash": "f595c38f2ffb81488dd8ebb68f70c2f1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2761,6 +2761,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Stylish the preview button according to the admin theme CSS https://www.drupal.org/project/focal_point/issues/3162961": "https://www.drupal.org/files/issues/2020-08-03/focal_point-stylish_preview_button-3162961-2.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
