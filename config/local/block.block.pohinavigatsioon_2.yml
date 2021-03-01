@@ -1,0 +1,29 @@
+uuid: 774adf14-13fa-4709-ae60-e122c28db8b9
+langcode: et
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+  theme:
+    - harno_theme
+id: pohinavigatsioon_2
+theme: harno_theme
+region: header
+weight: 0
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: Põhinavigatsioon
+  provider: menu_block
+  label_display: visible
+  follow: false
+  follow_parent: child
+  level: 1
+  depth: 3
+  expand: true
+  parent: 'main:'
+  suggestion: main_mobile
+visibility: {  }
