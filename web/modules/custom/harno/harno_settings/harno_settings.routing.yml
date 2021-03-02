@@ -16,3 +16,12 @@ harno_settings.settings_form:
     _permission: 'administer harno settings'
   options:
     _admin_route: TRUE
+harno_settings.colors_form:
+  path: '/admin/config/veebiplatvorm/kujundus'
+  defaults:
+    _form: '\Drupal\harno_settings\Form\HarnoColorsForm'
+    _title: 'Veebiplatvormi kujundus'
+  requirements:
+    _permission: 'administer harno settings'
+  options:
+    _admin_route: TRUE

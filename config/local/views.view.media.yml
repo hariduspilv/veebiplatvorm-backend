@@ -13,7 +13,7 @@ dependencies:
 _core:
   default_config_hash: UZP23LgBdE1XbvscbLCdd9uTk5t4qqA1Z56koqbvYP0
 id: media
-label: Media
+label: Meedia
 module: views
 description: 'Find and manage media.'
 tag: ''
@@ -898,7 +898,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: Media
+      title: Meedia
       header: {  }
       footer: {  }
       empty:
@@ -929,14 +929,14 @@ display:
   media_page_list:
     display_plugin: page
     id: media_page_list
-    display_title: Media
+    display_title: Meedia
     position: 1
     display_options:
       display_extenders: {  }
       path: admin/content/media
       menu:
         type: tab
-        title: Media
+        title: Meedia
         description: ''
         expanded: false
         parent: ''

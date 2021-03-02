@@ -505,7 +505,7 @@ display:
           entity_type: media
           entity_field: name
           plugin_id: standard
-      title: Media
+      title: Meedia
       header: {  }
       footer: {  }
       empty:

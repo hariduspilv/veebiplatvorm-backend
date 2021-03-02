@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: Y9NmnZHQq20ASSyTNA6JnwtWrJJiSajOehGDtmUFdM0
 name: medium
-label: 'Keskmine (220×220)'
+label: 'Keskmine (480×480)'
 effects:
   3d65393d-87be-4bd4-92e9-10f9c0d4586e:
     uuid: 3d65393d-87be-4bd4-92e9-10f9c0d4586e

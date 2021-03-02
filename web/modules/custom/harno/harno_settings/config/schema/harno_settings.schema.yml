@@ -415,3 +415,21 @@ harno_settings.settings:
   langcode:
     type: string
     label: 'Keeletähis'
+
+harno_settings.colors:
+  type: config_object
+  label: 'Veebiplatvormi kujundus'
+  mapping:
+    color:
+      type: mapping
+      label: 'Värvid'
+      mapping:
+        main:
+          type: text
+          label: 'Põhivärv'
+        lighter:
+          type: text
+          label: '10% toon'
+        additional:
+          type: text
+          label: 'Lisatoon'

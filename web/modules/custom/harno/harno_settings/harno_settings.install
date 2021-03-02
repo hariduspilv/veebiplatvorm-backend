@@ -94,3 +94,13 @@ function harno_settings_update_8008() {
   }
   return 'Lisati ' . $count . ' termi.';
 }
+/**
+ * Set default colors
+ */
+function harno_settings_update_8009() {
+  $config = \Drupal::configFactory()->getEditable('harno_settings.colors');
+  $config->set('color.main', '#14468A');
+  $config->set('color.lighter', '#E7ECF3');
+  $config->set('color.additional', '#393A4D');
+  $config->save();
+}

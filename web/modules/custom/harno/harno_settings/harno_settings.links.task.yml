@@ -6,3 +6,9 @@ harno_settings.settings_form:
   route_name: harno_settings.settings_form
   base_route: harno_settings.settings_form
   parent: harno_settings.admin_index
+harno_settings.colors_form:
+  title: 'Kujundus'
+  description: 'Kasutaja saab sisestada ja muuta veebilehele põhivärvitooni ja lisatooni.'
+  route_name: harno_settings.colors_form
+  base_route: harno_settings.colors_form
+  parent: harno_settings.admin_index
