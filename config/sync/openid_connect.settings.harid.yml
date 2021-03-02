@@ -1,0 +1,11 @@
+enabled: true
+settings:
+  redirect_url: ''
+  client_id: '1'
+  client_secret: '2'
+  require_strong_session: false
+  require_personal_code: true
+  use_test_idp: true
+_core:
+  default_config_hash: UE3QcDm5Zd3s5JqauaNWGyjBN7eNnM9AfLL7Kx-PuHI
+langcode: et

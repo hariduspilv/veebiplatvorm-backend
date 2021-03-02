@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f595c38f2ffb81488dd8ebb68f70c2f1",
+    "content-hash": "3bc3f7aa44269036579143d92ff03d0f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3238,6 +3238,135 @@
             "homepage": "https://www.drupal.org/project/menu_breadcrumb",
             "support": {
                 "source": "https://git.drupalcode.org/project/menu_breadcrumb"
+            }
+        },
+        {
+            "name": "drupal/openid_connect",
+            "version": "2.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/openid_connect.git",
+                "reference": "2.0.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/openid_connect-2.0.0-alpha1.zip",
+                "reference": "2.0.0-alpha1",
+                "shasum": "b4c5c90cb9de20a3b36de38cf412c174974f8c1f"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9",
+                "ext-json": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0-alpha1",
+                    "datestamp": "1608318210",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Mario Steinitz",
+                    "homepage": "https://www.drupal.org/user/2536014"
+                },
+                {
+                    "name": "balintk",
+                    "homepage": "https://www.drupal.org/user/613760"
+                },
+                {
+                    "name": "bojanz",
+                    "homepage": "https://www.drupal.org/user/86106"
+                },
+                {
+                    "name": "jcnventura",
+                    "homepage": "https://www.drupal.org/user/122464"
+                },
+                {
+                    "name": "pfrilling",
+                    "homepage": "https://www.drupal.org/user/169695"
+                },
+                {
+                    "name": "pjcdawkins",
+                    "homepage": "https://www.drupal.org/user/1025236"
+                },
+                {
+                    "name": "robertDouglass",
+                    "homepage": "https://www.drupal.org/user/5449"
+                },
+                {
+                    "name": "sanduhrs",
+                    "homepage": "https://www.drupal.org/user/28074"
+                }
+            ],
+            "description": "A pluggable client implementation for the OpenID Connect protocol.",
+            "homepage": "https://www.drupal.org/project/openid_connect",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/openid_connect",
+                "issues": "https://www.drupal.org/project/issues/openid_connect"
+            }
+        },
+        {
+            "name": "drupal/openid_connect_harid",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/openid_connect_harid.git",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/openid_connect_harid-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "9571e4fda6e2cee3e43ea41dcc6be863bf575f10"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9",
+                "drupal/openid_connect": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1607623013",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "pjotr.savitski",
+                    "homepage": "https://www.drupal.org/user/3594177"
+                }
+            ],
+            "description": "OpenID Connect HarID Client",
+            "homepage": "https://github.com/sisuloome/openid_connect_harid",
+            "keywords": [
+                "Client",
+                "Drupal",
+                "HarID",
+                "OpenID Connect"
+            ],
+            "support": {
+                "source": "https://github.com/sisuloome/openid_connect_harid",
+                "issues": "https://github.com/sisuloome/openid_connect_harid/issues"
             }
         },
         {
@@ -7740,7 +7869,8 @@
     "stability-flags": {
         "drupal/config_split": 10,
         "drupal/default_content": 20,
-        "drupal/genpass": 20
+        "drupal/genpass": 20,
+        "drupal/openid_connect": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
