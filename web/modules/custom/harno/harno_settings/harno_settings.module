@@ -176,11 +176,18 @@ function harno_settings_form_alter(&$form, FormStateInterface $form_state, $form
     $form['sticky']['widget']['#title'] = $form['sticky']['widget']['value']['#title'] = 'Oluline uudis';
   }
   elseif (in_array($form['#form_id'], $forms_user)) {
-    //$form['field_identification_number']['widget'][0]['value']['#maxlength'] = 11;
     $form['#validate'][] = '_harno_settings_validate_integer_length';
     $form['#attached']['library'][]  = 'harno_settings/admin_user_forms';
     if(!empty($form['field_identification_number']['widget'][0]['value']['#default_value'])) {
       $form['field_identification_number']['widget'][0]['value']['#attributes']['readonly'] = TRUE;
+    }
+
+    $account = \Drupal::service('current_route_match')->getParameter('user');
+    if ( !empty($account) ) {
+      // Turn off Current password field's validation
+      $form_state->set('user_pass_reset', 1);
+      // Hide the Current password fields
+      $form['account']['current_pass']['#access'] = FALSE;
     }
   }
 }
@@ -287,12 +294,53 @@ function harno_settings_cron() {
     $ae->set('promote', 0);
     $ae->save();
     $node_link = $ae->toLink(t('View'))->toString();
-    \Drupal::logger('harno_settings')->notice('Eemaldati "Ülendatud esilehele" märge uudiselt "%title". @link',
-      array(
+    $message = t('Eemaldati "Ülendatud esilehele" märge uudiselt "%title". @link',
+      [
         '%title' => $ae->get('title')->value,
         '@link' => $node_link,
-      )
-    );
-
+      ]);
+    \Drupal::logger('harno_settings')->notice($message);
+    \Drupal::messenger()->addStatus($message);
   }
+}
+
+function harno_settings_openid_connect_userinfo_alter(array &$userinfo, array $context) {
+  // Add some custom information.
+
+  if ($context['plugin_id'] == 'harid') {
+    $no_permissions_text = t('The user does not have the permissions to use the system.');
+    $id_code = str_replace('EE:EID:', '', $userinfo['personal_code']);
+    \Drupal::logger('harno_settings')->debug('<pre>' . print_r($userinfo, TRUE) . '</pre>');
+    $user_load = \Drupal::entityTypeManager()->getStorage('user')
+      ->loadByProperties([
+        'field_identification_number' => $id_code,
+      ]);
+    if ($user_load != NULL ) {
+      if (count($user_load) > 1){
+        foreach ($user_load as $user){
+          $user_names .= $user->getUsername() . ', ' ;
+        }
+        \Drupal::logger('harno_settings')->error('There are more than one user with same ID-code. @users', ['@users' => $user_names]);
+        \Drupal::messenger()->addError($no_permissions_text);
+        return false;
+      }
+      else {
+        foreach ($user_load as $user){
+          $roles = $user->getRoles();
+          if (count($roles) < 2) {
+            \Drupal::logger('harno_settings')->error($no_permissions_text . ' User: @user', ['@user' => $user->getEmail()]);
+            \Drupal::messenger()->addError($no_permissions_text);
+            return false;
+          }
+          $userinfo['email'] = $user->getEmail();
+        }
+      }
+    }
+    else{
+      \Drupal::logger('harno_settings')->error('There are no user with @id_code ID code ', ['@id_code' => $id_code]);
+      \Drupal::messenger()->addError($no_permissions_text);
+      return false;
+    }
+  }
+  return $userinfo;
 }
