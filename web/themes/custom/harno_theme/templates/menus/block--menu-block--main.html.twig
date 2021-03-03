@@ -35,7 +35,17 @@
 {% set current_path = path('<current>') %}
 {% if content %}
 {% if content['#items'] %}
+  {% set active_submenu = false %}
 <ul role="navigation" class="side-menu" data-plugin="dropdownMenu">
+  {% for menu_item in content['#items'] %}
+  {% if menu_item.below %}
+    {% for submenuitem in menu_item.below  %}
+      {% if submenuitem.in_active_trail %}
+        {% set active_submenu = true %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% endfor %}
   {% for menu_item in content['#items'] %}
   {% set link_options = menu_item.url.getOption('attributes') %}
   {% if link_options.title %}
@@ -48,12 +58,13 @@
             'has-dropdown'
           ] %}
   {% if menu_item.in_active_trail %}
+    {% set active_submenu = true %}
   {% set below_class = below_class | merge(['open']) %}
   {% endif %}
   {% else %}
   {% set below_class = [''] %}
   {% endif %}
-    {% if not menu_item.in_active_trail  %}
+    {% if not menu_item.in_active_trail and active_submenu %}
     {% set list_class = ['md-hidden'] %}
     {% else %}
     {% set list_class = [''] %}
@@ -64,7 +75,8 @@
       {% else %}
         {% set remove_class = '' %}
     {% endif %}
-  <li{{attributes.removeClass('has-dropdown','contextual-region','open',remove_class).addClass(below_class)}}>
+{#    {{ dd(below_class) }}#}
+  <li{{menu_item.attributes.removeClass('has-dropdown','contextual-region','open'.remove_class).addClass(below_class)}}>
 
     {% if menu_item.in_active_trail  %}
     {% set link_class = 'active' %}
@@ -113,6 +125,7 @@
       {% set link_desc = item_below.title %}
       {% endif %}
       {% if item_below.in_active_trail %}
+        {% set active_submenu = true %}
       {% set link_class = 'active' %}
       {% else %}
       {% set link_class = '' %}
@@ -147,7 +160,7 @@
     {% endif %}
     </li>
     {% endfor %}
-    <li class="show-more" data-showmore="{{"Show more" |t}}" data-showless="{{"Show less"|t}}">
+    <li class="show-more" {% if active_submenu %}  style="display: none;" {% endif %} data-showmore="{{"Show more" |t}}" data-showless="{{"Show less"|t}}">
       <button class="btn btn-show-more" aria-expanded="false"><span>{{"Show more" |t}}</span><i
           class="mdi mdi-menu-down"></i></button>
     </li>
