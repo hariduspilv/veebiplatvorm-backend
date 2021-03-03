@@ -3,10 +3,10 @@ connect_existing_users: 1
 override_registration_settings: 0
 user_login_display: above
 userinfo_mappings:
-  timezone: zoneinfo
-  field_first_name: given_name
+  timezone: 0
+  field_first_name: 0
   field_identification_number: 0
-  field_last_name: family_name
+  field_last_name: 0
 _core:
   default_config_hash: YpBA3MmDuJpZ9SM3DE4kR0lTY89bf2y3g0sS7s3TQ4k
 langcode: et
