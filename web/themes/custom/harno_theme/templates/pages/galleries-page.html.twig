@@ -1,5 +1,5 @@
 {{ academic_years }}
-
+{% set base_path= base_path ~ directory  %}
 <article class="content-block">
 	<div class="row">
 		<div class="col-12 md-12 sm-12">
@@ -52,7 +52,7 @@
                     <a class="gallery-block" aria-label="{{"Open gallery detail view" |t}}" href=" {{ drupal_url('node/'~ gallery.id) }}">
 										{% if media_image['#uri'] %}
 											<div class="gallery-block__thumbnail" style="background-image: url({{ media_image['#uri']|file_url }});">
-												<img src="assets/images/placeholder-1.gif" {% if alt %} alt="{{alt}}" {% endif %} {% if title %} title="{{title}}" {% endif %}>
+												<img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" {% if alt %} alt="{{alt}}" {% else %}alt=""{% endif %} {% if title %} title="{{title}}" {% endif %}>
 
 											</div>
 											<!--/gallery-block__thumbnail-->

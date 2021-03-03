@@ -1,0 +1,16 @@
+{% if children %}
+  {% if children['#content'] %}
+    {% if children['#content']['years'] %}
+      <script src="{{ base_path ~ directory }}/templates/forms/filters/filterRefresh.js"></script>
+      {% for year in children['#content']['years']  %}
+        {% if year %}
+          <span class="btn-input">
+          <label for="mobile-tag">{{ year }}</label>
+          <input type="checkbox" id="mobile-tag" value="{{ year }}">
+          <span  data-remove-item="{{ year }}" class="btn btn-tag btn-tag-remove">{{ year }}</span>
+        </span>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+{% endif %}

@@ -29,9 +29,7 @@ $.formFilter = {
   },
   bindFilters: function () {
     var self = this;
-
     self.options.inputs.on("input", function (e) {
-
       e.preventDefault();
       if ($(this).attr('name') === 'gallerySearch') {
         self.options.form.find('#edit-gallerysearchmobile').val($(this).val());
@@ -171,9 +169,27 @@ $.formFilter = {
     return params;
   }
 }
-$(document).ready(function () {
+$.fn.filterRefresh = function(){
+  $("span[data-remove-item]").on('click',function(){
+  var yearToRemove = $(this).attr("data-remove-item");
+  console.log(yearToRemove);
+  $("input[name='years["+yearToRemove+"]']").trigger("click");
+  //Remove from active filter bar
+  //$(this.parentElement).remove();
 
+});
+}
+$(document).ready(function () {
+  $("span[data-remove-item]").on('click',function(){
+    var yearToRemove = $(this).attr("data-remove-item");
+    console.log(yearToRemove);
+    $("input[name='years["+yearToRemove+"]']").trigger("click");
+    //Remove from active filter bar
+    //$(this.parentElement).remove();
+
+  });
   $(window).on('load', function () {
+
     $.fn.formFilter = function () {
       $(this).each(function () {
         $.formFilter.init($(this));

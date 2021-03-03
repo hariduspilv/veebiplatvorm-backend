@@ -9,3 +9,5 @@ harno_pages.autocomplete:
   path: '/galleries_autocomplete'
   defaults:
     _controller: '\Drupal\harno_pages\Controller\AutocompleteController::handleAutocomplete'
+  requirements:
+    _permission: 'access content'
