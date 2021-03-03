@@ -2,10 +2,16 @@
 
 namespace Drupal\harno_pages\Form;
 
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Ajax\InvokeCommand;
+use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\harno_pages\Controller\GalleriesController;
 use Drupal\Core\Entity\Element\EntityAutocomplete;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\media_library\Ajax\UpdateSelectionCommand;
 
 /**
  *
@@ -83,6 +89,7 @@ class FilterForm extends FormBase {
       '#attributes' => [
         'alt' => t('Type gallery title you are looking for'),
       ],
+      '#autocomplete_route_name' => 'harno_pages.autocomplete',
       '#ajax' => [
         'wrapper' => 'filter-target',
         'keypress' => TRUE,
@@ -139,6 +146,7 @@ class FilterForm extends FormBase {
     if (!empty($_REQUEST)) {
       // devel_dump($_REQUEST);
       if (!empty($_REQUEST['years'])) {
+        $form['#storage']['active-years'] = $_REQUEST['years'];
         if (is_array($_REQUEST['years'])) {
           // $form['years']['#default_value'] = $_REQUEST['years'];
         }
@@ -177,6 +185,8 @@ class FilterForm extends FormBase {
    *
    */
   public function filterResults(array &$form, FormStateInterface $form_state) {
+
+
     unset($form['pager']);
     if(!empty($_GET)){
       if (!empty($_GET['_wrapper_format'])){
@@ -230,7 +240,14 @@ class FilterForm extends FormBase {
         }
       }
     }
+    if(!empty($filter_values = $form_state->getValues())){
 
+      $filters = [];
+      if(!empty($filter_values['years'])){
+        $filters['#theme'] = 'active-filters';
+        $filters['#content']['years'] = $filter_values['years'];
+      }
+    }
     $build = [];
     $build['#theme'] = 'galleries-response';
     $build['#content'] = $galleries;
@@ -238,7 +255,14 @@ class FilterForm extends FormBase {
       '#type' => 'pager',
       '#parameters' => $parameters,
     ];
-    return $build;
+    $response = new AjaxResponse();
+    $dialogText['#attached']['library'][] = 'harno_pages/harno_pages';
+//    $response['#attached']['library'][] = 'harno_pages/js/urlparameters.js';
+    $response->addCommand(new HtmlCommand('#mobile-active-filters', $filters));
+    $response->addCommand(new ReplaceCommand('#filter-target',$build));
+//    $response->addCommand(new UpdateSelectionCommand());
+
+    return $response;
   }
 
 }
