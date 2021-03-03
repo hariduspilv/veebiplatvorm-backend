@@ -23,6 +23,11 @@ function harno_pages_theme($existing, $type, $theme, $path)
       'render element' =>'children',
       'path' => 'themes/custom/harno_theme/templates/forms',
     ],
+    'active-filters' => [
+      'template' => 'active-filters',
+      'render element' =>'children',
+      'path' => 'themes/custom/harno_theme/templates/forms/filters',
+    ],
   ];
 }
 /**
