@@ -376,3 +376,10 @@ function harno_theme_preprocess_breadcrumb(&$vars){
     $vars['breadcrumb'][] = [ 'text' => $title];
   }
 }
+function harno_theme_preprocess_html(&$vars){
+  $localconf = \Drupal::service('config.factory')->get('harno_settings.colors');
+  $colors = $localconf->get('color');
+  if(!empty($colors)){
+    $vars['site_colors'] = $colors;
+  }
+}
