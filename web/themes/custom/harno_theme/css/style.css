@@ -12,3 +12,10 @@
 .row-spacer-40 {
   padding-top: 40px;
 }
+
+.js input.form-autocomplete {
+  background-image: unset;
+}
+.js input.form-autocomplete.ui-autocomplete-loading {
+  background-image: unset;
+}
