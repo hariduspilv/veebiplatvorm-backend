@@ -1,0 +1,380 @@
+uuid: d88038cf-3cc4-4572-a291-08b702660bf2
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.field.node.calendar.body
+    - field.field.node.calendar.field_all_day
+    - field.field.node.calendar.field_contact_block
+    - field.field.node.calendar.field_event_end_date
+    - field.field.node.calendar.field_event_end_time
+    - field.field.node.calendar.field_event_keywords
+    - field.field.node.calendar.field_event_start_time
+    - field.field.node.calendar.field_event_type
+    - field.field.node.calendar.field_one_image
+    - field.field.node.calendar.field_price
+    - field.field.node.calendar.field_show_end_date
+    - field.field.node.calendar.field_start_date
+    - field.field.node.calendar.field_training_keywords
+    - field.field.node.calendar.field_venue
+    - field.field.node.calendar.field_webform
+    - node.type.calendar
+  module:
+    - conditional_fields
+    - datetime
+    - field_group
+    - media_library
+    - media_library_edit
+    - paragraphs
+    - path
+    - text
+    - time_field
+    - webform
+third_party_settings:
+  field_group:
+    group_date:
+      children:
+        - field_all_day
+        - field_show_end_date
+        - field_start_date
+        - field_event_start_time
+        - field_event_end_date
+        - field_event_end_time
+      parent_name: ''
+      weight: 12
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+        open: false
+        weight: 0
+      label: 'Toimumise aeg'
+    group_type:
+      children:
+        - field_training_keywords
+        - field_event_keywords
+      parent_name: ''
+      weight: 11
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+        open: false
+        weight: 0
+      label: Tüübid
+    group_contact:
+      children:
+        - field_contact_block
+      parent_name: ''
+      weight: 15
+      format_type: fieldset
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+      label: Kontaktiplokk
+    group_webform:
+      children:
+        - field_webform
+      parent_name: ''
+      weight: 16
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Sisestusvorm
+id: node.calendar.default
+targetEntityType: node
+bundle: calendar
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 13
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_all_day:
+    weight: 14
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_contact_block:
+    type: entity_reference_paragraphs
+    weight: 16
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  field_event_end_date:
+    weight: 19
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        6b6c174a-24e2-4d01-8809-9a0df3315c71:
+          dependee: field_show_end_date
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 2
+            value: ''
+            values: '1'
+            value_form:
+              value: 1
+            effect: fade
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
+          entity_type: node
+          bundle: calendar
+    type: datetime_default
+    region: content
+  field_event_end_time:
+    weight: 20
+    settings:
+      enabled: false
+      step: 5
+    third_party_settings:
+      conditional_fields:
+        d22de3df-c5a5-43f2-8597-acc744b909b5:
+          dependee: field_all_day
+          settings:
+            state: visible
+            condition: '!checked'
+            grouping: AND
+            values_set: 2
+            value: ''
+            values: '1'
+            value_form:
+              value: 1
+            effect: fade
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
+          entity_type: node
+          bundle: calendar
+    type: time_widget
+    region: content
+  field_event_keywords:
+    weight: 13
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        f28f7792-82e5-419f-8584-08a35bfbac0c:
+          dependee: field_event_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: '2'
+            value_form:
+              -
+                value: '2'
+            effect: fade
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
+          entity_type: node
+          bundle: calendar
+    type: options_buttons
+    region: content
+  field_event_start_time:
+    weight: 18
+    settings:
+      step: '5'
+      enabled: 0
+    third_party_settings:
+      conditional_fields:
+        a2d9e815-103f-4c2b-9ccb-adc6db5a237a:
+          dependee: field_all_day
+          settings:
+            state: visible
+            condition: '!checked'
+            grouping: AND
+            values_set: 2
+            value: ''
+            values: '1'
+            value_form:
+              value: 1
+            effect: fade
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
+          entity_type: node
+          bundle: calendar
+    type: time_widget
+    region: content
+  field_event_type:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_one_image:
+    weight: 14
+    settings:
+      media_types: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
+    type: media_library_widget
+    region: content
+  field_price:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_show_end_date:
+    weight: 16
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_start_date:
+    weight: 17
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_training_keywords:
+    weight: 12
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        9a101006-4cdc-4fed-bb4c-c42ee545d3c3:
+          dependee: field_event_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: '1'
+            value_form:
+              -
+                value: '1'
+            effect: fade
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
+          entity_type: node
+          bundle: calendar
+    type: options_buttons
+    region: content
+  field_venue:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webform:
+    weight: 17
+    settings:
+      default_data: false
+      webforms: {  }
+    third_party_settings: {  }
+    type: webform_entity_reference_select
+    region: content
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 7
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  promote: true
+  sticky: true

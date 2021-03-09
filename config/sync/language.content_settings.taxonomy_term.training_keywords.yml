@@ -1,0 +1,16 @@
+uuid: 55a1c234-00f1-47d9-8c04-86235dd30400
+langcode: et
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.training_keywords
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.training_keywords
+target_entity_type_id: taxonomy_term
+target_bundle: training_keywords
+default_langcode: site_default
+language_alterable: true

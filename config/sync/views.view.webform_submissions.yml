@@ -442,7 +442,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Operations
+          label: Toimingud
           exclude: false
           alter:
             alter_text: false
@@ -763,7 +763,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
+          action_title: Toiming
           include_exclude: exclude
           selected_actions: {  }
           entity_type: webform_submission
@@ -1241,7 +1241,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Operations
+          label: Toimingud
           exclude: false
           alter:
             alter_text: false
@@ -1570,7 +1570,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
+          action_title: Toiming
           include_exclude: include
           selected_actions:
             - webform_submission_make_lock_action
@@ -2052,7 +2052,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Operations
+          label: Toimingud
           exclude: false
           alter:
             alter_text: false
@@ -2105,7 +2105,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Operations
+          label: Toimingud
           exclude: false
           alter:
             alter_text: false
@@ -2886,7 +2886,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Operations
+          label: Toimingud
           exclude: false
           alter:
             alter_text: false
