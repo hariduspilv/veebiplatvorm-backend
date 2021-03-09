@@ -1,0 +1,59 @@
+uuid: 72830bb1-8736-4a64-b2d2-53daa0230510
+langcode: et
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.calendar.body
+    - field.field.node.calendar.field_all_day
+    - field.field.node.calendar.field_contact_block
+    - field.field.node.calendar.field_event_end_date
+    - field.field.node.calendar.field_event_end_time
+    - field.field.node.calendar.field_event_keywords
+    - field.field.node.calendar.field_event_start_time
+    - field.field.node.calendar.field_event_type
+    - field.field.node.calendar.field_one_image
+    - field.field.node.calendar.field_price
+    - field.field.node.calendar.field_show_end_date
+    - field.field.node.calendar.field_start_date
+    - field.field.node.calendar.field_training_keywords
+    - field.field.node.calendar.field_venue
+    - field.field.node.calendar.field_webform
+    - node.type.calendar
+  module:
+    - text
+    - user
+id: node.calendar.teaser
+targetEntityType: node
+bundle: calendar
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_all_day: true
+  field_contact_block: true
+  field_event_end_date: true
+  field_event_end_time: true
+  field_event_keywords: true
+  field_event_start_time: true
+  field_event_type: true
+  field_one_image: true
+  field_price: true
+  field_show_end_date: true
+  field_start_date: true
+  field_training_keywords: true
+  field_venue: true
+  field_webform: true
+  langcode: true

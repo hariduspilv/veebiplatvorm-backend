@@ -31,6 +31,7 @@
         "cweagans/composer-patches": "^1.6",
         "drupal/admin_toolbar": "^3.0",
         "drupal/bootstrap_barrio": "^5.1",
+        "drupal/conditional_fields": "^1.0@alpha",
         "drupal/config_ignore": "^2.2",
         "drupal/config_split": "^2.0@beta",
         "drupal/core-recommended": "^8.9.0",
@@ -51,6 +52,7 @@
         "drupal/pathauto": "^1.8",
         "drupal/redirect": "^1.6",
         "drupal/svg_image": "^1.13",
+        "drupal/time_field": "^1.13",
         "drupal/token": "^1.7",
         "drupal/twig_tweak": "^2.6",
         "drupal/webform": "^6.0",
@@ -133,6 +135,9 @@
             },
             "drupal/focal_point": {
                 "Stylish the preview button according to the admin theme CSS https://www.drupal.org/project/focal_point/issues/3162961": "https://www.drupal.org/files/issues/2020-08-03/focal_point-stylish_preview_button-3162961-2.patch"
+            },
+            "drupal/conditional_fields": {
+                "Notice: Trying to access array offset on value of type null https://www.drupal.org/project/conditional_fields/issues/3191984": "https://www.drupal.org/files/issues/2021-01-21/3191984-3-notice-trying-to-access-offset-on-value-of-type-null.patch"
             }
         }
     },

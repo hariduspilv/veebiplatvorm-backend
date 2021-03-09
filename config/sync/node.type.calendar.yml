@@ -1,0 +1,17 @@
+uuid: de756f1d-6a7b-46a9-b918-1f3baddd71a0
+langcode: et
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Sündmus või koolitus'
+type: calendar
+description: 'Kasutaja saab lisada kalendrisse sündmuse ja/või koolituse ning kirjeldada selle andmed. '
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

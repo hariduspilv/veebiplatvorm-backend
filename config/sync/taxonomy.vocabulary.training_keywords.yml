@@ -1,0 +1,8 @@
+uuid: a654dd9a-96b8-45bd-9811-c4335a64449f
+langcode: et
+status: true
+dependencies: {  }
+name: 'Koolituse tüübid'
+vid: training_keywords
+description: 'Valikud, mida kasutatakse koolituste filtreerimiseks.'
+weight: 0
