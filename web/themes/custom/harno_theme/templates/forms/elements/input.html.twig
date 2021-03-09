@@ -13,8 +13,14 @@
 
 {% if element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name'] == 'gallerySearch' or element['#name'] == 'gallerySearchMobile' %}
 	{% if element['#name'] == 'date_start' or element['#name'] == 'date_end' %}
-		<input{{attributes}}/>{{ children }}
-		<button class="btn input-date"></button>
+    {% if element['#name']=='date_start' %}
+      <input{{attributes.setAttribute('id','date-select-start')}}/>{{ children }}
+      <span class="btn input-date" role="button" title="{{ "Choose from calendar"|t }}" data-plugin="datePicker" tabindex="0">{{"Show from"|t}}</span>
+    {% endif %}
+    {% if element['#name']=='date_end' %}
+      <input{{attributes.setAttribute('id','date-select-start')}}/>{{ children }}
+      <span class="btn input-date" role="button" title="{{ "Choose from calendar"|t }}" data-plugin="datePicker" tabindex="0">{{"Show to"|t}}</span>
+    {% endif %}
     {% elseif element['#name'] == 'gallerySearchMobile' %}
       <input{{attributes}}/>{{ children }}
       <button data-drupal-selector="edit_searchbbuttonmobile" value="Submit" data-disable-refocus="true" id="edit-searchbuttonmobile" name="op"  class="btn js-form-submit form-submit search-submit-btn" type="submit" title="Otsi">{{ "Search" |t}}</button>

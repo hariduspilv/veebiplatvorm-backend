@@ -70,8 +70,6 @@
   <span class="btn btn-tag">{{ label['#title'] }}</span>
 </span>
   {% elseif element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name']=='gallerySearch' or element['#name'] == 'gallerySearchMobile' %}
-
-
     <div class="form-item {% if element['#name'] == 'gallerySearchMobile'%}{% endif%} {% if element['#name'] in ['gallerySearchMobile','gallerySearch'] %} search-input{% endif %}" data-plugin="movingLabel">
       <label class="form-label" for="{{ element['#id'] }}">{{ label['#title'] }}</label>
       {{ children }}

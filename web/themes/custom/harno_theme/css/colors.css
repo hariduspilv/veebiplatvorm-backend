@@ -103,3 +103,6 @@ a:active,
 #toolbar-administration {
   background-color:black;
 }
+.js input.form-autocomplete {
+  background-image: unset;
+}
