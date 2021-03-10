@@ -11,6 +11,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\harno_pages\Controller\GalleriesController;
 use Drupal\Core\Entity\Element\EntityAutocomplete;
 use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\harno_pages\Controller\NewsController;
 use Drupal\media_library\Ajax\UpdateSelectionCommand;
 
 /**
@@ -29,8 +30,11 @@ class FilterForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, $academic_years = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, $academic_years = NULL,$type=NULL) {
     // devel_dump($academic_years);
+    if (!empty($type)){
+      $form['#storage']['type'] = $type;
+    }
     $form['#attributes']['data-plugin'] = 'filters';
     $form['#attributes']['role'] = 'filter';
     if (!empty($academic_years)) {
@@ -47,10 +51,19 @@ class FilterForm extends FormBase {
         '#options' => $academic_years,
       ];
     }
-    $form['bottom'] = [
-      '#type' => 'fieldset',
-      '#id' => 'galleries-bottomFilter',
-    ];
+    if ($type=='news'){
+      $form['bottom'] = [
+        '#type' => 'fieldset',
+        '#id' => 'news-bottomFilter',
+      ];
+    }
+    else{
+
+      $form['bottom'] = [
+        '#type' => 'fieldset',
+        '#id' => 'galleries-bottomFilter',
+      ];
+    }
     $form['bottom']['date_start'] = [
       '#type' => 'textfield',
       '#attributes' => [
@@ -83,35 +96,69 @@ class FilterForm extends FormBase {
       '#type' => 'fieldset',
       '#id' => 'galleriesSearchGroup',
     ];
-    $form['bottom']['searchgroup']['gallerySearch'] = [
-      '#type' => 'textfield',
-      '#title' => t('Search'),
-      '#attributes' => [
-        'alt' => t('Type gallery title you are looking for'),
-      ],
-      '#autocomplete_route_name' => 'harno_pages.autocomplete',
-      '#ajax' => [
-        'wrapper' => 'filter-target',
-        'keypress' => TRUE,
-        'callback' => '::filterResults',
-        'event' => 'finishedinput',
-        'disable-refocus' => TRUE,
-      ],
-    ];
-    $form['bottom']['searchgroup']['gallerySearchMobile'] = [
-      '#type' => 'textfield',
-      '#title' => t('Search'),
-      '#attributes' => [
-        'alt' => t('Type gallery title you are looking for'),
-      ],
-      '#ajax' => [
-        'wrapper' => 'filter-target',
-        'keypress' => TRUE,
-        'callback' => '::filterResults',
-        'event' => 'finishedinput',
-        'disable-refocus' => TRUE,
-      ],
-    ];
+    if($type == 'news'){
+
+      $form['bottom']['searchgroup']['newsSearch'] = [
+        '#type' => 'textfield',
+        '#title' => t('Search'),
+        '#attributes' => [
+          'alt' => t('Type news title you are looking for'),
+        ],
+        '#autocomplete_route_name' => 'harno_pages.news.autocomplete',
+        '#ajax' => [
+          'wrapper' => 'filter-target',
+          'keypress' => TRUE,
+          'callback' => '::filterResults',
+          'event' => 'finishedinput',
+          'disable-refocus' => TRUE,
+        ],
+      ];
+      $form['bottom']['searchgroup']['newsSearchMobile'] = [
+        '#type' => 'textfield',
+        '#title' => t('Search'),
+        '#attributes' => [
+          'alt' => t('Type news title you are looking for'),
+        ],
+        '#ajax' => [
+          'wrapper' => 'filter-target',
+          'keypress' => TRUE,
+          'callback' => '::filterResults',
+          'event' => 'finishedinput',
+          'disable-refocus' => TRUE,
+        ],
+      ];
+    }
+    else {
+      $form['bottom']['searchgroup']['gallerySearch'] = [
+        '#type' => 'textfield',
+        '#title' => t('Search'),
+        '#attributes' => [
+          'alt' => t('Type gallery title you are looking for'),
+        ],
+        '#autocomplete_route_name' => 'harno_pages.autocomplete',
+        '#ajax' => [
+          'wrapper' => 'filter-target',
+          'keypress' => TRUE,
+          'callback' => '::filterResults',
+          'event' => 'finishedinput',
+          'disable-refocus' => TRUE,
+        ],
+      ];
+      $form['bottom']['searchgroup']['gallerySearchMobile'] = [
+        '#type' => 'textfield',
+        '#title' => t('Search'),
+        '#attributes' => [
+          'alt' => t('Type gallery title you are looking for'),
+        ],
+        '#ajax' => [
+          'wrapper' => 'filter-target',
+          'keypress' => TRUE,
+          'callback' => '::filterResults',
+          'event' => 'finishedinput',
+          'disable-refocus' => TRUE,
+        ],
+      ];
+    }
     $form['bottom']['searchgroup']['searchbutton'] = [
       '#attributes' => [
         'style' => 'display:none;',
@@ -142,7 +189,6 @@ class FilterForm extends FormBase {
       ],
 
     ];
-
     if (!empty($_REQUEST)) {
       // devel_dump($_REQUEST);
       if (!empty($_REQUEST['years'])) {
@@ -168,7 +214,13 @@ class FilterForm extends FormBase {
       }
     }
     // devel_dump($form);
-    $form['#theme_wrappers'] = ['form-galleries'];
+    if ($type == 'news'){
+
+      $form['#theme_wrappers'] = ['form-news'];
+    }
+    else {
+      $form['#theme_wrappers'] = ['form-galleries'];
+    }
     return $form;
   }
 
@@ -204,9 +256,24 @@ class FilterForm extends FormBase {
 
       }
     }
-    $galleries = new GalleriesController();
-    $galleries = $galleries->getGalleries();
 
+    if (!empty($form['#storage']))
+    {
+      if (!empty($form['#storage']['type'])){
+        $type = $form['#storage']['type'];
+      }
+    }
+    if(!isset($type)){
+      $type = 'galleries';
+    }
+    if($type == 'news'){
+      $galleries = new NewsController();
+      $galleries = $galleries->getNews();
+    }
+    elseif ($type=='galleries') {
+      $galleries = new GalleriesController();
+      $galleries = $galleries->getGalleries();
+    }
     $parameters = [];
     $form_values = $form_state->getUserInput();
     if (!empty($form_values)) {
@@ -234,6 +301,12 @@ class FilterForm extends FormBase {
       if (isset($form_values['gallerySearchMobile'])) {
         $parameters['gallerySearchMobile'] = $_REQUEST['gallerySearchMobile'];
       }
+      if (isset($form_values['newsSearch'])) {
+        $parameters['newsSearch'] = $_REQUEST['newsSearch'];
+      }
+      if (isset($form_values['newsSearchMobile'])) {
+        $parameters['newsSearchMobile'] = $_REQUEST['newsSearchMobile'];
+      }
       if(!empty($_GET)){
         if (!empty($_GET['_wrapper_format'])){
 //          $parameters['page']=0;
@@ -249,7 +322,7 @@ class FilterForm extends FormBase {
       }
     }
     $build = [];
-    $build['#theme'] = 'galleries-response';
+    $build['#theme'] = $type.'-response';
     $build['#content'] = $galleries;
     $build['#pager'] = [
       '#type' => 'pager',

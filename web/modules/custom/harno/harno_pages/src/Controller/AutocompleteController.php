@@ -33,7 +33,7 @@ class AutocompleteController extends ControllerBase {
           $year_group = $query->orConditionGroup();
           foreach ($query_parts['years'] as $year) {
             if ($year == 'older') {
-              $neweryears = $this->getAcademicYears();
+              $neweryears = $this->getAcademicYears('gallery');
               if (!empty($neweryears['older'])) {
                 unset($neweryears['older']);
               }
@@ -87,11 +87,86 @@ class AutocompleteController extends ControllerBase {
     }
     return new JsonResponse($results);
   }
+  public function handleNewsAutocomplete(Request $request){
+    $result = [];
+    if (!empty($request->query) && !empty($request->query->all())){
+      $paramaters = $request->query->all();
+      $referer = $request->headers->get('referer');
+      $parts = parse_url($referer);
+      if(!empty($parts['query'])){
+        parse_str($parts['query'], $query_parts);
+      }
+      if(!empty($paramaters['q'])){
+        $text = $paramaters['q'];
+        $query = \Drupal::entityQuery('node')
+          ->condition('status', 1)
+          ->condition('type','article')
+          ->condition('title', $text, 'CONTAINS');
+        if(!empty($query_parts['years'])) {
+          $year_group = $query->orConditionGroup();
+          foreach ($query_parts['years'] as $year) {
+            if ($year == 'older') {
+              $neweryears = $this->getAcademicYears('article');
+              if (!empty($neweryears['older'])) {
+                unset($neweryears['older']);
+              }
+              $terms = \Drupal::entityTypeManager()
+                ->getStorage('taxonomy_term')
+                ->loadTree('academic_year');
+              foreach ($terms as $term) {
+                $term = \Drupal::entityTypeManager()
+                  ->getStorage('taxonomy_term')
+                  ->load($term->tid);
+                if (isset($neweryears[$term->getName()])) {
+                  continue;
+                }
+                else {
+                  $year_group->condition('field_academic_year.entity.name', $term->getName());
+                }
+              }
+            }
+            $year_group->condition('field_academic_year.entity.name', $year);
+          }
+          $query->condition($year_group);
+        }
+        if (!empty($query_parts['date_start'] || !empty($query_parts['date_end']))){
+          if (!empty($query_parts['date_start'])) {
+            $startDate = strtotime('midnight' . $query_parts['date_start']);
+          }
+          if (!empty($query_parts['date_end'])) {
+            $endDate = strtotime('midnight' . $query_parts['date_end'] . '+1 day');
+          }
+          if (!empty($startDate)) {
+            $query->condition('created', $startDate, '>=');
+          }
+          if (!empty($endDate)) {
+            $query->condition('created', $endDate, '<=');
+          }
+        }
+        $nids = $query->execute();
+        $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+        $nodes = $node_storage->loadMultiple($nids);
+
+        foreach ($nodes as $node) {
+
+          $label = [
+            $node->getTitle()
+          ];
+
+          $results[] = ['value' => $node->getTitle(),'label' => $node->getTitle()];
+        }
+
+      }
+    }
+    if (!empty($results)) {
+      return new JsonResponse($results);
+    }
+  }
 
   /**
    *
    */
-  public function getAcademicYears() {
+  public function getAcademicYears($type=null) {
     $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('academic_year');
 
     if (!empty($terms)) {
@@ -100,7 +175,9 @@ class AutocompleteController extends ControllerBase {
         $term_query = \Drupal::database()->select('node__field_academic_year', 'nfy');
         $term_query->fields('nfy');
         $term_query->condition('nfy.field_academic_year_target_id', $academic_year->tid);
-        $term_query->condition('nfy.bundle', 'gallery');
+        if(isset($type)){
+          $term_query->condition('nfy.bundle', $type);
+        }
         $term_query->range(0, 1);
         $results = $term_query->execute();
         while ($row = $results->fetchAllAssoc('field_academic_year_target_id')) {

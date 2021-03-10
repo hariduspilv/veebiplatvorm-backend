@@ -46,6 +46,18 @@
 {#      {{ dd(element) }}#}
       <button class="btn btn-primary filters-ready">{{ "Ready"|t }}</button>
     </div>
+  {% elseif element['#id']=='news-bottomFilter' %}
+    <div class="filters-bottom">
+      <div class="date-inputs">
+        {{ element.date_start }}
+        <span class="date-separator">-</span>
+        {{ element.date_end }}
+{#      {{ children }}#}
+      </div>
+      {{ element.searchgroup.newsSearch }}
+{#      {{ dd(element) }}#}
+      <button class="btn btn-primary filters-ready">{{ "Ready"|t }}</button>
+    </div>
   {% else %}
     <fieldset{{ attributes.addClass(classes) }}>
       {%

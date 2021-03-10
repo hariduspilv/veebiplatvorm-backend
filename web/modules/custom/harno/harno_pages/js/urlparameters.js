@@ -37,6 +37,12 @@ $.formFilter = {
       if ($(this).attr('name') === 'gallerySearchMobile') {
         self.options.form.find('#edit-gallerysearch').val($(this).val());
       }
+      if ($(this).attr('name') === 'newsSearch') {
+        self.options.form.find('#edit-newssearchmobile').val($(this).val());
+      }
+      if ($(this).attr('name') === 'newsSearchMobile') {
+        self.options.form.find('#edit-newssearch').val($(this).val());
+      }
 
       self.pushURL();
     });
