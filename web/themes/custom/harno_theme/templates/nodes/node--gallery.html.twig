@@ -123,30 +123,147 @@
 {#  {% endfor %}#}
 
 {% else %}
+
+  {% set base_path= base_path ~ directory  %}
+  {% set classes = classes|merge(['content-block']) %}
   <article{{ attributes.addClass(classes) }}>
-    <header>
-      {{ title_prefix }}
-      {% if label and not page %}
-        <h2{{ title_attributes.addClass('node__title') }}>
-          <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-        </h2>
-      {% endif %}
-      {{ title_suffix }}
-      {% if display_submitted %}
-        <div class="node__meta">
-          {{ author_picture }}
-          {% block submitted %}
-            <em{{ author_attributes }}>
-              {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-            </em>
-          {% endblock %}
-          {{ metadata }}
+{#    <header>#}
+{#      {{ title_prefix }}#}
+{#      {% if label and not page %}#}
+{#        <h2{{ title_attributes.addClass('node__title') }}>#}
+{#          <a href="{{ url }}" rel="bookmark">{{ label }}</a>#}
+{#        </h2>#}
+{#      {% endif %}#}
+{#      {{ title_suffix }}#}
+{#      {% if display_submitted %}#}
+{#        <div class="node__meta">#}
+{#          {{ author_picture }}#}
+{#          {% block submitted %}#}
+{#            <em{{ author_attributes }}>#}
+{#              {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}#}
+{#            </em>#}
+{#          {% endblock %}#}
+{#          {{ metadata }}#}
+{#        </div>#}
+{#      {% endif %}#}
+{#    </header>#}
+    <div{{ content_attributes.addClass('node__content', 'clearfix','gallery-wrapper').setAttribute('data-plugin','gallery') }}>
+      <div class="row">
+        <div class="col-8 md-12 sm-12">
+          <div class="gallery-description">
+            {{ content.field_description }}
+          </div><!--/gallery-description-->
+        </div><!--/col-8 md-12 sm-12-->
+        <div class="col-4 md-hide sm-hide">
+          <div class="gallery-editing-info">
+            <p>{{ "Last changed"|t }} {{ node.changed.value | date('d.m.Y') }}</p>
+          </div><!--/gallery-editing-info-->
+        </div><!--/col-4 sm-hide-->
+      </div>
+      <div class="row md-hide sm-hide">
+        <div class="col-8 md-12">
+          <div class="picture-container" id="gallery">
+
+            <div class="picture-holder">
+              <a href="#" class="gallery-image" style="background-image: url('');" tabindex="0" data-plugin="modalOpener">
+                <img src="/{{ base_path }}/static/assets/images/placeholder-2.gif" alt="tree on the field">
+                <span class="gallery-icon" aria-label="{{ "Open picture" |t }}"></span>
+              </a><!--/image-field-->
+              <div class="image-description sm-hide">
+                <span class="image-title"></span>
+                <span class="image-page"></span>
+              </div><!--/image-description-->
+            </div><!--/picture-holder-->
+
+            <div class="button-prev" tabindex="0" title="{{ "Previous picture" |t }}">
+              <span class="sr-only">{{ "Previous picture"|t }}</span>
+            </div><!--/button-prev-->
+            <div class="button-next" tabindex="0" title="{{"Next Picture"}}">
+            </div><!--/button-next-->
+          </div><!--/picture-container-->
+        </div><!--/col-8 md-6 sm-12-->
+
+        <div class="col-4 md-6">
+          <div class="thumbs-container">
+            <ul class="gallery-thumbs">
+          {% for image in node.field_images.value  %}
+            {% set target_id = image.target_id %}
+            {% set image = drupal_entity('media',target_id) %}
+            {% if image['#media'].field_media_image %}
+              {% set media_image = image['#media'].field_media_image.value %}
+              {% if media_image[0] %}
+                {% set media_image = media_image[0] %}
+              {% endif %}
+            {% endif %}
+            {% if media_image %}
+              <li>
+                <a href="javascript:void(0);" class="gallery-image-item"
+                   style="background-image: url('{% if media_image %}{{ drupal_image(media_image.target_id,'media_library')['#uri']|file_url }}{% endif %}');"
+                   data-image="{% if media_image %}{{ drupal_image(media_image.target_id)['#uri']|file_url }}{% endif %}"
+                   title="{{ media_image.title }}" tabindex="0">
+                  <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" alt="{{ media_image.alt }}">
+                </a><!--/image-field-->
+              </li>
+            {% endif %}
+          {% endfor %}
+            </ul>
+            <nav class="paginator-block" aria-label="pagination">
+              <ul class="paginator">
+
+              </ul><!--/paginator-->
+            </nav><!--/paginator-block-->
+          </div>
         </div>
-      {% endif %}
-    </header>
-    <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-      {{ content }}
+
+
+      </div>
+      <div class="row md-show sm-show">
+        <div class="md-12 sm-12">
+          <div class="image-block">
+            {% for image in node.field_images.value  %}
+
+              {% set target_id = image.target_id %}
+              {% set image = drupal_entity('media',target_id) %}
+              {% if image['#media'].field_media_image %}
+                {% set media_image = image['#media'].field_media_image.value %}
+                {% if media_image[0] %}
+                  {% set media_image = media_image[0] %}
+                {% endif %}
+              {% endif %}
+              {% if media_image %}
+                {% if loop.first %}
+                  <a class="image-field image-field--landscape" style="background-image: url('{% if media_image %}{{ drupal_image(media_image.target_id,'media_library')['#uri']|file_url }}{% endif %}');" tabindex="0" data-plugin="modalOpener">
+                    <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif"  alt="{{ media_image.alt }}" >
+                    <span class="gallery-icon" aria-label="{{ "Open gallery"|t }}"></span>
+                  </a><!--/image-field-->
+                  <ul class="thumbnails-field">
+                  {% else %}
+                    <li class="visible-thumb">
+                      <a class="thumb thumb--portrait" href="#" style="background-image: url('{% if media_image %}{{ drupal_image(media_image.target_id,'media_library')['#uri']|file_url }}{% endif %}');" tabindex="0">
+                        <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" alt="{{ media_image.alt }}" >
+                      </a>
+                    </li>
+                    {% if loop.last %}
+                      </ul><!--/thumbnails-field-->
+                    {% endif %}
+                {% endif %}
+              {% endif %}
+
+            {% endfor %}
+          </div><!--/image-block-->
+
+          <div class="picture-count">
+            <span>{{ node.field_images.value|length }} {{ "pictures" |t }}</span>
+          </div><!--/picture-count-->
+
+          <div class="mobile-gallery-editing-info">
+            <span>{{ "Last changed" }} {{ node.changed.value | date('d.m.Y') }}</span>
+          </div><!--/gallery-editing-info-->
+
+        </div><!--/md-12 sm-12-->
+      </div><!--/row sm-show-->
     </div>
+
   </article>
 {% endif %}
 
