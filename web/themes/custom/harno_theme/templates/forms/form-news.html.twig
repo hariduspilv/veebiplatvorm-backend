@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+{#{{ devel_dump(children) }}#}
+<div class="content-block content-block--filters">
+<div class="row">
+  <div class="col-12 md-12 sm-12">
+    <div class="gallery-filters">
+<form{{ attributes.addClass('filters-form') }}>
+  <div class="filters-wrapper">
+    <div class="modal-header">
+      <span class="modal-title">{{ "Filter news" |t }}</span>
+      <span class="closeBtn"></span>
+    </div><!--/modal-header-->
+ {{ children|without('years') }}
+    {{ children.bottom.searchgroup.searchButton }}
+  </div>
+  <div class="mobile-filters">
+    {{ children.bottom.searchgroup.newsSearchMobile }}
+    <button class="btn btn-secondary mobile-filter-trigger" data-plugin="filtersModal">{{ "Open filters" |t }}</button>
+  </div><!--/mobile-filters-->
+  <div id="mobile-active-filters" class="mobile-filters-output">
+    {% if children['#storage'] and children['#storage']['active-years'] %}
+      {% for year in children['#storage']['active-years']  %}
+        {% if year %}
+          <span class="btn-input">
+          <label for="mobile-tag">{{ year }}</label>
+          <input type="checkbox" id="mobile-tag" value="{{ year }}">
+          <span  data-remove-item="{{ year }}" class="btn btn-tag btn-tag-remove">{{ year }}</span>
+        </span>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div><!--/mobile-filters-output-->
+  {{ form }}
+</form>
+
+
+    </div><!--/--gallery-filters-->
+
+  </div><!--/col-12-->
+</div><!--/row-->
+</div>
