@@ -212,6 +212,12 @@ class FilterForm extends FormBase {
       if (!empty($_REQUEST['gallerySearchMobile'])) {
         $form['bottom']['searchgroup']['gallerySearch']['#default_value'] = $_REQUEST['gallerySearchMobile'];
       }
+      if (!empty($_REQUEST['newsSearch'])) {
+        $form['bottom']['searchgroup']['newsSearch']['#default_value'] = $_REQUEST['newsSearch'];
+      }
+      if (!empty($_REQUEST['newsSearchMobile'])) {
+        $form['bottom']['searchgroup']['newsSearchMobile']['#default_value'] = $_REQUEST['newsSearchMobile'];
+      }
     }
     // devel_dump($form);
     if ($type == 'news'){
