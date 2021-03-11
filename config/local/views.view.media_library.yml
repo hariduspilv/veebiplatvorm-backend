@@ -136,7 +136,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
+          action_title: Toiming
           include_exclude: exclude
           selected_actions: {  }
           entity_type: media
@@ -602,7 +602,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
+          action_title: Toiming
           include_exclude: exclude
           selected_actions: {  }
           entity_type: media
@@ -773,7 +773,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: Delete
+          text: Kustuta
           output_url_as_text: false
           absolute: false
           entity_type: media
@@ -1293,7 +1293,7 @@ display:
             link_to_entity: false
         uid:
           id: uid
-          label: Author
+          label: Autor
           table: media_field_revision
           field: uid
           relationship: none

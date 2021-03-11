@@ -104,3 +104,39 @@ function harno_settings_update_8009() {
   $config->set('color.additional', '#393A4D');
   $config->save();
 }
+/**
+ * Set default taxonomy terms to Koolituse tüübid
+ */
+function harno_settings_update_8010() {
+  $count = 0;
+  $categories_vocabulary = 'training_keywords'; // Vocabulary machine name
+  $categories = ['Tasuta', 'Tasuline']; // List of test terms
+  foreach ($categories as $key => $category) {
+    $term = Term::create(array(
+      'parent' => array(),
+      'name' => $category,
+      'vid' => $categories_vocabulary,
+      'weight' => $key
+    ))->save();
+    $count += $term;
+  }
+  return 'Lisati ' . $count . ' termi.';
+}
+/**
+ * Set default taxonomy terms to Sündmuse tüübid
+ */
+function harno_settings_update_8011() {
+  $count = 0;
+  $categories_vocabulary = 'event_keywords'; // Vocabulary machine name
+  $categories = ['Huvitegevus', 'Õppetöö']; // List of test terms
+  foreach ($categories as $key => $category) {
+    $term = Term::create(array(
+      'parent' => array(),
+      'name' => $category,
+      'vid' => $categories_vocabulary,
+      'weight' => $key
+    ))->save();
+    $count += $term;
+  }
+  return 'Lisati ' . $count . ' termi.';
+}

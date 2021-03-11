@@ -133,6 +133,7 @@ function harno_settings_node_prepare_form(\Drupal\Core\Entity\EntityInterface $e
  */
 function harno_settings_node_presave(Drupal\Core\Entity\EntityInterface $entity)   {
   $node_types = ['article'];
+  $calendar_types = ['calendar'];
   if (in_array($entity->getType(), $node_types)) {
     $sticky = $entity->get('sticky')->value;
     //kui lisati oluline uudis, siis eemaldame kõigilt teistelt selle valiku.
@@ -157,6 +158,30 @@ function harno_settings_node_presave(Drupal\Core\Entity\EntityInterface $entity)
         }
       }
     }
+  }
+  elseif (in_array($entity->getType(), $calendar_types)) {
+    $field_event_type = $entity->get('field_event_type')->getValue();
+    $field_all_day = $entity->get('field_all_day')->value;
+    $field_show_end_date = $entity->get('field_show_end_date')->value;
+    $active_types = [];
+    foreach ($field_event_type as $event_type) {
+      $active_types[] = $event_type['value'];
+    }
+    if (!in_array('1',$active_types)) {
+      $entity->set('field_training_keywords', 0);
+    }
+    if (!in_array('2',$active_types)) {
+      $entity->set('field_event_keywords', 0);
+    }
+    if ($field_all_day == 1) {
+      $entity->set('field_event_start_time', '');
+      $entity->set('field_event_end_time', '');
+    }
+    if ($field_show_end_date == 0) {
+      $entity->set('field_event_end_date', '');
+    }
+
+
   }
 }
 
