@@ -76,6 +76,20 @@ class NewsController extends ControllerBase {
         $query->condition($textsearchGroup);
 
       }
+      if(!empty($parameters['article_type'])){
+        $art_group = $query->orConditionGroup();
+        $ignnore_type = false;
+        foreach ($parameters['article_type'] as $key => $art_type){
+          if($key=='all'){
+            $ignnore_type = true;
+            break;
+          }
+          $art_group->condition('field_article_type',$key,'=');
+        }
+        if (!$ignnore_type) {
+          $query->condition($art_group);
+        }
+      }
       if(empty($parameters['newsSearch']) or empty($parameters['newsSearchMobile'])){
         $query->condition('title','','CONTAINS');
       }

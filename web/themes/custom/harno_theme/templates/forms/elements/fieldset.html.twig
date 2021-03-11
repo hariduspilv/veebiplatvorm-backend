@@ -47,7 +47,9 @@
       <button class="btn btn-primary filters-ready">{{ "Ready"|t }}</button>
     </div>
   {% elseif element['#id']=='news-bottomFilter' %}
+
     <div class="filters-bottom">
+      {{ element.article_type }}
       <div class="date-inputs">
         {{ element.date_start }}
         <span class="date-separator">-</span>

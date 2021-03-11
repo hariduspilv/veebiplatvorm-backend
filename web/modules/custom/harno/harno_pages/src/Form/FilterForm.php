@@ -64,6 +64,19 @@ class FilterForm extends FormBase {
         '#id' => 'galleries-bottomFilter',
       ];
     }
+    if ($type=='news'){
+      $articleoptions = $this->getArticleTypes();
+      $form['bottom']['article_type'] = [
+        '#type' => 'checkboxes',
+        '#id' => 'article_type',
+        '#ajax' => [
+          'wrapper' => 'filter-target',
+          'event' => 'change',
+          'callback' => '::filterResults',
+        ],
+        '#options' => $articleoptions,
+      ];
+    }
     $form['bottom']['date_start'] = [
       '#type' => 'textfield',
       '#attributes' => [
@@ -218,6 +231,9 @@ class FilterForm extends FormBase {
       if (!empty($_REQUEST['newsSearchMobile'])) {
         $form['bottom']['searchgroup']['newsSearchMobile']['#default_value'] = $_REQUEST['newsSearchMobile'];
       }
+      if (!empty($_REQUEST['article_type'])) {
+//        $form['bottom']['article_type']['#default_value'] = $_REQUEST['article_type'];
+      }
     }
     // devel_dump($form);
     if ($type == 'news'){
@@ -342,6 +358,17 @@ class FilterForm extends FormBase {
 //    $response->addCommand(new UpdateSelectionCommand());
 
     return $response;
+  }
+  public function getArticleTypes(){
+    $entityManager = \Drupal::service('entity_field.manager');
+    $fields = $entityManager->getFieldStorageDefinitions('node', 'article');
+    $outoptions = [];
+    $outoptions['all']= t('All');
+    $options = options_allowed_values($fields['field_article_type']);
+    foreach ($options as $key => $option){
+      $outoptions[strval($key)] = $option;
+    }
+    return $outoptions;
   }
 
 }
