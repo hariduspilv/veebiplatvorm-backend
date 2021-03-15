@@ -1,7 +1,9 @@
 uuid: abdc9799-5a79-43ba-a67b-08bb34d3ec0d
 langcode: et
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - simple_recaptcha_webform
 open: null
 close: null
 weight: 0
@@ -191,5 +193,17 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  recaptcha:
+    id: simple_recaptcha
+    label: reCAPTCHA
+    notes: ''
+    handler_id: recaptcha
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      recaptcha_type: v3
+      v3_score: '80'
+      v3_error_message: 'There was an error during validation of your form submission, please try to reload the page and submit form again.'
 variants: {  }
