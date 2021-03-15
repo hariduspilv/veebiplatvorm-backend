@@ -296,7 +296,7 @@ display:
           exposed: true
           expose:
             operator_id: bundle_op
-            label: 'Media type'
+            label: 'Meedia tüüp'
             description: ''
             use_operator: false
             operator: bundle_op
@@ -313,7 +313,7 @@ display:
             operator_list: {  }
           is_grouped: false
           group_info:
-            label: 'Media type'
+            label: 'Meedia tüüp'
             description: null
             identifier: bundle
             optional: true

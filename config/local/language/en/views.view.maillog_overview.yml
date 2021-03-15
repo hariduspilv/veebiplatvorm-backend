@@ -1,9 +1,9 @@
-label: 'Suunatakse ümber'
 display:
   default:
     display_options:
       exposed_form:
         options:
+          submit_button: Apply
           reset_button_label: Reset
       pager:
         options:
@@ -12,4 +12,8 @@ display:
             next: 'next ›'
             first: '« first'
             last: 'last »'
-      title: 'Suunatakse ümber'
+      fields:
+        sent_date:
+          label: Date
+        subject:
+          label: Subject

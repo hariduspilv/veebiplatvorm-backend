@@ -5,7 +5,7 @@ display:
     display_options:
       exposed_form:
         options:
-          reset_button_label: Tühista
+          reset_button_label: Reset
       fields:
         user_bulk_form:
           label: Massuuendus

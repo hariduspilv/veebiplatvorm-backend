@@ -1,23 +1,18 @@
-uuid: 772ea201-d3d2-4ca2-b7ae-a423c313c505
+uuid: abdc9799-5a79-43ba-a67b-08bb34d3ec0d
 langcode: et
 status: open
-dependencies:
-  enforced:
-    module:
-      - webform
-_core:
-  default_config_hash: OPbEEQAzvu7mP33Ykbxa3jKQIHhzedZf1pY27da5baU
+dependencies: {  }
 open: null
 close: null
 weight: 0
 uid: null
 template: false
 archive: false
-id: contact
-title: 'Võta meiega ühendust'
-description: 'Basic email contact webform.'
+id: registration_for_course
+title: 'Kursusele registreerimine'
+description: ''
 category: 'Vaikimisi ette loodud vormid'
-elements: "name:\n  '#type': textfield\n  '#title': Nimi\n  '#required': true\n  '#default_value': '[current-user:display-name]'\nemail:\n  '#type': email\n  '#title': 'E-posti aadress'\n  '#required': true\n  '#default_value': '[current-user:mail]'\nmessage:\n  '#type': textarea\n  '#title': Sõnum\n  '#required': true\n  '#test': 'Please ignore this email.'\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': Saada"
+elements: "first_name:\n  '#type': textfield\n  '#title': Eesnimi\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Perekonnanimi\n  '#required': true\npersonal_code:\n  '#type': number\n  '#title': Isikukood\n  '#help': Number\n  '#required': true\neducation:\n  '#type': radios\n  '#title': Haridus\n  '#options':\n    1: Algharidus\n    2: Põhiharidus\n    3: Üldkeskharidus\n    4: Kutseharidus\n    5: Kõrgharidus\n  '#required': true\naddress:\n  '#type': textfield\n  '#title': Aadress\nemail:\n  '#type': email\n  '#title': E-post\nphone:\n  '#type': tel\n  '#title': Telefon\n  '#required': true\n  '#default_value': '+372'\n  '#international': true\n  '#international_initial_country': EE\npayer:\n  '#type': select\n  '#title': Tasuja\n  '#options':\n    1: ise\n    2: vanemad\n    3: omavalitus\n    4: tasuta\nplease_describe:\n  '#type': textarea\n  '#title': 'Palun kirjeldage, miks te soovite kursusele registreeruda'\n  '#help': '<span data-fm-marker=\"852\">Kirjeldus v&otilde;iks olla essee vormis arutelu</span>'\n  '#required': true"
 css: ''
 javascript: ''
 settings:
@@ -30,12 +25,12 @@ settings:
   page_submit_path: ''
   page_confirm_path: ''
   page_theme_name: ''
-  form_title: source_entity_webform
+  form_title: both
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
-  form_previous_submissions: false
+  form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
   form_disable_remote_addr: false
@@ -117,10 +112,10 @@ settings:
   draft_loaded_message: ''
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
-  confirmation_type: message
+  confirmation_type: page
   confirmation_title: ''
-  confirmation_message: 'Your message has been sent.'
-  confirmation_url: '<front>'
+  confirmation_message: ''
+  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -196,79 +191,5 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers:
-  email_confirmation:
-    id: email
-    label: 'Email confirmation'
-    notes: ''
-    handler_id: email_confirmation
-    status: true
-    conditions: {  }
-    weight: 1
-    settings:
-      states:
-        - completed
-      to_mail: '[webform_submission:values:email:raw]'
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      subject: '[webform_submission:values:subject:raw]'
-      body: '[webform_submission:values:message:value]'
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
-      parameters: {  }
-  email_notification:
-    id: email
-    label: 'Email notification'
-    notes: ''
-    handler_id: email_notification
-    status: true
-    conditions: {  }
-    weight: 2
-    settings:
-      states:
-        - completed
-      to_mail: _default
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: '[webform_submission:values:email:raw]'
-      from_options: {  }
-      from_name: '[webform_submission:values:name:raw]'
-      subject: '[webform_submission:values:subject:raw]'
-      body: '[webform_submission:values:message:value]'
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
-      parameters: {  }
+handlers: {  }
 variants: {  }

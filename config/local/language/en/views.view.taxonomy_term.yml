@@ -5,7 +5,7 @@ display:
     display_options:
       exposed_form:
         options:
-          submit_button: Применить
-          reset_button_label: Tühista
+          submit_button: Apply
+          reset_button_label: Reset
   feed_1:
     display_title: Andmevoog
