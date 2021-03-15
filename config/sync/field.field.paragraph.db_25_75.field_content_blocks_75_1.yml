@@ -13,6 +13,7 @@ dependencies:
     - paragraphs.paragraphs_type.table_block_header_row
     - paragraphs.paragraphs_type.text_block
     - paragraphs.paragraphs_type.video_block
+    - paragraphs.paragraphs_type.webform_block
   module:
     - entity_reference_revisions
 id: paragraph.db_25_75.field_content_blocks_75_1
@@ -38,71 +39,75 @@ settings:
       gallery_block: gallery_block
       video_block: video_block
       contact_block: contact_block
+      webform_block: webform_block
     target_bundles_drag_drop:
+      class:
+        weight: -26
+        enabled: false
       contact_block:
         enabled: true
-        weight: -26
+        weight: -30
       db_100:
-        weight: -45
+        weight: -47
         enabled: false
       db_25_25_25_25:
-        weight: -44
+        weight: -46
         enabled: false
       db_25_25_50:
-        weight: -43
+        weight: -45
         enabled: false
       db_25_75:
-        weight: -42
+        weight: -44
         enabled: false
       db_33_33_33:
-        weight: -39
-        enabled: false
-      db_33_66:
-        weight: -38
-        enabled: false
-      db_50_25_25:
         weight: -41
         enabled: false
-      db_50_50:
+      db_33_66:
         weight: -40
         enabled: false
+      db_50_25_25:
+        weight: -43
+        enabled: false
+      db_50_50:
+        weight: -42
+        enabled: false
       db_66_33:
-        weight: -37
+        weight: -39
         enabled: false
       db_75_25:
-        weight: -36
+        weight: -38
+        enabled: false
+      department:
+        weight: -25
         enabled: false
       file:
-        weight: -25
+        weight: -28
         enabled: false
       gallery_block:
         enabled: true
-        weight: -28
+        weight: -32
       intermediate_title_block:
         enabled: true
-        weight: -35
+        weight: -37
       link:
-        weight: -24
+        weight: -27
         enabled: false
       link_and_file_block:
         enabled: true
-        weight: -30
+        weight: -34
       picture_block:
         enabled: true
-        weight: -29
-      table_block_header_both:
-        enabled: true
-        weight: -31
-      table_block_header_column:
-        enabled: true
-        weight: -32
+        weight: -33
       table_block_header_row:
         enabled: true
-        weight: -33
+        weight: -35
       text_block:
         enabled: true
-        weight: -34
+        weight: -36
       video_block:
         enabled: true
-        weight: -27
+        weight: -31
+      webform_block:
+        enabled: true
+        weight: -29
 field_type: entity_reference_revisions

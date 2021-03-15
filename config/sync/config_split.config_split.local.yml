@@ -41,7 +41,6 @@ graylist:
   - block.block.seven_primary_local_tasks
   - block.block.seven_secondary_local_tasks
   - block_content.type.basic
-  - comment.type.comment
   - contact.form.feedback
   - contact.form.personal
   - core.base_field_override.node.page.promote
@@ -59,7 +58,6 @@ graylist:
   - core.entity_form_mode.media.media_library
   - core.entity_form_mode.user.register
   - core.entity_view_mode.block_content.full
-  - core.entity_view_mode.comment.full
   - core.entity_view_mode.media.full
   - core.entity_view_mode.media.media_library
   - core.entity_view_mode.node.full
@@ -71,22 +69,18 @@ graylist:
   - core.entity_view_mode.user.compact
   - core.entity_view_mode.user.full
   - field.field.block_content.basic.body
-  - field.field.comment.comment.comment_body
   - field.field.media.audio.field_media_audio_file
   - field.field.media.document.field_media_document
   - field.field.media.image.field_media_image
   - field.field.media.remote_video.field_media_oembed_video
   - field.field.media.video.field_media_video_file
   - field.field.node.article.body
-  - field.field.node.article.comment
-  - field.field.node.article.field_image
-  - field.field.node.article.field_tags
   - field.field.node.page.body
-  - field.field.user.user.user_picture
   - filter.format.basic_html
   - filter.format.full_html
   - filter.format.plain_text
   - filter.format.restricted_html
+  - harno_settings.colors
   - harno_settings.settings
   - image.style.large
   - image.style.linkit_result_thumbnail
@@ -108,10 +102,6 @@ graylist:
   - search.page.node_search
   - search.page.user_search
   - shortcut.set.default
-  - system.action.comment_delete_action
-  - system.action.comment_publish_action
-  - system.action.comment_save_action
-  - system.action.comment_unpublish_action
   - system.action.media_delete_action
   - system.action.media_publish_action
   - system.action.media_save_action
@@ -135,7 +125,6 @@ graylist:
   - system.menu.footer
   - system.menu.main
   - system.menu.tools
-  - taxonomy.vocabulary.tags
   - tour.tour.language
   - tour.tour.language-add
   - tour.tour.language-edit
@@ -148,8 +137,6 @@ graylist:
   - user.settings
   - views.view.archive
   - views.view.block_content
-  - views.view.comment
-  - views.view.comments_recent
   - views.view.content
   - views.view.content_recent
   - views.view.files
@@ -162,6 +149,20 @@ graylist:
   - views.view.watchdog
   - views.view.who_s_new
   - views.view.who_s_online
+  - comment.type.comment
+  - core.entity_view_mode.comment.full
+  - field.field.comment.comment.comment_body
+  - field.field.node.article.comment
+  - field.field.node.article.field_image
+  - field.field.node.article.field_tags
+  - field.field.user.user.user_picture
+  - system.action.comment_delete_action
+  - system.action.comment_publish_action
+  - system.action.comment_save_action
+  - system.action.comment_unpublish_action
+  - taxonomy.vocabulary.tags
+  - views.view.comment
+  - views.view.comments_recent
   - 'language.entity.*'
   - webform.webform.test_kaarel
 graylist_dependents: true
