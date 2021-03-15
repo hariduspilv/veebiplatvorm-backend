@@ -5,6 +5,8 @@ dependencies:
   enforced:
     module:
       - webform
+  module:
+    - simple_recaptcha_webform
 _core:
   default_config_hash: OPbEEQAzvu7mP33Ykbxa3jKQIHhzedZf1pY27da5baU
 open: null
@@ -217,7 +219,7 @@ handlers:
       from_mail: _default
       from_options: {  }
       from_name: _default
-      subject: '[webform_submission:values:subject:raw]'
+      subject: 'Uus "[webform:title]" vormi sisestus [site:name] kooli kodulehel'
       body: '[webform_submission:values:message:value]'
       excluded_elements: {  }
       ignore_access: false
@@ -254,7 +256,7 @@ handlers:
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform_submission:values:name:raw]'
-      subject: '[webform_submission:values:subject:raw]'
+      subject: 'Uus "[webform:title]" vormi sisestus [site:name] kooli kodulehel'
       body: '[webform_submission:values:message:value]'
       excluded_elements: {  }
       ignore_access: false
@@ -271,4 +273,16 @@ handlers:
       sender_name: ''
       theme_name: ''
       parameters: {  }
+  recaptcha:
+    id: simple_recaptcha
+    label: reCAPTCHA
+    notes: ''
+    handler_id: recaptcha
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      recaptcha_type: v3
+      v3_score: '80'
+      v3_error_message: 'There was an error during validation of your form submission, please try to reload the page and submit form again.'
 variants: {  }

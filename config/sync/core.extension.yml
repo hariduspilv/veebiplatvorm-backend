@@ -67,6 +67,8 @@ module:
   search: 0
   serialization: 0
   shortcut: 0
+  simple_recaptcha: 0
+  simple_recaptcha_webform: 0
   svg_image: 0
   system: 0
   taxonomy: 0
