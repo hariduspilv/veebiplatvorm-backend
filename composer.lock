@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84d198b7bb1ad988a450b1cdd6bc368d",
+    "content-hash": "6c49b6dfa26332f8ea858e6db27997d7",
     "packages": [
         {
             "name": "algolia/places",
@@ -3686,17 +3686,17 @@
         },
         {
             "name": "drupal/openid_connect",
-            "version": "2.0.0-alpha1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/openid_connect.git",
-                "reference": "2.0.0-alpha1"
+                "reference": "8.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/openid_connect-2.0.0-alpha1.zip",
-                "reference": "2.0.0-alpha1",
-                "shasum": "b4c5c90cb9de20a3b36de38cf412c174974f8c1f"
+                "url": "https://ftp.drupal.org/files/projects/openid_connect-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "62127d6f81950124c41a76f921678ab6f0a651e3"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -3705,11 +3705,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.0-alpha1",
-                    "datestamp": "1608318210",
+                    "version": "8.x-1.0",
+                    "datestamp": "1608316550",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Alpha releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -8730,7 +8730,6 @@
         "drupal/default_content": 20,
         "drupal/genpass": 20,
         "drupal/maillog": 10,
-        "drupal/openid_connect": 15,
         "drupal/simple_recaptcha": 10
     },
     "prefer-stable": true,

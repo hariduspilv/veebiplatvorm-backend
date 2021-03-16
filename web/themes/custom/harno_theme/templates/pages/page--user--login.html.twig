@@ -67,6 +67,7 @@
  * @see html.html.twig
  */
 #}
+{% set base_path= base_path ~ directory  %}
 <div id="page-wrapper" class="main-wrapper">
 	<header id="header" class="main-header" role="banner" aria-label="{{ 'Site header'|t }}">
 		<div class="container">
@@ -127,76 +128,19 @@
 			</div>
 		{% endblock %}
 	{% endif %}
-	<main class="page-main">
+	<main class="page-main harid">
 		<div class="container">
-
 			<div class="row">
-				<div class="col-12 md-12 sm-12">
-					{% if page.content.harno_theme_breadcrumbs %}
-						{{ page.content.harno_theme_breadcrumbs }}
-					{% endif %}
-				</div>
-			</div>
-			<div class="row">
-
-				{% if page.sidebar_first %}
-					{% set col_class = 'col-9 md-12 sm-12 p-sidemenu-left with-sidemenu' %}
-
-					<div class="col-3 md-12 sm-12 p-sidemenu-right">
-						<div class="header-block-mobile">
-							<div class="header-block-mobile__title-block">
-								{{ page.content.harno_theme_page_title }}
-							</div>
-							<!--/__title-block-->
-							<div class="header-block-mobile__btn-block">
-								<a href="javascript:void(0);" class="btn btn-primary before-share" aria-label="share"></a>
-								<a href="javascript:void(0);" class="btn btn-primary before-print sm-hide" aria-label="print page"></a>
-							</div>
-							<!--/__btn-block-->
-						</div>
-						<!--/header-block-mobile-->
-						<aside class="sidemenu-block">
-							{{page.sidebar_first}}
-						</aside>
-					</div>
-				{% else %}
-					{% set col_class = 'col-12 ' %}
-				{% endif %}
-				<div
-					class="{{ col_class }}">
-
-					{# Title area #}
+				<div  class="col-12 md-12 sm-12">
 					{% if page.content %}
-						{% if page.content.harno_theme_page_title %}
-							{% if page.sidebar_first %}
-								{% set half_title_class='-sidemenu' %}
-							{% else %}
-								{% set half_title_class='' %}
-							{% endif %}
-							<div class="header-block{{ half_title_class }}">
-								<div class="header-block{{ half_title_class }}__title-block">
-									{{ page.content.harno_theme_page_title }}
-								</div>
-								<!--/__btn-block-->
-								<div class="header-block-sidemenu__btn-block">
-									<a href="javascript:void(0);" class="btn btn-primary before-share" aria-label="share"></a>
-									<a href="javascript:void(0);" class="btn btn-primary before-print sm-hide" aria-label="print page"></a>
-								</div>
-								<!--/__btn-block-->
-                {% if node and node.type.value  %}
-                  {% if node.type.value[0].target_id == 'gallery' %}
-                    <span class="date-indicator">{{ node.created.value|date('d.m.Y') }}</span>
-                  {% endif %}
-                {% endif %}
-							</div>
-							<!--/header-block-sidemenu-->
-
-						{% endif %}
-					{% endif %}
-
-					{% if page.content %}
-						{% set general_content = page.content %}
-						{{ general_content|without('harno_theme_page_title','harno_theme_breadcrumbs') }}
+            <div class="harid-block">
+              <h1>{{ "Log in with HarID" |t }}</h1>
+              <span class="harid-block__logo">
+              <img src="{{ base_path }}/static/assets/images/HarID-logo.svg" alt="HarID logo">
+            </span>
+              {% set general_content = page.content %}
+              {{ general_content|without('harno_theme_page_title','harno_theme_breadcrumbs') }}
+            </div>
 					{% endif %}
 				</div>
 				<!--/col-12-->

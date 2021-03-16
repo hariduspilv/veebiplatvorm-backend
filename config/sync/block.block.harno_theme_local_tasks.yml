@@ -2,6 +2,8 @@ uuid: 8e723947-185d-415d-8bbf-aa93010c2e9e
 langcode: et
 status: true
 dependencies:
+  module:
+    - system
   theme:
     - harno_theme
 _core:
@@ -19,4 +21,9 @@ settings:
   label_display: '0'
   primary: true
   secondary: true
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: /user/login
+    negate: true
+    context_mapping: {  }

@@ -3,8 +3,8 @@ general:
   logo: 0
   favicon: 0
   address: 'Müüri 4, Olustvere, Põhja-Sakala vald, 70401 Viljandi maakond'
-  phone: '+372 5555555555'
-  email: info@mehaanikakool.ee
+  phone: '6584930'
+  email: onnepalu@mail.ee
 important_contacts:
   name_1: ' Direktor Aleksandr Skidantsuk'
   body_1: '(+372) 507 3849'
@@ -56,8 +56,8 @@ footer_socialmedia_links:
   link_url_9: ''
   link_weight_9: -2
 footer_quick_links:
-  link_name_1: ''
-  link_entity_1: null
+  link_name_1: 'Üks lihtne lehekülg testiks'
+  link_entity_1: 5
   link_url_1: ''
   link_weight_1: -10
   link_name_2: ''
@@ -89,10 +89,10 @@ footer_quick_links:
   link_url_8: ''
   link_weight_8: -3
 footer_free_text_area:
-  name: ''
-  body: ''
+  name: 'Vabatekstiala pealkiri'
+  body: 'Vabatekstiala sisu'
 footer_copyright:
-  name: '© 2020 - 2021 Demo Gümnaasium'
+  name: '© 2020 - 2021 Õnnevälja Ühisgümnaasium'
 automatic_generation_academic_year:
   'on': true
   date: 15.06.
