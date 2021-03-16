@@ -80,8 +80,6 @@ graylist:
   - filter.format.full_html
   - filter.format.plain_text
   - filter.format.restricted_html
-  - harno_settings.colors
-  - harno_settings.settings
   - image.style.large
   - image.style.linkit_result_thumbnail
   - image.style.media_library

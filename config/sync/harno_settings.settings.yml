@@ -90,7 +90,7 @@ footer_quick_links:
   link_weight_8: -3
 footer_free_text_area:
   name: 'Vabatekstiala pealkiri'
-  body: 'Vabatekstiala sisu'
+  body: 'Vabatekstiala sisu muudetud'
 footer_copyright:
   name: '© 2020 - 2021 Õnnevälja Ühisgümnaasium'
 automatic_generation_academic_year:
