@@ -41,7 +41,6 @@ class NewsController extends ControllerBase {
     $query->condition('type', $bundle);
     $query->sort('field_academic_year.entity.field_date_range', 'DESC');
     $query->sort('created', 'DESC');
-
     if (!empty($_REQUEST)) {
 
       if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -141,6 +140,24 @@ class NewsController extends ControllerBase {
     $entity_ids = $query->execute();
     $node_storage = \Drupal::entityTypeManager()->getStorage('node');
     $nodes = $node_storage->loadMultiple($entity_ids);
+    usort($nodes, function ($a, $b) {
+      $asticky = $a->isSticky();
+      if($asticky){
+        $asticky = 1;
+      }
+      else{
+        $asticky=0;
+      }
+      $bsticky = $b->isSticky();
+      if($bsticky){
+        $bsticky = 1;
+      }
+      else{
+        $bsticky=0;
+      }
+        return $bsticky - $asticky;
+    });
+
     $nodes_grouped = [];
     foreach ($nodes as $node) {
       if (!empty($node->get('field_academic_year'))) {

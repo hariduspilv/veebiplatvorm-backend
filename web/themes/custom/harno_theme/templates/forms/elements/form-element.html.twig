@@ -64,11 +64,20 @@
 %}
 
 {% if type=="checkbox" %}
-<span{{ attributes.addClass('btn-input') }}>
+  {% if "article_type" in element['#name'] %}
+    <div class="filters-tags__button">
+      <label for="{{ element['#id'] }}">{{label['#title']}}</label>
+      {{ children }}
+      <span>{{label['#title']}}</span>
+    </div><!--/filters-tags__button-->
+    {% else %}
+
+      <span{{ attributes.addClass('btn-input') }}>
   <label for="{{ element['#id'] }}">{{ label['#title'] }}</label>
   {{ children }}
   <span class="btn btn-tag">{{ label['#title'] }}</span>
 </span>
+  {% endif %}
   {% elseif element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name']=='gallerySearch' or element['#name'] == 'gallerySearchMobile' or element['#name']=='newsSearch' or element['#name']== 'newsSearchMobile' %}
     <div class="form-item  {% if element['#name'] in ['gallerySearchMobile','gallerySearch','newsSearch','newsSearchMobile'] %} search-input{% endif %}" data-plugin="movingLabel">
       <label class="form-label" for="{{ element['#id'] }}">{{ label['#title'] }}</label>

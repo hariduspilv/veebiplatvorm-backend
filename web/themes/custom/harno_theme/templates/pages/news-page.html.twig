@@ -21,7 +21,21 @@
 
 						<div class="row">
 							{% for news in year %}
-
+                {% set sticky = false %}
+                {%  set show_label = false %}
+                {% if news.isSticky() %}
+                  {%  set sticky = true %}
+                  {% set news_label = "Important" |t %}
+                {% endif %}
+                {% if news.field_article_type %}
+                  {% set allowed_types = news.field_article_type.getFieldDefinition().getSetting('allowed_values') %}
+                  {% if  news.field_article_type.value != 1 %}
+                    {% set news_label = allowed_types[news.field_article_type.value] %}
+                    {% set show_label = true %}
+                  {% else %}
+                    {% set show_label = false %}
+                  {% endif %}
+                {% endif %}
 								{% if news.field_one_image %}
 									{% if news.field_one_image.0 %}
 										{% if news.field_one_image.0.getValue() %}
@@ -50,6 +64,11 @@
 
 									<div class="gallery-block">
                     <a class="gallery-block" aria-label="{{"Open gallery detail view" |t}}" href=" {{ drupal_url('node/'~ news.id) }}">
+                      {% if show_label or sticky %}
+                        <div class="news-block__tag {% if sticky %}  active {% endif %}">
+                          <span>{{ news_label }}</span>
+                        </div>
+                      {% endif %}
 										{% if media_image['#uri'] %}
 											<div class="gallery-block__thumbnail" style="background-image: url({{ media_image['#uri']|file_url }});">
 												<img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" {% if alt %} alt="{{alt}}" {% else %}alt=""{% endif %} {% if title %} title="{{title}}" {% endif %}>

@@ -14,7 +14,12 @@
 #}
 {% if element['#id']=="gallery-years" %}
   {{ children }}
+  {% elseif element['#id'] == 'article_type' %}
+    <div class="filters-tags" role="group" aria-label="news tags group">
+    {{ children }}
+    </div>
   {% else %}
+
     <div{{ attributes.addClass('form-checkboxes') }}>{{ children }}</div>
 {% endif %}
 
