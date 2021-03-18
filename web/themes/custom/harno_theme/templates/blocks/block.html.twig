@@ -29,11 +29,18 @@
  * @ingroup themeable
  */
 #}
-<div class="col-3 md-6 sm-12">
-  {% if content %}
-    {% block content %}
-      {{ content }}
-    {% endblock %}
-  {% endif %}
-</div>
-<!--/col-3 sm-12-->
+{% if elements['#id'] == 'harno_theme_local_tasks' %}
+  <div class="col-12 md-12 sm-12">
+  {{ content }}
+  </div>
+  {% else %}
+    <div class="col-3 md-6 sm-12">
+      {% if content %}
+        {% block content %}
+          {{ content }}
+        {% endblock %}
+      {% endif %}
+    </div>
+    <!--/col-3 sm-12-->
+{% endif %}
+

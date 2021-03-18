@@ -29,11 +29,18 @@
     'form-wrapper',
   ]
 %}
-{% if element['#id']=='gallery-years' %}
-  <div class="filters-top">
-  <span class="filter-title">{{legend.title}}:</span>
+{% if element['#id']=='gallery-years' or element['#id']=='news-topFilter' %}
+  {% if  not element['#my-id'] == 'news-years' %}
+    <div class="filters-top">
+  {% endif %}
+    {% if legend.title %}
+      <span class="filter-title">{{legend.title}}:</span>
+    {% endif %}
   {{ children }}
-  </div>
+  {% if not element['#my-id'] == 'news-years' %}
+
+        </div>
+        {% endif %}
   {% elseif element['#id']=='galleries-bottomFilter' %}
     <div class="filters-bottom">
       <div class="date-inputs">
@@ -43,6 +50,20 @@
 {#      {{ children }}#}
       </div>
       {{ element.searchgroup.gallerySearch }}
+{#      {{ dd(element) }}#}
+      <button class="btn btn-primary filters-ready">{{ "Ready"|t }}</button>
+    </div>
+  {% elseif element['#id']=='news-bottomFilter' %}
+
+    <div class="filters-bottom">
+      {{ element.article_type }}
+      <div class="date-inputs">
+        {{ element.date_start }}
+        <span class="date-separator">-</span>
+        {{ element.date_end }}
+{#      {{ children }}#}
+      </div>
+      {{ element.searchgroup.newsSearch }}
 {#      {{ dd(element) }}#}
       <button class="btn btn-primary filters-ready">{{ "Ready"|t }}</button>
     </div>

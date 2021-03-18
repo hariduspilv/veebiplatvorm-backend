@@ -5,9 +5,22 @@ harno_pages.galleries_page:
     _title: 'Galleries'
   requirements:
     _permission: 'access content'
+harno_pages.news_page:
+  path: 'news'
+  defaults:
+    _controller: '\Drupal\harno_pages\Controller\NewsController::index'
+    _title: 'News'
+  requirements:
+    _permission: 'access content'
 harno_pages.autocomplete:
   path: '/galleries_autocomplete'
   defaults:
     _controller: '\Drupal\harno_pages\Controller\AutocompleteController::handleAutocomplete'
+  requirements:
+    _permission: 'access content'
+harno_pages.news.autocomplete:
+  path: '/news_autocomplete'
+  defaults:
+    _controller: '\Drupal\harno_pages\Controller\AutocompleteController::handleNewsAutocomplete'
   requirements:
     _permission: 'access content'
