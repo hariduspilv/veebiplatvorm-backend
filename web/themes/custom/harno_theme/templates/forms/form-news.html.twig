@@ -14,12 +14,16 @@
 <div class="content-block content-block--filters">
 <div class="row">
   <div class="col-12 md-12 sm-12">
-    <div class="gallery-filters">
+    <div class="news-filters">
 <form{{ attributes.addClass('filters-form') }}>
   <div class="filters-wrapper">
-    <div class="modal-header">
-      <span class="modal-title">{{ "Filter news" |t }}</span>
-      <span class="closeBtn"></span>
+  <div class="modal-header" role="filters" aria-labelledby="filters-label">
+    <div class="focus-trap" aria-hidden="true" tabindex="0"></div>
+    <h5 id="filters-label">{{ "Filter news" |t }}</h5>
+    <button class="btn btn-close">
+      <span class="sr-only">{{ "Close modal" |t }}</span>
+      <i class="mdi mdi-close"></i>
+    </button><!--/btn-close-->
     </div><!--/modal-header-->
  {{ children|without('years') }}
     {{ children.bottom.searchgroup.searchButton }}

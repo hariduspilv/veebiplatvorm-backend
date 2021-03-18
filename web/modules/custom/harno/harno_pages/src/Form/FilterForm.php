@@ -38,18 +38,52 @@ class FilterForm extends FormBase {
     $form['#attributes']['data-plugin'] = 'filters';
     $form['#attributes']['role'] = 'filter';
     if (!empty($academic_years)) {
-      $form['years'] = [
-        '#title' => t('Choose year'),
-        // '#attributes' => ['name' => 'years'],
-        '#id' => 'gallery-years',
-        '#type' => 'checkboxes',
-        '#ajax' => [
-          'wrapper' => 'filter-target',
-          'event' => 'change',
-          'callback' => '::filterResults',
-        ],
-        '#options' => $academic_years,
-      ];
+      if($type=='news'){
+        $form['top_filters'] = [
+          '#type' => 'fieldset',
+          '#id' => 'news-topFilter',
+        ];
+
+        $articleoptions = $this->getArticleTypes();
+        $form['top_filters']['article_type_mobile'] = [
+          '#type' => 'checkboxes',
+          '#id' => 'article_type_mobile',
+          '#ajax' => [
+            'wrapper' => 'filter-target',
+            'event' => 'change',
+            'callback' => '::filterResults',
+          ],
+          '#default_value' => array('all'),
+          '#options' => $articleoptions,
+        ];
+        $form['top_filters']['years'] = [
+          '#title' => t('Choose year'),
+          // '#attributes' => ['name' => 'years'],
+          '#id' => 'gallery-years',
+          '#type' => 'checkboxes',
+          '#ajax' => [
+            'wrapper' => 'filter-target',
+            'event' => 'change',
+            'callback' => '::filterResults',
+          ],
+          '#my-id' => 'news-years',
+          '#options' => $academic_years,
+        ];
+      }
+      else {
+        $form['years'] = [
+          '#title' => t('Choose year'),
+          // '#attributes' => ['name' => 'years'],
+          '#id' => 'gallery-years',
+          '#type' => 'checkboxes',
+          '#ajax' => [
+            'wrapper' => 'filter-target',
+            'event' => 'change',
+            'callback' => '::filterResults',
+          ],
+          '#options' => $academic_years,
+        ];
+      }
     }
     if ($type=='news'){
       $form['bottom'] = [
@@ -74,6 +108,7 @@ class FilterForm extends FormBase {
           'event' => 'change',
           'callback' => '::filterResults',
         ],
+        '#default_value' => array('all'),
         '#options' => $articleoptions,
       ];
     }
@@ -232,7 +267,11 @@ class FilterForm extends FormBase {
         $form['bottom']['searchgroup']['newsSearchMobile']['#default_value'] = $_REQUEST['newsSearchMobile'];
       }
       if (!empty($_REQUEST['article_type'])) {
-//        $form['bottom']['article_type']['#default_value'] = $_REQUEST['article_type'];
+        $art_def = '';
+        foreach ($_REQUEST['article_type'] as $art_type){
+          $art_def.=empty($art_def)?$art_type:','.$art_type;
+        }
+        $form['bottom']['article_type']['#default_value'] = [$art_def];
       }
     }
     // devel_dump($form);
@@ -307,6 +346,30 @@ class FilterForm extends FormBase {
             }
             else {
               $parameters['years'][$year] = $year;
+            }
+          }
+        }
+      }
+      if (!empty($form_values['article_type'])) {
+        foreach ($form_values['article_type'] as $art_type) {
+          if (!empty($art_type)) {
+            if (empty($parameters['years'])) {
+              $parameters['article_type'][$art_type] = $art_type;
+            }
+            else {
+              $parameters['article_type'][$art_type] = $art_type;
+            }
+          }
+        }
+      }
+      if (!empty($form_values['article_type_mobile'])) {
+        foreach ($form_values['article_type_mobile'] as $art_type) {
+          if (!empty($art_type)) {
+            if (empty($parameters['years'])) {
+              $parameters['article_type_mobile'][$art_type] = $art_type;
+            }
+            else {
+              $parameters['article_type_mobile'][$art_type] = $art_type;
             }
           }
         }

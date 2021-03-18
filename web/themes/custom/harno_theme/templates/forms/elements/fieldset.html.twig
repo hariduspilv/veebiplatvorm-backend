@@ -29,11 +29,18 @@
     'form-wrapper',
   ]
 %}
-{% if element['#id']=='gallery-years' %}
-  <div class="filters-top">
-  <span class="filter-title">{{legend.title}}:</span>
+{% if element['#id']=='gallery-years' or element['#id']=='news-topFilter' %}
+  {% if  not element['#my-id'] == 'news-years' %}
+    <div class="filters-top">
+  {% endif %}
+    {% if legend.title %}
+      <span class="filter-title">{{legend.title}}:</span>
+    {% endif %}
   {{ children }}
-  </div>
+  {% if not element['#my-id'] == 'news-years' %}
+
+        </div>
+        {% endif %}
   {% elseif element['#id']=='galleries-bottomFilter' %}
     <div class="filters-bottom">
       <div class="date-inputs">

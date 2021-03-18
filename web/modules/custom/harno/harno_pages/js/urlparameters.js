@@ -43,7 +43,22 @@ $.formFilter = {
       if ($(this).attr('name') === 'newsSearchMobile') {
         self.options.form.find('#edit-newssearch').val($(this).val());
       }
-
+      if ($(this).attr('name') === 'article_type') {
+        self.options.form.find('#article_type_mobile').val($(this).val());
+      }
+      if ($(this).attr('name') === 'article_type_mobile') {
+        self.options.form.find('#article_type_mobile').val($(this).val());
+      }
+      if($("input[id~='article_type']")){
+        var toFind = '#edit-article-type-mobile-'+$(this)[0].value;
+        var boxToCheck = self.options.form.find(toFind);
+        boxToCheck.prop('checked',$(this)[0].checked);
+      }
+      if($("input[id~='article_type_mobile']")){
+        var toFind = '#edit-article-type-'+$(this)[0].value;
+        var boxToCheck = self.options.form.find(toFind);
+        boxToCheck.prop('checked',$(this)[0].checked);
+      }
       self.pushURL();
     });
     self.options.inputs.on("change", function (e) {
