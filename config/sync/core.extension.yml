@@ -34,6 +34,7 @@ module:
   focal_point: 0
   genpass: 0
   hal: 0
+  harno_blocks: 0
   harno_pages: 0
   harno_settings: 0
   help: 0
