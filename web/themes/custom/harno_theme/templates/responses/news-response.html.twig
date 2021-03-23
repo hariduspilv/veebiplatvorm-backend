@@ -76,7 +76,10 @@
                 <h3>
                   {{ news.getTitle() }}
                 </h3>
-                <span class="date-indicator">{{ news.getCreatedTime()|date('d.m.Y') }}</span>
+                <div class="additional-info">
+                  <span class="date-indicator">{{ news.getCreatedTime()|date('d.m.Y') }}</span>
+                  <span class="author-indicator">{{ news.field_author_name.value }}</span>
+                </div><!--/additional-info-->
               </div>
             </a>
             <!--/gallery-block__gallery-info-->

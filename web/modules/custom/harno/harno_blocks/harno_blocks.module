@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for harno_blocks module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+function harno_blocks_theme($existing, $type, $theme, $path)
+{
+  $items = [];
+  global $base_path;
+  $theme_path = $theme = \Drupal::theme()->getActiveTheme()->getPath();
+  $path = $base_path.'/'.$theme_path.'/templates/blocks';
+
+  $items['harno-news-block'] = [
+    'variables' => [
+      'data' => []
+    ],
+    'path' => $path,
+  ];
+  return $items;
+}

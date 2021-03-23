@@ -184,8 +184,14 @@
 								</div>
 								<!--/__btn-block-->
                 {% if node and node.type.value  %}
-                  {% if node.type.value[0].target_id == 'gallery' %}
+                  {% if node.type.value[0].target_id == 'gallery'  or node.type.value[0].target_id == 'article'%}
+                <div class="header-block__additional-info">
                     <span class="date-indicator">{{ node.created.value|date('d.m.Y') }}</span>
+                  {% if node.type.value[0].target_id == 'article' %}
+                    <span class="author-indicator">{{ node.field_author_name.value }}</span>
+
+                  {% endif %}
+                </div>
                   {% endif %}
                 {% endif %}
 							</div>
@@ -201,6 +207,12 @@
 				</div>
 				<!--/col-12-->
 			</div>
+
+      {% if node and node.type.value  %}
+        {% if node.type.value[0].target_id == 'article' %}
+          {{ drupal_block('hanro_block_more_news') }}
+        {% endif %}
+      {% endif %}
 			<!--/row-->
 		</div>
 		<!--/container-->

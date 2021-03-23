@@ -1,0 +1,6 @@
+name: harno_blocks
+type: module
+description: Harno Blocks for use
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9

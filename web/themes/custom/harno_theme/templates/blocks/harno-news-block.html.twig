@@ -1,0 +1,50 @@
+{% set base_path= base_path ~ directory  %}
+<div class="row">
+  <div class="col-12">
+
+    <div class="header-block">
+      <div class="header-block__title-block">
+        <h1>{{ data.title }}</h1>
+      </div><!--/__title-block-->
+    </div><!--/header-block-->
+    <article class="content-block">
+      <div class="row">
+        {% for news_block in data.items  %}
+
+            {% set media_image = drupal_image( news_block.image.target_id ,'thumbnail') %}
+            {% set alt = '' %}
+            {% if news_block.image.alt  %}
+              {% set alt = news_block.image.alt %}
+            {% endif %}
+            {% set title = '' %}
+            {% if news_block.image.title %}
+              {% set title = news_block.image.title %}
+            {% endif %}
+          <div class="col-3 md-6 sm-12">
+            <a href="{{ news_block.article_link }}" class="news-block">
+              {% if news_block.tag %}
+                <div class="news-block__tag">
+                  <span>{{ news_block.tag }}</span>
+                </div>
+              {% endif %}
+
+              <div class="news-block__thumbnail" style="background-image: url({{ media_image['#uri']|file_url }});">
+                <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" alt="picture with student">
+              </div><!--/gallery-block__thumbnail-->
+              <div class="news-block__news-info">
+                <h3>{{news_block.title}}</h3>
+                <div class="additional-info">
+                  <span class="date-indicator">{{ news_block.created }}0</span>
+                  <span class="author-indicator">{{ news_block.author }}</span>
+                </div>
+              </div><!--/gallery-block__gallery-info-->
+            </a><!--/gallery-block-->
+          </div><!--/col-3 md-6 sm-12-->
+        {% endfor %}
+        <div class="col-12 md-12 sm-12">
+          <a href="{{ data.link }}" class="btn btn-secondary btn-more-news">{{ data.link_name }}</a>
+        </div>
+      </div>
+    </article><!--/content-block-->
+  </div>
+</div><!--/row-->

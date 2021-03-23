@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Theme override of an image.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the img tag.
+ * - style_name: (optional) The name of the image style applied.
+ *
+ * @see template_preprocess_image()
+ */
+#}
+{% if items %}
+  {% for item in items %}
+    {% if item.content['#options'] %}
+      {% set entity_info = item.content['#options'] %}
+    {% endif %}
+    {% if entity_info %}
+      {% set media_image = entity_info.entity.get('field_media_image').getValue[0] %}
+        {% set img_classes = "thumb thumb--landscape" %}
+        {% if media_image %}
+          <div class="image-block">
+            <a class="image-field image-field--landscape" style="background-image: url('{% if media_image %}{{ drupal_image(media_image.target_id,'media_library')['#uri']|file_url }}{% endif %}');" tabindex="0">
+              <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif"  alt="{{ media_image.alt }}" >
+              <span class="gallery-icon" aria-label="{{ "Open picture"|t }}"></span>
+            </a><!--/image-field-->
+          </div><!--/image-block-->
+        {% endif %}
+
+    {% endif %}
+  {% endfor %}
+
+{% endif %}
