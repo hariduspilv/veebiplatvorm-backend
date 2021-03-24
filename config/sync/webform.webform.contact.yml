@@ -219,8 +219,8 @@ handlers:
       from_mail: _default
       from_options: {  }
       from_name: _default
-      subject: '[webform:title] vormi sisestus'
-      body: "[webform_submission:values]\r\n\r\nParimate soovidega\r\n[site:name] \r\n\r\n[site:url]"
+      subject: '[webform:title] vormi kättesaamise kinnitus'
+      body: "Tere [webform_submission:values:name]!\r\n\r\nTäname Teid saadetud e-kirja eest.\r\n\r\nTegemist on automaatvastusega, mis kinnitab, et oleme Teie kirja kätte saanud.\r\nPalume käesolevale kirjale mitte vastata.\r\nKui Teie kiri eeldab vastust, vastame esimesel võimalusel.\r\n\r\nParimate soovidega\r\n[site:name] \r\n\r\n[site:url]\r\n"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
