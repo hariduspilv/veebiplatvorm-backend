@@ -121,7 +121,7 @@ settings:
   draft_pending_multiple_message: ''
   confirmation_type: message
   confirmation_title: ''
-  confirmation_message: 'Your message has been sent.'
+  confirmation_message: 'T&auml;name Teid tagasiside eest!'
   confirmation_url: '<front>'
   confirmation_attributes: {  }
   confirmation_back: true
