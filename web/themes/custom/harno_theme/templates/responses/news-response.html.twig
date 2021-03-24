@@ -58,7 +58,7 @@
         <div class="col-3 md-6 sm-12">
 
           <div class="gallery-block">
-            <a class="gallery-block" aria-label="{{"Open gallery detail view" |t}}" href=" {{ drupal_url('node/'~ news.id) }}">
+            <a class="gallery-block"  href=" {{ drupal_url('node/'~ news.id) }}">
               {% if show_label or sticky %}
                 <div class="news-block__tag {% if sticky %}  active {% endif %}">
                   <span>{{ news_label }}</span>

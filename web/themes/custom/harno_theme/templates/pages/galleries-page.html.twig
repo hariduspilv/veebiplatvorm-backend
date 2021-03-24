@@ -49,7 +49,7 @@
 								<div class="col-3 md-6 sm-12">
 
 									<div class="gallery-block">
-                    <a class="gallery-block" aria-label="{{"Open gallery detail view" |t}}" href=" {{ drupal_url('node/'~ gallery.id) }}">
+                    <a class="gallery-block" href=" {{ drupal_url('node/'~ gallery.id) }}">
 										{% if media_image['#uri'] %}
 											<div class="gallery-block__thumbnail" style="background-image: url({{ media_image['#uri']|file_url }});">
 												<img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" {% if alt %} alt="{{alt}}" {% else %}alt=""{% endif %} {% if title %} title="{{title}}" {% endif %}>
