@@ -242,6 +242,9 @@ function harno_settings_form_webform_ui_element_form_alter(array &$form, FormSta
   if (isset($elements['timepicker'])) {
     $elements['step']['#default_value'] = 900;
   }
+  if (isset($elements['international_initial_country'])) {
+    $elements['international_initial_country']['#default_value'] = 'EE';
+  }
   if (isset($elements['date_date_format'])) {
     $elements['date_date_format']['#options']['d/m/Y'] = 'dd/mm/yyyy';
     $elements['date_date_format']['#default_value'] = 'd/m/Y';
