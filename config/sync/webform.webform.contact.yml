@@ -201,7 +201,7 @@ access:
 handlers:
   email_confirmation:
     id: email
-    label: 'Email confirmation'
+    label: 'Kättesaamise kinnitus'
     notes: ''
     handler_id: email_confirmation
     status: true
@@ -219,14 +219,14 @@ handlers:
       from_mail: _default
       from_options: {  }
       from_name: _default
-      subject: 'Uus "[webform:title]" vormi sisestus [site:name] kooli kodulehel'
-      body: '[webform_submission:values:message:value]'
+      subject: '[webform:title] vormi sisestus'
+      body: "[webform_submission:values]\r\n\r\nParimate soovidega\r\n[site:name] \r\n\r\n[site:url]"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
       exclude_attachments: false
-      html: true
+      html: false
       attachments: false
       twig: false
       debug: false
@@ -238,7 +238,7 @@ handlers:
       parameters: {  }
   email_notification:
     id: email
-    label: 'Email notification'
+    label: 'Email veebilehe administraatorile'
     notes: ''
     handler_id: email_notification
     status: true
@@ -256,14 +256,14 @@ handlers:
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform_submission:values:name:raw]'
-      subject: 'Uus "[webform:title]" vormi sisestus [site:name] kooli kodulehel'
-      body: '[webform_submission:values:message:value]'
+      subject: '[webform:title] vormi sisestus'
+      body: "[webform_submission:values]\r\n\r\nParimate soovidega\r\n[site:name] \r\n\r\n[site:url]"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
       exclude_attachments: false
-      html: true
+      html: false
       attachments: false
       twig: false
       debug: false

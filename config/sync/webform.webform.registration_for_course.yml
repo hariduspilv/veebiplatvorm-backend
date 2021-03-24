@@ -14,7 +14,7 @@ id: registration_for_course
 title: 'Kursusele registreerimine'
 description: ''
 category: 'Vaikimisi ette loodud vormid'
-elements: "first_name:\n  '#type': textfield\n  '#title': Eesnimi\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Perekonnanimi\n  '#required': true\npersonal_code:\n  '#type': number\n  '#title': Isikukood\n  '#help': Number\n  '#required': true\neducation:\n  '#type': radios\n  '#title': Haridus\n  '#options':\n    1: Algharidus\n    2: Põhiharidus\n    3: Üldkeskharidus\n    4: Kutseharidus\n    5: Kõrgharidus\n  '#required': true\naddress:\n  '#type': textfield\n  '#title': Aadress\nemail:\n  '#type': email\n  '#title': E-post\nphone:\n  '#type': tel\n  '#title': Telefon\n  '#required': true\n  '#default_value': '+372'\n  '#international': true\n  '#international_initial_country': EE\npayer:\n  '#type': select\n  '#title': Tasuja\n  '#options':\n    1: ise\n    2: vanemad\n    3: omavalitus\n    4: tasuta\nplease_describe:\n  '#type': textarea\n  '#title': 'Palun kirjeldage, miks te soovite kursusele registreeruda'\n  '#help': '<span data-fm-marker=\"852\">Kirjeldus v&otilde;iks olla essee vormis arutelu</span>'\n  '#required': true"
+elements: "first_name:\n  '#type': textfield\n  '#title': Eesnimi\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Perekonnanimi\n  '#required': true\npersonal_code:\n  '#type': number\n  '#title': Isikukood\n  '#help': Number\n  '#required': true\neducation:\n  '#type': radios\n  '#title': Haridus\n  '#options':\n    1: Algharidus\n    2: Põhiharidus\n    3: Üldkeskharidus\n    4: Kutseharidus\n    5: Kõrgharidus\n  '#required': true\naddress:\n  '#type': textfield\n  '#title': Aadress\nemail:\n  '#type': email\n  '#title': E-post\n  '#required': true\nphone:\n  '#type': tel\n  '#title': Telefon\n  '#required': true\n  '#default_value': '+372'\n  '#international': true\n  '#international_initial_country': EE\npayer:\n  '#type': select\n  '#title': Tasuja\n  '#options':\n    1: ise\n    2: vanemad\n    3: omavalitus\n    4: tasuta\nplease_describe:\n  '#type': textarea\n  '#title': 'Palun kirjeldage, miks te soovite kursusele registreeruda'\n  '#help': '<span data-fm-marker=\"852\">Kirjeldus v&otilde;iks olla essee vormis arutelu</span>'\n  '#required': true"
 css: ''
 javascript: ''
 settings:
@@ -208,7 +208,7 @@ handlers:
       v3_error_message: 'There was an error during validation of your form submission, please try to reload the page and submit form again.'
   e_kiri:
     id: email
-    label: E-kiri
+    label: 'Email veebilehe administraatorile'
     notes: ''
     handler_id: e_kiri
     status: true
@@ -226,16 +226,53 @@ handlers:
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform_submission:values:first_name:raw]'
-      subject: 'Uus "[webform:title]" vormi sisestus [site:name] kooli kodulehel'
-      body: "{{ webform_token('[webform_submission:values]', webform_submission, [], options) }}\r\n"
+      subject: '[webform:title] vormi sisestus'
+      body: "[webform_submission:values]\r\n\r\nParimate soovidega\r\n[site:name] \r\n\r\n[site:url]\r\n"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
       exclude_attachments: false
-      html: true
+      html: false
       attachments: false
-      twig: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+  e_kiri_1:
+    id: email
+    label: 'Kättesaamise kinnitus'
+    notes: ''
+    handler_id: e_kiri_1
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: _default
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: '[webform:title] vormi kättesaamise kinnitus'
+      body: "Tere [webform_submission:values:first_name]!\r\n\r\nTäname Teid saadetud e-kirja eest.\r\n\r\nTegemist on automaatvastusega, mis kinnitab, et oleme Teie kirja kätte saanud.\r\nPalume käesolevale kirjale mitte vastata.\r\nKui Teie kiri eeldab vastust, vastame esimesel võimalusel.\r\n\r\nParimate soovidega\r\n[site:name] \r\n\r\n[site:url]\r\n"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: false
+      attachments: false
+      twig: false
       debug: false
       reply_to: ''
       return_path: ''

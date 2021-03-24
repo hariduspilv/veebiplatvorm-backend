@@ -8,6 +8,8 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\webform\Utility\WebformFormHelper;
+use Drupal\Component\Utility\Variable;
 
 /**
  * Implements hook_help().
@@ -217,6 +219,36 @@ function harno_settings_form_alter(&$form, FormStateInterface $form_state, $form
   }
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @see admin/structure/webform/manage/{webform}/element/{element_key}/edit
+ */
+function harno_settings_form_webform_ui_element_form_alter(array &$form, FormStateInterface $form_state) {
+  $elements = WebformFormHelper::flattenElements($form);
+
+  $properties_hide = [
+    'terms_type',
+    'time_format',
+    'date_date_format',
+    'options_display'
+  ];
+
+  foreach ($properties_hide as $property) {
+    if (isset($elements[$property])) {
+      $elements[$property]['#access'] = FALSE;
+    }
+  }
+  if (isset($elements['timepicker'])) {
+    $elements['step']['#default_value'] = 900;
+  }
+  if (isset($elements['date_date_format'])) {
+    $elements['date_date_format']['#options']['d/m/Y'] = 'dd/mm/yyyy';
+    $elements['date_date_format']['#default_value'] = 'd/m/Y';
+  }
+  // DEBUG: List all properties.
+  //print '<pre>' . Variable::export(array_keys($elements)) . '<pre>'; exit;
+}
 /**
  * Implements hook_entity_bundle_field_info_alter().
  */
