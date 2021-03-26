@@ -231,7 +231,8 @@ function harno_settings_form_webform_ui_element_form_alter(array &$form, FormSta
     'terms_type',
     'time_format',
     'date_date_format',
-    'options_display'
+    'options_display',
+    'submit__label'
   ];
 
   foreach ($properties_hide as $property) {

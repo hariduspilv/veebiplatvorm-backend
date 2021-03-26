@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.worker.field_department
     - field.field.node.worker.field_education
     - field.field.node.worker.field_email
+    - field.field.node.worker.field_identifier
     - field.field.node.worker.field_link
     - field.field.node.worker.field_one_image
     - field.field.node.worker.field_phone
@@ -42,6 +43,7 @@ hidden:
   field_department: true
   field_education: true
   field_email: true
+  field_identifier: true
   field_link: true
   field_one_image: true
   field_phone: true

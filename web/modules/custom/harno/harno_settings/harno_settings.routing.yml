@@ -25,3 +25,12 @@ harno_settings.colors_form:
     _permission: 'administer harno settings'
   options:
     _admin_route: TRUE
+harno_settings.workers_import_form:
+  path: '/admin/config/veebiplatvorm/tootajate-importimine'
+  defaults:
+    _form: '\Drupal\harno_settings\Form\HarnoWorkersImportForm'
+    _title: 'Töötajate andmete importimine failist'
+  requirements:
+    _permission: 'administer harno settings'
+  options:
+    _admin_route: TRUE

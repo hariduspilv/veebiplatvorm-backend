@@ -17,3 +17,8 @@ harno_settings.colors_form:
   description: 'Kasutaja saab sisestada ja muuta veebilehele põhivärvitooni ja lisatooni.'
   route_name: harno_settings.colors_form
   parent: harno_settings.admin_index
+harno_settings.workers_import_form:
+  title: 'Töötajate andmete importimine failist'
+  description: 'Kasutaja saab importida failiga haridusasutuse töötajate andmeid. Failis olevate andmete põhjal lisatakse uued töötajate kirjed või uuendatakse olemasolevaid kirjeid.'
+  route_name: harno_settings.workers_import_form
+  parent: harno_settings.admin_index
