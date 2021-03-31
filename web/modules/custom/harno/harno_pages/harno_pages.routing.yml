@@ -24,3 +24,10 @@ harno_pages.news.autocomplete:
     _controller: '\Drupal\harno_pages\Controller\AutocompleteController::handleNewsAutocomplete'
   requirements:
     _permission: 'access content'
+harno_pages.workers:
+  path: 'workers'
+  defaults:
+    _controller: '\Drupal\harno_pages\Controller\WorkersController::index'
+    _title: 'Workers'
+  requirements:
+    _permission: 'access content'

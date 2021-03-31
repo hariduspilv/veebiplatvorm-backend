@@ -18,6 +18,11 @@ function harno_pages_theme($existing, $type, $theme, $path)
       'variables' => ['content' => [],'pager'=>[],'academic_years'=>[]],
       'path' => 'themes/custom/harno_theme/templates/pages',
     ],
+    'workers-page' => [
+      'template' => 'workers-page',
+      'variables' => ['content' => [],'filters'=>[]],
+      'path' => 'themes/custom/harno_theme/templates/pages',
+    ],
     'galleries-response' => [
       'template' => 'galleries-response',
       'variables' => ['content' => [],'pager'=>[],'academic_years'=>[]],

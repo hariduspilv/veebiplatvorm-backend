@@ -42,7 +42,6 @@ class NewsController extends ControllerBase {
     $query->sort('field_academic_year.entity.field_date_range', 'DESC');
     $query->sort('created', 'DESC');
     if (!empty($_REQUEST)) {
-
       if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $parameters = $_GET;
       }
