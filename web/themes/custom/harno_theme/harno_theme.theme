@@ -250,7 +250,7 @@ function harno_theme_preprocess_field(&$vars){
                     }
                     if(!empty($link) && !empty($link_text)){
                       if ($external_test){
-                        $new_full_link = '<a target="_blank" href="'.$link.'"><span class="sr-only">'.t( "link opens on new page" ).'</span><i class="mdi mdi-open-in-new" aria-label="'.$link_text.'"></i>'.$link_text.'</a>';
+                        $new_full_link = '<a class="link-in-new" target="_blank" href="'.$link.'">'.$link_text.'<span class="sr-only">'.t( "link opens on new page" ).'</span><i class="mdi mdi-open-in-new" aria-label="'.$link_text.'"></i></a>';
                       }
                       else{
                         $new_full_link = '<a href="'.$link.'"><i class="mdi mdi-link-variant"></i>'.$link_text.'</a>';
