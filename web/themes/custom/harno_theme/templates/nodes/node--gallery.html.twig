@@ -160,8 +160,8 @@
           </div><!--/gallery-editing-info-->
         </div><!--/col-4 sm-hide-->
       </div>
-      <div class="row md-hide sm-hide">
-        <div class="col-8 md-12">
+      <div class="row">
+        <div class="col-8 md-12 sm-12 gallery-mobile-bottom-padding">
           <div class="picture-container" id="gallery">
 
             <div class="picture-holder">
@@ -183,7 +183,7 @@
           </div><!--/picture-container-->
         </div><!--/col-8 md-6 sm-12-->
 
-        <div class="col-4 md-6">
+        <div class="col-4 md-12 sm-12 gallery-mobile-top-padding">
           <div class="thumbs-container">
             <ul class="gallery-thumbs">
           {% for image in node.field_images.value  %}
@@ -215,56 +215,18 @@
 
               </ul><!--/paginator-->
             </nav><!--/paginator-block-->
+            <div class="gallery-mobile-bottom md-show sm-show">
+              <div class="image-page"></div>
+              <span class="gallery-editing-info">
+                        <p>{{ "Last changed" }} {{ node.changed.value | date('d.m.Y') }}</p>
+                      </span>
+            </div>
           </div>
         </div>
 
 
       </div>
-      <div class="row md-show sm-show">
-        <div class="md-12 sm-12">
-          <div class="image-block">
-            {% for image in node.field_images.value  %}
 
-              {% set target_id = image.target_id %}
-              {% set image = drupal_entity('media',target_id) %}
-              {% if image['#media'].field_media_image %}
-                {% set media_image = image['#media'].field_media_image.value %}
-                {% if media_image[0] %}
-                  {% set media_image = media_image[0] %}
-                {% endif %}
-              {% endif %}
-              {% if media_image %}
-                {% if loop.first %}
-                  <a class="image-field image-field--landscape" style="background-image: url('{% if media_image %}{{ drupal_image(media_image.target_id,'media_library')['#uri']|file_url }}{% endif %}');" tabindex="0" data-plugin="modalOpener">
-                    <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif"  alt="{{ media_image.alt }}" >
-                    <span class="gallery-icon" aria-label="{{ "Open gallery"|t }}"></span>
-                  </a><!--/image-field-->
-                  <ul class="thumbnails-field">
-                  {% else %}
-                    <li class="visible-thumb">
-                      <a class="thumb thumb--portrait" href="#" style="background-image: url('{% if media_image %}{{ drupal_image(media_image.target_id,'media_library')['#uri']|file_url }}{% endif %}');" tabindex="0">
-                        <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" alt="{{ media_image.alt }}" >
-                      </a>
-                    </li>
-                    {% if loop.last %}
-                      </ul><!--/thumbnails-field-->
-                    {% endif %}
-                {% endif %}
-              {% endif %}
-
-            {% endfor %}
-          </div><!--/image-block-->
-
-          <div class="picture-count">
-            <span>{{ node.field_images.value|length }} {{ "pictures" |t }}</span>
-          </div><!--/picture-count-->
-
-          <div class="mobile-gallery-editing-info">
-            <span>{{ "Last changed" }} {{ node.changed.value | date('d.m.Y') }}</span>
-          </div><!--/gallery-editing-info-->
-
-        </div><!--/md-12 sm-12-->
-      </div><!--/row sm-show-->
     </div>
     <div class="picture-modal">
       <div class="picture-modal__container">
