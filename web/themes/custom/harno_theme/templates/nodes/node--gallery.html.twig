@@ -197,11 +197,14 @@
             {% endif %}
             {% if media_image %}
               <li>
-                <a href="javascript:void(0);" class="gallery-image-item"
+                <a href="javascript:void(0);" aria-label="{{ "Open as big picture" |t }}" class="gallery-image-item"
                    style="background-image: url('{% if media_image %}{{ drupal_image(media_image.target_id,'media_library')['#uri']|file_url }}{% endif %}');"
                    data-image="{% if media_image %}{{ drupal_image(media_image.target_id)['#uri']|file_url }}{% endif %}"
                    title="{{ media_image.title }}" tabindex="0">
-                  <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" alt="{{ media_image.alt }}">
+                  <div class="galleri-image-item">
+
+                    <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" {% if media_image.alt %} alt="{{ media_image.alt }}" {% else %}alt=""{% endif%}>
+                  </div>
                 </a><!--/image-field-->
               </li>
             {% endif %}
