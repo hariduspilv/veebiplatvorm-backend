@@ -32,5 +32,5 @@
   {% elseif element['#id'] == 'edit-searchbutton' %}
     <button{{ attributes.removeClass('btn-primary') }}>{{ element['#value'] }}</button>{{ children }}
 {% else %}
-	<input{{attributes}}/>{{ children }}
+	<input {{attributes}}/>{{ children }}
 {% endif %}
