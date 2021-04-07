@@ -1,0 +1,18 @@
+uuid: 9793147f-918f-4b6c-a57d-662a30b1d43e
+langcode: et
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Asukoht
+type: location
+description: 'Haridusasutus saab luua asukoha lehe erinevate hoonete jaoks.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

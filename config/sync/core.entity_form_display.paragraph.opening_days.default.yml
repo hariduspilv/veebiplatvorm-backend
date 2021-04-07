@@ -1,0 +1,71 @@
+uuid: 06bf3936-8f25-45dd-8620-a7f303ee285f
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.opening_days.field_closed
+    - field.field.paragraph.opening_days.field_closing_time
+    - field.field.paragraph.opening_days.field_opening_time
+    - field.field.paragraph.opening_days.field_week_day
+    - paragraphs.paragraphs_type.opening_days
+  module:
+    - conditional_fields
+    - time_field
+id: paragraph.opening_days.default
+targetEntityType: paragraph
+bundle: opening_days
+mode: default
+content:
+  field_closed:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_closing_time:
+    weight: 3
+    settings:
+      enabled: false
+      step: 5
+    third_party_settings: {  }
+    type: time_widget
+    region: content
+  field_opening_time:
+    weight: 2
+    settings:
+      enabled: false
+      step: 5
+    third_party_settings:
+      conditional_fields:
+        1400fc61-7d18-41f0-8471-eadc8e6be09d:
+          dependee: field_closed
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: 1
+            effect: fade
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
+          entity_type: paragraph
+          bundle: opening_days
+    type: time_widget
+    region: content
+  field_week_day:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+hidden:
+  created: true
+  status: true
