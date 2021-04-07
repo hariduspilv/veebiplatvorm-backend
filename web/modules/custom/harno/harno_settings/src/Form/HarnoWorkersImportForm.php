@@ -15,7 +15,7 @@ use Drupal\Component\Utility\UrlHelper;
  */
 class HarnoWorkersImportForm extends FormBase {
 
-  protected $columns = ['Töötaja identifikaator', 'Nimi', 'Osakond ja töötaja järjekorra number osakonnas',
+  protected $columns = ['Töötaja identifikaator', 'Nimi (nii ees- kui ka perekonnanimi)', 'Osakond ja töötaja järjekorra number osakonnas',
     'Ametikoht', 'Telefon', 'E-post', 'Lisainformatsioon', 'Vastuvõtuaeg', 'Haridus', 'CV veebilingina'];
   /**
    * The entity type manager.
@@ -82,23 +82,44 @@ class HarnoWorkersImportForm extends FormBase {
     $data = $importer->get();
     foreach ($data as $i => $row) {
       $row_index = $i + 1;
-      $identifier = $this->trimText ($row[0]);
-      $name = $this->trimText ($row[1]);
-      $departments = $this->trimText ($row[2]);
-      $positions = $this->trimText ($row[3]);
-      $phones = explode ('|', $row[4]);
-      foreach ($phones as $j => &$p) {
-        $p = $this->trimText($p);
+      $identifier = $name = $departments = $positions = $phones = $email = $body = $consultation_hours = $education = $link = '';
+      if ( !empty($row[0]) ) {
+        $identifier = $this->trimText($row[0]);
       }
-      $email = $this->trimText ($row[5]);
-      $body = $this->trimText ($row[6]);
-      $consultation_hours = explode ('|', $row[7]);
-      foreach ($consultation_hours as $j => &$c) {
-        $c = $this->trimText($c);
+      if ( !empty($row[1]) ) {
+        $name = $this->trimText($row[1]);
       }
-      $education = $this->trimText ($row[8]);
-      $link = $this->trimText ($row[9]);
-      $messenger->addStatus('Row ' . $row_index . ': ' . print_r($row,1));
+      if ( !empty($row[2]) ) {
+        $departments = $this->trimText($row[2]);
+      }
+      if ( !empty($row[3]) ) {
+        $positions = $this->trimText($row[3]);
+      }
+      if ( !empty($row[4]) ) {
+        $phones = explode('|', $row[4]);
+        foreach ($phones as $j => &$p) {
+          $p = $this->trimText($p);
+        }
+      }
+      if ( !empty($row[5]) ) {
+        $email = $this->trimText($row[5]);
+      }
+      if ( !empty($row[6]) ) {
+        $body = $this->trimText($row[6]);
+      }
+      if ( !empty($row[7]) ) {
+        $consultation_hours = explode('|', $row[7]);
+        foreach ($consultation_hours as $j => &$c) {
+          $c = $this->trimText($c);
+        }
+      }
+      if ( !empty($row[8]) ) {
+        $education = $this->trimText($row[8]);
+      }
+      if ( !empty($row[9]) ) {
+        $link = $this->trimText($row[9]);
+      }
+      #$messenger->addStatus('Row ' . $row_index . ': ' . print_r($row,1));
 
       if ( empty($identifier) ) {
         $messenger->addMessage('Puudub väärtus veerus "'.$this->columns[0].'" real ' . $row_index .'.', 'warning');
@@ -149,7 +170,7 @@ class HarnoWorkersImportForm extends FormBase {
         }
         $departments_array[$j][0] = reset($department_id);
         $departments_array[$j][1] = $department_jrk;
-        $messenger->addStatus('$departments_array: ' . print_r($departments_array,1));
+        #$messenger->addStatus('$departments_array: ' . print_r($departments_array,1));
 
       }
 
@@ -175,8 +196,7 @@ class HarnoWorkersImportForm extends FormBase {
           $position_id = [$position_create->id()];
         }
         $positions_array[$j] = reset($position_id);
-        $messenger->addStatus('$positions_array: ' . print_r($positions_array,1));
-
+        #$messenger->addStatus('$positions_array: ' . print_r($positions_array,1));
       }
 
       try {
@@ -244,7 +264,7 @@ class HarnoWorkersImportForm extends FormBase {
             $insert++;
           }
           else {
-            $messenger->addStatus('$node_id ' . print_r($node_id,1) .'.');
+            #$messenger->addStatus('$node_id ' . print_r($node_id,1) .'.');
             $node = \Drupal::entityTypeManager()->getStorage('node')->load(reset($node_id));
             $node->setTitle($name);
             $node->set('field_position', reset($positions_array));
@@ -335,8 +355,16 @@ class HarnoWorkersImportForm extends FormBase {
       }
 
     }
-    $messenger->addStatus('Lisati ' . $insert . ' töötajat ja uuendati '  . $update . ' töötaja andmed.');
+    $message = t('Lisati @insert töötajat ja uuendati @update töötaja andmed CSV failist.',
+      [
+        '@insert' => $insert,
+        '@update' => $update,
+      ]);
+    \Drupal::logger('harno_settings')->notice($message);
+    $messenger->addStatus($message);
+
   }
+
   public function trimText($text) {
     return trim(str_replace(['\t','\n','\r','\0','\x0B'], '', $text));
   }

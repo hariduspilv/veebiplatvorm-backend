@@ -1,4 +1,4 @@
-# Schema for the configuration files of the Hitsa settings module.
+# Schema for the configuration files of the Harno settings module.
 
 harno_settings.settings:
   type: config_object
