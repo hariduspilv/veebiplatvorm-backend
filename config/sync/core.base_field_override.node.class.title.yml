@@ -11,7 +11,7 @@ bundle: class
 label: 'Lennu nimi'
 description: ''
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
