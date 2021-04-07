@@ -36,8 +36,9 @@
 {% if content %}
 {% if content['#items'] %}
   {% set active_submenu = false %}
-<ul role="navigation" class="side-menu" data-plugin="dropdownMenu">
+  <ul role="navigation" class="side-menu" data-plugin="dropdownMenu">
   {% for menu_item in content['#items'] %}
+
   {% if menu_item.below %}
     {% for submenuitem in menu_item.below  %}
       {% if submenuitem.in_active_trail %}
@@ -77,7 +78,8 @@
     {% endif %}
 {#    {{ dd(below_class) }}#}
   <li{{menu_item.attributes.removeClass('has-dropdown','contextual-region','open'.remove_class).addClass(below_class)}}>
-
+    {% if loop.first %}
+    {% endif %}
     {% if menu_item.in_active_trail  %}
     {% set link_class = 'active' %}
     {% else %}
@@ -104,9 +106,9 @@
     {% endif %}
     {% endfor %}
     {% endif %}
-    <a class="{{ link_class }}" {% if menu_item.url.external %} target="_blank"
+    <a {% if menu_item.url.external %} target="_blank"
       aria-label="{{"Link opens on new page"|t}}" {% endif %} title="{{link_desc}}" {% if has_url %} href="{{main_url}}"
-      {% endif %}" {% if menu_item.in_active_trail %} {% if not menu_item.below %} aria-current="page" {% else %}
+      {% endif %}" {% if menu_item.in_active_trail %} style="display:none;" {% if not menu_item.below %} aria-current="page" {% else %}
       aria-expanded="true" {% endif %} {% else %} {% if menu_item.below %} aria-expanded="false" {% endif %}{% endif %}>
       {{ menu_item.title }}
       {% if menu_item.url %}
@@ -116,8 +118,15 @@
       {% endif %}
     </a>
     {% if menu_item.below %}
-    <ul class="sub-dropdown">
-      {% for item_below in menu_item.below %}
+    {% if menu_item.in_active_trail %}
+
+    <ul class="sub-dropdown show">
+    {% else %}
+
+    <ul class="sub-dropdown ">
+    {% endif %}
+          {% for item_below in menu_item.below %}
+
       {% set link_options = item_below.url.getOption('attributes') %}
       {% if link_options.title %}
       {% set link_desc = link_options.title %}
@@ -144,14 +153,21 @@
       {# {% set link_class = link_class ~ 'link-out' %} #}
       {% endif %}
       {% endif %}
-      <li><a class="{{link_class}}" title="{{link_desc}}" {% if link_ext %} target="_blank"
+      <li>
+        {% if loop.first %}
+        {% endif %}
+        <a style="display: none;"  class="{{ link_class }}" title="{{link_desc}}" {% if link_ext %} target="_blank"
           aria-label="{{"Link opens on new page"|t}}" {% endif %} {% if has_burl %} href="{{below_url}}" {% endif %}
-          {% if item_below.in_active_trail %}aria-current="page" {% endif %}>{{item_below.title}}
+          {% if item_below.in_active_trail %} aria-current="page" {% endif %}>{{item_below.title}}
           {% if link_ext %}
           <i aria-label="{{"Link opens on new page"|t}}" class="mdi mdi-open-in-new"></i>
           {% endif %}
-        </a></li>
+        </a>
+          <a href="#"  style="{% if item_below.in_active_trail %}display: block;{% else %} display: none;{% endif %}" class="back-to-menu"><i class="mdi mdi-chevron-left" aria-hidden="true"></i>{{ "Back" |t }}</a>
+
+      </li>
       {% endfor %}
+
       <li class="show-more" data-showmore="{{"Show more" |t}}" data-showless="{{"Show less"|t}}">
         <button class="btn btn-show-more" aria-expanded="false"><span>{{"Show more" |t}}</span><i
             class="mdi mdi-menu-down"></i></button>
@@ -160,6 +176,9 @@
     {% endif %}
     </li>
     {% endfor %}
+    {% if loop.count<=3 %}
+      {% set active_submenu = true %}
+    {% endif %}
     <li class="show-more" {% if active_submenu %}  style="display: none;" {% endif %} data-showmore="{{"Show more" |t}}" data-showless="{{"Show less"|t}}">
       <button class="btn btn-show-more" aria-expanded="false"><span>{{"Show more" |t}}</span><i
           class="mdi mdi-menu-down"></i></button>
