@@ -4,14 +4,14 @@
     var target = argument['#attributes']['data-drupal-selector'];
     var HTMLtarget = $('input#'+target);
     var focusTrap = $('a#focus-trap');
-    await sleep(500);
+    await sleep(200);
     document.getElementById(target).blur();
     var checked = HTMLtarget[0].checked;
     if(checked == true){
       document.getElementById(target).setAttribute('aria-label', 'checked');
     }
     else{
-      document.getElementById(target).setAttribute('aria-label', 'unchecked');
+      document.getElementById(target).setAttribute('aria-label', 'not checked');
     }
 
     document.getElementById(target).focus();

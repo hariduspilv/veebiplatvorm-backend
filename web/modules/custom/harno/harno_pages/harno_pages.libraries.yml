@@ -4,3 +4,8 @@ harno_pages:
   dependencies:
     - core/jquery
     - core/jquery.once
+filter_focus:
+      js:
+        js/filterfocus.js: { }
+
+

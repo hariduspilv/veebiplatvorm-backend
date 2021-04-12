@@ -414,13 +414,13 @@ class FilterForm extends FormBase {
       '#type' => 'pager',
       '#parameters' => $parameters,
     ];
-    $build['#attached']['library'][] = 'harno_pages/filter_focus';
+//    $build['#attached']['library'][] = 'harno_pages/filter_focus';
     $response = new AjaxResponse();
     $dialogText['#attached']['library'][] = 'harno_pages/harno_pages';
 //    $response['#attached']['library'][] = 'harno_pages/js/urlparameters.js';
     $response->addCommand(new HtmlCommand('#mobile-active-filters', $filters));
     $response->addCommand(new ReplaceCommand('#filter-target',$build));
-    $response->addCommand(new InvokeCommand(NULL, 'filterFocus', [$form_state->getTriggeringElement()]));
+//    $response->addCommand(new InvokeCommand(NULL, 'filterFocus', [$form_state->getTriggeringElement()]));
 
     //    $response->addCommand(new UpdateSelectionCommand());
 
