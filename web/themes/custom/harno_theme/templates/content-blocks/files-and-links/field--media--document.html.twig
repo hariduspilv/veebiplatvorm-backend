@@ -51,20 +51,26 @@
   {% set file_size = file_size/1000 %}
   {% set file_size = file_size|round(2) %}
   {% set file_size = file_size|number_format %}
+  {% set download = false %}
   {% if file_extension == 'pdf' %}
     {% set aria_label = 'PDF'|t %}
     {% set file_class = 'mdi-file-pdf' %}
+
+    {% set download = true %}
   {% elseif file_extension == 'docx' or file_extension=='doc'   %}
     {% set aria_label = 'text document'|t %}
     {% set file_class = 'mdi-file-word' %}
+    {% set download = true %}
   {% elseif file_extension in ['txt','odt','rtf']  %}
 
     {% set aria_label = 'text document'|t %}
     {% set file_class = 'mdi-note-text' %}
+    {% set download = true %}
     {% elseif file_extension in ['xlsx','xls','ods','odf']  %}
 
       {% set aria_label = 'table file'|t %}
       {% set file_class = 'mdi-file-chart' %}
+      {% set download = true %}
     {% elseif file_extension == 'wav' or file_extension =='avi' %}
       {% set aria_label = 'audio file'|t %}
       {% set file_class = 'mdi-file-music' %}
@@ -77,13 +83,19 @@
     {% elseif file_extension in ['ppt','pptx','odp'] %}
       {% set aria_label = 'presentation'|t %}
       {% set file_class = 'mdi-file-powerpoint' %}
+      {% set download = true %}
+    {% elseif file_extension in ['odg'] %}
+      {% set aria_label = 'file'|t %}
+      {% set file_class = 'mdi-file' %}
+      {% set download = true %}
   {% else %}
     {% set file_class = 'mdi-file' %}
+    {% set download = true %}
   {% endif %}
 {% endif %}
 {% if name and uri %}
-  <a href="{{ uri |file_url}}">
-    <i class="mdi {{ file_class }}" aria-label="{{ aria_label }}"></i>{{ name }}</a>
+  <a href="{{ uri |file_url}}" {% if download %} download {% endif %}>
+    <i class="mdi {{ file_class }}" aria-label="{{ aria_label }} {% if download %} {{ "downloadable" |t }} {% else %} {{ "opens on new tab " |t}} {% endif %}"></i>{{ name }}</a>
 {#  {% if file_size < 1 %}#}
 {#    (~1MB)#}
 {#  {% else %}#}
