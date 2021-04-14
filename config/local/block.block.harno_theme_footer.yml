@@ -13,7 +13,7 @@ _core:
 id: harno_theme_footer
 theme: harno_theme
 region: header
-weight: 0
+weight: -6
 provider: null
 plugin: 'system_menu_block:footer'
 settings:

@@ -11,7 +11,7 @@ bundle: menu_link_content
 label: 'Menüüviite pealkiri'
 description: 'Menüüs kuvatav nimetus sellele viitele.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

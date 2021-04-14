@@ -37,27 +37,7 @@ content:
       enabled: false
       step: 5
     third_party_settings:
-      conditional_fields:
-        1400fc61-7d18-41f0-8471-eadc8e6be09d:
-          dependee: field_closed
-          settings:
-            state: visible
-            condition: value
-            grouping: AND
-            values_set: 1
-            value: ''
-            values: {  }
-            value_form:
-              value: 1
-            effect: fade
-            effect_options:
-              fade:
-                speed: '400'
-              slide:
-                speed: '400'
-            selector: ''
-          entity_type: paragraph
-          bundle: opening_days
+      conditional_fields: {  }
     type: time_widget
     region: content
   field_week_day:

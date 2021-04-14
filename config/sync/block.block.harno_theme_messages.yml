@@ -1,6 +1,6 @@
 uuid: a65c7c2b-c27e-43ec-980c-869de3f8efff
 langcode: et
-status: false
+status: true
 dependencies:
   module:
     - system
@@ -10,8 +10,8 @@ _core:
   default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
 id: harno_theme_messages
 theme: harno_theme
-region: header
-weight: 0
+region: content
+weight: -9
 provider: null
 plugin: system_messages_block
 settings:

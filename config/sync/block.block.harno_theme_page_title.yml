@@ -9,7 +9,7 @@ _core:
 id: harno_theme_page_title
 theme: harno_theme
 region: content
-weight: -50
+weight: -10
 provider: null
 plugin: page_title_block
 settings:

@@ -30,6 +30,7 @@
         "drupal/focal_point": "^1.4",
         "drupal/genpass": "1.x-dev",
         "drupal/honeypot": "^2.0",
+        "drupal/language_switcher_extended": "^1.0@beta",
         "drupal/linkit": "^6.0",
         "drupal/login_redirect_per_role": "^1.7",
         "drupal/maillog": "^1.0@beta",

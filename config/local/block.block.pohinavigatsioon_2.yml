@@ -11,7 +11,7 @@ dependencies:
 id: pohinavigatsioon_2
 theme: harno_theme
 region: header
-weight: 0
+weight: -9
 provider: null
 plugin: 'menu_block:main'
 settings:
