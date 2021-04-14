@@ -74,7 +74,7 @@ class HarnoColorsForm extends ConfigFormBase {
       '#title' => 'Lisatoon',
       '#required' => TRUE,
       '#default_value' => $config->get('color.additional'),
-      '#description' => 'Valitud värvikood on: <strong id="edit-color-additional-code">' . $config->get('color.additional') . '</strong><br/> Kontrolli kontrastsust <a href="https://webaim.org/resources/contrastchecker/" target="_blank">siin</a>.',
+      '#description' => 'Valitud värvikood on: <strong id="edit-color-additional-code">' . $config->get('color.additional') . '</strong><br/><a href="https://webaim.org/resources/contrastchecker/" target="_blank">WCAG kontrastsuse kontroll</a>',
     );
     $form['#attached']['library'][] = 'harno_settings/color_calculate';
     return $form;
