@@ -1,4 +1,4 @@
-label: 'Taksonoomia termin'
+label: 'Taxonomy term'
 description: 'Teatud taksonoomia termiga seotud sisu.'
 display:
   default:

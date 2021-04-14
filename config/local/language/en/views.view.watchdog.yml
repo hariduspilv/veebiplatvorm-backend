@@ -15,7 +15,7 @@ display:
         message:
           label: Teade
         name:
-          label: Kasutaja
+          label: User
       filters:
         severity:
           expose:

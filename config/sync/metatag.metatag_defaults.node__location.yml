@@ -1,0 +1,18 @@
+uuid: 67c10e4f-ce4d-41f7-a9d7-7598965f7470
+langcode: et
+status: true
+dependencies: {  }
+id: node__location
+label: 'Sisu: Asukoht'
+tags:
+  canonical_url: '[node:url]'
+  description: '[node:summary]'
+  title: '[node:title] | [site:name]'
+  schema_organization_address: 'a:3:{s:5:"@type";s:13:"PostalAddress";s:15:"addressLocality";s:20:"[node:field_address]";s:14:"addressCountry";s:2:"EE";}'
+  schema_organization_description: '[node:title]'
+  schema_organization_id: '[node:url]'
+  schema_organization_name: '[site:name]'
+  schema_organization_opening_hours_specification: 'a:4:{s:5:"@type";s:25:"OpeningHoursSpecification";s:9:"dayOfWeek";s:47:"[node:field_opening_days:entity:field_week_day]";s:5:"opens";s:51:"[node:field_opening_days:entity:field_opening_time]";s:6:"closes";s:51:"[node:field_opening_days:entity:field_closing_time]";}'
+  schema_organization_telephone: '[node:field_phones_3]'
+  schema_organization_type: EducationalOrganization
+  schema_organization_url: '[site:url]'

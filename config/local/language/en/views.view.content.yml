@@ -1,4 +1,4 @@
-label: Sisu
+label: Content
 description: 'Otsi ja halda lehe sisu.'
 display:
   default:
@@ -34,14 +34,14 @@ display:
         langcode:
           expose:
             label: Keel
-      title: Sisu
+      title: Content
       empty:
         area_text_custom:
           content: 'Sisu puudub.'
   page_1:
     display_options:
       menu:
-        title: Sisu
+        title: Content
       tab_options:
-        title: Sisu
+        title: Content
         description: 'Otsi ja halda sisu'
