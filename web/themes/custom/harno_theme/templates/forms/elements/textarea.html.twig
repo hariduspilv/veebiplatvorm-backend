@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override for a 'textarea' #type form element.
+ *
+ * Available variables
+ * - wrapper_attributes: A list of HTML attributes for the wrapper element.
+ * - attributes: A list of HTML attributes for the <textarea> element.
+ * - resizable: An indicator for whether the textarea is resizable.
+ * - required: An indicator for whether the textarea is required.
+ * - value: The textarea content.
+ *
+ * @see template_preprocess_textarea()
+ */
+#}
+<div{{ wrapper_attributes }}>
+
+</div>
+<div class="form-item custom-textarea {% if element['#help'] %} help-text {% endif %}" data-plugin="movingLabel" role="alert" {% if element['#help'] %}aria-label="{{element['#help']}}" {% endif %}>
+  <label for="{{ element['#id'] }}" class="form-label">{{element['#title']}}{% if element['#required'] %} * {% endif %}</label>
+  <textarea{{ attributes }}>{{ value }}</textarea>
+  {% if element['#help'] %}
+    <span class="form-help-text">{{element['#help']}}</span>
+  {% endif %}
+</div><!--/form-item custom-textarea-->

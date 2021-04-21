@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override for a 'radios' #type form element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The rendered radios.
+ *
+ * @see template_preprocess_radios()
+ */
+#}
+{% set classes = [
+  'radio-list'
+] %}
+
+<div{{ attributes.addClass(classes).setAttribute('aria-labelledby',element['#id'] ).setAttribute('role','group') }}>
+
+  <span id="{{ element['#id'] }}" class="sr-only">{{ element['#title'] }}</span>
+  <span id="{{ element['#id'] }}" class="input-list-header">{{ element['#title'] }}</span>
+  {{ children }}</div>

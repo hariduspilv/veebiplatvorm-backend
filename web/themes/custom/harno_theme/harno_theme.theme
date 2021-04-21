@@ -228,6 +228,17 @@ function harno_theme_preprocess_pager(&$vars){
     }
   }
 }
+function harno_theme_preprocess_checkboxes(&$vars){
+  if(isset($vars['element']['#webform_element'])){
+    if(isset($vars['element']['#options'])){
+      foreach ($vars['element']['#options'] as $key =>$option){
+        if (isset($vars['element'][$key])){
+          $vars['element'][$key]['#webform_element'] = true;
+        }
+      }
+    }
+  }
+}
 function harno_theme_preprocess_field(&$vars){
   if($vars['field_name']=='body' or $vars['field_name']=='field_body'){
     if(!empty($vars['items'])){

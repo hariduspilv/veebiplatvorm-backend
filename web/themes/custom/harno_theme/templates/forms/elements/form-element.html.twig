@@ -44,73 +44,122 @@
  * @see template_preprocess_form_element()
  */
 #}
-{%
-  set classes = [
-    'js-form-item',
-    'form-item',
-    'js-form-type-' ~ type|clean_class,
-    'form-item-' ~ name|clean_class,
-    'js-form-item-' ~ name|clean_class,
-    title_display not in ['after', 'before'] ? 'form-no-label',
-    disabled == 'disabled' ? 'form-disabled',
-    errors ? 'form-item--error',
-  ]
-%}
-{%
-  set description_classes = [
-    'description',
-    description_display == 'invisible' ? 'visually-hidden',
-  ]
-%}
+{% set classes = [
+  'js-form-item',
+  'form-item',
+  'js-form-type-' ~ type|clean_class,
+  'form-item-' ~ name|clean_class,
+  'js-form-item-' ~ name|clean_class,
+  title_display not in ['after', 'before'] ? 'form-no-label',
+  disabled == 'disabled' ? 'form-disabled',
+  errors ? 'form-item--error',
+] %}
+{% set description_classes = [
+  'description',
+  description_display == 'invisible' ? 'visually-hidden',
+] %}
 {% if type=="checkbox" %}
   {% if "article_type" in element['#name'] %}
     <div class="filters-tags__button">
-      <label for="{{ element['#id'] }}">{{label['#title']}}</label>
+      <label for="{{ element['#id'] }}">{{ label['#title'] }}</label>
       {{ children }}
-      <span  class="btn btn-tag">{{label['#title']}}</span>
+      <span class="btn btn-tag">{{ label['#title'] }}</span>
     </div><!--/filters-tags__button-->
-    {% else %}
+  {% else %}
+    {% if not element['#webform_element'] %}
+      {% if element['#attributes']['checkbox-type'] == 'collect' %}
 
-      <span {{ attributes.addClass('btn-input') }}>
+        <span {{ attributes.addClass('btn-input') }}>
   <label for="{{ element['#id'] }}">{{ label['#title'] }}</label>
   {{ children }}
   <span class="btn btn-tag">{{ label['#title'] }}</span>
 </span>
+      {% else %}
+<div class="custom-control custom-checkbox custom-form-inline" tabindex="0">
+        {{ children }}
+</div>
+      {% endif %}
+    {% else %}
+      <div {{ attributes.addClass(classes) }}>{{ children }}
+        {% if suffix is not empty %}
+          <span class="field-suffix">{{ suffix }}</span>
+        {% endif %}
+        {% if label_display == 'after' %}
+          {{ label }}
+        {% endif %}
+        {% if errors %}
+          <div class="form-item--error-message">
+            <strong>{{ errors }}</strong>
+          </div>
+        {% endif %}
+        {% if description_display in ['after', 'invisible'] and description.content %}
+          <div{{ description.attributes.addClass(description_classes) }}>
+            {{ description.content }}
+          </div>
+        {% endif %}
+      </div>
+
+    {% endif %}
+
   {% endif %}
-  {% elseif element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name']=='gallerySearch' or element['#name'] == 'gallerySearchMobile' or element['#name']=='newsSearch' or element['#name']== 'newsSearchMobile' %}
-    <div class="form-item {% if element['#name']=='date_start' or element['#name']=='date_end'%}custom-date{% endif%} {% if element['#name'] in ['gallerySearchMobile','gallerySearch','newsSearch','newsSearchMobile'] %} search-input{% endif %}" data-plugin="movingLabel">
-      <label class="form-label" for="{{ element['#id'] }}">{{ label['#title'] }}</label>
-      {{ children }}
-    </div>
+{% elseif element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name']=='gallerySearch' or element['#name'] == 'gallerySearchMobile' or element['#name']=='newsSearch' or element['#name']== 'newsSearchMobile' %}
+  <div
+    class="form-item {% if element['#name']=='date_start' or element['#name']=='date_end' %}custom-date{% endif %} {% if element['#name'] in ['gallerySearchMobile','gallerySearch','newsSearch','newsSearchMobile'] %} search-input{% endif %}"
+    data-plugin="movingLabel">
+    <label class="form-label" for="{{ element['#id'] }}">{{ label['#title'] }}</label>
+    {{ children }}
+  </div>
+{% else %}
+  {% if element['#webform_element'] %}
+    {{ children }}
   {% else %}
-    <div{{ attributes.addClass(classes) }}>
-      {% if label_display in ['before', 'invisible'] %}
-        {{ label }}
-      {% endif %}
-      {% if prefix is not empty %}
-        <span class="field-prefix">{{ prefix }}</span>
-      {% endif %}
-      {% if description_display == 'before' and description.content %}
-        <div{{ description.attributes }}>
-          {{ description.content }}
-        </div>
-      {% endif %}
+    {% if element['#type'] in ['radio'] %}
       {{ children }}
-      {% if suffix is not empty %}
-        <span class="field-suffix">{{ suffix }}</span>
-      {% endif %}
-      {% if label_display == 'after' %}
-        {{ label }}
-      {% endif %}
-      {% if errors %}
-        <div class="form-item--error-message">
-          {{ errors }}
+      {% else %}
+        {% if element['#date_date_format'] or element['#type']=='webform_time' %}
+{#{{ dd(element) }}#}
+{% if element['#date_date_format'] %}
+<div{{ attributes.addClass(classes).addClass('custom-date') }}>
+
+{% elseif element['#type']=='webform_time' %}
+<div{{ attributes.addClass(classes).addClass('custom-time') }}>
+{% else %}
+        <div{{ attributes.addClass(classes).removeClass('form-item') }}>
+          {% endif %}
+          {% else %}
+          <div{{ attributes.addClass(classes) }}>
+        {% endif %}
+          {% if label_display in ['before', 'invisible'] %}
+            {# {{ label }} #}
+          {% endif %}
+          {% if prefix is not empty %}
+            <span class="field-prefix">{{ prefix }}</span>
+          {% endif %}
+          {% if description_display == 'before' and description.content %}
+            <div{{ description.attributes }}>
+              {{ description.content }}
+            </div>
+          {% endif %}
+          {{ children }}
+          {% if suffix is not empty %}
+            <span class="field-suffix">{{ suffix }}</span>
+          {% endif %}
+          {% if label_display == 'after' %}
+            {{ label }}
+          {% endif %}
+          {% if errors %}
+            <div class="form-item--error-message">
+              {{ errors }}
+            </div>
+          {% endif %}
+          {% if description_display in ['after', 'invisible'] and description.content %}
+            <div{{ description.attributes.addClass(description_classes) }}>
+              {{ description.content }}
+            </div>
+          {% endif %}
         </div>
-      {% endif %}
-      {% if description_display in ['after', 'invisible'] and description.content %}
-        <div{{ description.attributes.addClass(description_classes) }}>
-          {{ description.content }}
-        </div>
-      {% endif %}
-    </div>
+    {% endif %}
+
+  {% endif %}
+
 {% endif %}
