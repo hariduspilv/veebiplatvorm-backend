@@ -199,46 +199,6 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email_confirmation:
-    id: email
-    label: 'Kättesaamise kinnitus'
-    notes: ''
-    handler_id: email_confirmation
-    status: true
-    conditions: {  }
-    weight: 1
-    settings:
-      states:
-        - completed
-      to_mail: '[webform_submission:values:email:raw]'
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      subject: '[webform:title] vormi kättesaamise kinnitus'
-      body: "Tere [webform_submission:values:name]!\r\n\r\nTäname Teid saadetud e-kirja eest.\r\n\r\nTegemist on automaatvastusega, mis kinnitab, et oleme Teie kirja kätte saanud.\r\nPalume käesolevale kirjale mitte vastata.\r\nKui Teie kiri eeldab vastust, vastame esimesel võimalusel.\r\n\r\nParimate soovidega\r\n[site:name] \r\n\r\n[site:url]\r\n"
-      excluded_elements:
-        name: name
-        email: email
-        message: message
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: false
-      attachments: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
-      parameters: {  }
   email_notification:
     id: email
     label: 'Email veebilehe administraatorile'
@@ -246,7 +206,7 @@ handlers:
     handler_id: email_notification
     status: true
     conditions: {  }
-    weight: 2
+    weight: -50
     settings:
       states:
         - completed
@@ -283,9 +243,49 @@ handlers:
     handler_id: recaptcha
     status: true
     conditions: {  }
-    weight: 2
+    weight: -48
     settings:
       recaptcha_type: v3
       v3_score: '80'
       v3_error_message: 'There was an error during validation of your form submission, please try to reload the page and submit form again.'
+  e_kiri:
+    id: email
+    label: 'Kättesaamise kinnitus'
+    notes: ''
+    handler_id: e_kiri
+    status: true
+    conditions: {  }
+    weight: -49
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: '[webform:title] vormi kättesaamise kinnitus'
+      body: "Tere [webform_submission:values:name]!\r\n\r\nTäname Teid saadetud e-kirja eest.\r\n\r\nTegemist on automaatvastusega, mis kinnitab, et oleme Teie kirja kätte saanud.\r\nPalume käesolevale kirjale mitte vastata.\r\nKui Teie kiri eeldab vastust, vastame esimesel võimalusel.\r\n\r\nParimate soovidega\r\n[site:name] \r\n\r\n[site:url]"
+      excluded_elements:
+        name: name
+        email: email
+        message: message
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: false
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
 variants: {  }

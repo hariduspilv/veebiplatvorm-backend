@@ -11,7 +11,7 @@ _core:
 id: harno_theme_breadcrumbs
 theme: harno_theme
 region: content
-weight: -10
+weight: -5
 provider: null
 plugin: system_breadcrumb_block
 settings:

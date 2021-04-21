@@ -1,9 +1,9 @@
-uuid: b563b2b3-1082-4131-8386-f12095d2be6f
+uuid: 45c07f4d-51c8-4ee3-9914-956cef04b122
 langcode: et
 status: true
 dependencies: {  }
-id: en
-label: ENG
+id: et
+label: EST
 direction: ltr
-weight: 1
+weight: 0
 locked: false
