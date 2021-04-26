@@ -29,6 +29,25 @@
     'form-wrapper',
   ]
 %}
+{% if element['#webform_element'] %}
+
+  {% if element['#type'] in ['fieldset'] %}
+    <fieldset class="form-fieldset">
+      <legend>{{ element['#title'] }}</legend>
+      {{ children }}
+    </fieldset>
+    {% elseif element['#type'] in ['webform_select_other'] %}
+      <fieldset data-drupal-selector="edit-select-other"
+          class="js-webform-select-other webform-select-other webform-select-other--wrapper fieldgroup form-composite webform-composite-visible-title js-webform-type-webform-select-other webform-type-webform-select-other js-form-item js-form-wrapper form-wrapper"
+          id="{{ element['#id'] }}">
+        <div class="fieldset-wrapper">
+  {{ children }}
+        </div>
+</fieldset>
+  {% else %}
+    {{ children }}
+  {% endif %}
+{% else %}
 {% if element['#id']=='gallery-years' or element['#id']=='news-topFilter' %}
   {% if  not element['#my-id'] == 'news-years' %}
     <div class="filters-top">
@@ -100,3 +119,4 @@
     </fieldset>
 {% endif %}
 
+{% endif %}

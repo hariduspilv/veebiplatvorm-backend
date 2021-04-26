@@ -64,22 +64,23 @@
   {% elseif file_extension in ['txt','odt','rtf']  %}
 
     {% set aria_label = 'text document'|t %}
-    {% set file_class = 'mdi-note-text' %}
+    {% set file_class = 'mdi-file-document' %}
     {% set download = true %}
     {% elseif file_extension in ['xlsx','xls','ods','odf']  %}
-
       {% set aria_label = 'table file'|t %}
       {% set file_class = 'mdi-file-chart' %}
       {% set download = true %}
     {% elseif file_extension == 'wav' or file_extension =='avi' %}
       {% set aria_label = 'audio file'|t %}
       {% set file_class = 'mdi-file-music' %}
+      {% set download = true %}
     {% elseif file_extension == 'gif' or file_extension =='jpg' or file_extension == 'jpeg'  or file_extenion =='png' %}
       {% set aria_label = 'image file'|t %}
       {% set file_class = 'mdi-file-music' %}
     {% elseif file_extension in ['mp4' ,'mov', 'm4a', 'm4v ','mpeg', 'avi'] %}
       {% set aria_label = 'video file'|t %}
       {% set file_class = 'mdi-file-video' %}
+      {% set download = true %}
     {% elseif file_extension in ['ppt','pptx','odp'] %}
       {% set aria_label = 'presentation'|t %}
       {% set file_class = 'mdi-file-powerpoint' %}

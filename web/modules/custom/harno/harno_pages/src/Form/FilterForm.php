@@ -49,6 +49,9 @@ class FilterForm extends FormBase {
         $form['top_filters']['article_type_mobile'] = [
           '#type' => 'checkboxes',
           '#id' => 'article_type_mobile',
+          '#attributes' => [
+            'checkbox-type' => 'collect'
+          ],
           '#ajax' => [
             'wrapper' => 'filter-target',
             'event' => 'change',
@@ -62,6 +65,9 @@ class FilterForm extends FormBase {
           // '#attributes' => ['name' => 'years'],
           '#id' => 'gallery-years',
           '#type' => 'checkboxes',
+          '#attributes' => [
+            'checkbox-type' => 'collect'
+          ],
           '#ajax' => [
             'wrapper' => 'filter-target',
             'event' => 'change',
@@ -77,6 +83,9 @@ class FilterForm extends FormBase {
           // '#attributes' => ['name' => 'years'],
           '#id' => 'gallery-years',
           '#type' => 'checkboxes',
+          '#attributes' => [
+            'checkbox-type' => 'collect'
+          ],
           '#ajax' => [
             'wrapper' => 'filter-target',
             'event' => 'change',
