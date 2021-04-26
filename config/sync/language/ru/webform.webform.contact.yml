@@ -1,6 +1,10 @@
 title: Контакт
+elements: "name:\n  '#type': textfield\n  '#title': Nimi\n  '#required': true\n  '#default_value': '[current-user:display-name]'\nemail:\n  '#type': email\n  '#title': 'E-posti aadress'\n  '#required': true\n  '#default_value': '[current-user:mail]'\nmessage:\n  '#type': textarea\n  '#title': Sõnum\n  '#required': true\n  '#test': 'Please ignore this email.'\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': Saada"
 settings:
   confirmation_message: 'Ваше сообщение отправлено.'
 handlers:
   email_notification:
     label: 'Уведомления по email'
+    settings:
+      subject: '[webform:title] vormi sisestus'
+      body: "[webform_submission:values]\r\n\r\nParimate soovidega\r\n[site:name] \r\n\r\n[site:url]"

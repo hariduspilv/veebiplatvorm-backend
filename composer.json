@@ -45,6 +45,7 @@
         "drupal/pathauto": "^1.8",
         "drupal/redirect": "^1.6",
         "drupal/schema_metatag": "^2.1",
+        "drupal/search_api": "^1.19",
         "drupal/simple_recaptcha": "^1.0@beta",
         "drupal/svg_image": "^1.13",
         "drupal/time_field": "^1.13",
@@ -141,7 +142,5 @@
                 "Notice: Trying to access array offset on value of type null https://www.drupal.org/project/conditional_fields/issues/3191984": "https://www.drupal.org/files/issues/2021-01-21/3191984-3-notice-trying-to-access-offset-on-value-of-type-null.patch"
             }
         }
-    },
-    "require-dev": {
     }
 }

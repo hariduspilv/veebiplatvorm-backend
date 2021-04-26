@@ -6,7 +6,7 @@ display:
           reset_button_label: Reset
       fields:
         status:
-          label: Staatus
+          label: Status
           settings:
             format_custom_true: Avaldatud
         changed:

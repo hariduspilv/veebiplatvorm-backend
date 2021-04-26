@@ -7,6 +7,7 @@ dependencies:
     - paragraphs.paragraphs_type.file
   module:
     - media_library
+    - media_library_edit
 id: paragraph.file.default
 targetEntityType: paragraph
 bundle: file
@@ -21,7 +22,9 @@ content:
         - image
         - video
         - audio
-    third_party_settings: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
     region: content
 hidden:
   created: true
