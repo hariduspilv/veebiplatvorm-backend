@@ -22,8 +22,8 @@ settings:
     target_bundles:
       worker: worker
     sort:
-      field: created
-      direction: DESC
+      field: title
+      direction: ASC
     auto_create: true
     auto_create_bundle: ''
 field_type: entity_reference
