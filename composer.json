@@ -46,6 +46,7 @@
         "drupal/redirect": "^1.6",
         "drupal/schema_metatag": "^2.1",
         "drupal/search_api": "^1.19",
+        "drupal/search_api_autocomplete": "^1.4",
         "drupal/simple_recaptcha": "^1.0@beta",
         "drupal/svg_image": "^1.13",
         "drupal/time_field": "^1.13",

@@ -957,6 +957,7 @@ display:
     display_options:
       display_extenders: {  }
       path: otsing
+      exposed_block: false
     cache_metadata:
       max-age: -1
       contexts:
