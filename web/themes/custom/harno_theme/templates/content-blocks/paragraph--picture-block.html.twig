@@ -1,12 +1,18 @@
+{% set base_path= base_path ~ directory  %}
 {% if content.field_orientation %}
- {% set style = content.field_orientation['#items'].getString() %}
+  {% set style = content.field_orientation['#items'].getString() %}
 {% endif %}
+
 {% if style %}
   {% set image_uri = content.field_image['#items']|file_uri %}
   {% set image_file_alt = content.field_image[0]['#media'].field_media_image.0.alt %}
-  <div class="image-block">
-    <a class="image-field image-field--{{ style }}" style="background-image: url({{ image_uri|image_style('landscape') }});" tabindex="0">
-      <img src="assets/images/placeholder-1.gif" alt="{{ image_file_alt }}">
+  {% set drupal_image_entity  = drupal_entity('media',content.field_image['#items'].target_id) %}
+  {% if drupal_image_entity['#media'] %}
+    {% set image_width = drupal_image_entity['#media'].field_media_image.width%}
+  {% endif %}
+  <div class="image-block" {% if style == 'natural' %}{% endif %}>
+    <a class="image-field image-field--{{ style }}" style="background-image: url({{ image_uri|image_style(style) }});{% if style=='natural' %} {% if image_width > 399 %} padding-top:100%;{% endif %} background-size:contain;{% endif %}" tabindex="0">
+      <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" {% if style=='natural'%}{% endif%} alt="{{ image_file_alt }}">
       <span class="gallery-icon" aria-label="{{ "Open picture" | t}}"></span>
     </a><!--/image-field-->
   </div><!--/image-block-->
