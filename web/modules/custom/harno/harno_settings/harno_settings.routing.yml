@@ -25,6 +25,15 @@ harno_settings.colors_form:
     _permission: 'administer harno settings'
   options:
     _admin_route: TRUE
+harno_settings.frontpage_form:
+  path: '/admin/config/veebiplatvorm/avaleht'
+  defaults:
+    _form: '\Drupal\harno_settings\Form\HarnoFrontpageForm'
+    _title: 'Veebiplatvormi avalehe bänneri ja taustapildi haldus'
+  requirements:
+    _permission: 'administer harno settings'
+  options:
+    _admin_route: TRUE
 harno_settings.workers_import_form:
   path: '/admin/config/veebiplatvorm/tootajate-importimine'
   defaults:

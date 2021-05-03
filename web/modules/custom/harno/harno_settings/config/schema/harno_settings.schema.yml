@@ -8,6 +8,9 @@ harno_settings.settings:
       type: mapping
       label: 'Haridusasutuse üldinfo'
       mapping:
+        frontpage_background_type:
+          type: integer
+          label: 'Mida avalehel kuvatakse'
         frontpage_background:
           type: integer
           label: 'Esilehe taustapilt'

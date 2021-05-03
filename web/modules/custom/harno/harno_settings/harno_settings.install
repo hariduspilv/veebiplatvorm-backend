@@ -140,3 +140,11 @@ function harno_settings_update_8011() {
   }
   return 'Lisati ' . $count . ' termi.';
 }
+/**
+ * Set default frontpage background type
+ */
+function harno_settings_update_8012() {
+  $config = \Drupal::configFactory()->getEditable('harno_settings.settings');
+  $config->set('general.frontpage_background_type', 1);
+  $config->save();
+}
