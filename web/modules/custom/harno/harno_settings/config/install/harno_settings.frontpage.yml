@@ -1,0 +1,35 @@
+general:
+  background_type: 1
+  background_image: 0
+banner_images:
+  image_1: 0
+  text_1: ''
+  link_name_1: ''
+  link_entity_1: 0
+  link_url_1: ''
+  link_weight_1: 1
+  image_2: 0
+  text_2: ''
+  link_name_2: ''
+  link_entity_2: 0
+  link_url_2: ''
+  link_weight_2: 2
+  image_3: 0
+  text_3: ''
+  link_name_3: ''
+  link_entity_3: 0
+  link_url_3: ''
+  link_weight_3: 3
+  image_4: 0
+  text_4: ''
+  link_name_4: ''
+  link_entity_4: 0
+  link_url_4: ''
+  link_weight_4: 4
+  image_5: 0
+  text_5: ''
+  link_name_5: ''
+  link_entity_5: 0
+  link_url_5: ''
+  link_weight_5: 5
+langcode: et

@@ -1,0 +1,34 @@
+general:
+  background_type: 1
+  background_image: 119
+banner_images:
+  image_1: 114
+  text_1: 'Covidi info'
+  link_name_1: 'Loe edasi'
+  link_entity_1: null
+  link_url_1: 'https://www.kriis.ee/et'
+  link_weight_1: -10
+  image_2: 115
+  text_2: 'Õppimiskeskne ja õpilase arengule orienteeritud, terviklikku isiksust arendav kool.'
+  link_name_2: 'Loe edasi'
+  link_entity_2: 5
+  link_url_2: ''
+  link_weight_2: -9
+  image_3: 117
+  text_3: wegsdgsdgsdg
+  link_name_3: 'Loe edasi Loe edasi '
+  link_entity_3: 365
+  link_url_3: ''
+  link_weight_3: -8
+  image_4: 0
+  text_4: ''
+  link_name_4: ''
+  link_entity_4: null
+  link_url_4: ''
+  link_weight_4: -7
+  image_5: 0
+  text_5: ''
+  link_name_5: ''
+  link_entity_5: null
+  link_url_5: ''
+  link_weight_5: -6

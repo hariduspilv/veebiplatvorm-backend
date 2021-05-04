@@ -5,6 +5,7 @@ general:
   address: 'Müüri 4, Olustvere, Põhja-Sakala vald, 70401 Viljandi maakond'
   phone: '6584930'
   email: onnepalu@mail.ee
+  frontpage_background_type: 1
 important_contacts:
   name_1: ' Direktor Aleksandr Skidantsuk'
   body_1: '(+372) 507 3849'

@@ -436,3 +436,115 @@ harno_settings.colors:
         additional:
           type: text
           label: 'Lisatoon'
+
+harno_settings.frontpage:
+  type: config_object
+  label: 'Avalehe seaded'
+  mapping:
+    general:
+      type: mapping
+      label: 'Avalehe üldseaded'
+      mapping:
+        background_type:
+          type: integer
+          label: 'Mida avalehel kuvatakse'
+        background_image:
+          type: integer
+          label: 'Avalehe taustapilt'
+    banner_images:
+      type: mapping
+      label: 'Bänner piltidega'
+      mapping:
+        image_1:
+          type: integer
+          label: 'Taustapilt'
+        text_1:
+          type: text
+          label: 'Tekst'
+        link_name_1:
+          type: text
+          label: 'Lingi tekst'
+        link_entity_1:
+          type: integer
+          label: 'Sisemine link'
+        link_url_1:
+          type: text
+          label: 'Väline veebilink'
+        link_weight_1:
+          type: integer
+          label: 'Kaal'
+        image_2:
+          type: integer
+          label: 'Taustapilt'
+        text_2:
+          type: text
+          label: 'Tekst'
+        link_name_2:
+          type: text
+          label: 'Lingi tekst'
+        link_entity_2:
+          type: integer
+          label: 'Sisemine link'
+        link_url_2:
+          type: text
+          label: 'Väline veebilink'
+        link_weight_2:
+          type: integer
+          label: 'Kaal'
+        image_3:
+          type: integer
+          label: 'Taustapilt'
+        text_3:
+          type: text
+          label: 'Tekst'
+        link_name_3:
+          type: text
+          label: 'Lingi tekst'
+        link_entity_3:
+          type: integer
+          label: 'Sisemine link'
+        link_url_3:
+          type: text
+          label: 'Väline veebilink'
+        link_weight_3:
+          type: integer
+          label: 'Kaal'
+        image_4:
+          type: integer
+          label: 'Taustapilt'
+        text_4:
+          type: text
+          label: 'Tekst'
+        link_name_4:
+          type: text
+          label: 'Lingi tekst'
+        link_entity_4:
+          type: integer
+          label: 'Sisemine link'
+        link_url_4:
+          type: text
+          label: 'Väline veebilink'
+        link_weight_4:
+          type: integer
+          label: 'Kaal'
+        image_5:
+          type: integer
+          label: 'Taustapilt'
+        text_5:
+          type: text
+          label: 'Tekst'
+        link_name_5:
+          type: text
+          label: 'Lingi tekst'
+        link_entity_5:
+          type: integer
+          label: 'Sisemine link'
+        link_url_5:
+          type: text
+          label: 'Väline veebilink'
+        link_weight_5:
+          type: integer
+          label: 'Kaal'
+  langcode:
+    type: string
+    label: 'Keeletähis'

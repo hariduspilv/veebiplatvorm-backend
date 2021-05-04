@@ -1,7 +1,6 @@
 ignored_config_entities:
   - system.site
-  - harno_settings.settings
-  - harno_settings.colors
+  - 'harno_settings.*'
   - language.negotiation
   - 'language.entity.*'
   - 'collections.language.*'
