@@ -157,3 +157,20 @@ function harno_settings_update_8013() {
   }
   $config->save();
 }
+/**
+ * Set default frontpage banner boxes variables
+ */
+function harno_settings_update_8014() {
+  $config = \Drupal::configFactory()->getEditable('harno_settings.frontpage');
+  for ($i = 1; $i < 6; $i++) {
+    $config->set('banner_boxes_images.image_'.$i, 0);
+    $config->set('banner_boxes_images.link_weight_'.$i, $i);
+  }
+  for ($i = 1; $i < 16; $i++) {
+    $config->set('banner_boxes_text.title_'.$i, '');
+    $config->set('banner_boxes_text.icon_'.$i, '');
+    $config->set('banner_boxes_text.link_entity_'.$i, 0);
+    $config->set('banner_boxes_text.link_weight_'.$i, $i);
+  }
+  $config->save();
+}

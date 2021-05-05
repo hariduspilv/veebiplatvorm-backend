@@ -545,6 +545,224 @@ harno_settings.frontpage:
         link_weight_5:
           type: integer
           label: 'Kaal'
+    banner_boxes_images:
+      type: mapping
+      label: 'Bänner kastidega'
+      mapping:
+        image_1:
+          type: integer
+          label: 'Taustapilt'
+        link_weight_1:
+          type: integer
+          label: 'Kaal'
+        image_2:
+          type: integer
+          label: 'Taustapilt'
+        link_weight_2:
+          type: integer
+          label: 'Kaal'
+        image_3:
+          type: integer
+          label: 'Taustapilt'
+        link_weight_3:
+          type: integer
+          label: 'Kaal'
+        image_4:
+          type: integer
+          label: 'Taustapilt'
+        link_weight_4:
+          type: integer
+          label: 'Kaal'
+        image_5:
+          type: integer
+          label: 'Taustapilt'
+        link_weight_5:
+          type: integer
+          label: 'Kaal'
+    banner_boxes_text:
+      type: mapping
+      label: 'Bänner kastidega tekstid'
+      mapping:
+        title_1:
+          type: text
+          label: 'Pealkiri'
+        icon_1:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_1:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_1:
+          type: integer
+          label: 'Kaal'
+        title_2:
+          type: text
+          label: 'Pealkiri'
+        icon_2:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_2:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_2:
+          type: integer
+          label: 'Kaal'
+        title_3:
+          type: text
+          label: 'Pealkiri'
+        icon_3:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_3:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_3:
+          type: integer
+          label: 'Kaal'
+        title_4:
+          type: text
+          label: 'Pealkiri'
+        icon_4:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_4:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_4:
+          type: integer
+          label: 'Kaal'
+        title_5:
+          type: text
+          label: 'Pealkiri'
+        icon_5:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_5:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_5:
+          type: integer
+          label: 'Kaal'
+        title_6:
+          type: text
+          label: 'Pealkiri'
+        icon_6:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_6:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_6:
+          type: integer
+          label: 'Kaal'
+        title_7:
+          type: text
+          label: 'Pealkiri'
+        icon_7:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_7:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_7:
+          type: integer
+          label: 'Kaal'
+        title_8:
+          type: text
+          label: 'Pealkiri'
+        icon_8:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_8:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_8:
+          type: integer
+          label: 'Kaal'
+        title_9:
+          type: text
+          label: 'Pealkiri'
+        icon_9:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_9:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_9:
+          type: integer
+          label: 'Kaal'
+        title_10:
+          type: text
+          label: 'Pealkiri'
+        icon_10:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_10:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_10:
+          type: integer
+          label: 'Kaal'
+        title_11:
+          type: text
+          label: 'Pealkiri'
+        icon_11:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_11:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_11:
+          type: integer
+          label: 'Kaal'
+        title_12:
+          type: text
+          label: 'Pealkiri'
+        icon_12:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_12:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_12:
+          type: integer
+          label: 'Kaal'
+        title_13:
+          type: text
+          label: 'Pealkiri'
+        icon_13:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_13:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_13:
+          type: integer
+          label: 'Kaal'
+        title_14:
+          type: text
+          label: 'Pealkiri'
+        icon_14:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_14:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_14:
+          type: integer
+          label: 'Kaal'
+        title_15:
+          type: text
+          label: 'Pealkiri'
+        icon_15:
+          type: text
+          label: 'Ikooni nimi'
+        link_entity_15:
+          type: integer
+          label: 'Sisemine link'
+        link_weight_15:
+          type: integer
+          label: 'Kaal'
   langcode:
     type: string
     label: 'Keeletähis'

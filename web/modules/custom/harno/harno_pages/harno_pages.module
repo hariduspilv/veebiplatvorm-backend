@@ -81,5 +81,6 @@ function harno_pages_form_alter(&$form, FormStateInterface $form_state, $form_id
   }
   elseif (in_array($form['#form_id'], ['user_login_form'])) {
     $form['actions']['submit']['#attributes']['class'][] = 'btn btn-primary';
+    $form['#attributes']['class'][] = 'form-group';
   }
 }
