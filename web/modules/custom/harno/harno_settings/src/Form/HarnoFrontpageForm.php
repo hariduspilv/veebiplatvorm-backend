@@ -385,7 +385,7 @@ class HarnoFrontpageForm extends ConfigFormBase {
     }
     $banner_boxes_images = $form_state->getValue('fp_banner_boxes_images_table');
     foreach ($banner_boxes_images as $id => $item) {
-      if (!empty($item['banner_image_upload'])) {
+      if (!empty($item['banner_boxes_image_upload'])) {
         $banner_boxes_images_first_row = TRUE;
       }
     }
@@ -434,7 +434,7 @@ class HarnoFrontpageForm extends ConfigFormBase {
     elseif ($background_type == 3) {
       if (!$banner_boxes_images_first_row) {
         $message = '"Bänneri taustapilt" sakis "Bänner kastidega" on kohustuslik, kui "Avalehel kuvatakse" väljas on valitud "Bännerit kastidega".';
-        $form_state->setErrorByName('fp_banner_boxes_images_table][0][banner_image_upload', $message);
+        $form_state->setErrorByName('fp_banner_boxes_images_table][0][banner_boxes_image_upload', $message);
       }
       if (!$banner_boxes_texts_first_row) {
         $message = '"Kasti pealkiri" sakis "Bänner kastidega" on kohustuslik, kui "Avalehel kuvatakse" väljas on valitud "Bännerit kastidega".';
