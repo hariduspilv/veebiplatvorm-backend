@@ -80,6 +80,7 @@ module:
   svg_image: 0
   system: 0
   taxonomy: 0
+  taxonomy_menu_ui: 0
   text: 0
   time_field: 0
   token: 0

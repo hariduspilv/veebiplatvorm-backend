@@ -49,6 +49,7 @@
         "drupal/search_api_autocomplete": "^1.4",
         "drupal/simple_recaptcha": "^1.0@beta",
         "drupal/svg_image": "^1.13",
+        "drupal/taxonomy_menu_ui": "^1.4",
         "drupal/time_field": "^1.13",
         "drupal/token": "^1.7",
         "drupal/twig_tweak": "^2.6",

@@ -1,11 +1,11 @@
 general:
-  background_type: 1
+  background_type: 3
   background_image: 119
 banner_images:
-  image_1: 0
-  text_1: ''
-  link_name_1: ''
-  link_entity_1: null
+  image_1: 121
+  text_1: 'Õppimiskeskne ja õpilase arengule orienteeritud, terviklikku isiksust arendav kool.'
+  link_name_1: 'Loe edasi'
+  link_entity_1: 5
   link_url_1: ''
   link_weight_1: -10
   image_2: 0
@@ -33,7 +33,7 @@ banner_images:
   link_url_5: ''
   link_weight_5: -6
 banner_boxes_images:
-  image_1: 0
+  image_1: 120
   link_weight_1: -10
   image_2: 0
   link_weight_2: -9
@@ -44,9 +44,9 @@ banner_boxes_images:
   image_5: 0
   link_weight_5: -6
 banner_boxes_text:
-  title_1: ''
-  icon_1: ''
-  link_entity_1: null
+  title_1: 'Eriolukorra online loengud'
+  icon_1: lnr-home
+  link_entity_1: 5
   link_weight_1: 1
   title_2: ''
   icon_2: ''
@@ -104,3 +104,4 @@ banner_boxes_text:
   icon_15: ''
   link_entity_15: null
   link_weight_15: 15
+langcode: et

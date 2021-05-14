@@ -194,6 +194,7 @@ function harno_settings_form_alter(&$form, FormStateInterface $form_state, $form
 
   $forms = ['node_article_edit_form', 'node_article_form'];
   $forms_user = ['user_register_form', 'user_form'];
+
   if (in_array($form['#form_id'], $forms)) {
     $form['#validate'][] = '_harno_settings_validate_sticky';
 
@@ -216,6 +217,18 @@ function harno_settings_form_alter(&$form, FormStateInterface $form_state, $form
       // Hide the Current password fields
       $form['account']['current_pass']['#access'] = FALSE;
     }
+  }
+  elseif (in_array($form['#form_id'], ['taxonomy_term_catering_service_provider_form'])) {
+    $form['name']['widget'][0]['value']['#title'] = 'Ärinimi';
+    $form['name']['widget'][0]['value']['#description'] = 'Juhul kui kuvatavat toitlustaja nime ei ole sisestatud, siis näidatakse külastajale ärinime.';
+  }
+  elseif (in_array($form['#form_id'], ['taxonomy_term_food_groups_form'])) {
+    $form['name']['widget'][0]['value']['#title'] = 'Toidu grupp';
+    $form['name']['widget'][0]['value']['#description'] = 'Toidu gruppide sisestamisel on võimalik tekitada toidumenüü tabelisse vahepealkirju. <br> Näiteks võimalikud kasutusviisid on tekitada: a) hommikusöök, lõunasöök ja õhtusöök. b) algkooli lõuna, põhikooli lõuna jne. c) Praad 1, Praad 2 jne.';
+  }
+  elseif (in_array($form['#form_id'], ['taxonomy_term_eating_places_form'])) {
+    $form['name']['widget'][0]['value']['#title'] = 'Söögikoht';
+    $form['name']['widget'][0]['value']['#description'] = 'Söögikoht võimaldab tekitada lehed (nt "Suur maja", "Kooli söökla" või "Kohvik" jne) ja siduda sellega iganädalased söögimenüüd. <br> Järjekord taksonoomias määrab ka nende toidukohtade kuvamise järjekorra.';
   }
 }
 

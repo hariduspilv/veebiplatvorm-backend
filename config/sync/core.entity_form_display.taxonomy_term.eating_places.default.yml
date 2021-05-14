@@ -1,0 +1,41 @@
+uuid: 0c4e0167-21bc-40da-bdc3-72ca920281e7
+langcode: et
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.eating_places
+id: taxonomy_term.eating_places.default
+targetEntityType: taxonomy_term
+bundle: eating_places
+mode: default
+content:
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    region: content
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true

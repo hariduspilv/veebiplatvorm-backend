@@ -1,0 +1,16 @@
+uuid: 32dd5f21-1719-4c74-9825-73425d76e593
+langcode: et
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.eating_places
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.eating_places
+target_entity_type_id: taxonomy_term
+target_bundle: eating_places
+default_langcode: site_default
+language_alterable: true

@@ -1,0 +1,8 @@
+uuid: 5b21284c-bc25-4aea-944e-7bfe220dcf67
+langcode: et
+status: true
+dependencies: {  }
+name: 'Toidu grupid'
+vid: food_groups
+description: 'Selle alusel järjestatakse toidumenüüs kuvatavad toidugrupid.'
+weight: 0

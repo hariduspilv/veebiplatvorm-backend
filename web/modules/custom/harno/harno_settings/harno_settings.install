@@ -174,3 +174,21 @@ function harno_settings_update_8014() {
   }
   $config->save();
 }
+/**
+ * Set default taxonomy terms to Toidu grupid
+ */
+function harno_settings_update_8015() {
+  $count = 0;
+  $categories_vocabulary = 'food_groups'; // Vocabulary machine name
+  $categories = ['Hommik', 'Lõuna', 'Õhtu']; // List of test terms
+  foreach ($categories as $key => $category) {
+    $term = Term::create(array(
+      'parent' => array(),
+      'name' => $category,
+      'vid' => $categories_vocabulary,
+      'weight' => $key
+    ))->save();
+    $count += $term;
+  }
+  return 'Lisati ' . $count . ' termi.';
+}

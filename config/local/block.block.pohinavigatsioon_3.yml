@@ -23,7 +23,9 @@ settings:
   follow_parent: child
   level: 3
   depth: 0
-  expand: true
+  expand_all_items: true
   parent: 'main:'
   suggestion: main_desktop
+  label_type: block
+  label_link: false
 visibility: {  }
