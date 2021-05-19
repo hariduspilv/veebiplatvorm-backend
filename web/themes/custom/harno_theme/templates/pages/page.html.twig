@@ -192,10 +192,17 @@
                 {% if node and node.type.value  %}
                   {% if node.type.value[0].target_id == 'gallery'  or node.type.value[0].target_id == 'article'%}
                 <div class="header-block__additional-info">
-                    <span class="date-indicator">{{ node.created.value|date('d.m.Y') }}</span>
+                  <span class="date-created">
+                <i class="mdi mdi-calendar-month" aria-hidden="true" title="date created"></i>
+                <span class="sr-only">{{ "date created"  |t}}</span>
+                {{ node.created.value|date('d.m.Y') }}
+              </span><!--/date-indicator-->
                   {% if node.type.value[0].target_id == 'article' %}
-                    <span class="author-indicator">{{ node.field_author_name.value }}</span>
-
+                    <span class="content-author">
+                <i class="mdi mdi-account" aria-hidden="true" title="author"></i>
+                <span class="sr-only">{{ "author" |t }}</span>
+                {{ node.field_author_name.value }}
+              </span><!--/author-indicator-->
                   {% endif %}
                 </div>
                   {% endif %}
