@@ -1,7 +1,13 @@
 uuid: a654dd9a-96b8-45bd-9811-c4335a64449f
 langcode: et
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
 name: 'Koolituse tüübid'
 vid: training_keywords
 description: 'Valikud, mida kasutatakse koolituste filtreerimiseks.'

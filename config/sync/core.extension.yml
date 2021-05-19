@@ -24,6 +24,7 @@ module:
   dblog: 0
   default_content: 0
   dropzonejs: 0
+  dwr: 0
   dynamic_page_cache: 0
   editor: 0
   entity_reference_revisions: 0
@@ -42,6 +43,7 @@ module:
   history: 0
   honeypot: 0
   image: 0
+  jquery_ui: 0
   language: 0
   language_switcher_extended: 0
   link: 0
@@ -66,6 +68,7 @@ module:
   path_alias: 0
   quickedit: 0
   rdf: 0
+  readonly_field_widget: 0
   redirect: 0
   redirect_404: 0
   schema_metatag: 0

@@ -9,7 +9,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\webform\Utility\WebformFormHelper;
-use Drupal\Component\Utility\Variable;
+use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * Implements hook_help().
@@ -129,7 +129,49 @@ function harno_settings_node_prepare_form(\Drupal\Core\Entity\EntityInterface $e
 
     }
   }
+  // toidumenüüs päevade toidu grupid sisestada
+  $node_types = ['food_menu'];
+  if (in_array($entity->getType(), $node_types)) {
+    \Drupal::logger('harno_settings')->notice('$operation: ' . $operation);
+    if ($operation == 'default' OR $operation == 'edit') {
+      $vid = 'food_groups';
+      $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0,  NULL, TRUE);
+      foreach ($terms as $term) {
+        $term_id = $term->id();
+        $fields = ['field_monday', 'field_tuesday', 'field_wednesday', 'field_thursday', 'field_friday', 'field_saturday', 'field_sunday'];
+        $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+        foreach ($fields as $field) {
+          $found = FALSE;
+          if ($paragraph_field_items = $entity->get($field)->getValue()) {
+            $ids = array_column($paragraph_field_items, 'target_id');
+            $paragraphs_objects = $paragraph_storage->loadMultiple($ids);
+            foreach ($paragraphs_objects as $paragraph) {
+              $target_id = $paragraph->get('field_food_group')->target_id;
+              if ($target_id == $term_id) {
+                $found = TRUE;
+              }
+            }
+          }
+
+          if (!$found)  {
+            $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+            $paragraph = $storage->create([
+              'type' => 'menu_food',
+              'field_food_group' => [
+                'target_id' => $term_id,
+              ]
+            ]);
+            $paragraph->isNew();
+            $paragraph->save();
+            $paragraph_field = $entity->get($field);
+            $paragraph_field->appendItem($paragraph);
+          }
+        }
+      }
+    }
+  }
 }
+
 /**
  * Implements hook_ENTITY_TYPE_presave() for Nodes.
  */
@@ -229,6 +271,9 @@ function harno_settings_form_alter(&$form, FormStateInterface $form_state, $form
   elseif (in_array($form['#form_id'], ['taxonomy_term_eating_places_form'])) {
     $form['name']['widget'][0]['value']['#title'] = 'Söögikoht';
     $form['name']['widget'][0]['value']['#description'] = 'Söögikoht võimaldab tekitada lehed (nt "Suur maja", "Kooli söökla" või "Kohvik" jne) ja siduda sellega iganädalased söögimenüüd. <br> Järjekord taksonoomias määrab ka nende toidukohtade kuvamise järjekorra.';
+  }
+  elseif (in_array($form['#form_id'], ['node_food_menu_edit_form', 'node_food_menu_form'])) {
+    $form['#attached']['library'][]  = 'harno_settings/admin_food_menu_form';
   }
 }
 

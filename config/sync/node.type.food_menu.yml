@@ -1,0 +1,17 @@
+uuid: b3576c67-f258-4516-a47d-49bbb8c6274f
+langcode: et
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Toidumenüü
+type: food_menu
+description: 'Kasutaja saab sisestada toidumenüü. Toidumenüüd on võimalik sisestada ette mitme nädala puhul. '
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,122 @@
+uuid: 19f27ff8-904f-44d6-9aa6-e1473828b112
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.field.node.food_menu.field_catering_service_provider
+    - field.field.node.food_menu.field_eating_place
+    - field.field.node.food_menu.field_friday
+    - field.field.node.food_menu.field_monday
+    - field.field.node.food_menu.field_saturday
+    - field.field.node.food_menu.field_sunday
+    - field.field.node.food_menu.field_thursday
+    - field.field.node.food_menu.field_tuesday
+    - field.field.node.food_menu.field_wednesday
+    - field.field.node.food_menu.field_week
+    - node.type.food_menu
+  module:
+    - datetime_range
+    - entity_reference_revisions
+    - user
+id: node.food_menu.default
+targetEntityType: node
+bundle: food_menu
+mode: default
+content:
+  field_catering_service_provider:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_eating_place:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_friday:
+    type: entity_reference_revisions_entity_view
+    weight: 110
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_monday:
+    type: entity_reference_revisions_entity_view
+    weight: 106
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_saturday:
+    type: entity_reference_revisions_entity_view
+    weight: 111
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_sunday:
+    type: entity_reference_revisions_entity_view
+    weight: 112
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_thursday:
+    type: entity_reference_revisions_entity_view
+    weight: 109
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_tuesday:
+    type: entity_reference_revisions_entity_view
+    weight: 107
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_wednesday:
+    type: entity_reference_revisions_entity_view
+    weight: 108
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_week:
+    weight: 104
+    label: above
+    settings:
+      separator: '-'
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

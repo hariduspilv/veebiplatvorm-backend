@@ -1,0 +1,316 @@
+uuid: c944872b-f4f1-439c-8f0d-5c6b9bcfb0da
+langcode: et
+status: true
+dependencies:
+  config:
+    - field.field.node.food_menu.field_catering_service_provider
+    - field.field.node.food_menu.field_eating_place
+    - field.field.node.food_menu.field_friday
+    - field.field.node.food_menu.field_monday
+    - field.field.node.food_menu.field_saturday
+    - field.field.node.food_menu.field_sunday
+    - field.field.node.food_menu.field_thursday
+    - field.field.node.food_menu.field_tuesday
+    - field.field.node.food_menu.field_wednesday
+    - field.field.node.food_menu.field_week
+    - node.type.food_menu
+  module:
+    - dwr
+    - field_group
+    - paragraphs
+    - path
+third_party_settings:
+  field_group:
+    group_days:
+      children:
+        - field_monday
+      parent_name: group_week
+      weight: 14
+      format_type: tab
+      region: content
+      format_settings:
+        description: ''
+        formatter: closed
+        required_fields: true
+        id: ''
+        classes: ''
+      label: Esmaspäev
+    group_t:
+      children:
+        - field_tuesday
+      parent_name: group_week
+      weight: 15
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Teisipäev
+    group_week:
+      children:
+        - group_days
+        - group_t
+        - group_w
+        - group_n
+        - group_r
+        - group_l
+        - group_p
+      parent_name: ''
+      weight: 13
+      format_type: tabs
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: Nädalapäevad
+    group_w:
+      children:
+        - field_wednesday
+      parent_name: group_week
+      weight: 16
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Kolmapäev
+    group_n:
+      children:
+        - field_thursday
+      parent_name: group_week
+      weight: 17
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Neljapäev
+    group_r:
+      children:
+        - field_friday
+      parent_name: group_week
+      weight: 18
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Reede
+    group_l:
+      children:
+        - field_saturday
+      parent_name: group_week
+      weight: 19
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Laupäev
+    group_p:
+      children:
+        - field_sunday
+      parent_name: group_week
+      weight: 20
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Pühapäev
+id: node.food_menu.default
+targetEntityType: node
+bundle: food_menu
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_catering_service_provider:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_eating_place:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_friday:
+    type: entity_reference_paragraphs
+    weight: 27
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: menu_food
+    third_party_settings: {  }
+    region: content
+  field_monday:
+    type: entity_reference_paragraphs
+    weight: 14
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: menu_food
+    third_party_settings: {  }
+    region: content
+  field_saturday:
+    type: entity_reference_paragraphs
+    weight: 28
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: menu_food
+    third_party_settings: {  }
+    region: content
+  field_sunday:
+    type: entity_reference_paragraphs
+    weight: 29
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: menu_food
+    third_party_settings: {  }
+    region: content
+  field_thursday:
+    type: entity_reference_paragraphs
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: menu_food
+    third_party_settings: {  }
+    region: content
+  field_tuesday:
+    type: entity_reference_paragraphs
+    weight: 15
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: menu_food
+    third_party_settings: {  }
+    region: content
+  field_wednesday:
+    type: entity_reference_paragraphs
+    weight: 16
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: menu_food
+    third_party_settings: {  }
+    region: content
+  field_week:
+    weight: 12
+    settings:
+      week_start: 1
+    third_party_settings: {  }
+    type: date_week_range
+    region: content
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 9
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
