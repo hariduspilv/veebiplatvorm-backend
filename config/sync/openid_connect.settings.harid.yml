@@ -3,7 +3,7 @@ settings:
   redirect_url: ''
   client_id: d88159b2bf55a352948001f91e93c365
   client_secret: 06b49bf8cb8e1b8640bd76b1752018866cb627c79fb7d4d25bb36c0937c0d8fb
-  require_strong_session: true
+  require_strong_session: false
   require_personal_code: true
   use_test_idp: true
 _core:

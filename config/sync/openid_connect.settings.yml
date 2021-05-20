@@ -4,6 +4,7 @@ override_registration_settings: 0
 user_login_display: above
 userinfo_mappings:
   timezone: 0
+  metatag: 0
   field_first_name: 0
   field_identification_number: 0
   field_last_name: 0
