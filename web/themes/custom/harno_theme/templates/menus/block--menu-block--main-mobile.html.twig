@@ -64,13 +64,14 @@ We call a macro which calls itself to render the full tree.
         {% set attributes  = attributes.removeClass('contextual-region') %}
     {% endif %}
   {% if menu_level==0 %}
-  <li {{attributes.removeClass("main-menu")}} >
+
+  <li {{item.attributes.removeClass("main-menu").removeAttribute('id')}} >
     {% else %}
-  <li {{attributes.removeClass("main-menu").removeClass("open")}} >
+  <li {{item.attributes.removeClass("main-menu").removeAttribute('id').removeClass("open")}} >
   {% endif %}
     {% set active_link = true %}
     {% else %}
-    <li{{item.attributes}}>
+    <li{{item.attributes.removeAttribute('id')}}>
     {% set link_class = '' %}
     {% set active_link = false %}
     {% endif %}
