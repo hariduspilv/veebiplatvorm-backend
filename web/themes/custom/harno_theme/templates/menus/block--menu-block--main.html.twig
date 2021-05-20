@@ -111,7 +111,10 @@
 
     <a  {% if menu_item.url.external %} target="_blank"
       aria-label="{{"Link opens on new page"|t}}" {% endif %} title="{{link_desc}}" {% if has_url %} href="{{main_url}}"
-      {% endif %}" {% if menu_item.in_active_trail %} class="active" {% if not show_link %}style="display:none;"{% endif %} {% if not menu_item.below %} aria-current="page" {% else %}
+      {% endif %}" {% if menu_item.in_active_trail %} {% if not show_link %}
+    {% else %}
+    class="active"
+    {% endif %} {% if not show_link %}style="display:none;"{% endif %} {% if not menu_item.below %} aria-current="page" {% else %}
       aria-expanded="true" {% endif %} {% else %} {% if menu_item.below %} aria-expanded="false" {% endif %}{% endif %}>
       {{ menu_item.title }}
       {% if menu_item.url %}
@@ -174,12 +177,13 @@
           <a  href="#"  style="{% if item_below.in_active_trail %}display: block;{% else %} display: none;{% endif %}" class="back-to-menu"><i class="mdi mdi-chevron-left" aria-hidden="true"></i>{{ "Back" |t }}</a>
 
       </li>
+            {% if loop.last and loop.length>=3 %}
+              <li class="show-more" data-showmore="{{"Show more" |t}}" data-showless="{{"Show less"|t}}">
+                <button class="btn btn-show-more" aria-expanded="false"><span>{{"Show more" |t}}</span><i
+                    class="mdi mdi-menu-down"></i></button>
+              </li>
+            {% endif %}
       {% endfor %}
-
-      <li class="show-more" data-showmore="{{"Show more" |t}}" data-showless="{{"Show less"|t}}">
-        <button class="btn btn-show-more" aria-expanded="false"><span>{{"Show more" |t}}</span><i
-            class="mdi mdi-menu-down"></i></button>
-      </li>
     </ul>
     {% endif %}
     </li>
