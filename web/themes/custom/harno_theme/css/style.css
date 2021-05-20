@@ -22,3 +22,8 @@
 .user-login-form {
   margin-top: 5em;
 }
+.gallery-thumbs .visible-thumb{
+  width: 25%;
+  padding: unset;
+  padding-right: 0.5rem;
+}

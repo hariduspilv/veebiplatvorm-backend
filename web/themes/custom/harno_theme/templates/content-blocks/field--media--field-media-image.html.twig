@@ -41,10 +41,14 @@
   label_display == 'visually_hidden' ? 'visually-hidden',
 ]
 %}
+
 {% if element %}
   {% set orientation='landscape' %}
   {% if element['#orientation'] %}
     {% set orientation = element['#orientation'] %}
+  {% endif %}
+  {% if element['#setmodal'] %}
+    {% set modal = true %}
   {% endif %}
   {% if  element['#thumbnail'] ==1 %}
     {% set orientation='landscape' %}
@@ -57,8 +61,8 @@
 {% for item in items %}
   {% set image_uri = item.content['#item']|file_uri%}
   {% set image_alt = item.content['#item'].getValue().alt %}
-
-    <a href="#" class="{{ img_classes }}" style="background-image: url('{{ image_uri|image_style(orientation) }}');" tabindex="0">
+  {% set image_width = item.content['#item'].getValue().width %}
+    <a {% if modal %} data-plugin="modalOpener" {% endif %} href="#" class="{{ img_classes }} {% if element['#gallerythumb'] %} gallery-image-item {% endif %}" style="background-image: url('{{ image_uri|image_style(orientation) }}');{% if orientation=='natural' %} {% if image_width > 399 %} padding-top:100%;{% endif %} background-size:contain;{% endif %}" tabindex="0">
       <img src="/themes/custom/harno_theme/static/assets/images/placeholder-1.gif" {% if image_alt%} alt="{{ image_alt }}" {% endif%}>
       {% if not element['#thumbnail'] %}
       <span class="gallery-icon" aria-label="{{ "Open gallery" | t}}"></span>

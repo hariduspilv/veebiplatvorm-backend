@@ -57,6 +57,12 @@ function harno_theme_preprocess_media(&$vars){
     if(isset($vars['elements']['#orientation'])){
       $vars['content']['field_media_image']['#orientation'] = $vars['elements']['#orientation'];
     }
+    if(isset($vars['elements']['#setmodal'])){
+      $vars['content']['field_media_image']['#setmodal'] = $vars['elements']['#setmodal'];
+    }
+    if(isset($vars['elements']['#gallerythumb'])){
+      $vars['content']['field_media_image']['#gallerythumb'] = $vars['elements']['#gallerythumb'];
+    }
   }
 }
 function harno_theme_preprocess_pager(&$vars){

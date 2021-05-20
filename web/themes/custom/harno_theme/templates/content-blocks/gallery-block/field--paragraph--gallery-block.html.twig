@@ -70,18 +70,26 @@
               {% endif %}
           {% for image in images %}
             {% set media = drupal_entity('media',image.target_id) %}
-
             {% if media['#media'] %}
+              {% set image_width = media['#media'].get('field_media_image').width %}
               {% set media_uri = media['#media']|file_uri %}
               {% set media_alt = media['#media'].get('field_media_image').alt %}
             {% if loop.first %}
-              <a class="image-field image-field--{{ orientation }}" style="background-image: url('{{ drupal_image(media_uri,orientation)['#uri']|file_url }}');" tabindex="0">
+              <a data-plugin="modalOpener" class="image-field image-field--{{ orientation }}" style="background-image: url('{{ drupal_image(media_uri,orientation)['#uri']|file_url }}');{% if orientation=='natural' %} {% if image_width > 399 %} padding-top:100%;{% endif %} background-size:contain;{% endif %}" tabindex="0">
                 <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" {% if media_alt%} alt="{{ media_alt }}" {% endif%}>
                 <span class="gallery-icon" aria-label="{{ "Open gallery" |t }}"></span>
               </a><!--/image-field-->
+              <ul class="gallery-thumbs" style="flex-wrap:unset ;margin: 0.5rem -0.5rem 0 0;">
+              {% if loop.index==1 %}
+                <li class="hidden">
+                  <a class="gallery-image-item thumb thumb--landscape" href="{{ drupal_image(image.target_id)['#uri']|file_url }}" style="padding-bottom:68%;background-image: url('{{ drupal_image(media_uri,'thumbnail')['#uri']|file_url }}')" tabindex="0">
+                    <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" {% if media_alt%} alt="{{ media_alt }}" {% endif%}>
+                  </a>
+                </li>
+              {% endif %}
             {% else %}
               {% if loop.index == 2 %}
-                <ul class="thumbnails-field">
+
               {% endif %}
               {% if not loop.first and loop.index<7 %}
                 {% set thumb_class = 'visible-thumb' %}
@@ -89,7 +97,7 @@
                 {% set thumb_class = 'hidden' %}
               {% endif %}
               <li class="{{ thumb_class }}">
-                <a class="thumb thumb--landscape" href="{{ drupal_image(image.target_id)['#uri']|file_url }}" style="background-image: url('{{ drupal_image(media_uri,'thumbnail')['#uri']|file_url }}');" tabindex="0">
+                <a class="gallery-image-item thumb thumb--landscape" href="{{ drupal_image(image.target_id)['#uri']|file_url }}" style="padding-bottom:68%; background-image: url('{{ drupal_image(media_uri,'thumbnail')['#uri']|file_url }}');" tabindex="0">
                   <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" {% if media_alt%} alt="{{ media_alt }}" {% endif%}>
                 </a>
               </li>
@@ -104,6 +112,52 @@
 {#      {{  drupal_entity('node',  gallery_id , 'teaser')  }}#}
     {% endif %}
   {% endfor %}
+  <div class="picture-modal">
+    <div class="picture-modal__container">
+      <div class="modal-toolbar">
+        <div class="item-wrapper">
+
+          <div class="modal-image-count"></div>
+
+          <button class="btn btn-share" data-plugin="shareModal">
+            <i class="mdi mdi-share-variant"></i>
+          </button>
+          <button class="btn btn-print">
+            <i class="mdi mdi-printer"></i>
+          </button>
+          <a href="#" class="btn btn-download" download="test picture" target="_blank">
+            <i class="mdi mdi-download"></i>
+          </a>
+          <button class="btn btn-close">
+            <i class="mdi mdi-close"></i>
+          </button>
+
+        </div>
+      </div>
+
+      <div class="swiper-container gallery-top">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+        </div><!--/swiper-wrapper-->
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+      </div><!--/gallery-top-->
+
+      <div class="swiper-container gallery-thumbnails">
+        <div class="image-description">
+          <span class="title"></span>
+        </div>
+        <div class="swiper-wrapper">
+        </div><!--/swiper-wrapper-->
+      </div><!--/gallery-thumbnails-->
+
+    </div><!--/picture-modal__container-->
+  </div><!--/picture-modal-container-->
 {% endif %}
 {% if field_name!='field_images' %}
 {#{% if label_hidden %}#}
@@ -140,11 +194,21 @@
       {% set content  = item.content %}
       {% set  content = content|merge({'#orientation':orientation}) %}
       {% if loop.first %}
+        {% set modal = true %}
+        {% set  content = content|merge({'#setmodal':modal}) %}
         {{ content }}
+
+        <ul class="gallery-thumbs" style="flex-wrap:unset ;margin: 0.5rem -0.5rem 0 0;">
+        <li class="hidden">
+          {% set content  = item.content %}
+          {% set  content = content|merge({'#thumbnail':true}) %}
+          {% set  content = content|merge({'#orientation':orientation}) %}
+          {% set  content = content|merge({'#gallerythumb':true}) %}
+          {{ content }}
+        </li>
         {% else %}
 
           {% if loop.index == 2 %}
-      <ul class="thumbnails-field">
             {% endif %}
           {% if loop.index <= 6 %}
             <li class="visible-thumb">
@@ -155,6 +219,7 @@
             {% set content  = item.content %}
             {% set  content = content|merge({'#thumbnail':true}) %}
              {% set  content = content|merge({'#orientation':orientation}) %}
+             {% set  content = content|merge({'#gallerythumb':true}) %}
 
             {{ content }}
           </li>
