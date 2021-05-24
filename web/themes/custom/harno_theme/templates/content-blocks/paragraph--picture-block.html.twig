@@ -1,6 +1,7 @@
 {% set base_path= base_path ~ directory  %}
 {% if content.field_orientation %}
   {% set style = content.field_orientation['#items'].getString() %}
+  {% set orientation = style %}
 {% endif %}
 
 {% if style %}
@@ -9,9 +10,26 @@
   {% set drupal_image_entity  = drupal_entity('media',content.field_image['#items'].target_id) %}
   {% if drupal_image_entity['#media'] %}
     {% set image_width = drupal_image_entity['#media'].field_media_image.width%}
+    {% set image_height = drupal_image_entity['#media'].field_media_image.height%}
+    {% set ratio = image_width/image_height %}
+
   {% endif %}
   <div class="image-block" {% if style == 'natural' %}{% endif %}>
-    <a class="image-field image-field--{{ style }}" style="background-image: url({{ image_uri|image_style(style) }});{% if style=='natural' %} {% if image_width > 399 %} padding-top:100%;{% endif %} background-size:contain;{% endif %}" tabindex="0">
+    <a class="image-field image-field--{{ style }}" style="
+      background-image: url({{ image_uri|image_style(style) }});
+    {% if orientation=='natural' %}
+      {% if image_width > 399 and ratio < 1 %} padding-top:100%;{% endif %}
+      {% if image_width<399 %}
+        background-size: contain;
+        padding-top: 100%;
+      {% else %}
+
+        {% if ratio <=1 %}
+          padding-top: 100%;
+        {% endif %}
+        background-size:contain;
+      {% endif %}
+    {% endif %}" tabindex="0">
       <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" {% if style=='natural'%}{% endif%} alt="{{ image_file_alt }}">
       <span class="gallery-icon" aria-label="{{ "Open picture" | t}}"></span>
     </a><!--/image-field-->
