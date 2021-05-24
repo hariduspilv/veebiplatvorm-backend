@@ -64,10 +64,13 @@
   {% set image_width = item.content['#item'].getValue().width %}
   {% set image_height = item.content['#item'].getValue().height %}
   {% set ratio = image_width / image_height %}
-
+  {% set padding = image_height/image_width*100 %}
     <a {% if modal %} data-plugin="modalOpener" {% endif %} href="#" class="{{ img_classes }} {% if element['#gallerythumb'] %} gallery-image-item {% endif %}" style="
       background-image: url('{{ image_uri|image_style(orientation) }}');
     {% if orientation=='natural' %}
+       {% if image_width > 399 and ratio > 1 %}
+       padding-top: {{ padding }}%;
+       {% endif %}
       {% if image_width > 399 and ratio < 1 %} padding-top:100%;{% endif %}
       {% if image_width<399 %}
         background-size: contain;
@@ -79,7 +82,7 @@
         background-size:contain;
       {% endif %}
     {% endif %}" tabindex="0">
-      <img {% if ratio >1 %}style="height: auto" {% endif%} src="/themes/custom/harno_theme/static/assets/images/placeholder-1.gif" {% if image_alt%} alt="{{ image_alt }}" {% endif%}>
+      <img {% if ratio >1 and not element['#thumbnail'] %}style="height: auto" {% endif%} src="/themes/custom/harno_theme/static/assets/images/placeholder-1.gif" {% if image_alt%} alt="{{ image_alt }}" {% endif%}>
       {% if not element['#thumbnail'] %}
       <span class="gallery-icon" aria-label="{{ "Open gallery" | t}}"></span>
       {% endif %}
