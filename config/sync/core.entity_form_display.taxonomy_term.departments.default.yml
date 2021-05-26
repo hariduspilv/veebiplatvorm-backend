@@ -3,12 +3,33 @@ langcode: et
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.departments.field_introduction
     - taxonomy.vocabulary.departments
+  module:
+    - maxlength
 id: taxonomy_term.departments.default
 targetEntityType: taxonomy_term
 bundle: departments
 mode: default
 content:
+  field_introduction:
+    weight: 1
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings:
+      maxlength:
+        maxlength_js: 150
+        maxlength_js_label: 'Sisu on piiratud @limit tähemärgiga, veel saab sisestada: <strong>@remaining</strong> tähemärki.'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+    type: string_textarea
+    region: content
+  menu:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -21,7 +42,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 1
+    weight: 2
     region: content
     third_party_settings: {  }
 hidden:
