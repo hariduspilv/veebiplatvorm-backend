@@ -12,5 +12,21 @@
         {% endif %}
       {% endfor %}
     {% endif %}
+    {% if children['#content']['positsions'] %}
+      <script src="{{ base_path ~ directory }}/templates/forms/filters/filterRefresh.js"></script>
+      <span class="btn-input">
+        <label for="mobile-tag1">{{ children['#content']['positsions'] }}</label>
+        <input type="checkbox" id="mobile-tag1" value="{{ children['#content']['positsions'] }}">
+        <span  data-remove-item="{{ children['#content']['positsions'] }}" class="btn btn-tag btn-tag-remove">{{ children['#content']['positsions'] }}</span>
+      </span>
+    {% endif %}
+    {% if children['#content']['departments'] %}
+      <script src="{{ base_path ~ directory }}/templates/forms/filters/filterRefresh.js"></script>
+      <span class="btn-input">
+        <label for="mobile-tag2">{{ children['#content']['departments'] }}</label>
+        <input type="checkbox" id="mobile-tag2" value="{{ children['#content']['departments'] }}">
+        <span  data-remove-item="{{ children['#content']['departments'] }}" class="btn btn-tag btn-tag-remove">{{ children['#content']['departments'] }}</span>
+      </span>
+    {% endif %}
   {% endif %}
 {% endif %}

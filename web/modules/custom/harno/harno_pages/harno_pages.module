@@ -18,6 +18,11 @@ function harno_pages_theme($existing, $type, $theme, $path)
       'variables' => ['content' => [],'pager'=>[],'academic_years'=>[]],
       'path' => 'themes/custom/harno_theme/templates/pages',
     ],
+    'contacts-page' => [
+      'template' => 'contacts-page',
+      'variables' => ['content' => [],'contact_filters'=>[]],
+      'path' => 'themes/custom/harno_theme/templates/pages',
+    ],
     'galleries-response' => [
       'template' => 'galleries-response',
       'variables' => ['content' => [],'pager'=>[],'academic_years'=>[]],
@@ -28,6 +33,11 @@ function harno_pages_theme($existing, $type, $theme, $path)
       'variables' => ['content' => [],'pager'=>[],'academic_years'=>[]],
       'path' => 'themes/custom/harno_theme/templates/responses',
     ],
+    'contacts-response' => [
+      'template' => 'contacts-response',
+      'variables' => ['content' => [],'contact_filters'=>[]],
+      'path' => 'themes/custom/harno_theme/templates/responses',
+    ],
     'form-galleries' => [
       'template' => 'form-galleries',
       'render element' =>'children',
@@ -35,6 +45,11 @@ function harno_pages_theme($existing, $type, $theme, $path)
     ],
     'form-news' => [
       'template' => 'form-news',
+      'render element' =>'children',
+      'path' => 'themes/custom/harno_theme/templates/forms',
+    ],
+    'form-contacts' => [
+      'template' => 'form-contacts',
       'render element' =>'children',
       'path' => 'themes/custom/harno_theme/templates/forms',
     ],

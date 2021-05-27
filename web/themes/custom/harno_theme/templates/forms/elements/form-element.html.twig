@@ -102,12 +102,15 @@
     {% endif %}
 
   {% endif %}
-{% elseif element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name']=='gallerySearch' or element['#name'] == 'gallerySearchMobile' or element['#name']=='newsSearch' or element['#name']== 'newsSearchMobile' %}
+{% elseif element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name']=='gallerySearch' or element['#name'] == 'gallerySearchMobile' or element['#name']=='newsSearch' or element['#name']== 'newsSearchMobile' or element['#name'] == 'contactsSearch' or element['#name'] == 'contactsSearchMobile' %}
   <div
-    class="form-item {% if element['#name']=='date_start' or element['#name']=='date_end' %}custom-date{% endif %} {% if element['#name'] in ['gallerySearchMobile','gallerySearch','newsSearch','newsSearchMobile'] %} search-input{% endif %}"
+    class="form-item {% if element['#name']=='date_start' or element['#name']=='date_end' %}custom-date{% endif %} {% if element['#name'] in ['gallerySearchMobile','gallerySearch','newsSearch','newsSearchMobile','contactsSearch','contactsSearchMobile'] %} search-input{% endif %}"
     data-plugin="movingLabel">
     <label class="form-label" for="{{ element['#id'] }}">{{ label['#title'] }}</label>
     {{ children }}
+    {% if element['#name'] in ['gallerySearchMobile','gallerySearch','newsSearch','newsSearchMobile','contactsSearch','contactsSearchMobile'] %}
+      <button class="btn search-submit-btn" type="submit" aria-label="{{ 'Search'|t }}"></button>
+    {% endif %}
   </div>
 {% else %}
   {% if element['#webform_element'] %}
