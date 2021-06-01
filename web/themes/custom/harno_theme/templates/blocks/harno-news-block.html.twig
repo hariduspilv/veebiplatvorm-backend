@@ -22,6 +22,12 @@
             {% endif %}
           <div class="col-3 md-6 sm-12">
             <a href="{{ news_block.article_link }}" class="news-block">
+              {% if news_block.sticky %}
+                <div class="news-block__tag active">
+                  <span>{{"Important"|t}}</span>
+                </div>
+              {% endif %}
+              
               {% if news_block.tag %}
                 <div class="news-block__tag">
                   <span>{{ news_block.tag }}</span>

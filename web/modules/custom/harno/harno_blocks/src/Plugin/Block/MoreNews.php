@@ -35,6 +35,30 @@ class MoreNews  extends  BlockBase{
     $nids = $query->execute();
     $node_storage = \Drupal::entityTypeManager()->getStorage('node');
     $articles = $node_storage->loadMultiple($nids);
+    $important_query = \Drupal::entityQuery('node');
+    $important_query->condition('status',1);
+    $important_query->condition('nid', $current_id,'!=');
+    $important_query->condition('type', $bundle);
+    $important_query->condition('sticky',1);
+    $important_query->sort('created', 'DESC');
+    $important_news = $important_query->execute();
+    
+    $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+    $importants = $node_storage->loadMultiple($important_news);
+    if(!empty($importants)){
+      $important_article = reset($importants);
+      $important_article_key = array_key_first($importants);
+      if (isset($articles[$important_article_key])) {
+        unset($articles[$important_article_key]);
+      }
+      $new_articles = [];
+      $new_articles[$important_article_key] = $important_article;
+      $new_articles+=$articles;
+      if (count($new_articles)>=4) {
+        unset($new_articles[array_key_last($new_articles)]);
+      }
+      $articles=$new_articles;
+    }
     $articles_data = [];
     $articles_data['title'] = t("More news");
     $articles_data['link_name'] = t("Look more");
@@ -51,10 +75,12 @@ class MoreNews  extends  BlockBase{
         $created = date('d.m.Y',$article->get('created')->value);
         $author = $article->get('field_author_name')->value;
         $article_link = $article->toLink()->getUrl()->toString();
-
+        $sticky = $article->get('sticky')->value;
+        
         $articles_data['items'][$i] = [
           'article_link' => $article_link,
           'title' => $title,
+          'sticky' =>$sticky,
           'tag' => $article_type==1? '': $field_definition[$article_type],
           'created' => $created,
           'author' => $author,

@@ -245,6 +245,38 @@ function harno_theme_preprocess_checkboxes(&$vars){
     }
   }
 }
+function harno_theme_find_links($text){
+  $regexp = "<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>";
+  if(preg_match_all("/$regexp/siU", $text, $matches)) {
+    if(!empty($matches[0])){
+      foreach ($matches[0] as $key => $full_link){
+
+        $new_full_link = '';
+        $new_full_link = $full_link;
+        if (!empty($matches[2][$key])) {
+          $link = $matches[2][$key];
+          $external_test = \Drupal\Component\Utility\UrlHelper::isExternal($link);
+          if(!empty($matches[3][$key])){
+            $link_text = $matches[3][$key];
+          }
+          if(!empty($link) && !empty($link_text)){
+            if ($external_test){
+              $new_full_link = '<a class="link-in-new" target="_blank" href="'.$link.'">'.$link_text.'<span class="sr-only">'.t( "link opens on new page" ).'</span><i class="mdi mdi-open-in-new" aria-label="'.$link_text.'"></i></a>';
+            }
+            else{
+              $new_full_link = '<a class="btn-link-secondary" href="'.$link.'">'.$link_text.'</a>';
+            }
+          }
+          else{
+            $new_full_link = $full_link;
+          }
+        }
+        $text = str_replace($full_link,$new_full_link,$text);
+      }
+    }
+  }
+  return $text;
+}
 function harno_theme_preprocess_field(&$vars){
   if($vars['field_name']=='body' or $vars['field_name']=='field_body'){
     if(!empty($vars['items'])){
@@ -252,38 +284,11 @@ function harno_theme_preprocess_field(&$vars){
         if (!empty($content['content'])){
           if(!empty($content['content']['#text'])){
             $text = $content['content']['#text'];
-            $regexp = "<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>";
-            if(preg_match_all("/$regexp/siU", $text, $matches)) {
-              if(!empty($matches[0])){
-                foreach ($matches[0] as $key => $full_link){
-
-                  $new_full_link = '';
-                  $new_full_link = $full_link;
-                  if (!empty($matches[2][$key])) {
-                    $link = $matches[2][$key];
-                    $external_test = \Drupal\Component\Utility\UrlHelper::isExternal($link);
-                    if(!empty($matches[3][$key])){
-                      $link_text = $matches[3][$key];
-                    }
-                    if(!empty($link) && !empty($link_text)){
-                      if ($external_test){
-                        $new_full_link = '<a class="link-in-new" target="_blank" href="'.$link.'">'.$link_text.'<span class="sr-only">'.t( "link opens on new page" ).'</span><i class="mdi mdi-open-in-new" aria-label="'.$link_text.'"></i></a>';
-                      }
-                      else{
-                        $new_full_link = '<a class="btn-link-secondary" href="'.$link.'">'.$link_text.'</a>';
-                      }
-                    }
-                    else{
-                      $new_full_link = $full_link;
-                    }
-                  }
-                  $text = str_replace($full_link,$new_full_link,$text);
-                }
-              }
-              $content['content']['#text'] = $text;
+            $text = harno_theme_find_links($text);
+            $content['content']['#text'] = $text;
               // $matches[2] = array of link addresses
               // $matches[3] = array of link text - including HTML code
-            }
+            
           }
 
         }
@@ -306,13 +311,15 @@ function harno_theme_preprocess_field(&$vars){
       foreach ($vars['items'] as &$item){
         if(!empty($item['content'])){
           if(!empty(($item['content']['#text']))){
+            
             $item['content']['#text'] = str_replace('<table>','<table class="main-table">',$item['content']['#text'] );
-            $item['content']['#text'] = str_replace('<table','<div class="table-wrapper" data-plugin="tableScroll">
+            $item['content']['#text'] = str_replace('<table','<div class="table-wrapper" data-tables="inside">
   <div class="table-scrollable"><table',$item['content']['#text'] );
             $item['content']['#text'] = str_replace('</table>','</table><div class="mobile-edge-right"></div>
     <div class="mobile-edge-left"></div>
   </div><!--/table-scrollable-->
 </div><!--/table-wrapper-->',$item['content']['#text'] );
+            $item['content']['#text'] = harno_theme_find_links($item['content']['#text']);
           }
         }
       }
