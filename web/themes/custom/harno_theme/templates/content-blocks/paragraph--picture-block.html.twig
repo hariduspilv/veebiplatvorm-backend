@@ -6,7 +6,9 @@
 
 {% if style %}
   {% set image_uri = content.field_image['#items']|file_uri %}
+  {% set original_image =  file_url(image_uri) %}
   {% set image_file_alt = content.field_image[0]['#media'].field_media_image.0.alt %}
+  {% set title = content.field_image[0]['#media'].field_media_image.0.title %}
   {% set drupal_image_entity  = drupal_entity('media',content.field_image['#items'].target_id) %}
   {% if drupal_image_entity['#media'] %}
     {% set image_width = drupal_image_entity['#media'].field_media_image.width%}
@@ -33,7 +35,7 @@
         {% endif %}
         background-size:contain;
       {% endif %}
-    {% endif %}" tabindex="0">
+    {% endif %}" data-image="{{ original_image }}"  data-plugin="modalOpener" data-modal="single" tabindex="0" title="{{ title }}">
       <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" {% if style=='natural'%}{% endif%} alt="{{ image_file_alt }}">
       <span class="gallery-icon" aria-label="{{ "Open picture" | t}}"></span>
     </a><!--/image-field-->

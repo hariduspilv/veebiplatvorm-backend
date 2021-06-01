@@ -60,12 +60,14 @@
 {#{{ devel_dump() }}#}
 {% for item in items %}
   {% set image_uri = item.content['#item']|file_uri%}
+  {% set original_image = file_url(image_uri) %}
   {% set image_alt = item.content['#item'].getValue().alt %}
+  {% set title = item.content['#item'].getValue().title %}
   {% set image_width = item.content['#item'].getValue().width %}
   {% set image_height = item.content['#item'].getValue().height %}
   {% set ratio = image_width / image_height %}
   {% set padding = image_height/image_width*100 %}
-    <a {% if modal %} data-plugin="modalOpener" {% endif %} href="#" class="{{ img_classes }} {% if element['#gallerythumb'] %} gallery-image-item {% endif %}" style="
+    <a title="{{ title }}" {% if modal %} data-plugin="modalOpener" data-modal="single" {% endif %} href="#" class="{{ img_classes }} {% if element['#gallerythumb'] %} gallery-image-item {% endif %}" style="
       background-image: url('{{ image_uri|image_style(orientation) }}');
     {% if orientation=='natural' %}
        {% if image_width > 399 and ratio > 1 %}

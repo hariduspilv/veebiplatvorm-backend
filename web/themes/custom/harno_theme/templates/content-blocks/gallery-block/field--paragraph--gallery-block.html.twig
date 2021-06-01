@@ -102,11 +102,7 @@
               </a><!--/image-field-->
               <ul class="gallery-thumbs" style="flex-wrap:unset ;margin: 0.5rem -0.5rem 0 0;">
               {% if loop.index==1 %}
-                <li class="hidden">
-                  <a class="gallery-image-item thumb thumb--landscape" href="{{ drupal_image(image.target_id)['#uri']|file_url }}" style="padding-bottom:68%;background-image: url('{{ drupal_image(media_uri,'thumbnail')['#uri']|file_url }}')" tabindex="0">
-                    <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-1.gif" {% if media_alt%} alt="{{ media_alt }}" {% endif%}>
-                  </a>
-                </li>
+
               {% endif %}
             {% else %}
               {% if loop.index == 2 %}
@@ -175,13 +171,7 @@
         {{ content }}
 
         <ul class="gallery-thumbs" style="flex-wrap:unset ;margin: 0.5rem -0.5rem 0 0;">
-        <li class="hidden">
-          {% set content  = item.content %}
-          {% set  content = content|merge({'#thumbnail':true}) %}
-          {% set  content = content|merge({'#orientation':orientation}) %}
-          {% set  content = content|merge({'#gallerythumb':true}) %}
-          {{ content }}
-        </li>
+
         {% else %}
 
           {% if loop.index == 2 %}
