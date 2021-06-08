@@ -76,7 +76,7 @@ class HarnoBlocksSearchAPIForm extends FormBase {
     } else {
       //print_r($search);
       $data = [
-        'display' => 'page_1',
+        'display' => 'general_search',
         'filter' => 'keys',
         'arguments' => [],
       ];
@@ -95,7 +95,7 @@ class HarnoBlocksSearchAPIForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $form_state->setRedirect('view.general_search.page_1', ['keys' => $form_state->getValue('keys')]);
+    $form_state->setRedirect('view.general_search.general_search', ['keys' => $form_state->getValue('keys')]);
   }
 
 }

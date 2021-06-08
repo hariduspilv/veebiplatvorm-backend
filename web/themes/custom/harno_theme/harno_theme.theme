@@ -7,6 +7,7 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -442,5 +443,167 @@ function harno_theme_preprocess_html(&$vars){
   $colors = $localconf->get('color');
   if(!empty($colors)){
     $vars['site_colors'] = $colors;
+  }
+}
+function harno_theme_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  $node_type = $node->getType();
+
+  if ($node_type == 'calendar') {
+    $now = strtotime(date("Y-m-d H:i:s"));
+    $field_start_date = $node->get('field_start_date')->getValue();
+    #$field_start_time = $node->get('field_event_start_time')->getValue();
+    $field_end_date = $node->get('field_event_end_date')->getValue();
+    $field_end_time = $node->get('field_event_end_time')->getValue();
+
+    if (!isset($field_end_date[0]['value']) ) {
+      $field_end_date = $field_start_date;
+    }
+    if (!isset($field_end_time[0]['value']) ) {
+      $field_end_time[0]['value'] = 86340; //23:59
+    }
+
+    if (isset($field_end_time[0]['value']) AND !empty($field_end_time[0]['value'])) {
+      $seconds = $field_end_time[0]['value'];
+      $hours = floor($seconds / 3600);
+      $mins = floor($seconds / 60 % 60);
+      $secs = floor($seconds % 60);
+      $timeFormat = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
+      $end_date = strtotime($field_end_date[0]['value'] . ' ' . $timeFormat );
+    }
+    else {
+      $end_date = strtotime($field_end_date[0]['value']);
+    }
+
+    #\Drupal::messenger()->addStatus('$end_date ' . date("d.m.Y H:i:s", $end_date));
+    #\Drupal::messenger()->addStatus('$today ' . date("d.m.Y H:i:s", $now));
+    #\Drupal::messenger()->addStatus('$field_start_time ' . print_r($field_start_time,1));
+    #\Drupal::messenger()->addStatus('$field_end_time ' . print_r($field_end_time,1));
+
+    static $past_event_counter = 0;
+    static $future_event_counter = 0;
+    if ($end_date < $now)  {
+      $past_event_counter++;
+      $variables['past_event'] = TRUE;
+    }
+    else {
+      $future_event_counter++;
+      $variables['future_event'] = TRUE;
+    }
+    $variables['past_event_counter'] = $past_event_counter;
+    $variables['future_event_counter'] = $future_event_counter;
+  }
+}
+
+function harno_theme_preprocess_views_view_unformatted(&$variables){
+  if($variables['view']->current_display == 'general_search') {
+    $args = $variables['view']->getExposedInput();
+
+    $new_rows = [];
+    $types_order = [
+      'page' => [ 'order' => 1, 'label' => t('Basic pages') ],
+      'worker' => [ 'order' => 2, 'label' => t('Contacts') ],
+      'location' => [ 'order' => 3, 'label' => t('Locations') ],
+      'article' => [ 'order' => 4, 'label' => t('News') ],
+      'calendar_event' => [ 'order' => 5, 'label' => t('Events') ],
+      'calendar_training' => [ 'order' => 6, 'label' => t('Trainings') ],
+      'class' => [ 'order' => 7, 'label' => t('Classes') ],
+      'gallery' => [ 'order' => 8, 'label' => t('Galleries') ],
+    ];
+
+    $count = 0;
+    foreach ($variables['rows'] as $row){
+      if(!empty($row['content'])){
+        #\Drupal::messenger()->addStatus('$row' . print_r($row['content']['#node'],1));
+        if(!empty($row['content']['#node'])) {
+          $node = $row['content']['#node'];
+
+          $type = $node->getType();
+          if ($type == 'calendar') {
+            $calendar_types = $node->get('field_event_type')->getValue();
+            $count_calendar_types = count($calendar_types);
+            foreach ($calendar_types as $ct_key => $ct) {
+              if ($ct['value'] == 1) {
+                $type = 'calendar_training';
+              } elseif ( $ct['value'] == 2 ) {
+                $type = 'calendar_event';
+              }
+
+              if ($ct_key <= $count_calendar_types - 2 AND $count_calendar_types > 1) {
+                $label = $types_order[$type]['label'];
+
+                $new_rows[$types_order[$type]['order']]['title'] = $label;
+                $new_rows[$types_order[$type]['order']]['type'] = $type;
+                $new_rows[$types_order[$type]['order']]['rows'][] = $row;
+                $count++;
+              }
+            }
+           # \Drupal::messenger()->addStatus('$row' . print_r($calendar_types,1));
+          }
+
+          $label = $types_order[$type]['label'];
+
+          $new_rows[$types_order[$type]['order']]['title'] = $label;
+          $new_rows[$types_order[$type]['order']]['type'] = $type;
+          $new_rows[$types_order[$type]['order']]['rows'][] = $row;
+          $count++;
+        }
+      }
+    }
+    #
+    if (isset($args['search_type'])) {
+      if (!isset($args['search_type'][5]) AND isset($new_rows[5])) {
+        $count = $count - count($new_rows[5]['rows']);
+        unset($new_rows[5]);
+      } elseif (!isset($args['search_type'][6]) AND isset($new_rows[6])) {
+        $count = $count - count($new_rows[6]['rows']);
+        unset($new_rows[6]);
+      }
+    }
+
+
+    #\Drupal::messenger()->addStatus('New rows ' . print_r($new_rows,1));
+    if(!empty($new_rows)) {
+      ksort($new_rows);
+      #kalendri jarjekorra muutmine
+      for($o = 5; $o <= 6; $o++) {
+        if (!empty($new_rows[$o]['rows'])) {
+          $new_calendar_rows = [];
+          foreach ($new_rows[$o]['rows'] as $c_row) {
+            $node = $c_row['content']['#node'];
+            $field_start_date = $node->get('field_start_date')->getValue();
+            $field_start_time = $node->get('field_event_start_time')
+              ->getValue();
+            if (isset($field_start_time[0]['value']) and !empty($field_start_time[0]['value'])) {
+              $seconds = $field_start_time[0]['value'];
+              $hours = floor($seconds / 3600);
+              $mins = floor($seconds / 60 % 60);
+              $secs = floor($seconds % 60);
+              $timeFormat = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
+              $start_date = strtotime($field_start_date[0]['value'] . ' ' . $timeFormat);
+            }
+            else {
+              $start_date = strtotime($field_start_date[0]['value']);
+            }
+            $new_calendar_rows[$start_date] = $c_row;
+
+            #\Drupal::messenger()->addStatus('$start_date ' . date("d.m.Y H:i:s", $start_date));
+          }
+          krsort($new_calendar_rows);
+          $new_rows[$o]['rows'] = $new_calendar_rows;
+        }
+      }
+      $variables['rows'] = $new_rows;
+    }
+    if(isset($count)){
+      $variables['search_result_total'] = $count;
+    }
+    if (!isset($args['search_type'])) {
+      for ($o = 1; $o <= 8; $o++) {
+        if (isset($variables['rows'][$o]['rows'])) {
+          $variables['search_result_count'][$o] = count($variables['rows'][$o]['rows']);
+        }
+      }
+    }
   }
 }

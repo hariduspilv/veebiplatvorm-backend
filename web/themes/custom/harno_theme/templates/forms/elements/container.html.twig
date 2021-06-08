@@ -25,4 +25,9 @@
     has_parent ? 'form-wrapper',
   ]
 %}
-<div{{ attributes.addClass(classes) }}>{{ children }}</div>
+
+{% if element['#id'] == 'edit-actions' %}
+  {{ children }}
+{% else %}
+  <div{{ attributes.addClass(classes) }}>{{ children }}</div>
+{% endif %}
