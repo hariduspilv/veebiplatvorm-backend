@@ -28,20 +28,25 @@
   <div class="form-item custom-select js-form-item form-item js-form-type-select form-item-select-other-select js-form-item-select-other-select form-no-label" data-plugin="movingLabel">
     <span class="select-arrow" aria-hidden="true"></span>
     <label for="{{ element['#id'] }}" class="form-label">{{ element['#title'] }}</label>
-    <select{{ attributes.setAttribute('data-plugin','selectTwo').setAttribute('tabindex','-1') }}>
+    <select{{ attributes.setAttribute('data-plugin','selectTwo') }} >
+
       {% for option in options %}
+
         {% if loop.first %}
-          <option value="" selected disabled hidden>{{ "Make a choice" | t }}</option>
+          <option hidden selected disabled value=""></option>
+        {% else %}
+          {% if option.type == 'optgroup' %}
+            <optgroup label="{{ option.label }}">
+              {% for sub_option in option.options %}
+                <option value="{{ sub_option.value }}">{{ sub_option.label }}</option>
+              {% endfor %}
+            </optgroup>
+          {% elseif option.type == 'option' %}
+
+            <option value="{{ option.value }}">{{ option.label }}</option>
+          {% endif %}
         {% endif %}
-        {% if option.type == 'optgroup' %}
-          <optgroup label="{{ option.label }}">
-            {% for sub_option in option.options %}
-              <option value="{{ sub_option.value }}">{{ sub_option.label }}</option>
-            {% endfor %}
-          </optgroup>
-        {% elseif option.type == 'option' %}
-          <option value="{{ option.value }}">{{ option.label }}</option>
-        {% endif %}
+
       {% endfor %}
     </select>
   </div><!--/form-item custom-select-->
