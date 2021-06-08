@@ -11,6 +11,20 @@
  */
 #}
 {% spaceless %}
+  {% if element['#id'] == 'edit-search-type' %}
+    {% if options %}
+      <span class="filter-title">{{ element['#title'] }}:</span>
+      {% for option in options %}
+        <span id="search-item-{{ option.value }}-span">
+          <span class="btn-input">
+            <label for="search-item-{{ option.value }}">{{ option.label }}</label>
+            <input id="search-item-{{ option.value }}" type="checkbox"  {{ option.selected ? ' checked="checked"' }} name="search_type[{{ option.value }}]" value="{{ option.value }}" onChange='submit();'>
+            <span class="btn btn-tag">{{ option.label }}</span>
+          </span>
+        </span>
+      {% endfor %}
+    {% endif %}
+  {% else %}
   <div class="form-item custom-select js-form-item form-item js-form-type-select form-item-select-other-select js-form-item-select-other-select form-no-label" data-plugin="movingLabel">
     <span class="select-arrow" aria-hidden="true"></span>
     <label for="{{ element['#id'] }}" class="form-label">{{ element['#title'] }}</label>
@@ -31,4 +45,5 @@
       {% endfor %}
     </select>
   </div><!--/form-item custom-select-->
+  {% endif %}
 {% endspaceless %}

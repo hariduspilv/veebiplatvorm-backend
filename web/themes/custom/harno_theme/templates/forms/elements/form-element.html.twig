@@ -58,7 +58,10 @@
   'description',
   description_display == 'invisible' ? 'visually-hidden',
 ] %}
-{% if type=="checkbox" %}
+
+{% if (type == "search_api_autocomplete") or (element['#id'] == 'edit-search-type') %}
+  {{ children }}
+{% elseif type == "checkbox" %}
   {% if "article_type" in element['#name'] %}
     <div class="filters-tags__button">
       <label for="{{ element['#id'] }}">{{ label['#title'] }}</label>

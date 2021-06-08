@@ -29,7 +29,7 @@ third_party_settings:
       format_type: tab
       region: content
       format_settings:
-        description: ''
+        description: 'Päevad, kuhu ei ole sisestatud ühtegi toitu, ei kuvata ka toidumenüüs välja.'
         formatter: closed
         required_fields: true
         id: ''
@@ -43,11 +43,11 @@ third_party_settings:
       format_type: tab
       region: content
       format_settings:
-        id: ''
-        classes: ''
-        description: ''
+        description: 'Päevad, kuhu ei ole sisestatud ühtegi toitu, ei kuvata ka toidumenüüs välja.'
         formatter: closed
         required_fields: true
+        id: ''
+        classes: ''
       label: Teisipäev
     group_week:
       children:
@@ -59,7 +59,7 @@ third_party_settings:
         - group_l
         - group_p
       parent_name: ''
-      weight: 13
+      weight: 11
       format_type: tabs
       region: content
       format_settings:
@@ -75,11 +75,11 @@ third_party_settings:
       format_type: tab
       region: content
       format_settings:
-        id: ''
-        classes: ''
-        description: ''
+        description: 'Päevad, kuhu ei ole sisestatud ühtegi toitu, ei kuvata ka toidumenüüs välja.'
         formatter: closed
         required_fields: true
+        id: ''
+        classes: ''
       label: Kolmapäev
     group_n:
       children:
@@ -89,11 +89,11 @@ third_party_settings:
       format_type: tab
       region: content
       format_settings:
-        id: ''
-        classes: ''
-        description: ''
+        description: 'Päevad, kuhu ei ole sisestatud ühtegi toitu, ei kuvata ka toidumenüüs välja.'
         formatter: closed
         required_fields: true
+        id: ''
+        classes: ''
       label: Neljapäev
     group_r:
       children:
@@ -103,11 +103,11 @@ third_party_settings:
       format_type: tab
       region: content
       format_settings:
-        id: ''
-        classes: ''
-        description: ''
+        description: 'Päevad, kuhu ei ole sisestatud ühtegi toitu, ei kuvata ka toidumenüüs välja.'
         formatter: closed
         required_fields: true
+        id: ''
+        classes: ''
       label: Reede
     group_l:
       children:
@@ -117,11 +117,11 @@ third_party_settings:
       format_type: tab
       region: content
       format_settings:
-        id: ''
-        classes: ''
-        description: ''
+        description: 'Päevad, kuhu ei ole sisestatud ühtegi toitu, ei kuvata ka toidumenüüs välja.'
         formatter: closed
         required_fields: true
+        id: ''
+        classes: ''
       label: Laupäev
     group_p:
       children:
@@ -131,11 +131,11 @@ third_party_settings:
       format_type: tab
       region: content
       format_settings:
-        id: ''
-        classes: ''
-        description: ''
+        description: 'Päevad, kuhu ei ole sisestatud ühtegi toitu, ei kuvata ka toidumenüüs välja.'
         formatter: closed
         required_fields: true
+        id: ''
+        classes: ''
       label: Pühapäev
 id: node.food_menu.default
 targetEntityType: node
@@ -149,13 +149,13 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_catering_service_provider:
-    weight: 11
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   field_eating_place:
-    weight: 10
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -245,7 +245,7 @@ content:
     third_party_settings: {  }
     region: content
   field_week:
-    weight: 12
+    weight: 10
     settings:
       week_start: 1
     third_party_settings: {  }
@@ -260,29 +260,15 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 7
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 5
     region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
-    region: content
-    third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 6
+    weight: 7
     region: content
     third_party_settings: {  }
   title:
@@ -309,8 +295,10 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 8
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  promote: true
+  sticky: true
