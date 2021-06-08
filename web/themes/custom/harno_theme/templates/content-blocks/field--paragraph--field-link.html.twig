@@ -47,7 +47,7 @@
     {% endif %}
     {% for item in items %}
       {% if  item.content['#options'].external%}
-        <a target="_blank" href="{{ item.content['#url']['#uri'] }}" aria-label="{{ 'Link opens in new tab' |t }}" class="">
+        <a target="_blank" href="{{ item.content['#url'] }}" aria-label="{{ 'Link opens in new tab' |t }}" class="">
           <i class="mdi mdi-open-in-new" aria-label="{{ 'link external' |t }}"></i>
           {{ item.content['#title'] }}
         </a>
