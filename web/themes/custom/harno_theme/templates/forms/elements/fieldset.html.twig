@@ -21,14 +21,12 @@
  * @see template_preprocess_fieldset()
  */
 #}
-{%
-  set classes = [
-    'js-form-item',
-    'form-item',
-    'js-form-wrapper',
-    'form-wrapper',
-  ]
-%}
+{% set classes = [
+  'js-form-item',
+  'form-item',
+  'js-form-wrapper',
+  'form-wrapper',
+] %}
 {% if element['#webform_element'] %}
 
   {% if element['#type'] in ['fieldset'] %}
@@ -36,40 +34,40 @@
       <legend>{{ element['#title'] }}</legend>
       {{ children }}
     </fieldset>
-    {% elseif element['#type'] in ['webform_select_other'] %}
-      <fieldset data-drupal-selector="edit-select-other"
-          class="js-webform-select-other webform-select-other webform-select-other--wrapper fieldgroup form-composite webform-composite-visible-title js-webform-type-webform-select-other webform-type-webform-select-other js-form-item js-form-wrapper form-wrapper"
-          id="{{ element['#id'] }}">
-        <div class="fieldset-wrapper">
-  {{ children }}
-        </div>
-</fieldset>
+  {% elseif element['#type'] in ['webform_select_other'] %}
+    <fieldset data-drupal-selector="edit-select-other"
+              class="js-webform-select-other webform-select-other webform-select-other--wrapper fieldgroup form-composite webform-composite-visible-title js-webform-type-webform-select-other webform-type-webform-select-other js-form-item js-form-wrapper form-wrapper"
+              id="{{ element['#id'] }}">
+      <div class="fieldset-wrapper">
+        {{ children }}
+      </div>
+    </fieldset>
   {% else %}
     {{ children }}
   {% endif %}
 {% else %}
-{% if element['#id']=='gallery-years' or element['#id']=='news-topFilter' %}
-  {% if  not element['#my-id'] == 'news-years' %}
-    <div class="filters-top">
-  {% endif %}
-    {% if legend.title %}
-      <span class="filter-title">{{legend.title}}:</span>
+  {% if element['#id']=='gallery-years' or element['#id']=='news-topFilter' %}
+    {% if  not element['#my-id'] == 'news-years' %}
+      <div class="filters-top">
     {% endif %}
-  {{ children }}
-  {% if not element['#my-id'] == 'news-years' %}
+    {% if legend.title %}
+      <span class="filter-title">{{ legend.title }}:</span>
+    {% endif %}
+    {{ children }}
+    {% if not element['#my-id'] == 'news-years' %}
 
-        </div>
-        {% endif %}
+      </div>
+    {% endif %}
   {% elseif element['#id']=='galleries-bottomFilter' %}
     <div class="filters-bottom">
       <div class="date-inputs">
         {{ element.date_start }}
         <span class="date-separator">-</span>
         {{ element.date_end }}
-{#      {{ children }}#}
+        {# {{ children }} #}
       </div>
       {{ element.searchgroup.gallerySearch }}
-{#      {{ dd(element) }}#}
+      {# {{ dd(element) }} #}
       <button class="btn btn-primary filters-ready">{{ "Ready"|t }}</button>
     </div>
   {% elseif element['#id']=='news-bottomFilter' %}
@@ -80,22 +78,49 @@
         {{ element.date_start }}
         <span class="date-separator">-</span>
         {{ element.date_end }}
-{#      {{ children }}#}
+        {# {{ children }} #}
       </div>
       {{ element.searchgroup.newsSearch }}
-{#      {{ dd(element) }}#}
+      {# {{ dd(element) }} #}
       <button class="btn btn-primary filters-ready">{{ "Ready"|t }}</button>
     </div>
+  {% elseif element['#id']=='contacts-bottomFilter' %}
+
+    <div class="mobile-filters">
+      {{ element.contactsSearchMobile }}
+      <button class="btn btn-secondary mobile-filter-trigger"
+              data-plugin="filtersModal">{{ "Open filters" |t }}</button>
+    </div>
+    <div id="mobile-active-filters" class="mobile-filters-output" aria-labelledby="filters1">
+      <div id="filters1" class="sr-only">Filtering results</div>
+      {{ element.positions_checkbox }}
+      {{ element.departments_checkbox }}
+    </div><!--/mobile-filters-output-->
+  {% elseif element['#id']=='contacts-topFilter' %}
+    <div class="filters-wrapper">
+      <div class="modal-header" role="filters" aria-labelledby="filters-label">
+        <div class="focus-trap" tabindex="0"></div>
+        <h5 id="filters-label">{{ "Filter contacts" |t }}</h5>
+        <button class="btn btn-close">
+          <span class="sr-only">{{ "Close modal" |t }}</span>
+          <i class="mdi mdi-close"></i>
+        </button><!--/btn-close-->
+      </div><!--/modal-header-->
+
+      <div class="form-row-items">
+        {{ children }}
+        <button class="btn btn-primary filters-ready">{{ 'Ready'|t }}</button>
+        <div class="focus-trap" tabindex="0"></div>
+      </div><!--/form-row-item-->
+    </div><!--/filters-wrapper-->
   {% else %}
     <fieldset{{ attributes.addClass(classes) }}>
-      {%
-        set legend_span_classes = [
+      {% set legend_span_classes = [
         'fieldset-legend',
         required ? 'js-form-required',
         required ? 'form-required',
-      ]
-      %}
-      {#  Always wrap fieldset legends in a <span> for CSS positioning. #}
+      ] %}
+      {# Always wrap fieldset legends in a <span> for CSS positioning. #}
       <legend{{ legend.attributes }}>
         <span{{ legend_span.attributes.addClass(legend_span_classes) }}>{{ legend.title }}</span>
       </legend>
@@ -117,6 +142,6 @@
         {% endif %}
       </div>
     </fieldset>
-{% endif %}
+  {% endif %}
 
 {% endif %}

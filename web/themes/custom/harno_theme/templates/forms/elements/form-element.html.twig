@@ -74,6 +74,22 @@
   {{ children }}
   <span class="btn btn-tag">{{ label['#title'] }}</span>
 </span>
+      {% elseif element['#attributes']['checkbox-type'] == 'position' %}
+        <span class="btn-input">
+          <label for="{{ element['#id'] }}">{{ label['#title'] }}</label>
+          <span  data-remove-item="{{ label['#title'] }}" class="btn btn-tag btn-tag-remove">
+            {{ children }}
+            {{ label['#title'] }}
+          </span>
+        </span>
+      {% elseif element['#attributes']['checkbox-type'] == 'department' %}
+        <span class="btn-input">
+          <label for="{{ element['#id'] }}">{{ label['#title'] }}</label>
+          <span  data-remove-item="{{ label['#title'] }}" class="btn btn-tag btn-tag-remove">
+            {{ children }}
+            {{ label['#title'] }}
+          </span>
+        </span>
       {% else %}
 <div class="custom-control custom-checkbox custom-form-inline" tabindex="0">
         {{ children }}

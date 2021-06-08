@@ -43,7 +43,6 @@ class FilterForm extends FormBase {
         $form['#attributes']['role'] = 'filter';
         $form['#theme_wrappers'] = ['form-contacts'];
         if (!empty($_REQUEST)) {
-          // devel_dump($_REQUEST);
           if (!empty($_REQUEST['positions'])) {
             $form['#storage']['positions'] = $_REQUEST['positions'];
           }
@@ -51,14 +50,18 @@ class FilterForm extends FormBase {
             $form['#storage']['departments'] = $_REQUEST['departments'];
           }
         }
-        $form['positions'] = [
+        $form['top'] = [
+          '#type' => 'fieldset',
+          '#id' => 'contacts-topFilter',
+        ];
+        $form['top']['positions'] = [
           '#title' => t('Choose position'),
-          '#id' => 'worker-positsion',
+          '#id' => 'worker-position',
           '#type' => 'select',
-//          '#attributes' => [
+          '#attributes' => [
 //            'data-plugin' => 'selectTwo',
-//            'data-disable-refocus' => true,
-//          ],
+            'data-disable-refocus' => true,
+          ],
           '#ajax' => [
             'wrapper' => 'filter-target',
             'event' => 'change',
@@ -70,14 +73,14 @@ class FilterForm extends FormBase {
           ],
           '#options' => $academic_years['positions'],
         ];
-        $form['departments'] = [
+        $form['top']['departments'] = [
           '#title' => t('Choose department'),
           '#id' => 'worker-department',
           '#type' => 'select',
-//          '#attributes' => [
+          '#attributes' => [
 //            'data-plugin' => 'selectTwo',
-//            'data-disable-refocus' => true,
-//          ],
+            'data-disable-refocus' => true,
+          ],
           '#ajax' => [
             'wrapper' => 'filter-target',
             'event' => 'change',
@@ -89,58 +92,106 @@ class FilterForm extends FormBase {
           ],
           '#options' => $academic_years['departments'],
         ];
-        $form['contactsSearch'] = [
+        $form['top']['contactsSearch'] = [
           '#type' => 'textfield',
-          '#title' => t('Search'),
+          '#title' => t('Search contacts'),
           '#attributes' => [
             'alt' => t('Type contact name you are looking for'),
           ],
 //          '#autocomplete_route_name' => 'harno_pages.contacts.autocomplete',
-//          '#ajax' => [
-//            'wrapper' => 'filter-target',
-//            'keypress' => TRUE,
-//            'callback' => '::filterResults',
-//            'event' => 'finishedinput',
-//            'disable-refocus' => TRUE,
-//          ],
+          '#ajax' => [
+            'wrapper' => 'filter-target',
+            'keypress' => TRUE,
+            'callback' => '::filterResults',
+            'event' => 'finishedinput',
+            'disable-refocus' => TRUE,
+          ],
         ];
-        $form['searchbutton'] = [
+        $form['top']['searchbutton'] = [
           '#attributes' => [
             'style' => 'display:none;',
           ],
           '#type' => 'button',
           '#title' => t('Search contacts'),
           '#value' => t('Submit'),
-//          '#ajax' => [
-//            'callback' => '::filterResults',
-//            'wrapper' => 'filter-target',
-//            'disable-refocus' => true,
-//            'keypress'=>TRUE,
-//          ],
+          '#ajax' => [
+            'callback' => '::filterResults',
+            'wrapper' => 'filter-target',
+            'disable-refocus' => true,
+            'keypress'=>TRUE,
+          ],
 
         ];
-        $form['contactsSearchMobile'] = [
+        $form['bottom'] = [
+          '#type' => 'fieldset',
+          '#id' => 'contacts-bottomFilter',
+        ];
+        $form['bottom']['contactsSearchMobile'] = [
           '#type' => 'textfield',
           '#title' => t('Search contacts'),
           '#attributes' => [
             'alt' => t('Type contact name you are looking for'),
           ],
-//          '#ajax' => [
-//            'wrapper' => 'filter-target',
-//            'keypress' => TRUE,
-//            'callback' => '::filterResults',
-//            'event' => 'finishedinput',
-//            'disable-refocus' => TRUE,
-//          ],
+          '#ajax' => [
+            'wrapper' => 'filter-target',
+            'keypress' => TRUE,
+            'callback' => '::filterResults',
+            'event' => 'finishedinput',
+            'disable-refocus' => TRUE,
+          ],
         ];
 
+
+        $filter_values = $form_state->getValues();
+        if(($_REQUEST['positions'] and $_REQUEST['positions'] != 'all')) {
+          $form['bottom']['positions_checkbox'] = [
+            '#type' => 'checkboxes',
+            '#id' => 'positions_',
+            '#ajax' => [
+              'wrapper' => 'filter-target',
+              'event' => 'change',
+              'callback' => '::filterResults',
+              'progress' => [
+                'type' => 'throbber',
+                'message' => '',
+              ],
+            ],
+            '#attributes' => [
+              'checkbox-type' => 'position'
+            ],
+            '#options' => [$_REQUEST['positions'] => $_REQUEST['positions']],
+          ];
+        }
+        if(($_REQUEST['departments'] and $_REQUEST['departments'] != 'all')) {
+          $form['bottom']['departments_checkbox'] = [
+            '#type' => 'checkboxes',
+            '#id' => 'departments_',
+            '#ajax' => [
+              'wrapper' => 'filter-target',
+              'event' => 'change',
+              'callback' => '::filterResults',
+              'progress' => [
+                'type' => 'throbber',
+                'message' => '',
+              ],
+            ],
+            '#attributes' => [
+              'checkbox-type' => 'department',
+            ],
+            '#options' => [$_REQUEST['departments'] => $_REQUEST['departments']],
+          ];
+        }
+
+        $form['#attached']['library'][] = 'harno_pages/accordion';
       }
-//      if (!empty($_REQUEST['positions'])) {
-//        $form['positions']['#default_value'] = $_REQUEST['positions'];
-//      }
-//      if (!empty($_REQUEST['departments'])) {
-//        $form['departments']['#default_value'] = $_REQUEST['departments'];
-//      }
+
+      if (!empty($_REQUEST['positions'])) {
+        $form['positions']['#default_value'] = $_REQUEST['positions'];
+      }
+      if (!empty($_REQUEST['departments'])) {
+        $form['departments']['#default_value'] = $_REQUEST['departments'];
+      }
+
       return $form;
     }
 
@@ -523,11 +574,14 @@ class FilterForm extends FormBase {
       if (isset($form_values['contactsSearchMobile'])) {
         $parameters['contactsSearchMobile'] = $_REQUEST['contactsSearchMobile'];
       }
+      $filter_values = $form_state->getValues();
       if (isset($form_values['positions'])) {
         $parameters['positions'] = $_REQUEST['positions'];
+        $filters['#content']['positions'] = $filter_values['positions'];
       }
       if (isset($form_values['departments'])) {
         $parameters['departments'] = $_REQUEST['departments'];
+        $filters['#content']['departments'] = $filter_values['departments'];
       }
       if(!empty($_GET)){
         if (!empty($_GET['_wrapper_format'])){
@@ -536,15 +590,14 @@ class FilterForm extends FormBase {
       }
     }
     if(!empty($filter_values = $form_state->getValues())){
-
       $filters = [];
       if(!empty($filter_values['years'])){
         $filters['#theme'] = 'active-filters';
         $filters['#content']['years'] = $filter_values['years'];
       }
-      if(!empty($filter_values['positsions'])){
+      if(!empty($filter_values['positions'])){
         $filters['#theme'] = 'active-filters';
-        $filters['#content']['positsions'] = $filter_values['positsions'];
+        $filters['#content']['positions'] = $filter_values['positions'];
       }
       if(!empty($filter_values['departments'])){
         $filters['#theme'] = 'active-filters';
@@ -558,13 +611,16 @@ class FilterForm extends FormBase {
       '#type' => 'pager',
       '#parameters' => $parameters,
     ];
-//    $build['#attached']['library'][] = 'harno_pages/filter_focus';
+    $build['#attached']['library'][] = 'harno_pages/accordion';
     $response = new AjaxResponse();
-    $dialogText['#attached']['library'][] = 'harno_pages/harno_pages';
 //    $response['#attached']['library'][] = 'harno_pages/js/urlparameters.js';
     $response->addCommand(new HtmlCommand('#mobile-active-filters', $filters));
     $response->addCommand(new ReplaceCommand('#filter-target',$build));
-//    $response->addCommand(new InvokeCommand(NULL, 'filterFocus', [$form_state->getTriggeringElement()]));
+    $response->addCommand(new InvokeCommand('.accordion--contacts', 'accordion'));
+    for($x = 0; $x <= $galleries['overall_total']; $x++){
+      $response->addCommand(new InvokeCommand('#contact-modal-'.$x, 'contactModal'));
+    }
+//      $response->addCommand(new InvokeCommand(NULL, 'filterFocus', [$form_state->getTriggeringElement()]));
 
     //    $response->addCommand(new UpdateSelectionCommand());
 

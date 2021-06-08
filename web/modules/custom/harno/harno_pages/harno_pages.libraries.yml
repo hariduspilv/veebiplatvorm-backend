@@ -7,5 +7,9 @@ harno_pages:
 filter_focus:
       js:
         js/filterfocus.js: { }
+accordion:
+      js:
+        js/accordion.js: { }
+        js/contactModal.js: { }
 
 

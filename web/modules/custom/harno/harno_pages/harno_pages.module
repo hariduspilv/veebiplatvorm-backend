@@ -20,7 +20,7 @@ function harno_pages_theme($existing, $type, $theme, $path)
     ],
     'contacts-page' => [
       'template' => 'contacts-page',
-      'variables' => ['content' => [],'contact_filters'=>[]],
+      'variables' => ['content' => [],'contact_filters'=>[], 'time' => []],
       'path' => 'themes/custom/harno_theme/templates/pages',
     ],
     'galleries-response' => [
@@ -57,6 +57,11 @@ function harno_pages_theme($existing, $type, $theme, $path)
       'template' => 'active-filters',
       'render element' =>'children',
       'path' => 'themes/custom/harno_theme/templates/forms/filters',
+    ],
+    'contact-modal' => [
+      'template' => 'contact-modal',
+      'variables' => ['content' => [], 'title' => []],
+      'path' => 'themes/custom/harno_theme/templates/pages/modal/filters',
     ],
   ];
 }

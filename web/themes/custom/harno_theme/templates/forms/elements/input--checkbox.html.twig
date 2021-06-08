@@ -18,6 +18,10 @@
 {% else %}
   {% if element['#attributes']['checkbox-type'] == 'collect' %}
     <input  {{ attributes }}/>{{ children }}
+  {% elseif element['#attributes']['checkbox-type'] == 'position' %}
+    <input  {{ attributes }}/>{{ children }}
+  {% elseif element['#attributes']['checkbox-type'] == 'department' %}
+    <input  {{ attributes }}/>{{ children }}
   {% else %}
     <div class="custom-control custom-checkbox" tabindex="0">
     <input {{ attributes.addClass('custom-form-input') }}/>{{ children }}

@@ -1,0 +1,149 @@
+<article class="content-block content-block--accordion">
+  {% set base_path= base_path ~ directory %}
+  <div class="row">
+    <div class="col-12 md-12 sm-12">
+      <div class="block">
+
+        <div class="contact-modal open" data-modal="true">
+          <div class="contact-modal__header" role="filters" aria-labelledby="filters-label">
+            <div class="focus-trap" tabindex="0"></div>
+            <h5 id="contact-label">{% if title %}{{ title }}{% else %} {{ 'Title missing'|t }} {% endif %}</h5>
+            <button class="btn btn-close">
+              <span class="sr-only">close modal</span>
+              <i class="mdi mdi-close" data-close="true"></i>
+            </button><!--/btn-close-->
+          </div><!--/contact-modal__header-->
+          {% if content %}
+            {% set media_image = '' %}
+            {% set alt = '' %}
+            {% set title = '' %}
+            {% if content.field_one_image %}
+              {% if content.field_one_image.0 %}
+                {% if content.field_one_image.0.getValue() %}
+                  {% set target_id = content.field_one_image.0.value.target_id %}
+                  {% if target_id %}
+                    {% set media = drupal_entity('media',target_id) %}
+                    {% if media %}
+                      {% set media_image = drupal_image( media['#media'].field_media_image.0.value.target_id ,'thumbnail') %}
+                      {% if media['#media'].field_media_image.0.get('alt').getString %}
+                        {% set alt = media['#media'].field_media_image.0.get('alt').getString %}
+                      {% endif %}
+                      {% if media['#media'].field_media_image.0.get('title').getString %}
+                        {% set title = media['#media'].field_media_image.0.get('title').getString %}
+                      {% endif %}
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+            {% if not media_image %}
+              {% set image = "/#{base_path}/static/assets/images/contact-placeholder.png" %}
+            {% endif %}
+            <div class="contact-modal__body">
+              <div class="contact-card">
+                <div class="contact-card__avatar"
+                     style="background-image: url({% if media_image %}{{ media_image['#uri']|file_url }}{% else %} {{ image }} {% endif %});">
+                  <img src="/{{ base_path }}/static/assets/images/placeholder-2.gif" alt="{{ alt }}">
+                </div><!--/contact-card__avatar-->
+                <div class="contact-card__content">
+                  <div class="contact-main-info">
+                    <p class="contact-name">{{ content.getTitle() }}</p>
+                    {% if content.field_position is not empty %}
+                      {% for position in content.field_position %}
+                        <p>{{ position.entity.getName() }}</p>
+                      {% endfor %}
+                    {% endif %}
+                    {% if content.departments is not empty %}
+                      {% for department in content.departments %}
+                        <p>{{ department.entity.getName() }}</p>
+                      {% endfor %}
+                    {% endif %}
+                  </div><!--/contact-main-info-->
+                  <div class="contact-contacting-info">
+                    {% if content.field_phone is not empty %}
+                      {% for number in content.field_phone %}
+                        <a href="tel:{{ number.value }}" class="btn btn-link phone">
+                          <i class="mdi mdi-phone" aria-hidden="true" title="phone number"></i>
+                          {{ number.value }}</a>
+                      {% endfor %}
+                    {% endif %}
+                    {% if content.field_email is not empty %}
+                      <a href="mailto:{{ content.field_email.value }}" class="btn btn-link e-mail">
+                        <i class="mdi mdi-email" aria-hidden="true" title="email address"></i>
+                        {{ content.field_email.value }}</a>
+                    {% endif %}
+                  </div>
+
+                  {% if content.field_consultation_hours is not empty %}
+                    {% set consulations_hours = content.field_consultation_hours %}
+                    <div class="contact-additional-info">
+                      <p>
+                        <strong>{{'Consulations time'|t }}:</strong>
+                      </p>
+                      {% for consulations_time in consulations_hours %}
+                        <p>{{ consulations_time.value }}</p>
+                      {% endfor %}
+                    </div><!--/contact-additional-info-->
+                  {% endif %}
+                  {% if content.field_education is not empty %}
+                    <div class="contact-additional-info">
+                      <p>
+                        <strong>{{ 'Education'|t }}:</strong>
+                      </p>
+                      <p>{{ content.field_education.value }}</p>
+                    </div><!--/contact-additional-info-->
+                  {% endif %}
+                  {% if content.field_link is not empty or content.field_cv is not empty %}
+                    <div class="contact-additional-info">
+                      <p>
+                        <strong>CV:</strong>
+                      </p>
+                      <ul class="contact-dockument-list">
+                        {% if content.field_cv is not empty %}
+                          {% if content.field_cv %}
+                            {% if content.field_cv.0 %}
+                              {% if content.field_cv.0.getValue() %}
+                               {% set target_id = content.field_cv.0.target_id %}
+                                {% if target_id %}
+                                  {% set title = content.field_cv.entity.get('filename').getString %}
+                                  {% set uri = content.field_cv.entity.get('uri').0.url %}
+                                {% endif %}
+                              {% endif %}
+                            {% endif %}
+                          {% endif %}
+                          <li>
+                            <a href="{{ uri }}" class="btn btn-link" target"_self" download>
+                            <i class="mdi mdi-file-pdf" aria-hidden="true" title="cv dokument"></i>{{ title }}
+                            </a>
+                          </li>
+                        {% endif %}
+                        {% if content.field_link is not empty %}
+                          <li>
+                            <a href="{{ content.field_link.uri }}" class="btn btn-link" target="_blank" rel="noopener noreferrer">
+                              <i class="mdi mdi-open-in-new" aria-hidden="true" title="link avaneb uuel lehel"></i>{{ content.field_link.title }}
+                            </a>
+                          </li>
+                        {% endif %}
+                      </ul><!--/contact-dockument-list-->
+                    </div><!--/contact-additional-info-->
+                  {% endif %}
+                  {% if content.body is not empty %}
+                    <div class="contact-additional-info">
+                      <p>
+                        <strong>{{ 'Additional information'|trans }}:</strong>
+                      </p>
+                      {{ content.body.value|raw }}
+                    </div><!--/contact-additional-info-->
+                  {% endif %}
+                </div><!--/contact-card__content-->
+              </div><!--/contact-card-->
+
+              <div class="focus-trap" tabindex="0"></div>
+            </div><!--/contact-modal__body-->
+          {% endif %}
+        </div><!--/contact-modal-->
+      </div><!--/block-->
+    </div><!--/col-12 md-12 sm-12-->
+  </div><!--/row-->
+
+</article><!--/content-block-->

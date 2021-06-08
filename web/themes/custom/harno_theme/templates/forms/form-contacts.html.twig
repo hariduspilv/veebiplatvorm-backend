@@ -15,52 +15,7 @@
     <div class="col-12 md-12 sm-12">
       <div class="contacts-filters">
         <form {{ attributes.addClass('filters-form') }}>
-          <div class="filters-wrapper">
-
-            <div class="modal-header" role="filters" aria-labelledby="filters-label">
-              <div class="focus-trap" tabindex="0"></div>
-              <h5 id="filters-label">{{ "Filter contacts" |t }}</h5>
-              <button class="btn btn-close">
-                <span class="sr-only">{{ "Close modal" |t }}</span>
-                <i class="mdi mdi-close"></i>
-              </button><!--/btn-close-->
-            </div><!--/modal-header-->
-
-            <div class="form-row-items">
-              {{ children.positions }}
-              {{ children.departments }}
-              {{ children.contactsSearch }}
-              {{ children.searchbutton }}
-              <button class="btn btn-primary filters-ready">{{ 'Ready'|t }}</button>
-              <div class="focus-trap" tabindex="0"></div>
-            </div><!--/form-row-item-->
-          </div><!--/filters-wrapper-->
-
-          <div class="mobile-filters">
-            {{ children.contactsSearchMobile }}
-            <button class="btn btn-secondary mobile-filter-trigger" data-plugin="filtersModal">{{ "Open filters" |t }}</button>
-          </div><!--/mobile-filters-->
-
-
-          <div id="mobile-active-filters" class="mobile-filters-output" aria-labelledby="filters1">
-            <div id="filters1" class="sr-only">Filtering results</div>
-            {% if children['#storage'] and children['#storage']['positions'] %}
-              <span class="btn-input">
-                <label for="mobile-tag1">{{ children['#storage']['positions'] }}</label>
-                <input type="checkbox" id="mobile-tag1" name="{{ children['#storage']['positions'] }}" checked>
-                <span  data-remove-item="{{ children['#storage']['positions'] }}" class="btn btn-tag btn-tag-remove">{{ children['#storage']['positions'] }}</span>
-              </span><!--/btn-input-->
-            {% endif %}
-            {% if children['#storage'] and children['#storage']['departments'] %}
-              <span class="btn-input">
-                <label for="mobile-tag2">{{ children['#storage']['departments'] }}</label>
-                <input type="checkbox" id="mobile-tag2" name="{{ children['#storage']['departments'] }}" checked>
-                <span data-remove-item="{{ children['#storage']['departments'] }}" class="btn btn-tag btn-tag-remove">{{ children['#storage']['departments'] }}</span>
-              </span><!--/btn-input-->
-            {% endif %}
-          </div><!--/mobile-filters-output-->
-
-
+          {{ children }}
         </form><!--/filters-form-->
       </div><!--/contacts-filter-->
     </div><!--/col-12 md-12 sm-12-->
