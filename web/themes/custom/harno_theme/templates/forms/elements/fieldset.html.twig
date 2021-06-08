@@ -30,7 +30,6 @@
   ]
 %}
 {% if element['#webform_element'] %}
-
   {% if element['#type'] in ['fieldset'] %}
     <fieldset class="form-fieldset">
       <legend>{{ element['#title'] }}</legend>
@@ -41,11 +40,11 @@
           class="js-webform-select-other webform-select-other webform-select-other--wrapper fieldgroup form-composite webform-composite-visible-title js-webform-type-webform-select-other webform-type-webform-select-other js-form-item js-form-wrapper form-wrapper"
           id="{{ element['#id'] }}">
         <div class="fieldset-wrapper">
-  {{ children }}
+          {{ children }}
         </div>
-</fieldset>
-  {% else %}
-    {{ children }}
+      </fieldset>
+    {% else %}
+      {{ children }}
   {% endif %}
 {% else %}
 {% if element['#id']=='gallery-years' or element['#id']=='news-topFilter' %}

@@ -34,7 +34,7 @@ display:
         options:
           perm: 'access content'
       cache:
-        type: tag
+        type: search_api_tag
         options: {  }
       query:
         type: views_query
@@ -59,13 +59,18 @@ display:
       style:
         type: default
       row:
-        type: fields
+        type: search_api
         options:
-          default_field_elements: true
-          inline:
-            title: title
-          separator: ''
-          hide_empty: false
+          view_modes:
+            'entity:node':
+              article: search_result
+              calendar: search_result
+              class: search_result
+              food_menu: search_result
+              gallery: search_result
+              location: search_result
+              page: search_result
+              worker: search_result
       fields:
         title:
           id: title
@@ -815,6 +820,86 @@ display:
           hide_alter_empty: false
           plugin_id: custom
       filters:
+        type:
+          id: type
+          table: search_api_index_search_index
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: Sisutüüp
+            description: null
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'Vali kategooria'
+            description: ''
+            identifier: search_type
+            optional: true
+            widget: select
+            multiple: true
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Basic pages'
+                operator: or
+                value:
+                  page: page
+              2:
+                title: Contacts
+                operator: or
+                value:
+                  worker: worker
+              3:
+                title: Locations
+                operator: or
+                value:
+                  location: location
+              4:
+                title: News
+                operator: or
+                value:
+                  article: article
+              5:
+                title: Events
+                operator: or
+                value:
+                  calendar: calendar
+              6:
+                title: Trainings
+                operator: or
+                value:
+                  calendar: calendar
+              7:
+                title: Classes
+                operator: or
+                value:
+                  class: class
+              8:
+                title: Galleries
+                operator: or
+                value:
+                  gallery: gallery
+          reduce_duplicates: false
+          plugin_id: search_api_options
         search_api_fulltext:
           id: search_api_fulltext
           table: search_api_index_search_index
@@ -872,6 +957,7 @@ display:
           value:
             '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
             und: und
+            zxx: zxx
           group: 1
           exposed: false
           expose:
@@ -927,13 +1013,18 @@ display:
           expose:
             label: ''
           plugin_id: search_api
-      title: Otsingutulemused
+      title: 'Otsingu tulemused'
       header: {  }
       footer: {  }
       empty: {  }
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: OR
+      use_ajax: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -949,15 +1040,20 @@ display:
         - 'config:field.storage.node.field_event_type'
         - 'config:field.storage.node.field_start_date'
         - 'config:search_api.index.search_index'
-  page_1:
+  general_search:
     display_plugin: page
-    id: page_1
+    id: general_search
     display_title: Page
     position: 1
     display_options:
       display_extenders: {  }
       path: otsing
       exposed_block: false
+      cache:
+        type: search_api_tag
+        options: {  }
+      defaults:
+        cache: false
     cache_metadata:
       max-age: -1
       contexts:

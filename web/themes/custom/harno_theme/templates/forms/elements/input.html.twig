@@ -10,6 +10,7 @@
  * @see template_preprocess_input()
  */
 #}
+
 {% if element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name'] == 'gallerySearch' or element['#name'] == 'gallerySearchMobile' or element['#name'] =='newsSearch' or element['#name'] =='newsSearchMobile' %}
 	{% if element['#name'] == 'date_start' or element['#name'] == 'date_end' %}
     {% if element['#name']=='date_start' %}
@@ -33,9 +34,25 @@
     <button{{ attributes.removeClass('btn-primary') }}>{{ element['#value'] }}</button>{{ children }}
 {% else %}
   {% if element['#type']=='submit' %}
-    <div class="form-submit-block">
-      <button {{ attirbutes.addClass(['btn','btn-primary'])}} type="submit" class="btn btn-primary">{{ element['#value'] }}</button>
-    </div><!--/form-submit-block-->
+    {% if (element['#id'] == 'edit-submit-general-search') or (element['#id'] == 'edit-submit-search') %}
+      {%
+        set classes = [
+        'btn',
+        'search-submit-btn'
+      ]
+      %}
+      <button{{ attributes.addClass(classes)}} type="submit" aria-label="{{ element['#value'] }}"></button>
+    {% else %}
+      {%
+        set classes = [
+        'btn',
+        'btn-primary'
+      ]
+      %}
+      <div class="form-submit-block">
+        <button {{ attributes.addClass(classes)}} type="submit">{{ element['#value'] }}</button>
+      </div><!--/form-submit-block-->
+    {% endif %}
   {% else %} {% if element['#webform_element'] %}
     {% set field_type = '' %}
 

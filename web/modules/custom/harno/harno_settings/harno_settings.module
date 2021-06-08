@@ -132,7 +132,26 @@ function harno_settings_node_prepare_form(\Drupal\Core\Entity\EntityInterface $e
   // toidumenüüs päevade toidu grupid sisestada
   $node_types = ['food_menu'];
   if (in_array($entity->getType(), $node_types)) {
-    \Drupal::logger('harno_settings')->notice('$operation: ' . $operation);
+    if ($operation == 'default') {
+      $default_value = 0;
+      $vid = 'eating_places';
+      $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0,  NULL, TRUE);
+      foreach ($terms as $term) {
+        $default_value = $term->id();
+        break;
+      }
+      $entity->set('field_eating_place', $default_value);
+
+      $default_value = 0;
+      $vid = 'catering_service_provider';
+      $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0,  NULL, TRUE);
+      foreach ($terms as $term) {
+        $default_value = $term->id();
+        break;
+      }
+      $entity->set('field_catering_service_provider', $default_value);
+    }
+
     if ($operation == 'default' OR $operation == 'edit') {
       $vid = 'food_groups';
       $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0,  NULL, TRUE);
@@ -224,8 +243,6 @@ function harno_settings_node_presave(Drupal\Core\Entity\EntityInterface $entity)
     if ($field_show_end_date == 0) {
       $entity->set('field_event_end_date', '');
     }
-
-
   }
 }
 
@@ -236,6 +253,8 @@ function harno_settings_form_alter(&$form, FormStateInterface $form_state, $form
 
   $forms = ['node_article_edit_form', 'node_article_form'];
   $forms_user = ['user_register_form', 'user_form'];
+
+  #\Drupal::messenger()->addStatus('form_id:'. $form['#form_id']);
 
   if (in_array($form['#form_id'], $forms)) {
     $form['#validate'][] = '_harno_settings_validate_sticky';
@@ -274,6 +293,9 @@ function harno_settings_form_alter(&$form, FormStateInterface $form_state, $form
   }
   elseif (in_array($form['#form_id'], ['node_food_menu_edit_form', 'node_food_menu_form'])) {
     $form['#attached']['library'][]  = 'harno_settings/admin_food_menu_form';
+  }
+  elseif (in_array($form['#form_id'], ['views_exposed_form'])) {
+    $form['#attributes']['class'][]  = 'filters-form';
   }
 }
 
@@ -429,7 +451,7 @@ function harno_settings_openid_connect_userinfo_alter(array &$userinfo, array $c
   if ($context['plugin_id'] == 'harid') {
     $no_permissions_text = t('The user does not have the permissions to use the system.');
     $id_code = str_replace('EE:EID:', '', $userinfo['personal_code']);
-    \Drupal::logger('harno_settings')->debug('<pre>' . print_r($userinfo, TRUE) . '</pre>');
+    #\Drupal::logger('harno_settings')->debug('<pre>' . print_r($userinfo, TRUE) . '</pre>');
     $user_load = \Drupal::entityTypeManager()->getStorage('user')
       ->loadByProperties([
         'field_identification_number' => $id_code,

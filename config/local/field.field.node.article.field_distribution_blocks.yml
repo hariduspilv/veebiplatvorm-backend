@@ -24,7 +24,7 @@ bundle: article
 label: Jaotusplokid
 description: 'Jaotusplokke kasutatakse, et lehe sisu osa liigendada horisontaalselt sektsioonideks. Neid kasutatakse näiteks selleks, et sisulehe vasakul küljel oleks tekst ja paremal küljel oleks pilt või tabel. Jaotusplokkide sisse ei saa teisi jaotusplokke panna. '
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
