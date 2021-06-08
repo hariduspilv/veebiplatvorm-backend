@@ -9,9 +9,8 @@
  *
  * @see template_preprocess_input()
  */
-#}<div class="form-rate-block">
-  <span id="rate-group-label" class="rate-label">{{ element['#title'] }}Hinda kursust:</span>
-  <div class="rate-wrapper" role="group" aria-labelledby="rate-group-label" data-plugin="rateCheckbox">
-  <input  {{attributes}}/>{{ children }}
-  </div>input--webform-rating.html.twig
+#}<div class="form-item custom-rate-it">
+  <label for="{{ element['#id'] }}">{{ element['#title'] }}:</label>
+  <input type="range" min="0" max="5" step="1" value="0" id="{{ element['#id'] }}" {{ attributes.removeAttribtute(['class']) }}>
+    <div class="rateit" data-plugin="rateIt" data-rateit-starwidth="30" data-rateit-starheight="30" data-btn-text="{{"Cancel"|t}}" data-rateit-backingfld="#{{ element['#id'] }}" data-rateit-ispreset="true"></div>
 </div>
