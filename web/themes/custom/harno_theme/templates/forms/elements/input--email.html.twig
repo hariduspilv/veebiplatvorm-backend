@@ -10,13 +10,16 @@
  * @see template_preprocess_input()
  */
 #}
-<div class="form-item {% if element['#help'] %} help-text {% endif %}" data-plugin="movingLabel"  {% if element['#help'] %}aria-label="{{element['#help']}}" {% endif %}>
+<div class="form-item {% if element['#errors']%}error {% endif%} {% if element['#help'] %} help-text {% endif %}" data-plugin="movingLabel"  {% if element['#help'] %}aria-label="{{element['#help']}}" {% endif %}>
   <label for="{{ element['#id'] }}" class="form-label">{{ element['#title'] }}
     {% if element['#required'] %}
       *
     {% endif %}
   </label>
   <input  {{attributes}}/>{{ children }}{#  <input type="text" name="test input" id="input1" class="form-control">#}
+  {% if element['#errors'] %}
+    <span class="error-text">{{ element['#errors'] }}</span>
+  {% endif %}
   {% if element['#help'] %}
     <span class="form-help-text">{{ element['#help'] }}</span>
   {% endif %}

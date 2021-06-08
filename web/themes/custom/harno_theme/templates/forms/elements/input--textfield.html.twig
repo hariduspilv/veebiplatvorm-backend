@@ -15,37 +15,46 @@
   <label for="{{ element['#id'] }}" class="form-label">{{ element['#title'] }}</label>
   <input  {{attributes.addClass('search')}}/>{{ children }}
 {% elseif element['#id'] == 'edit-select-other-other' %}
-  <div class="js-webform-select-other-input webform-select-other-input js-form-item form-item js-form-type-textfield form-item-select-other-other js-form-item-select-other-other form-no-label {% if element['#help'] %} help-text {% endif %}" data-plugin="movingLabel" {% if element['#help'] %}aria-label="{{element['#help']}}" {% endif %}>
+  <div class=" {% if element['#errors'] %}error {% endif %}js-webform-select-other-input webform-select-other-input js-form-item form-item js-form-type-textfield form-item-select-other-other js-form-item-select-other-other form-no-label {% if element['#help'] %} help-text {% endif %}" data-plugin="movingLabel" {% if element['#help'] %}aria-label="{{element['#help']}}" {% endif %}>
     <label for="{{ element['#id'] }}" class="form-label">{{ element['#title'] }}
       {% if element['#required'] %}
         *
       {% endif %}
     </label>
     <input  {{attributes}}/>{{ children }}{#  <input type="text" name="test input" id="input1" class="form-control">#}
+
+    {% if element['#errors'] %}
+      <span class="error-text">{{ element['#errors'] }}</span>
+    {% endif %}
     {% if element['#help'] %}
       <span class="form-help-text">{{ element['#help'] }}</span>
     {% endif %}
   </div><!--/form-item-->
   {% else %}
     {% if element['#date_date_format'] %}
-
       <label for="{{ element['#id'] }}" class="form-label">{{ element['#title'] }}
         {% if element['#required'] %}
           *
         {% endif %}
       </label>
       <input  {{attributes}}/>{{ children }}{#  <input type="text" name="test input" id="input1" class="form-control">#}
+      {% if element['#errors'] %}
+        <span class="error-text">{{element['#errors']}}</span>
+      {% endif %}
       {% if element['#help'] %}
         <span class="form-help-text">{{ element['#help'] }}</span>
       {% endif %}
       {% else %}
-        <div class="form-item {% if element['#help'] %} help-text {% endif %}" data-plugin="movingLabel" {% if element['#help'] %}aria-label="{{element['#help']}}" {% endif %}>
+        <div class=" {% if element['#errors'] %}error {% endif %}form-item {% if element['#help'] %} help-text {% endif %}" data-plugin="movingLabel" {% if element['#help'] %}aria-label="{{element['#help']}}" {% endif %}>
           <label for="{{ element['#id'] }}" class="form-label">{{ element['#title'] }}
             {% if element['#required'] %}
               *
             {% endif %}
           </label>
           <input  {{attributes}}/>{{ children }}{#  <input type="text" name="test input" id="input1" class="form-control">#}
+          {% if element['#errors'] %}
+            <span class="error-text">{{element['#errors']}}</span>
+          {% endif %}
           {% if element['#help'] %}
             <span class="form-help-text">{{ element['#help'] }}</span>
           {% endif %}
