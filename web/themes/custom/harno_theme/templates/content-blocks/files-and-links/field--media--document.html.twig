@@ -96,7 +96,11 @@
 {% endif %}
 {% if name and uri %}
   <a href="{{ uri |file_url}}" {% if download %} download {% endif %}>
-    <i class="mdi {{ file_class }}" aria-label="{{ aria_label }} {% if download %} {{ "downloadable" |t }} {% else %} {{ "opens on new tab " |t}} {% endif %}"></i>{{ name }}</a>
+    <i class="mdi {{ file_class }}" aria-label="{{ aria_label }} {% if download %} {{ "downloadable" |t }} {% else %} {{ "opens on new tab " |t}} {% endif %}"></i>{{ name }}
+    {% if download %}
+      <i class="mdi mdi-download" aria-label="{{ "downloadable" |t }}"></i>
+    {% endif %}
+  </a>
 {#  {% if file_size < 1 %}#}
 {#    (~1MB)#}
 {#  {% else %}#}
