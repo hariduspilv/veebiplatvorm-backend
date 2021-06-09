@@ -83,7 +83,8 @@
 </div>
       {% endif %}
     {% else %}
-      <div {{ attributes.addClass(classes) }}>{{ children }}
+      <div {{ attributes.addClass(classes).removeClass(['form-item']) }}>
+        {{ children }}
         {% if suffix is not empty %}
           <span class="field-suffix">{{ suffix }}</span>
         {% endif %}
@@ -122,9 +123,21 @@
         {% if element['#date_date_format'] or element['#type']=='webform_time' %}
 {#{{ dd(element) }}#}
 {% if element['#date_date_format'] %}
+ {% if element['#errors'] %}
+   {% set classes = classes|merge(['error']) %}
+ {% endif %}
+  {% if element['#help'] %}
+    {% set classes = classes|merge(['help']) %}
+  {% endif %}
 <div{{ attributes.addClass(classes).addClass('custom-date') }}>
 
 {% elseif element['#type']=='webform_time' %}
+  {% if element['#errors'] %}
+    {% set classes = classes|merge(['error']) %}
+  {% endif %}
+  {% if element['#help'] %}
+    {% set classes = classes|merge(['help']) %}
+  {% endif %}
 <div{{ attributes.addClass(classes).addClass('custom-time') }}>
 {% else %}
         <div{{ attributes.addClass(classes).removeClass('form-item') }}>
@@ -144,6 +157,13 @@
             </div>
           {% endif %}
           {{ children }}
+            {% if element['#errors'] %}
+              <span class="error-text">{{ element['#errors'] }}</span>
+            {% endif %}
+            {% if element['#help'] %}
+              <span class="form-help-text">{{ element['#help'] }}</span>
+            {% endif %}
+          </div><!--/form-item
           {% if suffix is not empty %}
             <span class="field-suffix">{{ suffix }}</span>
           {% endif %}

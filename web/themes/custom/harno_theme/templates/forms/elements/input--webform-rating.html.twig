@@ -9,8 +9,16 @@
  *
  * @see template_preprocess_input()
  */
-#}<div class="form-item custom-rate-it">
-  <label for="{{ element['#id'] }}">{{ element['#title'] }}:</label>
+
+#}
+<div class="form-item custom-rate-it {% if element['#errors'] %} error {% endif %}">
+  <label for="{{ element['#id'] }}">{{ element['#title'] }}{% if element['#required'] %}
+    *
+    {% endif %}:</label>
+
   <input type="range" min="0" max="5" step="1" value="0" id="{{ element['#id'] }}" {{ attributes.removeAttribtute(['class']) }}>
-    <div class="rateit" data-plugin="rateIt" data-rateit-starwidth="30" data-rateit-starheight="30" data-btn-text="{{"Cancel"|t}}" data-rateit-backingfld="#{{ element['#id'] }}" data-rateit-ispreset="true"></div>
+  <div class="rateit" data-plugin="rateIt" data-rateit-starwidth="30" data-rateit-starheight="30" data-btn-text="{{"Cancel"|t}}" data-rateit-backingfld="#{{ element['#id'] }}" data-rateit-ispreset="true"></div>
+  {% if element['#errors'] %}
+    <span class="error-text">{{ element['#errors'] }}</span>
+  {% endif %}
 </div>

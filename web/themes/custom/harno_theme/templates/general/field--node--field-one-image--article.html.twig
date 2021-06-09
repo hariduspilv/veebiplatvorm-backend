@@ -19,15 +19,15 @@
       {% set media_image = entity_info.entity.get('field_media_image').getValue[0] %}
         {% set img_classes = "thumb thumb--landscape" %}
         {% if media_image %}
-   
+
         {% set target_id = entity_info.entity.get('field_media_image').value[0].target_id %}
-       
-        
+
+
         {% set media_image =  drupal_image(target_id) %}
         {% set media_uri = media_image['#uri'] %}
         {% set media_url = media_uri|image_style('landscape') %}
           <div class="image-block">
-            <a class="image-field image-field--landscape" style="background-image: url('{% if media_image %}{{media_url}}{% endif %}');" tabindex="0">
+            <a data-plugin="modalOpener" title="" data-modal="single" class="image-field image-field--landscape" style="background-image: url('{% if media_image %}{{media_url}}{% endif %}');" tabindex="0">
               <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif"  alt="{{ media_image.alt }}" >
               <span class="gallery-icon" aria-label="{{ "Open picture"|t }}"></span>
             </a><!--/image-field-->
