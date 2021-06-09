@@ -99,13 +99,13 @@ class ClassController extends ControllerBase {
     }
     $splitter = 4;
     if($node_count <= 9){
-      $splitter = 3;
+      $splitter = 4;
     }
     if($node_count <= 6){
-      $splitter = 2;
+      $splitter = 4;
     }
     if($node_count <= 3){
-      $splitter = 1;
+      $splitter = 2;
     }
     $split = round(($node_count / $splitter),0,PHP_ROUND_HALF_UP);
     $nodes_grouped = array_chunk($nodes_grouped, $split);

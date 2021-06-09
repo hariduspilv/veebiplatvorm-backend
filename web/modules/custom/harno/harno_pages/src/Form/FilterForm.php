@@ -79,7 +79,7 @@ class FilterForm extends FormBase {
           '#id' => 'worker-department',
           '#type' => 'select2',
           '#attributes' => [
-//            'data-plugin' => 'selectTwo',
+            'data-plugin' => 'selectTwo',
             'data-disable-refocus' => true,
           ],
           '#placeholder' => ' ',
