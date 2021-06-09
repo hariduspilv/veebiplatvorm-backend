@@ -142,6 +142,9 @@
             },
             "drupal/focal_point": {
                 "Stylish the preview button according to the admin theme CSS https://www.drupal.org/project/focal_point/issues/3162961": "https://www.drupal.org/files/issues/2020-08-03/focal_point-stylish_preview_button-3162961-2.patch"
+            },
+            "drupal/time_field": {
+                "Drupal 9 compatibility https://www.drupal.org/project/time_field/issues/3217879": "https://www.drupal.org/files/issues/2021-06-08/3176718-add_missing_core_version_requirement_parameter.patch"
             }
         }
     }

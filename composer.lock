@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "efecd5e7f2c30bc76590d3c8eef1e93b",
+    "content-hash": "400d465aae92bf641023152367d217b9",
     "packages": [
         {
             "name": "algolia/places",
@@ -4666,6 +4666,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Drupal 9 compatibility https://www.drupal.org/project/time_field/issues/3217879": "https://www.drupal.org/files/issues/2021-06-08/3176718-add_missing_core_version_requirement_parameter.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
