@@ -57,11 +57,12 @@ class FilterForm extends FormBase {
         $form['top']['positions'] = [
           '#title' => t('Choose position'),
           '#id' => 'worker-position',
-          '#type' => 'select',
+          '#type' => 'select2',
           '#attributes' => [
-//            'data-plugin' => 'selectTwo',
+            'data-plugin' => 'selectTwo',
             'data-disable-refocus' => true,
           ],
+          '#placeholder' => ' ',
           '#ajax' => [
             'wrapper' => 'filter-target',
             'event' => 'change',
@@ -76,11 +77,12 @@ class FilterForm extends FormBase {
         $form['top']['departments'] = [
           '#title' => t('Choose department'),
           '#id' => 'worker-department',
-          '#type' => 'select',
+          '#type' => 'select2',
           '#attributes' => [
 //            'data-plugin' => 'selectTwo',
             'data-disable-refocus' => true,
           ],
+          '#placeholder' => ' ',
           '#ajax' => [
             'wrapper' => 'filter-target',
             'event' => 'change',
@@ -143,6 +145,7 @@ class FilterForm extends FormBase {
 
 
         $filter_values = $form_state->getValues();
+
         if(($_REQUEST['positions'] and $_REQUEST['positions'] != 'all')) {
           $form['bottom']['positions_checkbox'] = [
             '#type' => 'checkboxes',
@@ -191,7 +194,6 @@ class FilterForm extends FormBase {
       if (!empty($_REQUEST['departments'])) {
         $form['departments']['#default_value'] = $_REQUEST['departments'];
       }
-
       return $form;
     }
 

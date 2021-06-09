@@ -11,24 +11,44 @@
  */
 #}
 {% spaceless %}
-  <div class="form-item custom-select js-form-item form-item js-form-type-select form-item-select-other-select js-form-item-select-other-select form-no-label" data-plugin="movingLabel">
-    <span class="select-arrow" aria-hidden="true"></span>
-    <label for="{{ element['#id'] }}" class="form-label">{{ element['#title'] }}</label>
-      <select{{ attributes.setAttribute('tabindex','-1') }}>
+  {% if element['#id'] == 'edit-search-type' %}
+    {% if options %}
+      <span class="filter-title">{{ element['#title'] }}:</span>
       {% for option in options %}
-        {% if loop.first %}
-          <option value="" selected disabled hidden>{{ "Make a choice" | t }}</option>
-        {% endif %}
-        {% if option.type == 'optgroup' %}
-          <optgroup label="{{ option.label }}">
-            {% for sub_option in option.options %}
-              <option value="{{ sub_option.value }}">{{ sub_option.label }}</option>
-            {% endfor %}
-          </optgroup>
-        {% elseif option.type == 'option' %}
-          <option value="{{ option.value }}">{{ option.label }}</option>
-        {% endif %}
+        <span id="search-item-{{ option.value }}-span">
+          <span class="btn-input">
+            <label for="search-item-{{ option.value }}">{{ option.label }}</label>
+            <input id="search-item-{{ option.value }}" type="checkbox"  {{ option.selected ? ' checked="checked"' }} name="search_type[{{ option.value }}]" value="{{ option.value }}" onChange='submit();'>
+            <span class="btn btn-tag">{{ option.label }}</span>
+          </span>
+        </span>
       {% endfor %}
-    </select>
-  </div><!--/form-item custom-select-->
+    {% endif %}
+  {% else %}
+    <div class="form-item custom-select js-form-item form-item js-form-type-select form-item-select-other-select js-form-item-select-other-select form-no-label" data-plugin="movingLabel">
+      <span class="select-arrow" aria-hidden="true"></span>
+      <label for="{{ element['#id'] }}" class="form-label">{{ element['#title'] }}</label>
+      <select{{ attributes.setAttribute('data-plugin','selectTwo') }} >
+
+        {% for option in options %}
+
+          {% if loop.first %}
+            <option hidden selected disabled value=""></option>
+          {% else %}
+            {% if option.type == 'optgroup' %}
+              <optgroup label="{{ option.label }}">
+                {% for sub_option in option.options %}
+                  <option value="{{ sub_option.value }}">{{ sub_option.label }}</option>
+                {% endfor %}
+              </optgroup>
+            {% elseif option.type == 'option' %}
+
+              <option value="{{ option.value }}">{{ option.label }}</option>
+            {% endif %}
+          {% endif %}
+
+        {% endfor %}
+      </select>
+    </div><!--/form-item custom-select-->
+  {% endif %}
 {% endspaceless %}

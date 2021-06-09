@@ -24,6 +24,10 @@ class ContactsController extends ControllerBase {
     $build['#content'] = $contacts;
     $build['#time'] = $time;
     $build['#attached']['library'][] = 'harno_pages/harno_pages';
+    $moduleHandler = \Drupal::service('module_handler');
+    if ($moduleHandler->moduleExists('webform')) {
+      $build['#attached']['library'][] = 'webform/libraries.jquery.select2';
+    }
     $build['#cache'] = [
       'conttexts' => ['url.query_args'],
       'tags' => ['node_type:worker'],
