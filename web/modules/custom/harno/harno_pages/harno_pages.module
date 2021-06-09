@@ -58,6 +58,9 @@ function harno_pages_node_presave(\Drupal\node\NodeInterface $node) {
   if($node_type=='page') {
     \Drupal::service('cache.render')->invalidateAll();
   }
+  if($node_type=='article') {
+    \Drupal::service('cache.render')->invalidateAll();
+  }
 }
 
 /**

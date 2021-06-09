@@ -17,6 +17,9 @@ class HarnoBlocksController extends ControllerBase {
     $build['content'] = [
       '#type' => 'item',
       '#markup' => $this->t('It works!'),
+      '#cache' => [
+        'tags' => ['node_type:article']
+      ],
     ];
 
     return $build;

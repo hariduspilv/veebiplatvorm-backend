@@ -314,11 +314,13 @@ function harno_settings_form_webform_ui_element_form_alter(array &$form, FormSta
     'options_display',
     'submit__label'
   ];
-
   foreach ($properties_hide as $property) {
     if (isset($elements[$property])) {
       $elements[$property]['#access'] = FALSE;
     }
+  }
+  if (isset($elements['select2'])){
+    $elements['select2']['#default_value'] = TRUE;
   }
   if (isset($elements['timepicker'])) {
     $elements['step']['#default_value'] = 900;
