@@ -1,4 +1,0 @@
-administer hitsa settings:
-  title: 'Administer HITSA settings'
-  description: 'Configure site-wide settings.'
-  restrict access: true

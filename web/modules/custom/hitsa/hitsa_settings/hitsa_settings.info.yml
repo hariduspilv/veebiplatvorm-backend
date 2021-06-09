@@ -1,6 +1,0 @@
-name: 'Veebiplatvormi seadistused [deprecated]'
-type: module
-description: 'Veebiplatvormide seadistused'
-core_version_requirement: ^8 || ^9
-package: 'Veebiplatvorm'
-configure: hitsa_settings.hitsa_settings_form

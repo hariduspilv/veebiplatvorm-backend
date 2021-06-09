@@ -23,10 +23,11 @@ class AutocompleteController extends ControllerBase {
         parse_str($parts['query'], $query_parts);
       }
       if(!empty($paramaters['q'])){
+        $request_time = \Drupal::time()->getRequestTime();
         $text = $paramaters['q'];
         $query = \Drupal::entityQuery('node')
           ->condition('status', 1)
-          ->condition('changed', REQUEST_TIME, '<')
+          ->condition('changed', $request_time, '<')
           ->condition('type','gallery')
           ->condition('title', $text, 'CONTAINS');
         if(!empty($query_parts['years'])) {
