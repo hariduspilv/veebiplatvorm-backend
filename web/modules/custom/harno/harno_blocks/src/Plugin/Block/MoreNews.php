@@ -42,7 +42,7 @@ class MoreNews  extends  BlockBase{
     $important_query->condition('sticky',1);
     $important_query->sort('created', 'DESC');
     $important_news = $important_query->execute();
-    
+
     $node_storage = \Drupal::entityTypeManager()->getStorage('node');
     $importants = $node_storage->loadMultiple($important_news);
     if(!empty($importants)){
@@ -54,7 +54,7 @@ class MoreNews  extends  BlockBase{
       $new_articles = [];
       $new_articles[$important_article_key] = $important_article;
       $new_articles+=$articles;
-      if (count($new_articles)>=4) {
+      if (count($new_articles)>4) {
         unset($new_articles[array_key_last($new_articles)]);
       }
       $articles=$new_articles;
@@ -76,7 +76,7 @@ class MoreNews  extends  BlockBase{
         $author = $article->get('field_author_name')->value;
         $article_link = $article->toLink()->getUrl()->toString();
         $sticky = $article->get('sticky')->value;
-        
+
         $articles_data['items'][$i] = [
           'article_link' => $article_link,
           'title' => $title,
