@@ -57,9 +57,9 @@ class FilterForm extends FormBase {
         $form['top']['positions'] = [
           '#title' => t('Choose position'),
           '#id' => 'worker-position',
-          '#type' => 'select',
+          '#type' => 'select2',
           '#attributes' => [
-//            'data-plugin' => 'selectTwo',
+            'data-plugin' => 'selectTwo',
             'data-disable-refocus' => true,
           ],
           '#ajax' => [
@@ -76,9 +76,9 @@ class FilterForm extends FormBase {
         $form['top']['departments'] = [
           '#title' => t('Choose department'),
           '#id' => 'worker-department',
-          '#type' => 'select',
+          '#type' => 'select2',
           '#attributes' => [
-//            'data-plugin' => 'selectTwo',
+            'data-plugin' => 'selectTwo',
             'data-disable-refocus' => true,
           ],
           '#ajax' => [

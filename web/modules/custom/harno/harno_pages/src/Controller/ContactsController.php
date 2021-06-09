@@ -178,7 +178,7 @@ class ContactsController extends ControllerBase {
 
     $active_terms = [];
     if (!empty($positions)) {
-      $active_terms['positions']['all'] = t('All');
+      $active_terms['positions'][''] = t('All');
       foreach ($positions as $position) {
         $term_query = \Drupal::database()->select('node__field_position', 'nfy');
         $term_query->fields('nfy');
@@ -195,7 +195,7 @@ class ContactsController extends ControllerBase {
       }
     }
     if (!empty($departments)) {
-      $active_terms['departments']['all'] = t('All');
+      $active_terms['departments'][''] = t('All');
       foreach ($departments as $department) {
         $term_query = \Drupal::database()->select('paragraph__field_department', 'nfy');
         $term_query->fields('nfy');
