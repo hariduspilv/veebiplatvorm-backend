@@ -78,6 +78,7 @@ function harno_pages_node_delete(\Drupal\node\NodeInterface $node) {
   }
 }
 function harno_pages_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
   if (in_array($form['#form_id'], ['openid_connect_login_form'])) {
     $form['openid_connect_client_harid_login']['#attributes']['class'][] = 'btn btn-primary';
     $form['openid_connect_client_harid_login']['#value'] = t('Log in');
@@ -85,5 +86,8 @@ function harno_pages_form_alter(&$form, FormStateInterface $form_state, $form_id
   elseif (in_array($form['#form_id'], ['user_login_form'])) {
     $form['actions']['submit']['#attributes']['class'][] = 'btn btn-primary';
     $form['#attributes']['class'][] = 'form-group';
+  }
+  if (strpos($form_id, 'webform_') !== false) {
+    $form['#attached']['library'][] = 'harno_pages/webform.element.select2';
   }
 }
