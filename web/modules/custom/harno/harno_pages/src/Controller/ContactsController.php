@@ -19,16 +19,16 @@ class ContactsController extends ControllerBase {
     $contacts = $this->getContacts();
     $time = $this->getContacts(true);
     $filters = $this->getFilters();
-    $filter_form = \Drupal::formBuilder()->getForm('Drupal\harno_pages\Form\FilterForm', $filters,'contacts');
+    $filter_form = \Drupal::formBuilder()->getForm('Drupal\harno_pages\Form\ContactsFilterForm', $filters,'contacts');
     $build['#contact_filters'] = $filter_form;
     $build['#content'] = $contacts;
     $build['#time'] = $time;
     $build['#attached']['library'][] = 'harno_pages/harno_pages';
-    $build['#attached']['library'][] = 'harno_pages/select2fix';
     $moduleHandler = \Drupal::service('module_handler');
     if ($moduleHandler->moduleExists('webform')) {
       $build['#attached']['library'][] = 'webform/libraries.jquery.select2';
     }
+    $build['#attached']['library'][] = 'harno_pages/select2fix';
     $build['#cache'] = [
       'conttexts' => ['url.query_args'],
       'tags' => ['node_type:worker'],
@@ -83,7 +83,7 @@ class ContactsController extends ControllerBase {
       else{
         $parameters = $_POST;
       }
-      if(!empty($parameters['positions']) or !empty($parameters['positions_checkbox'])){
+      if(!empty($parameters['positions'])){
         $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('positions');
         foreach ($terms as $term) {
           $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term->tid);
@@ -92,7 +92,7 @@ class ContactsController extends ControllerBase {
           }
         }
       }
-      if(!empty($parameters['departments']) or !empty($parameters['departments_checkbox'])){
+      if(!empty($parameters['departments'])){
         $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('departments');
         foreach ($terms as $term) {
           $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term->tid);
@@ -183,7 +183,7 @@ class ContactsController extends ControllerBase {
 
     $active_terms = [];
     if (!empty($positions)) {
-      $active_terms['positions'][''] = t('All');
+      $active_terms['positions']['all'] = t('All');
       foreach ($positions as $position) {
         $term_query = \Drupal::database()->select('node__field_position', 'nfy');
         $term_query->fields('nfy');
@@ -200,7 +200,7 @@ class ContactsController extends ControllerBase {
       }
     }
     if (!empty($departments)) {
-      $active_terms['departments'][''] = t('All');
+      $active_terms['departments']['all'] = t('All');
       foreach ($departments as $department) {
         $term_query = \Drupal::database()->select('paragraph__field_department', 'nfy');
         $term_query->fields('nfy');

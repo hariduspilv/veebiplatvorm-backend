@@ -99,10 +99,10 @@ class ClassController extends ControllerBase {
     }
     $splitter = 4;
     if($node_count <= 9){
-      $splitter = 4;
+      $splitter = 3;
     }
     if($node_count <= 6){
-      $splitter = 4;
+      $splitter = 2;
     }
     if($node_count <= 3){
       $splitter = 2;

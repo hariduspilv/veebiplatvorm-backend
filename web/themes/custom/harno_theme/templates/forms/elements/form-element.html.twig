@@ -77,7 +77,7 @@
       {% elseif element['#attributes']['checkbox-type'] == 'position' %}
         <span class="btn-input">
           <label for="{{ element['#id'] }}">{{ label['#title'] }}</label>
-          <span  data-remove-item="{{ label['#title'] }}" class="btn btn-tag btn-tag-remove">
+          <span data-remove-item="{{ label['#title'] }}" class="btn btn-tag btn-tag-remove">
             {{ children }}
             {{ label['#title'] }}
           </span>
@@ -85,15 +85,15 @@
       {% elseif element['#attributes']['checkbox-type'] == 'department' %}
         <span class="btn-input">
           <label for="{{ element['#id'] }}">{{ label['#title'] }}</label>
-          <span  data-remove-item="{{ label['#title'] }}" class="btn btn-tag btn-tag-remove">
+          <span data-remove-item="{{ label['#title'] }}" class="btn btn-tag btn-tag-remove">
             {{ children }}
             {{ label['#title'] }}
           </span>
         </span>
       {% else %}
-<div class="custom-control custom-checkbox custom-form-inline" tabindex="0">
-        {{ children }}
-</div>
+        <div class="custom-control custom-checkbox custom-form-inline" tabindex="0">
+          {{ children }}
+        </div>
       {% endif %}
     {% else %}
       <div {{ attributes.addClass(classes) }}>{{ children }}
@@ -119,15 +119,15 @@
 
   {% endif %}
 {% elseif element['#name'] == 'date_start' or element['#name'] == 'date_end' or element['#name']=='gallerySearch' or element['#name'] == 'gallerySearchMobile' or element['#name']=='newsSearch' or element['#name']== 'newsSearchMobile' or element['#name'] == 'contactsSearch' or element['#name'] == 'contactsSearchMobile' %}
-  <div
-    class="form-item {% if element['#name']=='date_start' or element['#name']=='date_end' %}custom-date{% endif %} {% if element['#name'] in ['gallerySearchMobile','gallerySearch','newsSearch','newsSearchMobile','contactsSearch','contactsSearchMobile'] %} search-input{% endif %}"
-    data-plugin="movingLabel">
-    <label class="form-label" for="{{ element['#id'] }}">{{ label['#title'] }}</label>
-    {{ children }}
-    {% if element['#name'] in ['gallerySearchMobile','gallerySearch','newsSearch','newsSearchMobile','contactsSearch','contactsSearchMobile'] %}
-      <button class="btn search-submit-btn" type="submit" aria-label="{{ 'Search'|t }}"></button>
-    {% endif %}
-  </div>
+<div
+  class="form-item {% if element['#name']=='date_start' or element['#name']=='date_end' %}custom-date{% endif %} {% if element['#name'] in ['gallerySearchMobile','gallerySearch','newsSearch','newsSearchMobile','contactsSearch','contactsSearchMobile'] %} search-input{% endif %}"
+  data-plugin="movingLabel">
+  <label class="form-label" for="{{ element['#id'] }}">{{ label['#title'] }}</label>
+  {{ children }}
+  {% if element['#name'] in ['gallerySearchMobile','gallerySearch','newsSearch','newsSearchMobile','contactsSearch','contactsSearchMobile'] %}
+    <button class="btn search-submit-btn" type="submit" aria-label="{{ 'Search'|t }}"></button>
+  {% endif %}
+</div>
 {% else %}
   {% if element['#webform_element'] %}
     {{ children }}
@@ -136,49 +136,49 @@
       {{ children }}
       {% else %}
         {% if element['#date_date_format'] or element['#type']=='webform_time' %}
-{#{{ dd(element) }}#}
+{# {{ dd(element) }} #}
 {% if element['#date_date_format'] %}
 <div{{ attributes.addClass(classes).addClass('custom-date') }}>
 
-{% elseif element['#type']=='webform_time' %}
-<div{{ attributes.addClass(classes).addClass('custom-time') }}>
-{% else %}
-        <div{{ attributes.addClass(classes).removeClass('form-item') }}>
-          {% endif %}
-          {% else %}
-          <div{{ attributes.addClass(classes) }}>
+  {% elseif element['#type']=='webform_time' %}
+  <div{{ attributes.addClass(classes).addClass('custom-time') }}>
+    {% else %}
+    <div{{ attributes.addClass(classes).removeClass('form-item') }}>
+      {% endif %}
+      {% else %}
+      <div{{ attributes.addClass(classes) }}>
         {% endif %}
-          {% if label_display in ['before', 'invisible'] %}
-            {# {{ label }} #}
-          {% endif %}
-          {% if prefix is not empty %}
-            <span class="field-prefix">{{ prefix }}</span>
-          {% endif %}
-          {% if description_display == 'before' and description.content %}
-            <div{{ description.attributes }}>
-              {{ description.content }}
-            </div>
-          {% endif %}
-          {{ children }}
-          {% if suffix is not empty %}
-            <span class="field-suffix">{{ suffix }}</span>
-          {% endif %}
-          {% if label_display == 'after' %}
-            {{ label }}
-          {% endif %}
-          {% if errors %}
-            <div class="form-item--error-message">
-              {{ errors }}
-            </div>
-          {% endif %}
-          {% if description_display in ['after', 'invisible'] and description.content %}
-            <div{{ description.attributes.addClass(description_classes) }}>
-              {{ description.content }}
-            </div>
-          {% endif %}
-        </div>
-    {% endif %}
+        {% if label_display in ['before', 'invisible'] %}
+          {# {{ label }} #}
+        {% endif %}
+        {% if prefix is not empty %}
+          <span class="field-prefix">{{ prefix }}</span>
+        {% endif %}
+        {% if description_display == 'before' and description.content %}
+          <div{{ description.attributes }}>
+            {{ description.content }}
+          </div>
+        {% endif %}
+        {{ children }}
+        {% if suffix is not empty %}
+          <span class="field-suffix">{{ suffix }}</span>
+        {% endif %}
+        {% if label_display == 'after' %}
+          {{ label }}
+        {% endif %}
+        {% if errors %}
+          <div class="form-item--error-message">
+            {{ errors }}
+          </div>
+        {% endif %}
+        {% if description_display in ['after', 'invisible'] and description.content %}
+          <div{{ description.attributes.addClass(description_classes) }}>
+            {{ description.content }}
+          </div>
+        {% endif %}
+      </div>
+      {% endif %}
 
-  {% endif %}
+      {% endif %}
 
-{% endif %}
+      {% endif %}

@@ -46,6 +46,8 @@ $.formFilter = {
         'article_type_mobile': '#article_type_mobile',
       }
 
+      console.log(name);
+      console.log(val);
       if (relations[name]) {
         self.options.form.find(relations[name]).val(val);
       }
