@@ -1101,7 +1101,8 @@ datasource_settings:
   'entity:node':
     bundles:
       default: true
-      selected: {  }
+      selected:
+        - food_menu
     languages:
       default: true
       selected: {  }
@@ -1219,6 +1220,107 @@ processor_settings:
     weights:
       preprocess_index: -15
       preprocess_query: -15
+  ignore_character:
+    all_fields: true
+    fields:
+      - body
+      - field_address
+      - field_body
+      - field_body_1
+      - field_body_2
+      - field_body_3
+      - field_body_4
+      - field_body_5
+      - field_body_6
+      - field_body_7
+      - field_body_8
+      - field_body_text
+      - field_contact_title
+      - field_contact_title_1
+      - field_contact_title_2
+      - field_contact_title_3
+      - field_contact_title_4
+      - field_contact_title_5
+      - field_contact_title_6
+      - field_contact_title_7
+      - field_description
+      - field_email
+      - field_email_1
+      - field_email_2
+      - field_email_3
+      - field_email_4
+      - field_email_5
+      - field_email_6
+      - field_email_7
+      - field_email_8
+      - field_name
+      - field_name_1
+      - field_name_2
+      - field_name_3
+      - field_name_4
+      - field_name_5
+      - field_name_6
+      - field_name_7
+      - field_phone
+      - field_phone_1
+      - field_phone_2
+      - field_phone_3
+      - field_phone_4
+      - field_phone_5
+      - field_phone_6
+      - field_phone_7
+      - field_phone_8
+      - field_phones_3
+      - field_table_editor
+      - field_table_editor_1
+      - field_table_editor_2
+      - field_table_editor_3
+      - field_table_editor_4
+      - field_title
+      - field_title_1
+      - field_title_2
+      - field_title_3
+      - field_title_4
+      - field_title_5
+      - field_title_6
+      - field_title_7
+      - field_title_8
+      - field_venue
+      - langcode
+      - name
+      - name_1
+      - name_11
+      - name_2
+      - name_3
+      - name_4
+      - name_5
+      - name_6
+      - name_7
+      - name_8
+      - name_9
+      - title
+      - title_1
+      - title_10
+      - title_2
+      - title_3
+      - title_4
+      - title_5
+      - title_6
+      - title_7
+      - title_8
+      - type
+    ignorable: '[''¿¡!?,.:;*]'
+    ignorable_classes:
+      - Pc
+      - Pd
+      - Pe
+      - Pf
+      - Pi
+      - Po
+      - Ps
+    weights:
+      preprocess_index: -10
+      preprocess_query: -10
   ignorecase:
     all_fields: true
     fields:
