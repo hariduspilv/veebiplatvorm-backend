@@ -47,13 +47,15 @@
     {% endif %}
     {% for item in items %}
       {% if  item.content['#options'].external%}
-        <a target="_blank" href="{{ item.content['#url'] }}" aria-label="{{ 'Link opens in new tab' |t }}" class="">
-          <i class="mdi mdi-open-in-new" aria-label="{{ 'link external' |t }}"></i>
+        <a target="_blank" href="{{ item.content['#url'] }}"  class="">
+          <i  class="mdi mdi-open-in-new"></i>
           {{ item.content['#title'] }}
+          <span class="sr-only">{{"Link opens on new page"|t}}</span>
         </a>
         {% else %}
-          <a  href="{{ path(item.content['#url'].routeName, item.content['#url'].routeParameters) }}" aria-label="{{ 'Link opens in same page' |t }}" class="">
-            <i class="mdi mdi-link-variant" aria-label="{{ 'link inside' |t }}"></i>{{ item.content['#title'] }}</a>
+          <a  href="{{ path(item.content['#url'].routeName, item.content['#url'].routeParameters) }}" class="">
+            <i class="mdi mdi-link-variant"></i>
+            {{ item.content['#title'] }} <span class="sr-only">{{ 'Link opens in same page' |t }}</span></a>
       {% endif %}
     {% endfor %}
     {% if multiple %}
