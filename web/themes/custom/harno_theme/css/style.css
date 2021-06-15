@@ -27,3 +27,16 @@
   padding: unset;
   padding-right: 0.5rem;
 }
+@media screen and (min-width:992px) {
+  .mainOverride {
+    display: block !important;
+  }
+  .showBack {
+     display: none !important;
+  }
+}
+@media all and ( min-width: 1px ) and ( max-width: 992px ) {
+  .showBack {
+    display: flex ;
+  }
+}
