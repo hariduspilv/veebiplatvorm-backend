@@ -179,7 +179,7 @@
           {% endif %}
           <a  class="{{ link_class }} mainOverride" title="{{link_desc}}" {% if link_ext %} target="_blank"
             aria-label="{{"Link opens on new page"|t}}" {% endif %} {% if has_burl %} href="{{below_url}}" {% endif %}
-            {% if menu_item.in_active_trail %}{% endif %}{% if item_below.in_active_trail %} aria-current="page" {% endif %}  style="display:none;">{{item_below.title}}
+            {% if menu_item.in_active_trail %} style="display:none;"{% endif %}{% if item_below.in_active_trail %} aria-current="page"  {% endif %} >{{item_below.title}}
             {% if link_ext %}
               <i aria-label="{{"Link opens on new page"|t}}" class="mdi mdi-open-in-new" ></i>
               <span class="sr-only">{{"Link opens on new page"|t}}</span>
