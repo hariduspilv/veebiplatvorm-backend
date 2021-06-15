@@ -23,6 +23,7 @@ class MoreNews  extends  BlockBase{
     $current_page = \Drupal::request()->attributes->get('node');
     $field_definition = $current_page->get('field_article_type')->getFieldDefinition()->getSetting('allowed_values');
     $article_type = $current_page->get('field_article_type')->first()->value;
+
     $current_id = $current_page->id();
     $bundle = 'article';
     $query = \Drupal::entityQuery('node');
@@ -35,16 +36,17 @@ class MoreNews  extends  BlockBase{
     $nids = $query->execute();
     $node_storage = \Drupal::entityTypeManager()->getStorage('node');
     $articles = $node_storage->loadMultiple($nids);
-    $important_query = \Drupal::entityQuery('node');
-    $important_query->condition('status',1);
-    $important_query->condition('nid', $current_id,'!=');
-    $important_query->condition('type', $bundle);
-    $important_query->condition('sticky',1);
-    $important_query->sort('created', 'DESC');
-    $important_news = $important_query->execute();
-
-    $node_storage = \Drupal::entityTypeManager()->getStorage('node');
-    $importants = $node_storage->loadMultiple($important_news);
+    if ($article_type!=2) {
+      $important_query = \Drupal::entityQuery('node');
+      $important_query->condition('status', 1);
+      $important_query->condition('nid', $current_id, '!=');
+      $important_query->condition('type', $bundle);
+      $important_query->condition('sticky', 1);
+      $important_query->sort('created', 'DESC');
+      $important_news = $important_query->execute();
+      $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+      $importants = $node_storage->loadMultiple($important_news);
+    }
     if(!empty($importants)){
       $important_article = reset($importants);
       $important_article_key = array_key_first($importants);
