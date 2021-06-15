@@ -52,11 +52,11 @@
   {% set file_size = file_size|round(2) %}
   {% set file_size = file_size|number_format %}
   {% set download = false %}
+  {% set target = '_blank' %}
   {% if file_extension == 'pdf' %}
     {% set aria_label = 'PDF'|t %}
     {% set file_class = 'mdi-file-pdf' %}
-
-    {% set download = true %}
+    {% set target = '_self' %}
   {% elseif file_extension == 'docx' or file_extension=='doc'   %}
     {% set aria_label = 'text document'|t %}
     {% set file_class = 'mdi-file-word' %}
@@ -96,11 +96,14 @@
   {% endif %}
 {% endif %}
 {% if name and uri %}
-  <a href="{{ uri |file_url}}" {% if download %} download {% endif %}>
-    <i class="mdi {{ file_class }}" aria-label="{{ aria_label }} {% if download %} {{ "downloadable" |t }} {% else %} {{ "opens on new tab " |t}} {% endif %}"></i>{{ name }}
+  <a target="{{ target }}" href="{{ uri |file_url}}" {% if download %} download {% endif %}>
+    <i class="mdi {{ file_class }}" aria-hidden="true"></i>{{ name }}
+    <span class="sr-only">{{ aria_label }}{{ " " }}</span>
     {% if download %}
-      <i class="mdi mdi-download" aria-label="{{ "downloadable" |t }}"></i>
+      <i class="mdi mdi-download" aria-hidden="true"></i>
+      <span class="sr-only">{{ " "}} {{ "downloadable" |t }} </span>
     {% endif %}
+    <span class="sr-only">{{ " " }}{{ "opens on new tab " |t}}</span>
   </a>
 {#  {% if file_size < 1 %}#}
 {#    (~1MB)#}
