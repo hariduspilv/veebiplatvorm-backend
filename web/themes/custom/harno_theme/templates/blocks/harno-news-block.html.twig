@@ -35,7 +35,7 @@
               {% endif %}
 
               <div class="news-block__thumbnail" style="background-image: url({{ media_image['#uri']|file_url }});">
-                <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" alt="picture with student">
+                <img src="/{{ base_path }}/static/assets/images/placeholder-1.gif" alt="{{ alt }}">
               </div><!--/gallery-block__thumbnail-->
               <div class="news-block__news-info">
                 <h3>{{news_block.title}}</h3>
