@@ -40,3 +40,10 @@
     display: flex ;
   }
 }
+
+.search-api-autocomplete-search {
+  background: var(--white);
+  border: 0.0625rem solid var(--grey-400);
+  border-radius: 0 0 1.25rem 1.25rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.2);
+}

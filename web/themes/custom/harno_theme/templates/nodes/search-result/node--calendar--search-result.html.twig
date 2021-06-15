@@ -86,14 +86,14 @@
 {% endif %}
 <a href="{{ url }}" {{ attributes.addClass(classes) }}>
   <div class="event-card {{ event_classes }}">
-    {% if node.field_event_end_date.value %}
+    {% if node.field_event_end_date.value and node.field_start_date.value != node.field_event_end_date.value %}
     <div class="event-card-dates">
     {% endif %}
       <div class="event-card__date">
         <span class="event-date">{{ node.field_start_date.value|date('d') }}</span>
         <span class="event-month"> {{ node.field_start_date.value|date("F")|t({}, {'context' : 'Long month name'}) }} {{ node.field_start_date.value|date('Y') }}</span>
       </div>
-      {% if node.field_event_end_date.value %}
+      {% if node.field_event_end_date.value and node.field_start_date.value != node.field_event_end_date.value %}
       <div class="event-card__date">
         <span class="date-arrow" aria-hidden="true"></span>
         <span class="event-date">{{ node.field_event_end_date.value|date('d') }}</span>

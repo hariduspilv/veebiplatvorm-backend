@@ -130,7 +130,9 @@ function harno_theme_preprocess_pager(&$vars){
     $options = array(
       'query' =>$updatedParameters,
     );
-    $items['first']['href'] = urldecode(\Drupal::url($route_name, $route_parameters, $options));
+
+    $new_url =  Url::fromRoute($route_name,$route_parameters,$options);
+    $items['first']['href'] = urldecode($new_url->toString());
     if (isset($tags[0])) {
       $items['first']['text'] = $tags[0];
     }
@@ -145,7 +147,8 @@ function harno_theme_preprocess_pager(&$vars){
     $options = array(
       'query' => $updatedParameters,
     );
-    $items['previous']['href'] = urldecode(\Drupal::url($route_name, $route_parameters, $options));
+    $new_url =  Url::fromRoute($route_name,$route_parameters,$options);
+    $items['previous']['href'] = urldecode($new_url->toString());
     if (isset($tags[1])) {
       $items['previous']['text'] = $tags[1];
     }
@@ -171,7 +174,8 @@ function harno_theme_preprocess_pager(&$vars){
         'query' => $updatedParameters,
       );
 
-      $items['pages'][$i]['href'] = urldecode(\Drupal::url($route_name, $route_parameters, $options));
+      $new_url =  Url::fromRoute($route_name,$route_parameters,$options);
+      $items['pages'][$i]['href'] = urldecode($new_url->toString());
       if ($i == $pager_current) {
         $vars['current'] = $i;
       }
@@ -196,7 +200,9 @@ function harno_theme_preprocess_pager(&$vars){
     $options = array(
       'query' => $updatedParameters,
     );
-    $items['next']['href'] = \Drupal::url($route_name, $route_parameters, $options);
+
+    $new_url =  Url::fromRoute($route_name,$route_parameters,$options);
+    $items['next']['href'] = $new_url->toString();
     if (isset($tags[3])) {
       $items['next']['text'] = $tags[3];
     }
@@ -212,8 +218,8 @@ function harno_theme_preprocess_pager(&$vars){
     $options = array(
       'query' => $updatedParameters,
     );
-
-    $items['last']['href'] = urldecode(\Drupal::url($route_name, $route_parameters, $options));
+    $new_url =  Url::fromRoute($route_name,$route_parameters,$options);
+    $items['last']['href'] = urldecode($new_url->toString());
     if (isset($tags[4])) {
       $items['last']['text'] = $tags[4];
     }
@@ -289,7 +295,7 @@ function harno_theme_preprocess_field(&$vars){
             $content['content']['#text'] = $text;
               // $matches[2] = array of link addresses
               // $matches[3] = array of link text - including HTML code
-            
+
           }
 
         }
@@ -312,7 +318,7 @@ function harno_theme_preprocess_field(&$vars){
       foreach ($vars['items'] as &$item){
         if(!empty($item['content'])){
           if(!empty(($item['content']['#text']))){
-            
+
             $item['content']['#text'] = str_replace('<table>','<table class="main-table">',$item['content']['#text'] );
             $item['content']['#text'] = str_replace('<table','<div class="table-wrapper" data-tables="inside">
   <div class="table-scrollable"><table',$item['content']['#text'] );

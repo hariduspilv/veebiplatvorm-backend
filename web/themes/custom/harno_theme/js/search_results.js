@@ -66,9 +66,7 @@
               $('#search-item-' + o).prop('checked', false);
             }
           }
-
         });
-
       });
     }
   };
