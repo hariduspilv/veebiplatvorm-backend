@@ -77,7 +77,7 @@
 {% if past_event %}
   {% set event_classes = 'event-card--disabled' %}
 {% endif %}
-{% if node.field_event_end_date.value %}
+{% if node.field_event_end_date.value and node.field_start_date.value != node.field_event_end_date.value %}
   {% set event_classes = event_classes ~ ' event-card--multiple-date' %}
 {% endif %}
 
