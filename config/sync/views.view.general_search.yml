@@ -943,7 +943,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           parse_mode: terms
-          min_length: 3
+          min_length: 2
           fields: {  }
           plugin_id: search_api_fulltext
         search_api_language:
@@ -1024,7 +1024,7 @@ display:
         operator: AND
         groups:
           1: OR
-      use_ajax: false
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -1046,7 +1046,9 @@ display:
     display_title: Page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        ajax_history:
+          enable_history: true
       path: otsing
       exposed_block: false
       cache:

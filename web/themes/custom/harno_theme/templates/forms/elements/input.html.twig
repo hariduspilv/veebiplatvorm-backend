@@ -34,7 +34,7 @@
     <button{{ attributes.removeClass('btn-primary') }}>{{ element['#value'] }}</button>{{ children }}
 {% else %}
   {% if element['#type']=='submit' %}
-    {% if (element['#id'] == 'edit-submit-general-search') or (element['#id'] == 'edit-submit-search') %}
+    {% if ('edit-submit-general-search' in element['#id']) %}
       {%
         set classes = [
         'btn',

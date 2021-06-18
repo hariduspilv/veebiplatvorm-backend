@@ -11,14 +11,14 @@
  */
 #}
 {% spaceless %}
-  {% if element['#id'] == 'edit-search-type' %}
+  {% if 'edit-search-type' in element['#id'] %}
     {% if options %}
       <span class="filter-title">{{ element['#title'] }}:</span>
       {% for option in options %}
-        <span id="search-item-{{ option.value }}-span">
+        <span id="search-item-{{ option.value }}-span" class="search-item-span">
           <span class="btn-input">
             <label for="search-item-{{ option.value }}">{{ option.label }}</label>
-            <input id="search-item-{{ option.value }}" type="checkbox"  {{ option.selected ? ' checked="checked"' }} name="search_type[{{ option.value }}]" value="{{ option.value }}" onChange='submit();'>
+            <input id="search-item-{{ option.value }}" class="search_type_checkbox" type="checkbox" {{ option.selected ? ' checked="checked"' }} name="search_type[{{ option.value }}]" value="{{ option.value }}">
             <span class="btn btn-tag">{{ option.label }}</span>
           </span>
         </span>

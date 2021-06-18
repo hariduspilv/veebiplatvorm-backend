@@ -278,7 +278,7 @@ display:
           settings:
             format: custom
             format_custom_true: Avaldatud
-            format_custom_false: Unpublished
+            format_custom_false: Mitteavaldatud
           plugin_id: field
           entity_type: node
           entity_field: status
@@ -482,7 +482,7 @@ display:
                 operator: '='
                 value: '1'
               2:
-                title: Unpublished
+                title: Mitteavaldatud
                 operator: '='
                 value: '0'
           plugin_id: boolean

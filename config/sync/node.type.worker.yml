@@ -8,7 +8,7 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: Töötaja
+name: Kontakt
 type: worker
 description: 'Kasutaja saab lisada ja muuta haridusasutuse töötajate andmeid.'
 help: ''

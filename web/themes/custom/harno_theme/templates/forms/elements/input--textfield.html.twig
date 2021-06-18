@@ -11,7 +11,7 @@
  */
 #}
 
-{% if element['#id'] == 'edit-keys' %}
+{% if 'edit-keys' in element['#id'] %}
   <label for="{{ element['#id'] }}" class="form-label">{{ element['#title'] }}</label>
   <input  {{attributes.addClass('search')}}/>{{ children }}
 {% elseif element['#id'] == 'edit-select-other-other' %}

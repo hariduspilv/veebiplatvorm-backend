@@ -493,18 +493,12 @@ function harno_theme_preprocess_node(&$variables) {
     #\Drupal::messenger()->addStatus('$field_start_time ' . print_r($field_start_time,1));
     #\Drupal::messenger()->addStatus('$field_end_time ' . print_r($field_end_time,1));
 
-    static $past_event_counter = 0;
-    static $future_event_counter = 0;
     if ($end_date < $now)  {
-      $past_event_counter++;
       $variables['past_event'] = TRUE;
     }
     else {
-      $future_event_counter++;
       $variables['future_event'] = TRUE;
     }
-    $variables['past_event_counter'] = $past_event_counter;
-    $variables['future_event_counter'] = $future_event_counter;
   }
 }
 

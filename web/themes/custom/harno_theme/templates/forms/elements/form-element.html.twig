@@ -59,7 +59,7 @@
   description_display == 'invisible' ? 'visually-hidden',
 ] %}
 
-{% if (type == "search_api_autocomplete") or (element['#id'] == 'edit-search-type') %}
+{% if (type == "search_api_autocomplete") or ('edit-search-type' in element['#id']) %}
   {{ children }}
 {% elseif type == "checkbox" %}
   {% if "article_type" in element['#name'] %}

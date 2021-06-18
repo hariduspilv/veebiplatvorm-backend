@@ -235,7 +235,7 @@ display:
                 operator: '='
                 value: '1'
               2:
-                title: Unpublished
+                title: Mitteavaldatud
                 operator: '='
                 value: '0'
           plugin_id: boolean

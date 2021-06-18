@@ -26,7 +26,7 @@
   ]
 %}
 
-{% if element['#id'] == 'edit-actions' %}
+{% if 'edit-actions' in element['#id'] %}
   {{ children }}
 {% else %}
   <div{{ attributes.addClass(classes) }}>{{ children }}</div>
