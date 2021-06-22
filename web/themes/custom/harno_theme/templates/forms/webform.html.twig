@@ -21,15 +21,23 @@
  * @ingroup themeable
  */
 #}
+{% if title is empty %}
 <article class="content-block with-sidemenu">
-
+{% endif %}
   <div class="row">
     <div class="col-12 md-12 sm-12">
-<form{{ attributes.addClass('form-group') }}>
-  {{ title_prefix }}
-  {{ children }}
-  {{ title_suffix }}
-</form>
+      {% if title is not empty %}
+        <div class="title-block">
+          <h3>{{ title }}</h3>
+        </div>
+      {% endif %}
+      <form{{ attributes.addClass('form-group') }}>
+        {{ title_prefix }}
+        {{ children }}
+        {{ title_suffix }}
+      </form>
     </div>
   </div>
+{% if title is empty %}
 </article>
+{% endif %}

@@ -438,3 +438,40 @@ function harno_theme_preprocess_html(&$vars){
     $vars['site_colors'] = $colors;
   }
 }
+function harno_theme_preprocess_node(&$vars){
+
+  $vars['bsrul'] = $GLOBALS['base_url'];
+  $node = $vars['elements']['#node'];
+  $node_type = $node->getType();
+  if($node_type == 'location') {
+    $nid = $node->get('nid')->getValue()[0]['value'];
+    $config = \Drupal::config('harno_settings.node_location');
+    $vars['node_location'] = $config->get('node_location_' . $nid);
+
+    $vars['openingHoursSpecification'] =
+      ['openingHoursSpecification' =>
+        [
+          "@type" => "OpeningHoursSpecification",
+          "dayOfWeek" => [
+            "Monday",
+            "Tuesday"
+          ],
+        "opens" => "11:30",
+        "closes" => "22:00"
+        ]
+      ];
+  }
+
+}
+function harno_theme_preprocess_webform(&$vars){
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    if($node->getType() == 'location'){
+      $wfid = $vars['element']['#webform_id'];
+      $wf = \Drupal\webform\Entity\Webform::load($wfid);
+      $vars['title'] = $wf->label();
+    }
+  }
+
+}
