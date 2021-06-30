@@ -78,6 +78,7 @@
 {% set weekdays = {'E':'1','T':'2','K':'3','N':'4','R':'5','L':'6','P':'7'} %}
 
 <article {{ attributes.addClass(classes) }}>
+  {{ status_message }}
   <header>
     {{ title_prefix }}
     {% if label and not page %}

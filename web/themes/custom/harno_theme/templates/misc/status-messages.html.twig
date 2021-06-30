@@ -27,48 +27,63 @@
 #}
 {{ attach_library('bootstrap_barrio/alerts') }}
 
-<div data-drupal-messages>
-{% for type, messages in message_list %}
-  {%
-    set classes = [
-      'alert',
-      'alert-dismissible',
-      'fade',
-      'show',
-      'col-12',
-      type == 'status' ? 'alert-success',
-      type == 'warning' ? 'alert-warning',
-      type == 'error' ? 'alert-danger',
-      type == 'info' ? 'alert-info',
-    ]
-  %}
-  {%
-    set role = {
-      'status': 'status',
-      'error': 'alert',
-      'warning': 'alert',
-      'info': 'status',
-    }
-  %}
-  <div aria-label="{{ status_headings[type] }}" {{ attributes|without('role', 'aria-label').addClass(classes).setAttribute('role', role[type]) }}>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    {% if is_message_with_title or is_message_with_icon %}
-      {% if is_message_with_title %}
-        <h4 id="{{ title_ids[type] }}" class="alert-heading">
-          {{ status_headings[type] }}
-        </h4>
-      {% endif %}
-    {% endif %}
-    {% for message in messages %}
-      {% if loop.last %}
-        {{ message }}
-      {% else %}
-        {{ message }}
-        <hr>
-      {% endif %}
+<div class="row">
+  <div class="col-12 md-12 sm-12">
+    <div data-drupal-messages>
+    {% for type, messages in message_list %}
+      {%
+        set classes = [
+          'alert',
+          'alert-dismissible',
+          'fade',
+          'show',
+          type == 'status' ? 'notification-block--success',
+          type == 'warning' ? 'notification-block--alert',
+          type == 'error' ? 'notification-block--error',
+          type == 'info' ? 'notification-block--info',
+          'notification-block',
+        ]
+      %}
+      {% set alert_icon = [
+        type == 'status' ? 'mdi-checkbox-marked-circle-outline',
+        type == 'warning' ? 'mdi-alert-circle-outline',
+        type == 'error' ? 'mdi-alert-circle-outline',
+        type == 'info' ? 'mdi-information-outline',
+        'mdi'
+        ]
+      %}
+      {%
+        set role = {
+          'status': 'status',
+          'error': 'alert',
+          'warning': 'alert',
+          'info': 'status',
+        }
+      %}
+      <div aria-label="{{ status_headings[type] }}" {{ attributes|without('role', 'aria-label').addClass(classes).setAttribute('role', role[type]) }}>
+        {% if is_message_with_title or is_message_with_icon %}
+          {% if is_message_with_title %}
+            <h4 id="{{ title_ids[type] }}" class="alert-heading">
+              {{ status_headings[type] }}
+            </h4>
+          {% endif %}
+        {% endif %}
+        <i {{ attributes.addClass(alert_icon) }} aria-hidden="true"></i>
+        <span class="sr-only">{{ type }}</span>
+        {% for message in messages %}
+          {% if loop.last %}
+            {{ message }}
+          {% else %}
+            {{ message }}
+            <hr>
+          {% endif %}
+        {% endfor %}
+        <button type="button" class="close btn btn-notification-close" data-dismiss="alert">
+          <i class="mdi mdi-close" aria-hidden="true"></i>
+          <span class="sr-only">close notification</span>
+        </button><!--/btn btn-notification-close-->
+      </div>
     {% endfor %}
-  </div>
-{% endfor %}
-</div>
+    </div>
+  </div><!--/col-12 md-12 sm-12-->
+</div><!--/row-->

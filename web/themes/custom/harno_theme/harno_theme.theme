@@ -440,10 +440,17 @@ function harno_theme_preprocess_html(&$vars){
 }
 function harno_theme_preprocess_node(&$vars){
 
+
+
   $vars['bsrul'] = $GLOBALS['base_url'];
   $node = $vars['elements']['#node'];
   $node_type = $node->getType();
   if($node_type == 'location') {
+    // Status messages
+    $status_messages = array('#type' => 'status_messages');
+    $messages = \Drupal::service('renderer')->renderRoot($status_messages);
+    $vars['status_message'] = $messages;
+
     $nid = $node->get('nid')->getValue()[0]['value'];
     $config = \Drupal::config('harno_settings.node_location');
     $vars['node_location'] = $config->get('node_location_' . $nid);

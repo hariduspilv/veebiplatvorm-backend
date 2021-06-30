@@ -6,3 +6,4 @@ global-styling:
       css/style.css: {}
   js:
     static/assets/js/main.js: {weight:-30}
+    js/global.js : {}
