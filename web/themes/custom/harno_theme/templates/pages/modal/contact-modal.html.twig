@@ -4,10 +4,10 @@
     <div class="col-12 md-12 sm-12">
       <div class="block">
 
-        <div class="contact-modal open" data-modal="true">
-          <div class="contact-modal__header" role="filters" aria-labelledby="filters-label">
+        <div class="modal modal__contact open" data-modal="true">
+          <div class="modal__header" role="filters" aria-labelledby="filters-label">
             <div class="focus-trap" tabindex="0"></div>
-            <h5 id="contact-label">{% if title %}{{ title }}{% else %} {{ 'Title missing'|t }} {% endif %}</h5>
+            <h5 id="modal-label">{% if title %}{{ title }}{% else %} {{ 'Title missing'|t }} {% endif %}</h5>
             <button class="btn btn-close">
               <span class="sr-only">close modal</span>
               <i class="mdi mdi-close" data-close="true"></i>
@@ -39,7 +39,7 @@
             {% if not media_image %}
               {% set image = "/#{base_path}/static/assets/images/contact-placeholder.png" %}
             {% endif %}
-            <div class="contact-modal__body">
+            <div class="modal__body">
               <div class="contact-card">
                 <div class="contact-card__avatar"
                      style="background-image: url({% if media_image %}{{ media_image['#uri']|file_url }}{% else %} {{ image }} {% endif %});">
