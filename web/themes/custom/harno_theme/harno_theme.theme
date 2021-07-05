@@ -462,6 +462,17 @@ function harno_theme_preprocess_node(&$variables) {
   $node = $variables['node'];
   $node_type = $node->getType();
 
+  $variables['bsrul'] = $GLOBALS['base_url'];
+  if($node_type == 'location') {
+    // Status messages
+    $status_messages = array('#type' => 'status_messages');
+    $messages = \Drupal::service('renderer')->renderRoot($status_messages);
+    $variables['status_message'] = $messages;
+    $nid = $node->get('nid')->getValue()[0]['value'];
+    $config = \Drupal::config('harno_settings.node_location');
+    $variables['node_location'] = $config->get('node_location_' . $nid);
+  }
+
   if ($node_type == 'calendar') {
     $now = strtotime(date("Y-m-d H:i:s"));
     $field_start_date = $node->get('field_start_date')->getValue();
@@ -502,27 +513,28 @@ function harno_theme_preprocess_node(&$variables) {
   }
 }
 
-function harno_theme_preprocess_views_view_unformatted(&$variables){
-  if($variables['view']->current_display == 'general_search') {
+function harno_theme_preprocess_views_view_unformatted(&$variables)
+{
+  if ($variables['view']->current_display == 'general_search') {
     $args = $variables['view']->getExposedInput();
 
     $new_rows = [];
     $types_order = [
-      'page' => [ 'order' => 1, 'label' => t('Basic pages') ],
-      'worker' => [ 'order' => 2, 'label' => t('Contacts') ],
-      'location' => [ 'order' => 3, 'label' => t('Locations') ],
-      'article' => [ 'order' => 4, 'label' => t('News') ],
-      'calendar_event' => [ 'order' => 5, 'label' => t('Events') ],
-      'calendar_training' => [ 'order' => 6, 'label' => t('Trainings') ],
-      'class' => [ 'order' => 7, 'label' => t('Classes') ],
-      'gallery' => [ 'order' => 8, 'label' => t('Galleries') ],
+      'page' => ['order' => 1, 'label' => t('Basic pages')],
+      'worker' => ['order' => 2, 'label' => t('Contacts')],
+      'location' => ['order' => 3, 'label' => t('Locations')],
+      'article' => ['order' => 4, 'label' => t('News')],
+      'calendar_event' => ['order' => 5, 'label' => t('Events')],
+      'calendar_training' => ['order' => 6, 'label' => t('Trainings')],
+      'class' => ['order' => 7, 'label' => t('Classes')],
+      'gallery' => ['order' => 8, 'label' => t('Galleries')],
     ];
 
     $count = 0;
-    foreach ($variables['rows'] as $row){
-      if(!empty($row['content'])){
+    foreach ($variables['rows'] as $row) {
+      if (!empty($row['content'])) {
         #\Drupal::messenger()->addStatus('$row' . print_r($row['content']['#node'],1));
-        if(!empty($row['content']['#node'])) {
+        if (!empty($row['content']['#node'])) {
           $node = $row['content']['#node'];
 
           $type = $node->getType();
@@ -532,11 +544,11 @@ function harno_theme_preprocess_views_view_unformatted(&$variables){
             foreach ($calendar_types as $ct_key => $ct) {
               if ($ct['value'] == 1) {
                 $type = 'calendar_training';
-              } elseif ( $ct['value'] == 2 ) {
+              } elseif ($ct['value'] == 2) {
                 $type = 'calendar_event';
               }
 
-              if ($ct_key <= $count_calendar_types - 2 AND $count_calendar_types > 1) {
+              if ($ct_key <= $count_calendar_types - 2 and $count_calendar_types > 1) {
                 $label = $types_order[$type]['label'];
 
                 $new_rows[$types_order[$type]['order']]['title'] = $label;
@@ -545,7 +557,7 @@ function harno_theme_preprocess_views_view_unformatted(&$variables){
                 $count++;
               }
             }
-           # \Drupal::messenger()->addStatus('$row' . print_r($calendar_types,1));
+            # \Drupal::messenger()->addStatus('$row' . print_r($calendar_types,1));
           }
 
           $label = $types_order[$type]['label'];
@@ -559,10 +571,10 @@ function harno_theme_preprocess_views_view_unformatted(&$variables){
     }
     #
     if (isset($args['search_type'])) {
-      if (!isset($args['search_type'][5]) AND isset($new_rows[5])) {
+      if (!isset($args['search_type'][5]) and isset($new_rows[5])) {
         $count = $count - count($new_rows[5]['rows']);
         unset($new_rows[5]);
-      } elseif (!isset($args['search_type'][6]) AND isset($new_rows[6])) {
+      } elseif (!isset($args['search_type'][6]) and isset($new_rows[6])) {
         $count = $count - count($new_rows[6]['rows']);
         unset($new_rows[6]);
       }
@@ -570,10 +582,10 @@ function harno_theme_preprocess_views_view_unformatted(&$variables){
 
 
     #\Drupal::messenger()->addStatus('New rows ' . print_r($new_rows,1));
-    if(!empty($new_rows)) {
+    if (!empty($new_rows)) {
       ksort($new_rows);
       #kalendri jarjekorra muutmine
-      for($o = 5; $o <= 6; $o++) {
+      for ($o = 5; $o <= 6; $o++) {
         if (!empty($new_rows[$o]['rows'])) {
           $new_calendar_rows = [];
           foreach ($new_rows[$o]['rows'] as $c_row) {
@@ -588,8 +600,7 @@ function harno_theme_preprocess_views_view_unformatted(&$variables){
               $secs = floor($seconds % 60);
               $timeFormat = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
               $start_date = strtotime($field_start_date[0]['value'] . ' ' . $timeFormat);
-            }
-            else {
+            } else {
               $start_date = strtotime($field_start_date[0]['value']);
             }
             $new_calendar_rows[$start_date] = $c_row;
@@ -602,7 +613,7 @@ function harno_theme_preprocess_views_view_unformatted(&$variables){
       }
       $variables['rows'] = $new_rows;
     }
-    if(isset($count)){
+    if (isset($count)) {
       $variables['search_result_total'] = $count;
     }
     if (!isset($args['search_type'])) {
@@ -611,6 +622,17 @@ function harno_theme_preprocess_views_view_unformatted(&$variables){
           $variables['search_result_count'][$o] = count($variables['rows'][$o]['rows']);
         }
       }
+    }
+  }
+}
+function harno_theme_preprocess_webform(&$vars){
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    if ($node->getType() == 'location') {
+      $wfid = $vars['element']['#webform_id'];
+      $wf = \Drupal\webform\Entity\Webform::load($wfid);
+      $vars['title'] = $wf->label();
     }
   }
 }

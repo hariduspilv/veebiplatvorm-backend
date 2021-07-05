@@ -6,6 +6,7 @@ global-styling:
       css/style.css: {}
   js:
     static/assets/js/main.js: {weight:-30}
+    js/global.js : {}
 search-results:
   version: 1.0
   js:

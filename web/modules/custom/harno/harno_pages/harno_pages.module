@@ -4,6 +4,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Cache\Cache;
+use GuzzleHttp\Exception\RequestException;
 
 function harno_pages_theme($existing, $type, $theme, $path)
 {
@@ -71,6 +72,46 @@ function harno_pages_theme($existing, $type, $theme, $path)
 function harno_pages_node_presave(\Drupal\node\NodeInterface $node) {
   // Allows for clearing of blocks based on node type.
   $node_type = $node->getType();
+  if($node_type == 'location'){
+    $address = $node->get('field_address')->getValue()[0]['value'];
+    $x = $node->get('field_map_x_coordinate');
+    $y = $node->get('field_map_y_coordinate');
+
+    if(empty($x->getValue()) or empty($y->getValue())){
+      $url_to_quest = 'http://inaadress.maaamet.ee/inaadress/gazetteer';
+      $data = array(
+        'address' => $address,
+      );
+      $data = http_build_query($data);
+
+      try {
+        $client = \Drupal::httpClient();
+        $request = $client->request('GET', $url_to_quest . '?' . $data);
+        $data = $request->getBody()->getContents();
+
+        $data = json_decode($data);
+        $nid = $node->get('nid')->getValue()[0]['value'];
+        $x = $data->addresses[0]->viitepunkt_x;
+        $y = $data->addresses[0]->viitepunkt_y;
+        $street = $data->addresses[0]->aadresstekst;
+        $city = $data->addresses[0]->asutusyksus;
+        $county = $data->addresses[0]->maakond;
+        $zip = $data->addresses[0]->sihtnumber;
+        $data = [];
+        $data['location']['x'] = $x;
+        $data['location']['y'] = $y;
+        $data['location']['street'] = $street;
+        $data['location']['city'] = $city;
+        $data['location']['county'] = $county;
+        $data['location']['zipcode'] = $zip;
+        $config = \Drupal::service('config.factory')->getEditable('harno_settings.node_location');
+        $config->set('node_location_'.$nid, $data)
+          ->save();
+      }
+      catch (RequestException $e) {
+      }
+    }
+  }
   if($node_type=='gallery') {
     $tags = ['node_type:' . $node->getType()];
     Cache::invalidateTags($tags);
