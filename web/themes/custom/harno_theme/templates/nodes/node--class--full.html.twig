@@ -63,32 +63,48 @@
 
 {%
   set classes = [
-  'node',
-  'node--type-' ~ node.bundle|clean_class,
-  node.isPromoted() ? 'node--promoted',
-  node.isSticky() ? 'node--sticky',
-  not node.isPublished() ? 'node--unpublished',
-  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-  'clearfix',
-  'search-object'
-]
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+    'content-block',
+    'content-block--alumni'
+  ]
 %}
-<div {{ attributes.addClass(classes) }}>
-  <div class="contact-card">
-    {% if node.field_one_image is not empty %}
-      <div class="contact-card__avatar" style="background-image: url('{{ node.field_one_image.entity.field_media_image.entity.fileuri | image_style('media_library') }}');">
-        <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-2.gif" alt="{{ node.field_one_image.entity.field_media_image.alt }}">
-      </div><!--/contact-card__avatar-->
-    {% else %}
-      <div class="contact-card__avatar" style="background-image: url('/{{ active_theme_path() }}/static/assets/images/contact-placeholder.png');">
-        <img src="/{{ active_theme_path() }}/static/assets/images/placeholder-2.gif" alt="">
-      </div><!--/contact-card__avatar-->
-    {% endif %}
 
-    <div class="contact-card__content">
-      <a href="{{ url }}" class="contact-name" data-plugin="modal">{{ label }}</a>
-      <p>{{ content.field_department }}</p>
-      <p>{{ content.field_position }}</p>
-    </div><!--/contact-card__content-->
-  </div><!--/contact-card-->
-</div>
+<article{{ attributes.addClass(classes) }}>
+  <header>
+    {{ title_prefix }}
+    {% if label and not page %}
+      <h2{{ title_attributes.addClass('node__title') }}>
+        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+      </h2>
+    {% endif %}
+    {{ title_suffix }}
+    {% if display_submitted %}
+      <div class="node__meta">
+        {{ author_picture }}
+        {% block submitted %}
+          <em{{ author_attributes }}>
+            {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+          </em>
+        {% endblock %}
+        {{ metadata }}
+      </div>
+    {% endif %}
+  </header>
+  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    {{ content }}
+  </div>
+  <div class="row">
+    <div class="col-12 md-12 sm-12">
+      <div class="content-creating-info">
+        <span>{{ 'Published'|t }} {{ node.created.value|date('d.m.Y') }}.
+        <span>{{ 'Last changed'|t }} {{ node.changed.value|date('d.m.Y') }}.
+      </div><!--/content-creating-info-->
+    </div><!--/col-12 md-12 sm-12-->
+  </div><!--/row-->
+</article>

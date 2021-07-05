@@ -45,7 +45,7 @@ harno_pages.modal:
 harno_pages.alumni_all:
   path: 'alumni'
   defaults:
-    _controller: '\Drupal\harno_pages\Controller\ContactsController::index'
-    _title: 'Contacts'
+    _controller: '\Drupal\harno_pages\Controller\ClassController::index'
+    _title: 'Alumni'
   requirements:
     _permission: 'access content'

@@ -11,5 +11,10 @@ accordion:
       js:
         js/accordion.js: { }
         js/contactModal.js: { }
+select2fix:
+      js:
+        js/select2fix.js: {}
+      dependecies:
+        - select2/select2.min
 
 

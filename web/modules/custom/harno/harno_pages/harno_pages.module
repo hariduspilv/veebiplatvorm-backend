@@ -24,6 +24,11 @@ function harno_pages_theme($existing, $type, $theme, $path)
       'variables' => ['content' => [],'contact_filters'=>[], 'time' => []],
       'path' => 'themes/custom/harno_theme/templates/pages',
     ],
+    'class-page' => [
+      'template' => 'class-page',
+      'variables' => ['content' => [],'time' => []],
+      'path' => 'themes/custom/harno_theme/templates/pages',
+    ],
     'galleries-response' => [
       'template' => 'galleries-response',
       'variables' => ['content' => [],'pager'=>[],'academic_years'=>[]],

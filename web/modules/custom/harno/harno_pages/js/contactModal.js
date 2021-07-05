@@ -1,6 +1,6 @@
 !function ($) {
   $(document).ready(function () {
-    $.fn.contactModal = function(){
+    $.fn.modal = function(){
       $(this).each(function(){
         var main = $(this);
         var href = main.attr('href');

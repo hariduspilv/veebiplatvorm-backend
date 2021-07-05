@@ -83,13 +83,13 @@
       {# {{ dd(element) }} #}
       <button class="btn btn-primary filters-ready">{{ "Ready"|t }}</button>
     </div>
-  {% elseif element['#id']=='contacts-bottomFilter' %}
-
+  {% elseif element['#id']=='contacts-bottomSearch' %}
     <div class="mobile-filters">
       {{ element.contactsSearchMobile }}
       <button class="btn btn-secondary mobile-filter-trigger"
               data-plugin="filtersModal">{{ "Open filters" |t }}</button>
     </div>
+  {% elseif element['#id']=='contacts-bottomFilter' %}
     <div id="mobile-active-filters" class="mobile-filters-output" aria-labelledby="filters1">
       <div id="filters1" class="sr-only">Filtering results</div>
       {{ element.positions_checkbox }}
