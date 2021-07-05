@@ -24,3 +24,28 @@ harno_pages.news.autocomplete:
     _controller: '\Drupal\harno_pages\Controller\AutocompleteController::handleNewsAutocomplete'
   requirements:
     _permission: 'access content'
+harno_pages.contacts_page:
+  path: 'contacts'
+  defaults:
+    _controller: '\Drupal\harno_pages\Controller\ContactsController::index'
+    _title: 'Contacts'
+  requirements:
+    _permission: 'access content'
+harno_pages.modal:
+  path: 'modal/{type}/{id}'
+  defaults:
+    _controller: '\Drupal\harno_pages\Controller\ModalController::index'
+    _title: 'Modal'
+  requirements:
+    _permission: 'access content'
+#  options:
+#    parameters:
+#      id:
+#        type: entity:node
+harno_pages.alumni_all:
+  path: 'alumni'
+  defaults:
+    _controller: '\Drupal\harno_pages\Controller\ContactsController::index'
+    _title: 'Contacts'
+  requirements:
+    _permission: 'access content'

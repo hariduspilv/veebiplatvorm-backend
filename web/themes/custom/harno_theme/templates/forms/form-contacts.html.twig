@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+<div class="content-block content-block--filters">
+  <div class="row">
+    <div class="col-12 md-12 sm-12">
+      <div class="contacts-filters">
+        <form {{ attributes.addClass('filters-form') }}>
+          {{ children }}
+        </form><!--/filters-form-->
+      </div><!--/contacts-filter-->
+    </div><!--/col-12 md-12 sm-12-->
+  </div><!--/row-->
+</div><!--/content-block-->

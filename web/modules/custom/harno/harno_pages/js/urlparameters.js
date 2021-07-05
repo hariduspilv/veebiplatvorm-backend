@@ -22,7 +22,7 @@ $.formFilter = {
   },
   initialize: function (form) {
     this.options.form = form;
-    this.options.inputs = this.options.form.find(".js-range-slider, input[type='radio'],input[type='text'], input[type='checkbox']");
+    this.options.inputs = this.options.form.find(".js-range-slider, input[type='radio'],input[type='text'], input[type='checkbox'], select");
     this.bindFilters();
     this.bindHashChange();
     this.restoreCheckedStatus();
@@ -31,24 +31,25 @@ $.formFilter = {
     var self = this;
     self.options.inputs.on("input", function (e) {
       e.preventDefault();
-      if ($(this).attr('name') === 'gallerySearch') {
-        self.options.form.find('#edit-gallerysearchmobile').val($(this).val());
+      var name = $(this).attr('name');
+      var val = $(this).val();
+      var relations = {
+        'gallerySearch': '#edit-gallerysearchmobile',
+        'gallerySearchMobile': '#edit-gallerysearch',
+        'newsSearch': '#edit-newssearchmobile',
+        'newsSearchMobile': '#edit-newssearch',
+        'departments': '#worker-department',
+        'positions': '#worker-position',
+        'contactsSearchMobile': '#edit-contactssearchmobile',
+        'contactsSearch': '#edit-contactssearch',
+        'article_type': '#article_type_mobile',
+        'article_type_mobile': '#article_type_mobile',
       }
-      if ($(this).attr('name') === 'gallerySearchMobile') {
-        self.options.form.find('#edit-gallerysearch').val($(this).val());
+
+      if (relations[name]) {
+        self.options.form.find(relations[name]).val(val);
       }
-      if ($(this).attr('name') === 'newsSearch') {
-        self.options.form.find('#edit-newssearchmobile').val($(this).val());
-      }
-      if ($(this).attr('name') === 'newsSearchMobile') {
-        self.options.form.find('#edit-newssearch').val($(this).val());
-      }
-      if ($(this).attr('name') === 'article_type') {
-        self.options.form.find('#article_type_mobile').val($(this).val());
-      }
-      if ($(this).attr('name') === 'article_type_mobile') {
-        self.options.form.find('#article_type_mobile').val($(this).val());
-      }
+
       if($("input[id~='article_type']")){
         var toFind = '#edit-article-type-mobile-'+$(this)[0].value;
         var boxToCheck = self.options.form.find(toFind);
@@ -100,7 +101,7 @@ $.formFilter = {
 
   pushURL: function (from, to) {
     var self = this;
-    var inputs = self.options.inputs.filter(":checked, [type='text']");
+    var inputs = self.options.inputs.filter(":checked, [type='text'], input[type='checkbox'], select");
 
     var hash = '';
     var hashArray = {};
@@ -114,12 +115,16 @@ $.formFilter = {
     inputs.each(function () {
       var input = $(this);
       var name = input.attr("name");
-      var value = input.val().replace(';', '-');
-      if (hashArray[name]) {
-        hashArray[name] = hashArray[name] + "," + value;
-      } else {
-        hashArray[name] = value;
+      var value = input.val() ? input.val().replace(';', '-') : undefined;
+
+      if (value) {
+        if (hashArray[name]) {
+          hashArray[name] = hashArray[name] + "," + value;
+        } else {
+          hashArray[name] = value;
+        }
       }
+
     });
 
     for (var i in hashArray) {
@@ -193,8 +198,10 @@ $.formFilter = {
 $.fn.filterRefresh = function(){
   $("span[data-remove-item]").on('click',function(){
   var yearToRemove = $(this).attr("data-remove-item");
-  console.log(yearToRemove);
+    console.log(yearToRemove);
   $("input[name='years["+yearToRemove+"]']").trigger("click");
+  $("input[name='["+yearToRemove+"]']").trigger("click");
+  // $("input[name='"+yearToRemove+"']").trigger("click");
   //Remove from active filter bar
   //$(this.parentElement).remove();
 
@@ -205,6 +212,25 @@ $(document).ready(function () {
     var yearToRemove = $(this).attr("data-remove-item");
     console.log(yearToRemove);
     $("input[name='years["+yearToRemove+"]']").trigger("click");
+    // $("input[name='["+yearToRemove+"]']").trigger("click");
+    // const url = new URL(window.location.href)
+    // const urlObj = new URL(url);
+    // const params = urlObj.searchParams
+    // const $checks = $(':checkbox')
+    // // on page load check the ones that exist un url
+    // params.forEach((val, key) => $checks.filter('[name="' + key + '"]').prop('checked', true));
+    //
+    // $checks.change(function(){
+    //   // append when checkbox gets checked and delete when unchecked
+    //   if(this.checked){
+    //     params.append(this.name, 'true')
+    //   }else{
+    //     params.delete('departments');
+    //     params.delete(this.name);
+    //   }
+    //   window.location = urlObj.href;
+    //
+    // })
     //Remove from active filter bar
     //$(this.parentElement).remove();
 

@@ -29,7 +29,6 @@
     <span class="select-arrow" aria-hidden="true"></span>
     <label for="{{ element['#id'] }}" class="form-label">{{ element['#title'] }}</label>
     <select{{ attributes.setAttribute('data-plugin','selectTwo') }} >
-
       {% for option in options %}
 
         {% if loop.first %}
