@@ -29,6 +29,17 @@ class ModalController extends ControllerBase {
           ];
         }
       }
+      elseif ($type == 'gallery'){
+        if(is_numeric($id)) {
+          $content = Node::load($id);
+          $build['#theme'] = 'picture-modal';
+          $build['#content'] = $content;
+          $build['#cache'] = [
+            'conttexts' => ['url.query_args'],
+            'tags' => ['node_type:gallery'],
+          ];
+        }
+      }
       else{
         //for form etc
       }
