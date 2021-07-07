@@ -8,6 +8,7 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
+use Drupal\file\Entity\File;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -35,6 +36,10 @@ function harno_theme_form_system_theme_settings_alter(&$form, FormStateInterface
   ];
 }
 function harno_theme_preprocess_block(&$variables) {
+
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getName();
+  $variables['current_language'] = strtoupper(substr($language,0,'3'));
+
   if(!empty($variables['elements'])){
     if (isset($variables['elements']['#sidemenu'])){
       if (!$variables['elements']['#sidemenu']) {
@@ -635,4 +640,19 @@ function harno_theme_preprocess_webform(&$vars){
       $vars['title'] = $wf->label();
     }
   }
+}
+
+function harno_theme_preprocess_page(&$vars){
+
+  $config = \Drupal::config('harno_settings.settings');
+  $config_site = \Drupal::config('system.site');
+  $file = $config->get('general.logo');
+  if(!empty($file) or $file != 0){
+    $file = File::load($config->get('general.logo'));
+    $file = file_create_url($file->getFileUri());
+  }
+  $vars['site__logo'] = $file;
+  $vars['site_slogan'] = $config_site->get('slogan');
+  $vars['site_name'] = $config_site->get('name');
+
 }

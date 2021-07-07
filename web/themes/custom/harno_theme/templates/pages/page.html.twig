@@ -67,51 +67,78 @@
  * @see html.html.twig
  */
 #}
+{% set base_path = base_path ~ directory %}
 <div id="page-wrapper" class="main-wrapper">
 	<header id="header" class="main-header" role="banner" aria-label="{{ 'Site header'|t }}">
 		<div class="container">
-			<div class="row">
-				<div class="col-3 sm-12 md-12 pb-0">
-					{% if page.header and page.header.harno_theme_branding %}
-						{{ page.header.harno_theme_branding }}
-					{% endif %}
-				</div>
-				<div class="col-9 sm-12 md-12 pb-0">
-					<div class="row">
-              {% if page.header and page.header.keelevahetaja %}
-                {{ page.header.keelevahetaja }}
+      <div class="header-wrapper">
+        <div class="header-left">
+          <a href="{{ front_page }}" class="header-logo-content">
+          {% if site__logo %}
+            <div class="header-logo" style="background-image: url({{ site__logo }});">
+              <img src="{{ base_path }}/static/assets/images/placeholder-2.gif" alt="{{ site_name }}">
+            </div>
+            <div class="header-logo-text sm-show">
+              <span>{{ site_name }}</span>
+            </div>
+          {% else %}
+            <div class="header-logo-text">
+              <span>{{ site_name }}</span>
+            </div>
+          {% endif %}
+          </a><!--/header-logo-content-->
+        </div><!--/header-left-->
+        <div class="header-right">
+          <div class="header-right__top">
+            <div class="header-school-name">
+              <span class="school-name">{{ site_name }}</span>
+              {% if site_slogan is not empty %}
+              <span class="school-slogan"><em></em>{{ site_slogan }}</span>
               {% endif %}
-              {% if page.header and page.header.searchapiform %}
-                {{ page.header.searchapiform }}
-              {% endif %}
-						<div class="col-12 sm-12 md-12 pb-0">
-							{% if page.header and page.header.harno_theme_main_menu %}
-								<div class="desktop-menu">
-									{{ page.header.harno_theme_main_menu }}
-								</div>
-								<!--/desktop-menu-->
-                <div class="mobile-banner">
-                <div class="mobile-links">
-                  <button class="menu-link" data-plugin="mobileMenu" aria-label="{{ "Toggle menu"|t }}" aria-expanded="false">
-                    <i class="mdi mdi-menu"></i>
-                  </button><!--/menu-link-->
-                </div><!--/mobile-links-->
-                <div class="mobile-menu">
-                  <div class="panel-header">
-                    <button href="#" class="close-btn" aria-label="{{ "Close menu" |t }}">
-                      <div class="mdi mdi-close"></div>
-                    </button><!--/close-btn-->
-                  </div><!--/panel-header-->
-                  {{ page.header.pohinavigatsioon_2 }}
-                </div><!--/mobile-menu-->
-              </div><!--/mobile-banner-->
+            </div><!--/header-school-name-->
+            <button class="btn btn-header-accessibility">{{'Accessibility'|trans}}</button>
+            {% if page.header and page.header.keelevahetaja %}
+              {{ page.header.keelevahetaja }}
+            {% endif %}
+            {% if page.header and page.header.searchapiform %}
+              {{ page.header.searchapiform }}
+            {% endif %}
+            <div class="mobile-banner">
+              <div class="mobile-links">
+                <button class="btn btn-mobile-search" aria-expanded="false" data-plugin="mobileSearch">
+                  <span class="sr-only">{{ 'Search' }}</span>
+                  <i class="mdi mdi-magnify" aria-hidden="true"></i>
+                </button><!--/btn btn-mobile-search-->
+                <button class="menu-link" data-plugin="mobileMenu" aria-label="{{ "Toggle menu"|t }}" aria-expanded="false">
+                  <span class="sr-only">Open/close menu</span>
+                  <i class="mdi mdi-menu" aria-hidden="true"></i>
+                </button><!--/menu-link-->
+              </div><!--/mobile-links-->
+              <div class="mobile-search-overlay">
+                <div class="form-item search-input">
+                    {{ page.header.searchapiform_2 }}
+                </div><!--/form-item search-input-->
+                <button class="btn close-btn-search" aria-label="close menu">
+                  <i class="mdi mdi-close"></i>
+                </button><!--/close-btn-->
+              </div><!--/mobile-search-overlay-->
+              <div class="focus-trap-first" tabindex="0"></div>
+              <div class="mobile-menu">
+                {{ page.header.pohinavigatsioon_2 }}
+              </div><!--/mobile-menu-->
+              <div class="focus-trap-last" tabindex="0"></div>
+            </div><!--/mobile-banner-->
+          </div><!--/header-right__top-->
 
-
-							{% endif %}
-						</div>
-					</div>
-				</div>
-			</div>
+          <div class="header-right__bottom">
+            {% if page.header and page.header.harno_theme_main_menu %}
+              <div class="desktop-menu">
+                {{ page.header.harno_theme_main_menu }}
+              </div>
+            {% endif %}
+          </div><!--/header-right__bottom-->
+        </div><!--/header-right-->
+      </div><!--/header-wrapper-->
 		</div>
 	</header>
 	{% if page.highlighted %}

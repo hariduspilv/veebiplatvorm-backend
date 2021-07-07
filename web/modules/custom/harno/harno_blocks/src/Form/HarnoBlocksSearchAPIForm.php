@@ -45,7 +45,7 @@ class HarnoBlocksSearchAPIForm extends FormBase {
       '#type' => 'search',
       '#title' => $this->t('Search...'),
       '#require' => TRUE,
-      '#size' => 15,
+      '#size' => 50,
       #'#default_value' => $keys,
       '#attributes' => ['title' => $this->t('Enter the terms you wish to search for.')],
       '#prefix' => '<div class="input-group customLabel">'

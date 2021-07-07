@@ -144,6 +144,12 @@ function harno_pages_node_delete(\Drupal\node\NodeInterface $node) {
   }
 }
 function harno_pages_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  if (in_array($form['#form_id'], ['harno_blocks_search_api_form'])) {
+    $form['keys']['#attributes']['placeholder'] = t( 'Search' ).'...';
+    $form['keys']['#is_search_header'] = true;
+  }
+
   if (in_array($form['#form_id'], ['openid_connect_login_form'])) {
     $form['openid_connect_client_harid_login']['#attributes']['class'][] = 'btn btn-primary';
     $form['openid_connect_client_harid_login']['#value'] = t('Log in');
@@ -151,5 +157,15 @@ function harno_pages_form_alter(&$form, FormStateInterface $form_state, $form_id
   elseif (in_array($form['#form_id'], ['user_login_form'])) {
     $form['actions']['submit']['#attributes']['class'][] = 'btn btn-primary';
     $form['#attributes']['class'][] = 'form-group';
+  }
+}
+
+function harno_pages_language_switch_links_alter(array &$links, $type, $path) {
+
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  foreach($links as $key => $link) {
+    if($language == $key) {
+      $links[$key]['attributes']['aria-current'] = 'true';
+    }
   }
 }
