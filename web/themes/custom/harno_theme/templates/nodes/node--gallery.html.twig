@@ -165,7 +165,7 @@
           <div class="picture-container" id="gallery">
 
             <div class="picture-holder">
-              <a href="#" class="gallery-image" style="background-image: url('');" tabindex="0" data-plugin="modalOpener">
+              <a href="/modal/gallery/{{ node.get('nid').value }}" class="gallery-image" style="background-image: url('');" tabindex="0" data-plugin="modalOpener" data-modal="gallery">
                 <img src="/{{ base_path }}/static/assets/images/placeholder-2.gif" alt="tree on the field">
                 <span class="gallery-icon" aria-label="{{ "Open picture" |t }}"></span>
               </a><!--/image-field-->
@@ -175,10 +175,10 @@
               </div><!--/image-description-->
             </div><!--/picture-holder-->
 
-            <div class="button-prev" tabindex="0" title="{{ "Previous picture" |t }}">
+            <div class="button-prev" tabindex="0" aria-label="{{ "Previous picture" |t }}" title="{{ "Previous picture" |t }}">
               <span class="sr-only">{{ "Previous picture"|t }}</span>
             </div><!--/button-prev-->
-            <div class="button-next" tabindex="0" title="{{"Next Picture"}}">
+            <div class="button-next" tabindex="0" aria-label="{{"Next Picture"}}"  title="{{"Next Picture"}}">
             </div><!--/button-next-->
           </div><!--/picture-container-->
         </div><!--/col-8 md-6 sm-12-->
@@ -200,6 +200,7 @@
                 <a href="javascript:void(0);" aria-label="{{ "Open as big picture" |t }}" class="gallery-image-item"
                    style="background-image: url('{% if media_image %}{{ drupal_image(media_image.target_id,'media_library')['#uri']|file_url }}{% endif %}');"
                    data-image="{% if media_image %}{{ drupal_image(media_image.target_id)['#uri']|file_url }}{% endif %}"
+                   aria-label="{{ 'Opens in modal'|t }}"
                    title="{{ media_image.title }}" tabindex="0">
                   <div class="galleri-image-item">
 

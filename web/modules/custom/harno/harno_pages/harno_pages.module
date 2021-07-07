@@ -69,6 +69,11 @@ function harno_pages_theme($existing, $type, $theme, $path)
       'variables' => ['content' => [], 'title' => []],
       'path' => 'themes/custom/harno_theme/templates/pages/modal/filters',
     ],
+    'picture-modal' => [
+      'template' => 'picture-modal',
+      'variables' => ['content' => []],
+      'path' => 'themes/custom/harno_theme/templates/pages/modal/filters',
+    ],
   ];
 }
 /**
