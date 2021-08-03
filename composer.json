@@ -53,7 +53,7 @@
         "drupal/simple_recaptcha": "^1.0@beta",
         "drupal/svg_image": "^1.13",
         "drupal/taxonomy_menu_ui": "^1.4",
-        "drupal/time_field": "^1.13",
+        "drupal/time_field": "^2.0",
         "drupal/token": "^1.7",
         "drupal/twig_tweak": "^2.6",
         "drupal/upgrade_status": "^3.0",
@@ -145,9 +145,6 @@
             },
             "drupal/focal_point": {
                 "Stylish the preview button according to the admin theme CSS https://www.drupal.org/project/focal_point/issues/3162961": "https://www.drupal.org/files/issues/2020-08-03/focal_point-stylish_preview_button-3162961-2.patch"
-            },
-            "drupal/time_field": {
-                "Drupal 9 compatibility https://www.drupal.org/project/time_field/issues/3217879": "https://www.drupal.org/files/issues/2021-06-08/3176718-add_missing_core_version_requirement_parameter.patch"
             }
         }
     }
