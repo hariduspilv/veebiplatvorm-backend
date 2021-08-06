@@ -14,7 +14,121 @@ id: all_elements
 title: 'Elementide testimine'
 description: 'Kuvab k&otilde;iki v&otilde;imalike elemente.'
 category: 'Vaikimisi ette loodud vormid'
-elements: "tekstivali:\n  '#type': textfield\n  '#title': Tekstiväli\n  '#help': 'Tekstiv&auml;lja abitekst'\n  '#required': true\ntextarea:\n  '#type': textarea\n  '#title': Textarea\n  '#help': 'Textarea abitekst'\n  '#required': true\nautocomplete:\n  '#type': webform_autocomplete\n  '#title': Autocomplete\n  '#help': 'Saab otsida riiginimedest.'\n  '#autocomplete_items': country_names\ne_kiri:\n  '#type': email\n  '#title': E-kiri\n  '#required': true\nnumber:\n  '#type': number\n  '#title': Number\n  '#help': 'Numbrid 1-10'\n  '#required': true\n  '#min': 1\n  '#max': 10\n  '#step': 1\ntelefon:\n  '#type': tel\n  '#title': Telefon\n  '#help': 'Telefoninumbri lisamise v&auml;li'\n  '#international': true\n  '#international_initial_country': EE\nurl:\n  '#type': url\n  '#title': URL\n  '#help': 'Veebilingi lisamise v&auml;li'\nhinnang:\n  '#type': webform_rating\n  '#title': Hinnang\n  '#reset': true\nterms_of_service:\n  '#type': webform_terms_of_service\n  '#title': 'Ma nõustun {tingimustega}.'\n  '#terms_title': 'Vormi täitmise tingimused'\n  '#terms_content': |\n    <ol>\n    \t<li>Punkt 1</li>\n    \t<li>Punkt 2</li>\n    </ol>\n    \nankeedi_vahepealkiri:\n  '#type': processed_text\n  '#text': |\n    <div>\n    <div class=\"inspect_panels--copyableRow--2_PiZ inspect_panels--highlightRow--21P9S\">\n    <div class=\"inspect_panels--propertyRowContent--7Y-mu inspect_panels--copyableRow--2_PiZ inspect_panels--highlightRow--21P9S\">\n    <h2 class=\"inspect_panels--contentProperty--2Z1QI text--fontPos11--RSei3 text--_fontBase--YWDo0 ellipsis--ellipsisAfter8Lines--2rn32 ellipsis--_ellipsisAfterNLines--26JkZ\">Ankeedi vahepealkiri</h2>\n    \n    <p>Vahetekst, mis on sisestatud kasutades Advances HTML / Text sisestusvõimalust.</p>\n    </div>\n    </div>\n    </div>\n    \n  '#format': full_html\nhorizontal_rule:\n  '#type': webform_horizontal_rule\nfieldset:\n  '#type': fieldset\n  '#title': Fieldset\n  date_time:\n    '#type': datetime\n    '#title': Date/time\n    '#date_date_element': datepicker\n    '#date_date_format': m/d/Y\n    '#date_year_range': '2020:2030'\n    '#date_time_format': ''\n  date:\n    '#type': date\n    '#title': Date\n    '#datepicker': true\n    '#date_date_format': d/m/Y\n  aeg:\n    '#type': webform_time\n    '#title': Aeg\n    '#timepicker': true\nfieldset_2:\n  '#type': fieldset\n  '#title': 'Fieldset 2'\n  checkboxes:\n    '#type': checkboxes\n    '#title': Checkboxes\n    '#options': days\n  raadionupud:\n    '#type': radios\n    '#title': Raadionupud\n    '#options': yes_no\n  vali:\n    '#type': select\n    '#title': Vali\n    '#options': education\n    '#select2': true\n  select_other:\n    '#type': webform_select_other\n    '#title': 'Select other'\n    '#options':\n      1: 'valik 1'\n      2: 'valik 2'\n      3: 'valik 3'\n    '#select2': true\n    '#other__placeholder': 'muu valik…'\nlink:\n  '#type': webform_link\n  '#title': Link"
+elements: |-
+  tekstivali:
+    '#type': textfield
+    '#title': Tekstiväli
+    '#help': 'Tekstiv&auml;lja abitekst'
+    '#required': true
+  textarea:
+    '#type': textarea
+    '#title': Textarea
+    '#help': 'Textarea abitekst'
+    '#required': true
+  autocomplete:
+    '#type': webform_autocomplete
+    '#title': Autocomplete
+    '#help': 'Saab otsida riiginimedest.'
+    '#autocomplete_items': country_names
+  e_kiri:
+    '#type': email
+    '#title': E-kiri
+    '#required': true
+  number:
+    '#type': number
+    '#title': Number
+    '#help': 'Numbrid 1-10'
+    '#required': true
+    '#min': 1
+    '#max': 10
+    '#step': 1
+  telefon:
+    '#type': tel
+    '#title': Telefon
+    '#help': 'Telefoninumbri lisamise v&auml;li'
+    '#international': true
+    '#international_initial_country': EE
+  url:
+    '#type': url
+    '#title': URL
+    '#help': 'Veebilingi lisamise v&auml;li'
+  hinnang:
+    '#type': webform_rating
+    '#title': Hinnang
+    '#reset': true
+  terms_of_service:
+    '#type': webform_terms_of_service
+    '#title': 'Ma nõustun {tingimustega}.'
+    '#terms_title': 'Vormi täitmise tingimused'
+    '#terms_content': |
+      <ol>
+      	<li>Punkt 1</li>
+      	<li>Punkt 2</li>
+      </ol>
+      
+  ankeedi_vahepealkiri:
+    '#type': processed_text
+    '#text': |
+      <div>
+      <div class="inspect_panels--copyableRow--2_PiZ inspect_panels--highlightRow--21P9S">
+      <div class="inspect_panels--propertyRowContent--7Y-mu inspect_panels--copyableRow--2_PiZ inspect_panels--highlightRow--21P9S">
+      <h2 class="inspect_panels--contentProperty--2Z1QI text--fontPos11--RSei3 text--_fontBase--YWDo0 ellipsis--ellipsisAfter8Lines--2rn32 ellipsis--_ellipsisAfterNLines--26JkZ">Ankeedi vahepealkiri</h2>
+      
+      <p>Vahetekst, mis on sisestatud kasutades Advances HTML / Text sisestusvõimalust.</p>
+      </div>
+      </div>
+      </div>
+      
+    '#format': full_html
+  horizontal_rule:
+    '#type': webform_horizontal_rule
+  fieldset:
+    '#type': fieldset
+    '#title': Fieldset
+    date_time:
+      '#type': datetime
+      '#title': Date/time
+      '#date_date_element': datepicker
+      '#date_date_format': m/d/Y
+      '#date_year_range': '2020:2030'
+      '#date_time_format': ''
+    date:
+      '#type': date
+      '#title': Date
+      '#datepicker': true
+      '#date_date_format': d/m/Y
+    aeg:
+      '#type': webform_time
+      '#title': Aeg
+      '#timepicker': true
+  fieldset_2:
+    '#type': fieldset
+    '#title': 'Fieldset 2'
+    checkboxes:
+      '#type': checkboxes
+      '#title': Checkboxes
+      '#options': days
+    raadionupud:
+      '#type': radios
+      '#title': Raadionupud
+      '#options': yes_no
+    vali:
+      '#type': select
+      '#title': Vali
+      '#options': education
+      '#select2': true
+    select_other:
+      '#type': webform_select_other
+      '#title': 'Select other'
+      '#options':
+        1: 'valik 1'
+        2: 'valik 2'
+        3: 'valik 3'
+      '#select2': true
+      '#other__placeholder': 'muu valik…'
+  link:
+    '#type': webform_link
+    '#title': Link
 css: ''
 javascript: ''
 settings:

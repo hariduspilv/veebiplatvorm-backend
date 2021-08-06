@@ -1,3 +1,5 @@
+/* !function to prevent library conflicts */
+!function ($) {
 $.fn.formFilter = function () {
 
 
@@ -245,3 +247,4 @@ $(document).ready(function () {
   })
   $('[role="filter"]').formFilter();
 });
+}(window.jQuery);

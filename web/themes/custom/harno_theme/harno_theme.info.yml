@@ -3,6 +3,7 @@ type: theme
 description: 'Harno Custom theme'
 core: 8.x
 core_version_requirement: ^8 || ^9
+base theme: false
 libraries:
   - harno_theme/harno_custom
   - harno_theme/global-styling

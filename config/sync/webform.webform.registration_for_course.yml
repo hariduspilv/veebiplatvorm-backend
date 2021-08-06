@@ -14,7 +14,57 @@ id: registration_for_course
 title: 'Kursusele registreerimine'
 description: ''
 category: 'Vaikimisi ette loodud vormid'
-elements: "first_name:\n  '#type': textfield\n  '#title': Eesnimi\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Perekonnanimi\n  '#required': true\npersonal_code:\n  '#type': number\n  '#title': Isikukood\n  '#help': Number\n  '#required': true\neducation:\n  '#type': radios\n  '#title': Haridus\n  '#options':\n    1: Algharidus\n    2: Põhiharidus\n    3: Üldkeskharidus\n    4: Kutseharidus\n    5: Kõrgharidus\n  '#required': true\naddress:\n  '#type': textfield\n  '#title': Aadress\nemail:\n  '#type': email\n  '#title': E-post\n  '#required': true\nphone:\n  '#type': tel\n  '#title': Telefon\n  '#required': true\n  '#default_value': '+372'\n  '#international': true\n  '#international_initial_country': EE\npayer:\n  '#type': select\n  '#title': Tasuja\n  '#options':\n    1: ise\n    2: vanemad\n    3: omavalitus\n    4: tasuta\nplease_describe:\n  '#type': textarea\n  '#title': 'Palun kirjeldage, miks te soovite kursusele registreeruda'\n  '#help': '<span data-fm-marker=\"852\">Kirjeldus v&otilde;iks olla essee vormis arutelu</span>'\n  '#required': true"
+elements: |-
+  first_name:
+    '#type': textfield
+    '#title': Eesnimi
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': Perekonnanimi
+    '#required': true
+  personal_code:
+    '#type': number
+    '#title': Isikukood
+    '#help': Number
+    '#required': true
+  education:
+    '#type': radios
+    '#title': Haridus
+    '#options':
+      1: Algharidus
+      2: Põhiharidus
+      3: Üldkeskharidus
+      4: Kutseharidus
+      5: Kõrgharidus
+    '#required': true
+  address:
+    '#type': textfield
+    '#title': Aadress
+  email:
+    '#type': email
+    '#title': E-post
+    '#required': true
+  phone:
+    '#type': tel
+    '#title': Telefon
+    '#required': true
+    '#default_value': '+372'
+    '#international': true
+    '#international_initial_country': EE
+  payer:
+    '#type': select
+    '#title': Tasuja
+    '#options':
+      1: ise
+      2: vanemad
+      3: omavalitus
+      4: tasuta
+  please_describe:
+    '#type': textarea
+    '#title': 'Palun kirjeldage, miks te soovite kursusele registreeruda'
+    '#help': '<span data-fm-marker="852">Kirjeldus v&otilde;iks olla essee vormis arutelu</span>'
+    '#required': true
 css: ''
 javascript: ''
 settings:

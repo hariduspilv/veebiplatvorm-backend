@@ -22,7 +22,8 @@
         "drupal/conditional_fields": "^4.0@alpha",
         "drupal/config_ignore": "^2.2",
         "drupal/config_split": "^2.0@beta",
-        "drupal/core-recommended": "^8.9.0",
+        "drupal/core-composer-scaffold": "^9.2",
+        "drupal/core-recommended": "^9.2",
         "drupal/crop": "^2.1",
         "drupal/default_content": "2.0.x-dev@dev",
         "drupal/devel_entity_updates": "^3.0",
@@ -59,7 +60,7 @@
         "drupal/upgrade_status": "^3.0",
         "drupal/views_ajax_history": "^1.6",
         "drupal/webform": "^6.0",
-        "drush/drush": "^10.2",
+        "drush/drush": "^10.5",
         "wikimedia/composer-merge-plugin": "^2.0"
     },
     "conflict": {
@@ -131,8 +132,7 @@
         },
         "patches": {
             "drupal/core": {
-                "Class active-trail not added to li element when linking to front page https://www.drupal.org/project/drupal/issues/1578832": "https://www.drupal.org/files/issues/2018-11-27/menu-class-active-trail-1578832-52.patch",
-                "Views exposed form Ajax selector doesn't work on buttons https://www.drupal.org/project/drupal/issues/2998908": "https://www.drupal.org/files/issues/2020-10-08/exposed_ajax_view-using-button--2998908-16.patch"
+                "Views exposed form Ajax selector doesn't work on buttons https://www.drupal.org/project/drupal/issues/2998908": "https://www.drupal.org/files/issues/2020-12-14/views-ajax-views-exposed-filters-button-2998908-19-9-2-x.patch"
             },
             "drupal/media_library_edit": {
                 "On fields with multiple media items, other items disappear after saving. https://www.drupal.org/project/media_library_edit/issues/3192521": "https://www.drupal.org/files/issues/2021-01-13/update_save_callback-3192521-2.patch"

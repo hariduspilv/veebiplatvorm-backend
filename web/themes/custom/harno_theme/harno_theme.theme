@@ -8,7 +8,6 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
-
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
  *
@@ -76,10 +75,10 @@ function harno_theme_preprocess_pager(&$vars){
   $route_parameters = isset($vars['pager']['#route_parameters']) ? $vars['pager']['#route_parameters'] : [];
   global $pager_page_array, $pager_total;
   $pager = \Drupal::service('pager.manager')->getPager();
-
+  $items = [];
 
   // Nothing to do if there is only one page.
-  if ($pager_total[$element] <= 1) {
+  if (isset($pager_total[$element]) AND !empty($pager_total[$element]) AND $pager_total[$element] <= 1) {
     return;
   }
   $tags = $vars['pager']['#tags'];
@@ -87,19 +86,20 @@ function harno_theme_preprocess_pager(&$vars){
   // Calculate various markers within this pager piece:
   // Middle is used to "center" pages around the current page.
   $pager_middle = ceil($quantity / 2);
-
-  // current is the page we are currently paged to.
-  $pager_current = $pager_page_array[$element] + 1;
-
+  $pager_current = $pager_max = 0;
+  if (isset($pager_page_array[$element]) AND !empty($pager_page_array[$element]) ) {
+    // current is the page we are currently paged to.
+    $pager_current = $pager_page_array[$element] + 1;
+  }
   // first is the first page listed by this pager piece (re quantity).
   $pager_first = $pager_current - $pager_middle + 1;
 
   // last is the last page listed by this pager piece (re quantity).
   $pager_last = $pager_current + $quantity - $pager_middle;
-
-  // max is the maximum page number.
-  $pager_max = $pager_total[$element];
-
+  if (isset($pager_total[$element]) AND !empty($pager_total[$element])) {
+    // max is the maximum page number.
+    $pager_max = $pager_total[$element];
+  }
   // End of marker calculations.
   // Prepare for generation loop.
   $i = $pager_first;
@@ -118,7 +118,7 @@ function harno_theme_preprocess_pager(&$vars){
 
   // End of generation loop preparation.
   // Create the "first" and "previous" links if we are not on the first page.
-  if ($pager_page_array[$element] > 0) {
+  if (isset($pager_page_array[$element]) AND !empty($pager_page_array[$element]) AND $pager_page_array[$element] > 0) {
     $items['first'] = array();
     $updatedParameters =  \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, 0);
     if (isset($updatedParameters['ajax_form'])){
@@ -188,43 +188,46 @@ function harno_theme_preprocess_pager(&$vars){
   }
 
   // Create the "next" and "last" links if we are not on the last page.
-  if ($pager_page_array[$element] < $pager_max - 1) {
-    $items['next'] = array();
-    $updatedParameters = \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, $pager_page_array[$element] + 1);
-    if (isset($updatedParameters['ajax_form'])){
-      unset($updatedParameters['ajax_form']);
-    }
-    if (isset($updatedParameters['_wrapper_format'])){
-      unset($updatedParameters['_wrapper_format']);
-    }
-    $options = array(
-      'query' => $updatedParameters,
-    );
+  if(isset($pager_page_array[$element]) AND !empty($pager_page_array[$element])) {
+    if ($pager_page_array[$element] < $pager_max - 1) {
+      $items['next'] = [];
+      $updatedParameters = \Drupal::service('pager.manager')
+        ->getUpdatedParameters($parameters, $element, $pager_page_array[$element] + 1);
+      if (isset($updatedParameters['ajax_form'])) {
+        unset($updatedParameters['ajax_form']);
+      }
+      if (isset($updatedParameters['_wrapper_format'])) {
+        unset($updatedParameters['_wrapper_format']);
+      }
+      $options = [
+        'query' => $updatedParameters,
+      ];
 
-    $new_url =  Url::fromRoute($route_name,$route_parameters,$options);
-    $items['next']['href'] = $new_url->toString();
-    if (isset($tags[3])) {
-      $items['next']['text'] = $tags[3];
-    }
-    $items['last'] = array();
+      $new_url = Url::fromRoute($route_name, $route_parameters, $options);
+      $items['next']['href'] = $new_url->toString();
+      if (isset($tags[3])) {
+        $items['next']['text'] = $tags[3];
+      }
+      $items['last'] = [];
 
-    $updatedParameters = \Drupal::service('pager.manager')->getUpdatedParameters($parameters, $element, $pager_max - 1);
-    if (isset($updatedParameters['ajax_form'])){
-      unset($updatedParameters['ajax_form']);
-    }
-    if (isset($updatedParameters['_wrapper_format'])){
-      unset($updatedParameters['_wrapper_format']);
-    }
-    $options = array(
-      'query' => $updatedParameters,
-    );
-    $new_url =  Url::fromRoute($route_name,$route_parameters,$options);
-    $items['last']['href'] = urldecode($new_url->toString());
-    if (isset($tags[4])) {
-      $items['last']['text'] = $tags[4];
+      $updatedParameters = \Drupal::service('pager.manager')
+        ->getUpdatedParameters($parameters, $element, $pager_max - 1);
+      if (isset($updatedParameters['ajax_form'])) {
+        unset($updatedParameters['ajax_form']);
+      }
+      if (isset($updatedParameters['_wrapper_format'])) {
+        unset($updatedParameters['_wrapper_format']);
+      }
+      $options = [
+        'query' => $updatedParameters,
+      ];
+      $new_url = Url::fromRoute($route_name, $route_parameters, $options);
+      $items['last']['href'] = urldecode($new_url->toString());
+      if (isset($tags[4])) {
+        $items['last']['text'] = $tags[4];
+      }
     }
   }
-
   $vars['items'] = $items;
 
   // The rendered link needs to play well with any other query parameter used
@@ -634,5 +637,50 @@ function harno_theme_preprocess_webform(&$vars){
       $wf = \Drupal\webform\Entity\Webform::load($wfid);
       $vars['title'] = $wf->label();
     }
+  }
+}
+
+/**
+ * Prepares variables for menu templates on the homepage.
+ *
+ * Default template: menu.html.twig.
+ *
+ * @param $variables
+ *   An Associative array containing:
+ *   - menu_name: The machine name of the menu.
+ *   - items: A nested list of menu items. Each menu item contains:
+ *     - attributes: HTML attributes for the menu item.
+ *     - below: The menu item child items.
+ *     - title: The menu link title.
+ *     - url: The menu link url, instance of \Drupal\Core\Url
+ *     - localized_options: Menu link localized options.
+ *     - is_expanded: TRUE if the link has visible children within the current
+ *       menu tree.
+ *     - is_collapsed: TRUE if the link has children within the current menu tree
+ *       that are not currently visible.
+ *     - in_active_trail: TRUE if the link is in the active trail.
+ */
+function harno_theme_preprocess_menu(&$variables) {
+  if (!\Drupal::service('path.matcher')->isFrontPage()) {
+    return;
+  }
+
+  $homepagePath = \Drupal::config('system.site')->get('page.front');
+  $homepageUrl = \Drupal::service('path.validator')->getUrlIfValid($homepagePath);
+  if (!$homepageUrl instanceof Url) {
+    return;
+  }
+
+  $validHomepageRoutes = ['<front>', $homepageUrl->getRouteName()];
+  foreach ($variables['items'] as $key => $item) {
+    /** @var \Drupal\Core\Url $url */
+    $url = $item['url'];
+    if (
+        $url instanceof Url &&
+        $url->isRouted() &&
+        \in_array($url->getRouteName(), $validHomepageRoutes, TRUE)
+      ) {
+        $variables['items'][$key]['in_active_trail'] = TRUE;
+      }
   }
 }

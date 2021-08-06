@@ -1,5 +1,24 @@
 title: Контакт
-elements: "name:\n  '#type': textfield\n  '#title': Nimi\n  '#required': true\n  '#default_value': '[current-user:display-name]'\nemail:\n  '#type': email\n  '#title': 'E-posti aadress'\n  '#required': true\n  '#default_value': '[current-user:mail]'\nmessage:\n  '#type': textarea\n  '#title': Sõnum\n  '#required': true\n  '#test': 'Please ignore this email.'\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': Saada"
+elements: |-
+  name:
+    '#type': textfield
+    '#title': Nimi
+    '#required': true
+    '#default_value': '[current-user:display-name]'
+  email:
+    '#type': email
+    '#title': 'E-posti aadress'
+    '#required': true
+    '#default_value': '[current-user:mail]'
+  message:
+    '#type': textarea
+    '#title': Sõnum
+    '#required': true
+    '#test': 'Please ignore this email.'
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': Saada
 settings:
   confirmation_message: 'Ваше сообщение отправлено.'
 handlers:
