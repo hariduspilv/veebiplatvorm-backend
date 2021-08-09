@@ -1,13 +1,31 @@
 global-styling:
-  version: 1.0
+  version: 1.6
   css:
     theme:
       static/assets/styles/default.css: {}
       css/style.css: {}
   js:
-    static/assets/js/main.js: {}
+    #static/dev/js/_moment.min.js: {}
+    #static/dev/js/jquery.daterangepicker.js: {}
+    #static/dev/js/jquery.functions.js: {}
+    #static/dev/js/jquery.gallery.js: {}
+    #static/dev/js/jquery.intlTelInput-jquery.min.js: {}
+    #static/dev/js/jquery.modal.js: {}
+    #static/dev/js/moments-with-locale.js: {}
+    #static/dev/js/swiper.min.js: {}
+    #static/dev/js/tooltipster.bundle.js: {}
+    #static/dev/js/wpm.js: {}
+    static/assets/js/main-drupal.js: {}
     js/global.js: {}
+  dependencies:
+    - core/drupalSettings
+    - core/jquery
+    - core/jquery.once
 search-results:
-  version: 1.0
+  version: 1.6
   js:
     js/search_results.js: {}
+  dependencies:
+    - core/drupalSettings
+    - core/jquery
+    - core/jquery.once
