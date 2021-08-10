@@ -12,6 +12,11 @@ dependencies:
     - field.field.node.calendar.field_event_keywords
     - field.field.node.calendar.field_event_start_time
     - field.field.node.calendar.field_event_type
+    - field.field.node.calendar.field_juhan_esf
+    - field.field.node.calendar.field_juhan_id
+    - field.field.node.calendar.field_juhan_image_link
+    - field.field.node.calendar.field_juhan_training
+    - field.field.node.calendar.field_juhan_training_url
     - field.field.node.calendar.field_one_image
     - field.field.node.calendar.field_price
     - field.field.node.calendar.field_show_end_date
@@ -79,6 +84,11 @@ hidden:
   field_event_end_time: true
   field_event_keywords: true
   field_event_start_time: true
+  field_juhan_esf: true
+  field_juhan_id: true
+  field_juhan_image_link: true
+  field_juhan_training: true
+  field_juhan_training_url: true
   field_one_image: true
   field_price: true
   field_show_end_date: true

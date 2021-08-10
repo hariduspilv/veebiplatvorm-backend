@@ -11,6 +11,11 @@ dependencies:
     - field.field.node.calendar.field_event_keywords
     - field.field.node.calendar.field_event_start_time
     - field.field.node.calendar.field_event_type
+    - field.field.node.calendar.field_juhan_esf
+    - field.field.node.calendar.field_juhan_id
+    - field.field.node.calendar.field_juhan_image_link
+    - field.field.node.calendar.field_juhan_training
+    - field.field.node.calendar.field_juhan_training_url
     - field.field.node.calendar.field_one_image
     - field.field.node.calendar.field_price
     - field.field.node.calendar.field_show_end_date
@@ -22,6 +27,7 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
+    - link
     - options
     - text
     - time_field
@@ -97,6 +103,58 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
+  field_juhan_esf:
+    weight: 118
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_juhan_id:
+    weight: 120
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_juhan_image_link:
+    weight: 117
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_juhan_training:
+    weight: 119
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_juhan_training_url:
+    weight: 121
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
   field_one_image:
     weight: 114

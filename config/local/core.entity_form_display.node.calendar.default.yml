@@ -11,6 +11,11 @@ dependencies:
     - field.field.node.calendar.field_event_keywords
     - field.field.node.calendar.field_event_start_time
     - field.field.node.calendar.field_event_type
+    - field.field.node.calendar.field_juhan_esf
+    - field.field.node.calendar.field_juhan_id
+    - field.field.node.calendar.field_juhan_image_link
+    - field.field.node.calendar.field_juhan_training
+    - field.field.node.calendar.field_juhan_training_url
     - field.field.node.calendar.field_one_image
     - field.field.node.calendar.field_price
     - field.field.node.calendar.field_show_end_date
@@ -27,6 +32,7 @@ dependencies:
     - media_library_edit
     - paragraphs
     - path
+    - readonly_field_widget
     - text
     - time_field
     - webform
@@ -94,6 +100,25 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Sisestusvorm
+    group_juhan:
+      children:
+        - field_juhan_training
+        - field_juhan_id
+        - field_juhan_image_link
+        - field_juhan_esf
+        - field_juhan_training_url
+      parent_name: ''
+      weight: 17
+      format_type: details_sidebar
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: false
+        weight: 0
+      label: 'Juhani andmed'
 id: node.calendar.default
 targetEntityType: node
 bundle: calendar
@@ -221,8 +246,8 @@ content:
   field_event_start_time:
     weight: 18
     settings:
-      step: '5'
-      enabled: 0
+      step: 5
+      enabled: false
     third_party_settings:
       conditional_fields:
         a2d9e815-103f-4c2b-9ccb-adc6db5a237a:
@@ -252,6 +277,80 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
+  field_juhan_esf:
+    weight: 30
+    settings:
+      label: above
+      formatter_type: null
+      formatter_settings: null
+      show_description: false
+    third_party_settings: {  }
+    type: readonly_field_widget
+    region: content
+  field_juhan_id:
+    weight: 28
+    settings:
+      label: above
+      formatter_type: null
+      formatter_settings: null
+      show_description: false
+    third_party_settings: {  }
+    type: readonly_field_widget
+    region: content
+  field_juhan_image_link:
+    weight: 29
+    settings:
+      label: above
+      formatter_type: link
+      formatter_settings:
+        link:
+          trim_length: '80'
+          rel: nofollow
+          target: _blank
+          url_only: 0
+          url_plain: 0
+        link_separate:
+          trim_length: '80'
+          url_only: ''
+          url_plain: ''
+          rel: 0
+          target: 0
+      show_description: 0
+    third_party_settings: {  }
+    type: readonly_field_widget
+    region: content
+  field_juhan_training:
+    weight: 27
+    settings:
+      label: above
+      formatter_type: null
+      formatter_settings: null
+      show_description: false
+    third_party_settings: {  }
+    type: readonly_field_widget
+    region: content
+  field_juhan_training_url:
+    weight: 31
+    settings:
+      label: above
+      formatter_type: link
+      formatter_settings:
+        link:
+          trim_length: '80'
+          rel: nofollow
+          target: _blank
+          url_only: 0
+          url_plain: 0
+        link_separate:
+          trim_length: '80'
+          url_only: ''
+          url_plain: ''
+          rel: 0
+          target: 0
+      show_description: 0
+    third_party_settings: {  }
+    type: readonly_field_widget
     region: content
   field_one_image:
     weight: 14
