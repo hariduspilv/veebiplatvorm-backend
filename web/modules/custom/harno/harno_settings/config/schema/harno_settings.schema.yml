@@ -315,6 +315,13 @@ harno_settings.settings:
         date:
           type: text
           label: 'Kuupäev'
+    juhan:
+      type: mapping
+      label: 'Juhani koolitused'
+      mapping:
+        api_key:
+          type: text
+          label: 'API key'
     frontpage_quick_links:
       type: mapping
       label: 'Avalahe kiirlingid'

@@ -97,6 +97,8 @@ news_our_story:
 automatic_generation_academic_year:
   on: true
   date: 15.06.
+juhan:
+  api_key: ''
 frontpage_quick_links:
   link_name_1: ''
   link_entity_1: NULL

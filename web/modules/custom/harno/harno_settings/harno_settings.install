@@ -192,3 +192,11 @@ function harno_settings_update_8015() {
   }
   return 'Lisati ' . $count . ' termi.';
 }
+/**
+ * Set default value for juhan api_key config
+ */
+function harno_settings_update_8016() {
+  $config = \Drupal::configFactory()->getEditable('harno_settings.settings');
+  $config->set('juhan.api_key', '');
+  $config->save();
+}

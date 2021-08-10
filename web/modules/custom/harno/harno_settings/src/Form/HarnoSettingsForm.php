@@ -487,6 +487,13 @@ class HarnoSettingsForm extends ConfigFormBase {
       '#description' => 'Kuupäeva formaat on "dd.mm.".',
       '#required' => TRUE,
     ];
+    $form['variables']['juhan_api_key'] = [
+      '#type' => 'textfield',
+      '#title' => 'Juhani API võti',
+      '#default_value' =>  $config->get('juhan.api_key'),
+      '#description' => 'API võtme saab asutuse haldur Juhani tootejuhi käest pärast koolituse läbimist. Vastavalt API võtmele saab koolitusi veebilehele importida.',
+      '#required' => FALSE,
+    ];
     return $form;
   }
 
@@ -600,6 +607,7 @@ class HarnoSettingsForm extends ConfigFormBase {
       ->set('automatic_generation_academic_year.on', $form_state->getValue('automatic_generation_academic_year_on'))
       ->set('automatic_generation_academic_year.date', $form_state->getValue('automatic_generation_academic_year_date'))
       ->set('news_our_story.name', $form_state->getValue('news_our_story_name'))
+      ->set('juhan.api_key', $form_state->getValue('juhan_api_key'))
       ->save();
     ################################################### Frontpage quick links settings save ######################################
 
